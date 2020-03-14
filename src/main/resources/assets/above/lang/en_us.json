@@ -6,8 +6,11 @@
     "block.above.chiseled_aerrack": "Chiseled Aerrack",
     "block.above.sky_silt": "Sky Silt",
     "block.above.sky_moss": "Sky Moss",
+    "block.above.sky_farmland": "Sky Silt Farmland",
     "block.above.common_skyroot_log": "Common Skyroot Log",
     "block.above.silver_skyroot_log": "Silver Skyroot Log",
+    "block.above.dwarf_skyroot_log": "Dwarf Skyroot Log",
     "block.above.common_skyroot_leaves": "Common Skyroot Leaves",
-    "block.above.silver_skyroot_leaves": "Silver Skyroot Leaves"
+    "block.above.silver_skyroot_leaves": "Silver Skyroot Leaves",
+    "block.above.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves"
 }

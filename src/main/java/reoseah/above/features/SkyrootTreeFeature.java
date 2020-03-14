@@ -13,15 +13,15 @@ import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 
 public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootTreeFeatureConfig> {
-	private static final int[] NORMAL1 = { 0, 0, 1, 2, 1, 2, 1, 0 }; // height 5 or 6
-	private static final int[] NORMAL2 = { 0, 0, 2, 2, 1, 2, 1, 0 }; // height 5 or 6
-	private static final int[] NORMAL3 = { 0, 0, 1, 2, 2, 1, 2, 1, 0 }; // height 6 or 7
+	private static final int[] NORMAL1 = { 0, 0, 1, 2, 1, 2, 1, 0 }; 
+	private static final int[] NORMAL2 = { 0, 0, 2, 2, 1, 2, 1, 0 }; 
+	private static final int[] NORMAL3 = { 0, 0, 1, 2, 2, 1, 2, 1, 0 }; 
 
-	private static final int[] TALL1 = { 0, 0, 1, 2, 1, 2, 1, 2, 1, 0 }; // height 7 or 8
-	private static final int[] TALL2 = { 0, 0, 1, 2, 2, 1, 2, 1, 2, 1, 0 }; // height 8 or 9
+	private static final int[] TALL1 = { 0, 0, 1, 2, 1, 2, 1, 2, 1, 0 }; 
+	private static final int[] TALL2 = { 0, 0, 1, 2, 2, 1, 2, 1, 2, 1, 0 }; 
 
-	private static final int[] SMALL1 = { 0, 1, 2, 1, 2, 1, 0 }; // height 4 or 5
-	private static final int[] SMALL2 = { 0, 0, 1, 2, 1, 2, 1, 0 }; // height 5 or 6
+	private static final int[] SMALL1 = { 0, 1, 2, 1, 2, 1, 0 }; 
+	private static final int[] SMALL2 = { 0, 0, 1, 2, 1, 2, 1, 0 }; 
 
 	public enum Size {
 		NORMAL {
@@ -79,7 +79,6 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootTreeFeatureCo
 			this.height = height;
 			this.pattern = pattern;
 		}
-
 	}
 
 	public SkyrootTreeFeature(Function<Dynamic<?>, ? extends SkyrootTreeFeatureConfig> function) {
