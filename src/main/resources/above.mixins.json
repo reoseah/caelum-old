@@ -3,6 +3,8 @@
   "package": "reoseah.above.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "FeatureMixin",
+    "AbstractTreeFeatureMixin"
   ],
   "client": [
   ],

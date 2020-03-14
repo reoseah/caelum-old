@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "above:block/silver_skyroot_log_top",
+        "side": "above:block/silver_skyroot_log_side"
+    }
+}
