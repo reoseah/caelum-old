@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "above:block/aerrack",
+    "side": "above:block/chiseled_aerrack"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "above:block/chiseled_aerrack_x"
+    },
+    "axis=y": {
+      "model": "above:block/chiseled_aerrack"
+    },
+    "axis=z": {
+      "model": "above:block/chiseled_aerrack_z"
+    }
+  }
+}
