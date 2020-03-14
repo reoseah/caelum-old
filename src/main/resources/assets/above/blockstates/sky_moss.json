@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "above:block/sky_moss"
+      },
+      {
+        "model": "above:block/sky_moss",
+        "y": 90
+      },
+      {
+        "model": "above:block/sky_moss",
+        "y": 180
+      },
+      {
+        "model": "above:block/sky_moss",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "above:block/sky_moss_snow"
+    }
+  }
+}

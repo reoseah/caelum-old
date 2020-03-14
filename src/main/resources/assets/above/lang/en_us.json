@@ -3,5 +3,7 @@
     "block.above.aerrack": "Aerrack",
     "block.above.ceruclase_ore": "Ceruclase Ore",
     "block.above.aerrack_bricks": "Aerrack Bricks",
-    "block.above.chiseled_aerrack": "Chiseled Aerrack"
+    "block.above.chiseled_aerrack": "Chiseled Aerrack",
+    "block.above.sky_silt": "Sky Silt",
+    "block.above.sky_moss": "Sky Moss"
 }
