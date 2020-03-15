@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "reoseah.above.mixin",
+  "package": "reoseah.above.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "FeatureMixin",

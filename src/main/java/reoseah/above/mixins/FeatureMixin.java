@@ -1,4 +1,4 @@
-package reoseah.above.mixin;
+package reoseah.above.mixins;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,7 +13,8 @@ import reoseah.above.Above;
 public class FeatureMixin {
 	@Inject(at = @At("HEAD"), method = "isDirt", cancellable = true)
 	private static void isDirt(Block block, CallbackInfoReturnable<Boolean> callback) {
-		if (block == Above.SKY_SILT || block == Above.SKY_MOSS) {
+		// Allows generators to work on sky counterparts of dirt/grass/farmland
+		if (block == Above.SKY_SILT || block == Above.SKY_MOSS || block == Above.SKY_FARMLAND) {
 			callback.setReturnValue(true);
 		}
 	}

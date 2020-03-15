@@ -1,4 +1,4 @@
-package reoseah.above.mixin;
+package reoseah.above.mixins;
 
 import java.util.function.Function;
 
@@ -33,12 +33,15 @@ public abstract class AbstractTreeFeatureMixin extends Feature<DefaultFeatureCon
 	@Inject(at = @At("HEAD"), method = "isNaturalDirt", cancellable = true)
 	private static void isNaturalDirt(TestableWorld world, BlockPos pos, CallbackInfoReturnable<Boolean> callback) {
 		if (world.testBlockState(pos, state -> isDirt(state.getBlock()) && state.getBlock() == Above.SKY_MOSS)) {
+			// Sky Moss is not "dirt", it needs to be replaced with Sky Silt,
+			// where trees replace Grass with Dirt
 			callback.setReturnValue(false);
 		}
 	}
 
 	@Inject(at = @At("HEAD"), method = "setToDirt", cancellable = true)
 	private void setToDirt(ModifiableTestableWorld world, BlockPos pos, CallbackInfo callback) {
+		// Sky Moss is replaced with Sky Silt, not Dirt
 		if (world.testBlockState(pos, state -> state.getBlock() == Above.SKY_MOSS)) {
 			this.setBlockState(world, pos, Above.SKY_SILT.getDefaultState());
 			callback.cancel();

@@ -12,6 +12,7 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
@@ -23,15 +24,19 @@ import reoseah.above.Above;
 
 public class SkyMossBlock extends FallingBlock {
 	public static final BooleanProperty SNOWY = Properties.SNOWY;
+	// Falling blocks always schedule update after falling and neighbor update
+	// But moss must decay into silt like a normal grass - not instantly!
+	// As dirty workaround, decaying is delayed by one tick
+	public static final IntProperty AGE = Properties.AGE_1;
 
 	public SkyMossBlock(Block.Settings settings) {
 		super(settings);
-		this.setDefaultState(this.stateManager.getDefaultState().with(SNOWY, false));
+		this.setDefaultState(this.stateManager.getDefaultState().with(SNOWY, false).with(AGE, 0));
 	}
 
 	@Override
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-		builder.add(SNOWY);
+		builder.add(SNOWY, AGE);
 	}
 
 	@Override
@@ -70,19 +75,19 @@ public class SkyMossBlock extends FallingBlock {
 			FallingBlockEntity entity = new FallingBlockEntity(world, (double) pos.getX() + 0.5D, (double) pos.getY(), (double) pos.getZ() + 0.5D, world.getBlockState(pos));
 			this.configureFallingBlockEntity(entity);
 			world.spawnEntity(entity);
-			return;
-		}
-		if (!canSurvive(state, world, pos) && random.nextInt(4) == 0) {
-			world.setBlockState(pos, Above.SKY_SILT.getDefaultState());
-			return;
-		}
-		if (world.getLightLevel(pos.up()) >= 9 && random.nextInt(4) == 0) {
-			BlockState blockState = this.getDefaultState();
-
+		} else if (!canSurvive(state, world, pos)) {
+			if (state.get(AGE) == 0) {
+				world.setBlockState(pos, state.with(AGE, 1));
+			} else {
+				world.setBlockState(pos, Above.SKY_SILT.getDefaultState());
+			}
+		} else if (world.getLightLevel(pos.up()) >= 9) {
 			for (int i = 0; i < 4; ++i) {
-				BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
-				if (world.getBlockState(blockPos).getBlock() == Above.SKY_SILT && canSpread(blockState, world, blockPos)) {
-					world.setBlockState(blockPos, blockState.with(SNOWY, world.getBlockState(blockPos.up()).getBlock() == Blocks.SNOW));
+				BlockPos neighborPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
+				if (world.getBlockState(neighborPos).getBlock() == Above.SKY_SILT
+						&& canSpread(this.getDefaultState(), world, neighborPos)) {
+					boolean snowy = world.getBlockState(neighborPos.up()).getBlock() == Blocks.SNOW;
+					world.setBlockState(neighborPos, this.getDefaultState().with(SNOWY, snowy));
 				}
 			}
 		}

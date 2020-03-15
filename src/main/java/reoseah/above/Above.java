@@ -36,7 +36,8 @@ import reoseah.above.blocks.SkyFarmlandBlock;
 import reoseah.above.blocks.SkyMossBlock;
 import reoseah.above.features.SkyrootBushFeature;
 import reoseah.above.features.SkyrootTreeFeature;
-import reoseah.above.features.SkyrootTreeFeatureConfig;
+import reoseah.above.features.SkyrootTreeConfig;
+import reoseah.above.features.SkyrootTreeShape;
 
 public class Above implements ModInitializer {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(makeID("main"), () -> new ItemStack(Above.SKY_MOSS));
@@ -56,29 +57,29 @@ public class Above implements ModInitializer {
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 
-	public static final SkyrootTreeFeatureConfig COMMON_SKYROOT_CONFIG = new SkyrootTreeFeatureConfig(
+	public static final SkyrootTreeConfig COMMON_SKYROOT_CONFIG = new SkyrootTreeConfig(
 			new SimpleBlockStateProvider(COMMON_SKYROOT_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(COMMON_SKYROOT_LEAVES.getDefaultState()),
-			SkyrootTreeFeature.Size.NORMAL);
+			5, SkyrootTreeShape.NORMAL);
 
-	public static final SkyrootTreeFeatureConfig COMMON_TALL_SKYROOT_CONFIG = new SkyrootTreeFeatureConfig(
+	public static final SkyrootTreeConfig TALL_COMMON_SKYROOT_CONFIG = new SkyrootTreeConfig(
 			new SimpleBlockStateProvider(COMMON_SKYROOT_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(COMMON_SKYROOT_LEAVES.getDefaultState()),
-			SkyrootTreeFeature.Size.TALL);
+			7, SkyrootTreeShape.TALL);
 
-	public static final SkyrootTreeFeatureConfig SILVER_SKYROOT_CONFIG = new SkyrootTreeFeatureConfig(
+	public static final SkyrootTreeConfig SILVER_SKYROOT_CONFIG = new SkyrootTreeConfig(
 			new SimpleBlockStateProvider(SILVER_SKYROOT_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(SILVER_SKYROOT_LEAVES.getDefaultState()),
-			SkyrootTreeFeature.Size.SMALL);
+			4, SkyrootTreeShape.SMALL);
 
-	public static final SkyrootTreeFeatureConfig DWARF_SKYROOT_CONFIG = new SkyrootTreeFeatureConfig(
+	public static final SkyrootTreeConfig DWARF_SKYROOT_CONFIG = new SkyrootTreeConfig(
 			new SimpleBlockStateProvider(DWARF_SKYROOT_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(DWARF_SKYROOT_LEAVES.getDefaultState()),
-			SkyrootTreeFeature.Size.SMALL);
+			4, SkyrootTreeShape.SMALL);
 
 	public static final AbstractTreeFeature<TreeFeatureConfig> SKYROOT_BUSH_FEATURE = new SkyrootBushFeature(TreeFeatureConfig::deserialize);
 
-	public static final AbstractTreeFeature<SkyrootTreeFeatureConfig> SKYROOT_TREE_FEATURE = new SkyrootTreeFeature(SkyrootTreeFeatureConfig::deserialize);
+	public static final AbstractTreeFeature<SkyrootTreeConfig> SKYROOT_TREE_FEATURE = new SkyrootTreeFeature(SkyrootTreeConfig::deserialize);
 
 	public static Identifier makeID(String name) {
 		return new Identifier("above", name);
@@ -126,7 +127,7 @@ public class Above implements ModInitializer {
 		RandomFeatureConfig forestTreesConfig = new RandomFeatureConfig(
 				Arrays.asList(
 						new RandomFeatureEntry<>(SKYROOT_TREE_FEATURE.configure(SILVER_SKYROOT_CONFIG), 0.2F),
-						new RandomFeatureEntry<>(SKYROOT_TREE_FEATURE.configure(COMMON_TALL_SKYROOT_CONFIG), 0.15F)),
+						new RandomFeatureEntry<>(SKYROOT_TREE_FEATURE.configure(TALL_COMMON_SKYROOT_CONFIG), 0.15F)),
 				SKYROOT_TREE_FEATURE.configure(COMMON_SKYROOT_CONFIG));
 		Biomes.PLAINS.addFeature(
 				GenerationStep.Feature.VEGETAL_DECORATION,
