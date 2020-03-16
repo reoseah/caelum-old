@@ -12,5 +12,6 @@
     "block.above.dwarf_skyroot_log": "Dwarf Skyroot Log",
     "block.above.common_skyroot_leaves": "Common Skyroot Leaves",
     "block.above.silver_skyroot_leaves": "Silver Skyroot Leaves",
-    "block.above.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves"
+    "block.above.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves",
+    "item.above.teleporter": "Teleporter"
 }

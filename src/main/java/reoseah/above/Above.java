@@ -23,6 +23,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.biome.source.HorizontalVoronoiBiomeAccessType;
+import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -34,10 +36,12 @@ import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import reoseah.above.blocks.SkyFarmlandBlock;
 import reoseah.above.blocks.SkyMossBlock;
-import reoseah.above.features.SkyrootBushFeature;
-import reoseah.above.features.SkyrootTreeFeature;
-import reoseah.above.features.SkyrootTreeConfig;
-import reoseah.above.features.SkyrootTreeShape;
+import reoseah.above.dimension.AboveDimension;
+import reoseah.above.dimension.features.SkyrootBushFeature;
+import reoseah.above.dimension.features.SkyrootTreeConfig;
+import reoseah.above.dimension.features.SkyrootTreeFeature;
+import reoseah.above.dimension.features.SkyrootTreeShape;
+import reoseah.above.items.TeleporterItem;
 
 public class Above implements ModInitializer {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(makeID("main"), () -> new ItemStack(Above.SKY_MOSS));
@@ -56,6 +60,14 @@ public class Above implements ModInitializer {
 	public static final Block COMMON_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
+
+	public static final Item TELEPORTER = new TeleporterItem(new Item.Settings().group(null));
+
+	public static final AbstractTreeFeature<TreeFeatureConfig> SKYROOT_BUSH_FEATURE = new SkyrootBushFeature(TreeFeatureConfig::deserialize);
+	public static final AbstractTreeFeature<SkyrootTreeConfig> SKYROOT_TREE_FEATURE = new SkyrootTreeFeature(SkyrootTreeConfig::deserialize);
+
+	public static final DimensionType DIMENSION_TYPE = new DimensionType(13, "_aerrack_isands", "DIM_AERISLANDS", AboveDimension::new, true, HorizontalVoronoiBiomeAccessType.INSTANCE) {
+	};
 
 	public static final SkyrootTreeConfig COMMON_SKYROOT_CONFIG = new SkyrootTreeConfig(
 			new SimpleBlockStateProvider(COMMON_SKYROOT_LOG.getDefaultState()),
@@ -76,10 +88,6 @@ public class Above implements ModInitializer {
 			new SimpleBlockStateProvider(DWARF_SKYROOT_LOG.getDefaultState()),
 			new SimpleBlockStateProvider(DWARF_SKYROOT_LEAVES.getDefaultState()),
 			4, SkyrootTreeShape.SMALL);
-
-	public static final AbstractTreeFeature<TreeFeatureConfig> SKYROOT_BUSH_FEATURE = new SkyrootBushFeature(TreeFeatureConfig::deserialize);
-
-	public static final AbstractTreeFeature<SkyrootTreeConfig> SKYROOT_TREE_FEATURE = new SkyrootTreeFeature(SkyrootTreeConfig::deserialize);
 
 	public static Identifier makeID(String name) {
 		return new Identifier("above", name);
@@ -119,8 +127,12 @@ public class Above implements ModInitializer {
 		Registry.register(Registry.ITEM, makeID("silver_skyroot_leaves"), new BlockItem(SILVER_SKYROOT_LEAVES, makeItemSettings()));
 		Registry.register(Registry.ITEM, makeID("dwarf_skyroot_leaves"), new BlockItem(DWARF_SKYROOT_LEAVES, makeItemSettings()));
 
+		Registry.register(Registry.ITEM, makeID("teleporter"), TELEPORTER);
+
 		Registry.register(Registry.FEATURE, makeID("skyroot_bush"), SKYROOT_BUSH_FEATURE);
 		Registry.register(Registry.FEATURE, makeID("skyroot_tree"), SKYROOT_TREE_FEATURE);
+
+		Registry.register(Registry.DIMENSION_TYPE, makeID("above"), DIMENSION_TYPE);
 
 		// TESTING CODE
 

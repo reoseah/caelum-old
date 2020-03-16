@@ -1,6 +1,5 @@
 package reoseah.above.blocks;
 
-import java.util.Iterator;
 import java.util.Random;
 
 import net.minecraft.block.AttachedStemBlock;
@@ -8,10 +7,12 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.FallingBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.StemBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityContext;
+import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -30,7 +31,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import reoseah.above.Above;
 
-public class SkyFarmlandBlock extends Block {
+public class SkyFarmlandBlock extends FallingBlock {
 	public static final IntProperty MOISTURE = Properties.MOISTURE;
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
@@ -40,12 +41,25 @@ public class SkyFarmlandBlock extends Block {
 	}
 
 	@Override
+	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+		builder.add(MOISTURE);
+	}
+
+	@Override
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, IWorld world, BlockPos pos, BlockPos neighborPos) {
 		if (direction == Direction.UP && !state.canPlaceAt(world, pos)) {
 			world.getBlockTickScheduler().schedule(pos, this, 1);
+		} else if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= 0) {
+			world.getBlockTickScheduler().schedule(pos, this, this.getTickRate(world));
 		}
 
-		return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
+		return state;
+	}
+
+	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean moved) {
+		if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= 0) {
+			world.getBlockTickScheduler().schedule(pos, this, this.getTickRate(world));
+		}
 	}
 
 	@Override
@@ -73,19 +87,26 @@ public class SkyFarmlandBlock extends Block {
 
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		if (canFallThrough(world.getBlockState(pos.down()))
+				&& pos.getY() >= 0) {
+			FallingBlockEntity entity = new FallingBlockEntity(world, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, world.getBlockState(pos));
+			this.configureFallingBlockEntity(entity);
+			world.spawnEntity(entity);
+			return;
+		}
 		if (!state.canPlaceAt(world, pos)) {
 			setToDirt(state, world, pos);
-		} else {
-			int moisture = state.get(MOISTURE);
-			if (!isWaterNearby(world, pos) && !world.hasRain(pos.up())) {
-				if (moisture > 0) {
-					world.setBlockState(pos, state.with(MOISTURE, moisture - 1), 2);
-				} else if (!hasCrop(world, pos)) {
-					setToDirt(state, world, pos);
-				}
-			} else if (moisture < 7) {
-				world.setBlockState(pos, state.with(MOISTURE, 7), 2);
+			return;
+		}
+		int moisture = state.get(MOISTURE);
+		if (!isWaterNearby(world, pos) && !world.hasRain(pos.up())) {
+			if (moisture > 0) {
+				world.setBlockState(pos, state.with(MOISTURE, moisture - 1), 2);
+			} else if (!hasCrop(world, pos)) {
+				setToDirt(state, world, pos);
 			}
+		} else if (moisture < 7) {
+			world.setBlockState(pos, state.with(MOISTURE, 7), 2);
 		}
 	}
 
@@ -112,23 +133,13 @@ public class SkyFarmlandBlock extends Block {
 	}
 
 	private static boolean isWaterNearby(WorldView world, BlockPos pos) {
-		Iterator<BlockPos> var2 = BlockPos.iterate(pos.add(-4, 0, -4), pos.add(4, 1, 4)).iterator();
-
-		BlockPos pos2;
-		do {
-			if (!var2.hasNext()) {
-				return false;
+		for (BlockPos p : BlockPos.iterate(pos.add(-4, 0, -4), pos.add(4, 1, 4))) {
+			if (world.getFluidState(p).matches(FluidTags.WATER)) {
+				return true;
 			}
+		}
 
-			pos2 = var2.next();
-		} while (!world.getFluidState(pos2).matches(FluidTags.WATER));
-
-		return true;
-	}
-
-	@Override
-	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-		builder.add(MOISTURE);
+		return false;
 	}
 
 	@Override

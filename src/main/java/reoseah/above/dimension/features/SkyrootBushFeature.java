@@ -1,4 +1,4 @@
-package reoseah.above.features;
+package reoseah.above.dimension.features;
 
 import java.util.Random;
 import java.util.Set;
