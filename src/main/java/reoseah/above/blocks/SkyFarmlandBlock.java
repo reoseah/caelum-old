@@ -7,12 +7,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
-import net.minecraft.block.FallingBlock;
 import net.minecraft.block.FenceGateBlock;
 import net.minecraft.block.StemBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityContext;
-import net.minecraft.entity.FallingBlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
@@ -31,7 +29,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import reoseah.above.Above;
 
-public class SkyFarmlandBlock extends FallingBlock {
+public class SkyFarmlandBlock extends Block {
 	public static final IntProperty MOISTURE = Properties.MOISTURE;
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 15.0D, 16.0D);
 
@@ -49,17 +47,8 @@ public class SkyFarmlandBlock extends FallingBlock {
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, IWorld world, BlockPos pos, BlockPos neighborPos) {
 		if (direction == Direction.UP && !state.canPlaceAt(world, pos)) {
 			world.getBlockTickScheduler().schedule(pos, this, 1);
-		} else if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= 0) {
-			world.getBlockTickScheduler().schedule(pos, this, this.getTickRate(world));
-		}
-
+		} 
 		return state;
-	}
-
-	public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean moved) {
-		if (canFallThrough(world.getBlockState(pos.down())) && pos.getY() >= 0) {
-			world.getBlockTickScheduler().schedule(pos, this, this.getTickRate(world));
-		}
 	}
 
 	@Override
@@ -87,13 +76,6 @@ public class SkyFarmlandBlock extends FallingBlock {
 
 	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-		if (canFallThrough(world.getBlockState(pos.down()))
-				&& pos.getY() >= 0) {
-			FallingBlockEntity entity = new FallingBlockEntity(world, pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, world.getBlockState(pos));
-			this.configureFallingBlockEntity(entity);
-			world.spawnEntity(entity);
-			return;
-		}
 		if (!state.canPlaceAt(world, pos)) {
 			setToDirt(state, world, pos);
 			return;

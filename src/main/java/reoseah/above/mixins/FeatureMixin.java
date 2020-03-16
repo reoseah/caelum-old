@@ -14,7 +14,7 @@ public class FeatureMixin {
 	@Inject(at = @At("HEAD"), method = "isDirt", cancellable = true)
 	private static void isDirt(Block block, CallbackInfoReturnable<Boolean> callback) {
 		// Allows generators to work on sky counterparts of dirt/grass/farmland
-		if (block == Above.SKY_SILT || block == Above.SKY_MOSS || block == Above.SKY_FARMLAND) {
+		if (block == Above.SKY_SILT || block == Above.SKY_GRASS || block == Above.SKY_FARMLAND) {
 			callback.setReturnValue(true);
 		}
 	}

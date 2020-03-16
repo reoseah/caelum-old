@@ -1,5 +1,6 @@
 package reoseah.above.items;
 
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,10 +18,11 @@ public class TeleporterItem extends Item {
 
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-		player.changeDimension(
-				player.world.dimension.getType() == Above.DIMENSION_TYPE
-						? DimensionType.OVERWORLD
-						: Above.DIMENSION_TYPE);
+		if (!world.isClient) {
+			FabricDimensions.teleport(player, player.world.dimension.getType() == Above.DIMENSION_TYPE
+					? DimensionType.OVERWORLD
+					: Above.DIMENSION_TYPE);
+		}
 		return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand));
 	}
 }

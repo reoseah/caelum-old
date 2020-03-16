@@ -14,9 +14,9 @@
         }
     ],
     "textures": {
-        "particle": "above:block/sky_moss_side",
-        "top": "above:block/sky_moss_top",
-		"side": "above:block/sky_moss_side",
+        "particle": "above:block/sky_grass_side",
+        "top": "above:block/sky_grass_top",
+		"side": "above:block/sky_grass_side",
 		"bottom": "above:block/sky_silt"
     }
 }
