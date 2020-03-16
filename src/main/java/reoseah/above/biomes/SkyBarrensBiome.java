@@ -7,10 +7,10 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import reoseah.above.Above;
 import reoseah.above.SkyFeatures;
 
-public class SkyForestBiome extends Biome {
-	public SkyForestBiome() {
+public class SkyBarrensBiome extends Biome {
+	public SkyBarrensBiome() {
 		super(new Biome.Settings()
-				.configureSurfaceBuilder(Above.SURFACE_BUILDER, SkyFeatures.AERRACK_SURFACE_CONFIG)
+				.configureSurfaceBuilder(Above.ROCKY_SURFACE_BUILDER, SkyFeatures.SKY_GRASS_SURFACE_CONFIG)
 				.precipitation(Biome.Precipitation.RAIN)
 				.category(Biome.Category.FOREST)
 				.temperature(0.7F)
@@ -24,7 +24,7 @@ public class SkyForestBiome extends Biome {
 						.moodSound(SoundEvents.AMBIENT_CAVE)
 						.build())
 				.parent(null));
-		
+
 		SkyFeatures.addSkyOres(this);
 		SkyFeatures.addSkyForestTrees(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);

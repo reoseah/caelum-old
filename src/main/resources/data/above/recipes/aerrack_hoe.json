@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "above:skyroot_stick"
+    },
+    "X": {
+      "item": "above:aerrack"
+    }
+  },
+  "result": {
+    "item": "above:aerrack_hoe"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "above:aerrack"
+  },
+  "result": "above:aerrack_bricks",
+  "count": 1
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "above:skyroot_stick"
+    },
+    "X": {
+      "item": "above:skyroot_planks"
+    }
+  },
+  "result": {
+    "item": "above:skyroot_sword"
+  }
+}

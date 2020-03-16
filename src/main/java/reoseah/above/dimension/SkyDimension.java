@@ -13,7 +13,6 @@ import net.minecraft.world.biome.source.FixedBiomeSource;
 import net.minecraft.world.biome.source.FixedBiomeSourceConfig;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.dimension.Nullable;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.above.Above;
 import reoseah.above.dimension.chunk.SkyChunkGenerator;
@@ -27,18 +26,18 @@ public class SkyDimension extends Dimension {
 	@Override
 	public ChunkGenerator<?> createChunkGenerator() {
 		return new SkyChunkGenerator(world,
-				new FixedBiomeSource(new FixedBiomeSourceConfig(world.getSeed()).setBiome(Above.SKY_FOREST)),
+				new FixedBiomeSource(new FixedBiomeSourceConfig(world.getSeed()).setBiome(Above.SKY_BARRENS)),
 				new SkyChunkGeneratorConfig());
 	}
 
-	public BlockPos getSpawningBlockInChunk(ChunkPos chunkPos, boolean checkMobSpawnValidity) {
+	public BlockPos getSpawningBlockInChunk(ChunkPos chunkPos, boolean forMobs) {
 		Random random = new Random(this.world.getSeed());
 		BlockPos blockPos = new BlockPos(chunkPos.getStartX() + random.nextInt(15), 0, chunkPos.getEndZ() + random.nextInt(15));
 		return this.world.getTopNonAirState(blockPos).getMaterial().blocksMovement() ? blockPos : null;
 	}
 
-	public BlockPos getTopSpawningBlockPosition(int x, int z, boolean checkMobSpawnValidity) {
-		return this.getSpawningBlockInChunk(new ChunkPos(x >> 4, z >> 4), checkMobSpawnValidity);
+	public BlockPos getTopSpawningBlockPosition(int x, int z, boolean forMobs) {
+		return this.getSpawningBlockInChunk(new ChunkPos(x >> 4, z >> 4), forMobs);
 	}
 
 	@Override
@@ -87,5 +86,4 @@ public class SkyDimension extends Dimension {
 	public double getHorizonShadingRatio() {
 		return 1;
 	}
-
 }

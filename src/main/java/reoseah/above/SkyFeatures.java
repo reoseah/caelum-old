@@ -17,9 +17,14 @@ import reoseah.above.dimension.features.SkyrootTreeConfig;
 import reoseah.above.dimension.features.SkyrootTreeShape;
 
 public class SkyFeatures {
-	public static final TernarySurfaceConfig SKY_FOREST_SURFACE_CONFIG = new TernarySurfaceConfig(
+	public static final TernarySurfaceConfig SKY_GRASS_SURFACE_CONFIG = new TernarySurfaceConfig(
 			Above.SKY_GRASS.getDefaultState(),
 			Above.SKY_SILT.getDefaultState(),
+			Above.AERRACK.getDefaultState());
+	
+	public static final TernarySurfaceConfig AERRACK_SURFACE_CONFIG = new TernarySurfaceConfig(
+			Above.AERRACK.getDefaultState(),
+			Above.AERRACK.getDefaultState(),
 			Above.AERRACK.getDefaultState());
 
 	public static final SkyrootTreeConfig COMMON_SKYROOT_CONFIG = new SkyrootTreeConfig(
