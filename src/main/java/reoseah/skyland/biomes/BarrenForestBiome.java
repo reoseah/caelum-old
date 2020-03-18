@@ -7,7 +7,7 @@ import net.minecraft.world.biome.DefaultBiomeFeatures;
 import reoseah.skyland.dimension.SkylandBiomesFeatures;
 import reoseah.skyland.dimension.surfaces.SkySurfaceBuilders;
 
-public class BarrenForestBiome extends Biome {
+public class BarrenForestBiome extends Biome implements SkylandBiome {
 	public BarrenForestBiome() {
 		super(new Biome.Settings()
 				.configureSurfaceBuilder(SkySurfaceBuilders.ROCKY, SkylandBiomesFeatures.SKY_GRASS_SURFACE_CONFIG)
@@ -16,7 +16,7 @@ public class BarrenForestBiome extends Biome {
 				.temperature(0.7F)
 				.downfall(0.8F)
 				.scale(0)
-				.depth(-0.5F)
+				.depth(0)
 				.effects(new BiomeEffects.Builder()
 						.fogColor(0xC0D8FF)
 						.waterColor(0x3D57D6)
@@ -29,5 +29,10 @@ public class BarrenForestBiome extends Biome {
 		SkylandBiomesFeatures.addEdgeVegetation(this);
 		SkylandBiomesFeatures.addSkyForestTrees(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
+	}
+
+	@Override
+	public float getIslandsSize() {
+		return -0.5F;
 	}
 }

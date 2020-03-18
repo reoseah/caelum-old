@@ -12,6 +12,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
+import reoseah.skyland.biomes.SkylandBiome;
 
 public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 	private static final float[] KERNEL = Util.make(new float[25], values -> {
@@ -56,7 +57,6 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 
 	// same as SurfaceChunkGenerator#sampleNoise
 	protected double skylandsSampleNoise(int x, int y, int z, double scaleXZ, double scaleY, double maskScaleXZ, double maskScaleY) {
-
 		double sample1 = 0.0D;
 		double sample2 = 0.0D;
 		double maskSample = 0.0D;
@@ -108,20 +108,23 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
 				Biome biome = this.biomeSource.getBiomeForNoiseGen(x + dx, 0, z + dz);
-				float depth = biome.getDepth();
+				float size = (biome instanceof SkylandBiome) ? ((SkylandBiome) biome).getIslandsSize() : 0;
 
 				float weight = KERNEL[dx + 2 + (dz + 2) * 5];
 				if (biome.getDepth() > centerDepth) {
 					weight /= 2.0F;
 				}
 
-				depthTotal += depth * weight;
+				depthTotal += size * weight;
 				weightTotal += weight;
 			}
 		}
 		depthTotal /= weightTotal;
 
-		// place points each 1000 blocks
+		// place large islands each ~1000 blocks
+		// might elaborate in the future
+		// one of these is always at (0, 0)
+		// so there's always some land there
 		int dX = (Math.abs(x) + 256) % 512 - 256;
 		int dZ = (Math.abs(z) + 256) % 512 - 256;
 

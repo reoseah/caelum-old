@@ -11,7 +11,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.source.HorizontalVoronoiBiomeAccessType;
 import net.minecraft.world.dimension.DimensionType;
-import net.minecraft.world.gen.chunk.ChunkGeneratorType;
 import reoseah.skyland.biomes.SkyBiomes;
 import reoseah.skyland.blocks.SkyBlocks;
 import reoseah.skyland.dimension.SkylandDimension;
@@ -25,8 +24,6 @@ import reoseah.skyland.items.SkyItems;
 
 public class Skyland implements ModInitializer {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(makeID("main"), () -> new ItemStack(SkyBlocks.SKY_GRASS));
-
-	public static final ChunkGeneratorType<?, ?> CHUNK_GENERATOR_TYPE = new SkylandGeneratorType(false, SkylandConfig::new);
 
 	public static final DimensionType DIMENSION_TYPE = FabricDimensionType.builder()
 			.factory(SkylandDimension::new)
@@ -52,7 +49,7 @@ public class Skyland implements ModInitializer {
 
 		SkyBiomes.register();
 
-		Registry.register(Registry.CHUNK_GENERATOR_TYPE, makeID("sky"), CHUNK_GENERATOR_TYPE);
+		Registry.register(Registry.CHUNK_GENERATOR_TYPE, makeID("sky"), new SkylandGeneratorType(false, SkylandConfig::new));
 
 		HoeHelper.registerTilling();
 	}
