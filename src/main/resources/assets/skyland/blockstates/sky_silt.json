@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "skyland:block/sky_silt"
+      },
+      {
+        "y": 90,
+        "model": "skyland:block/sky_silt"
+      },
+      {
+        "y": 180,
+        "model": "skyland:block/sky_silt"
+      },
+      {
+        "y": 270,
+        "model": "skyland:block/sky_silt"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":  { "model": "skyland:block/dwarf_skyroot_log" },
+        "axis=z":   { "model": "skyland:block/dwarf_skyroot_log", "x": 90 },
+        "axis=x":   { "model": "skyland:block/dwarf_skyroot_log", "x": 90, "y": 90 }
+    }
+}
+

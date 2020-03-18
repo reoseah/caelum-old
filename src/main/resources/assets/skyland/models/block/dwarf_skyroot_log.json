@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "skyland:block/dwarf_skyroot_log_top",
+        "side": "skyland:block/dwarf_skyroot_log_side"
+    }
+}

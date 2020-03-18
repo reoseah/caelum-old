@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "skyland:block/sky_grass"
+      },
+      {
+        "model": "skyland:block/sky_grass",
+        "y": 90
+      },
+      {
+        "model": "skyland:block/sky_grass",
+        "y": 180
+      },
+      {
+        "model": "skyland:block/sky_grass",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "skyland:block/sky_grass_snow"
+    }
+  }
+}

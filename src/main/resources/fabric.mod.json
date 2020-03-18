@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "above",
+  "id": "skyland",
   "version": "${version}",
 
-  "name": "Above",
-  "description": "Stone is hard and soil is unyielding. Like a hell, but cold.",
+  "name": "Skyland",
+  "description": "Rock is hard and soil is unyielding.",
   "authors": [
     "Reoseah"
   ],
   "contact": {
-    "homepage": "https://github.com/Reoseah/above",
-    "sources": "https://github.com/Reoseah/above"
+    "homepage": "https://github.com/Reoseah/skyland",
+    "sources": "https://github.com/Reoseah/skyland"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/above/icon.png",
+  "icon": "assets/skyland/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "reoseah.above.Above"
+      "reoseah.skyland.Skyland"
     ]
   },
   "mixins": [
-    "above.mixins.json"
+    "skyland.mixins.json"
   ],
 
   "depends": {

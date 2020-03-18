@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "skyland:skyroot_stick"
+    },
+    "X": {
+      "item": "skyland:aerrack"
+    }
+  },
+  "result": {
+    "item": "skyland:aerrack_sword"
+  }
+}

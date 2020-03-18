@@ -1,8 +1,0 @@
-{
-  "replace": false,
-  "values": [
-    "above:common_skyroot_log",
-    "above:silver_skyroot_log",
-    "above:dwarf_skyroot_log"
-  ]
-}

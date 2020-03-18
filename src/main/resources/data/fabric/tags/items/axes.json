@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "above:skyroot_axe",
-    "above:aerrack_axe",
-    "above:ceruclase_axe"
+    "skyland:skyroot_axe",
+    "skyland:aerrack_axe",
+    "skyland:ceruclase_axe"
   ]
 }

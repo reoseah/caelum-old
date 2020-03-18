@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "above:skyroot_hoe",
-    "above:aerrack_hoe",
-    "above:ceruclase_hoe"
+    "skyland:skyroot_hoe",
+    "skyland:aerrack_hoe",
+    "skyland:ceruclase_hoe"
   ]
 }

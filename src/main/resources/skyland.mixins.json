@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "reoseah.skyland.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FeatureMixin",
+    "AbstractTreeFeatureMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

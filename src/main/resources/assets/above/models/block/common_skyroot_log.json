@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "above:block/common_skyroot_log_top",
-        "side": "above:block/common_skyroot_log_side"
-    }
-}

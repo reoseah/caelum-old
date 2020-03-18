@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "above:skyroot_shovel",
-    "above:aerrack_shovel",
-    "above:ceruclase_shovel"
+    "skyland:skyroot_shovel",
+    "skyland:aerrack_shovel",
+    "skyland:ceruclase_shovel"
   ]
 }
