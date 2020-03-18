@@ -1,5 +1,6 @@
 package reoseah.skyland.items;
 
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
@@ -25,7 +26,9 @@ public class SkyItems {
 	public static final Item CERUCLASE_PICKAXE = new ModdedPickaxeItem(SkyToolMaterials.CERUCLASE, 1, -2.8F, new Item.Settings().group(Skyland.GROUP));
 	public static final Item CERUCLASE_AXE = new ModdedAxeItem(SkyToolMaterials.CERUCLASE, 6.0F, -3.1F, new Item.Settings().group(Skyland.GROUP));
 	public static final Item CERUCLASE_HOE = new ModdedHoeItem(SkyToolMaterials.CERUCLASE, -2, -1.0F, new Item.Settings().group(Skyland.GROUP));
-
+	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, new Item.Settings().group(Skyland.GROUP));
+	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, new Item.Settings().group(Skyland.GROUP));
+	
 	public static void register() {
 		register("teleporter", SkyItems.TELEPORTER);
 
@@ -49,6 +52,9 @@ public class SkyItems {
 		register("ceruclase_pickaxe", SkyItems.CERUCLASE_PICKAXE);
 		register("ceruclase_axe", SkyItems.CERUCLASE_AXE);
 		register("ceruclase_hoe", SkyItems.CERUCLASE_HOE);
+
+		register("skyroot_bucket", SkyItems.SKYROOT_BUCKET);
+		register("skyroot_water_bucket", SkyItems.SKYROOT_WATER_BUCKET);
 	}
 
 	private static void register(String name, Item item) {

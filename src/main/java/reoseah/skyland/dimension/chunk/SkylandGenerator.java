@@ -121,7 +121,7 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 		}
 		depthTotal /= weightTotal;
 
-		// place large islands each ~1000 blocks
+		// place large islands each 2048x2048 blocks
 		// might elaborate in the future
 		// one of these is always at (0, 0)
 		// so there's always some land there

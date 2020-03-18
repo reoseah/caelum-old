@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "skyland:skyroot_planks"
+    }
+  },
+  "result": {
+    "item": "skyland:skyroot_bucket"
+  }
+}

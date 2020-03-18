@@ -18,4 +18,11 @@ public class FeatureMixin {
 			callback.setReturnValue(true);
 		}
 	}
+
+	@Inject(at = @At("HEAD"), method = "isStone", cancellable = true)
+	private static void isStone(Block block, CallbackInfoReturnable<Boolean> callback) {
+		if (block == SkyBlocks.AERRACK) {
+			callback.setReturnValue(true);
+		}
+	}
 }
