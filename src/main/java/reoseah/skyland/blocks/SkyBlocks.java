@@ -29,8 +29,10 @@ public class SkyBlocks {
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block CHISELED_AERRACK = new PillarBlock(FabricBlockSettings.copy(AERRACK_BRICKS).breakByTool(FabricToolTags.PICKAXES, 0).build());
+	public static final Block AERRACK_LAMP = new Block(FabricBlockSettings.of(Material.STONE).lightLevel(15).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block CERUCLASE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0).build());
+	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
 	public static void register() {
 		register("aerrack", AERRACK);
@@ -46,24 +48,27 @@ public class SkyBlocks {
 		register("dwarf_skyroot_leaves", DWARF_SKYROOT_LEAVES);
 		register("aerrack_bricks", AERRACK_BRICKS);
 		register("chiseled_aerrack", CHISELED_AERRACK);
+		register("aerrack_lamp", AERRACK_LAMP);
 		register("ceruclase_block", CERUCLASE_BLOCK);
 		register("skyroot_planks", SKYROOT_PLANKS);
+		register("barley", BARLEY);
 
-		register("aerrack", new BlockItem(SkyBlocks.AERRACK, new Item.Settings().group(Skyland.GROUP)));
-		register("sky_grass", new BlockItem(SkyBlocks.SKY_GRASS, new Item.Settings().group(Skyland.GROUP)));
-		register("sky_silt", new BlockItem(SkyBlocks.SKY_SILT, new Item.Settings().group(Skyland.GROUP)));
-		register("sky_farmland", new BlockItem(SkyBlocks.SKY_FARMLAND, new Item.Settings().group(Skyland.GROUP)));
-		register("common_skyroot_log", new BlockItem(SkyBlocks.COMMON_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
-		register("silver_skyroot_log", new BlockItem(SkyBlocks.SILVER_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
-		register("dwarf_skyroot_log", new BlockItem(SkyBlocks.DWARF_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
-		register("common_skyroot_leaves", new BlockItem(SkyBlocks.COMMON_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
-		register("silver_skyroot_leaves", new BlockItem(SkyBlocks.SILVER_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
-		register("dwarf_skyroot_leaves", new BlockItem(SkyBlocks.DWARF_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
-		register("ceruclase_ore", new BlockItem(SkyBlocks.CERUCLASE_ORE, new Item.Settings().group(Skyland.GROUP)));
-		register("aerrack_bricks", new BlockItem(SkyBlocks.AERRACK_BRICKS, new Item.Settings().group(Skyland.GROUP)));
-		register("chiseled_aerrack", new BlockItem(SkyBlocks.CHISELED_AERRACK, new Item.Settings().group(Skyland.GROUP)));
-		register("ceruclase_block", new BlockItem(SkyBlocks.CERUCLASE_BLOCK, new Item.Settings().group(Skyland.GROUP)));
-		register("skyroot_planks", new BlockItem(SkyBlocks.SKYROOT_PLANKS, new Item.Settings().group(Skyland.GROUP)));
+		register("aerrack", new BlockItem(AERRACK, new Item.Settings().group(Skyland.GROUP)));
+		register("sky_grass", new BlockItem(SKY_GRASS, new Item.Settings().group(Skyland.GROUP)));
+		register("sky_silt", new BlockItem(SKY_SILT, new Item.Settings().group(Skyland.GROUP)));
+		register("sky_farmland", new BlockItem(SKY_FARMLAND, new Item.Settings().group(Skyland.GROUP)));
+		register("common_skyroot_log", new BlockItem(COMMON_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
+		register("silver_skyroot_log", new BlockItem(SILVER_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
+		register("dwarf_skyroot_log", new BlockItem(DWARF_SKYROOT_LOG, new Item.Settings().group(Skyland.GROUP)));
+		register("common_skyroot_leaves", new BlockItem(COMMON_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
+		register("silver_skyroot_leaves", new BlockItem(SILVER_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
+		register("dwarf_skyroot_leaves", new BlockItem(DWARF_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
+		register("ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Skyland.GROUP)));
+		register("aerrack_bricks", new BlockItem(AERRACK_BRICKS, new Item.Settings().group(Skyland.GROUP)));
+		register("chiseled_aerrack", new BlockItem(CHISELED_AERRACK, new Item.Settings().group(Skyland.GROUP)));
+		register("aerrack_lamp", new BlockItem(AERRACK_LAMP, new Item.Settings().group(Skyland.GROUP)));
+		register("ceruclase_block", new BlockItem(CERUCLASE_BLOCK, new Item.Settings().group(Skyland.GROUP)));
+		register("skyroot_planks", new BlockItem(SKYROOT_PLANKS, new Item.Settings().group(Skyland.GROUP)));
 	}
 
 	private static void register(String name, Block block) {

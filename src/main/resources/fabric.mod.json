@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "reoseah.skyland.Skyland"
+    ],
+    "client": [
+      "reoseah.skyland.SkylandClient"
     ]
   },
   "mixins": [

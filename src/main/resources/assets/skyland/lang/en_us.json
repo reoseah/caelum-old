@@ -13,8 +13,10 @@
     "block.skyland.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves",
     "block.skyland.aerrack_bricks": "Aerrack Bricks",
     "block.skyland.chiseled_aerrack": "Chiseled Aerrack",
+    "block.skyland.aerrack_lamp": "Aerrack Lamp",
     "block.skyland.ceruclase_block": "Ceruclase Block",
     "block.skyland.skyroot_planks": "Skyroot Planks",
+    "block.skyland.barley": "Barley",
     "item.skyland.teleporter": "Teleporter",
     "item.skyland.ceruclase": "Ceruclase",
     "item.skyland.skyroot_stick": "Skyroot Stick",
@@ -34,5 +36,7 @@
     "item.skyland.ceruclase_axe": "Ceruclase Axe",
     "item.skyland.ceruclase_hoe": "Ceruclase Hoe",
     "item.skyland.skyroot_bucket": "Skyroot Bucket",
-    "item.skyland.skyroot_water_bucket": "Skyroot Water Bucket"
+    "item.skyland.skyroot_water_bucket": "Skyroot Water Bucket",
+    "item.skyland.barley_seeds": "Barley Seeds",
+    "item.skyland.barley": "Barley"
 }

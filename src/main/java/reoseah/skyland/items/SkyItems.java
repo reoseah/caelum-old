@@ -1,16 +1,19 @@
 package reoseah.skyland.items;
 
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.registry.Registry;
 import reoseah.skyland.Skyland;
+import reoseah.skyland.blocks.SkyBlocks;
 
 public class SkyItems {
 	public static final Item TELEPORTER = new TeleporterItem(new Item.Settings().group(null));
 	public static final Item CERUCLASE = new Item(new Item.Settings().group(Skyland.GROUP));
 	public static final Item SKYROOT_STICK = new Item(new Item.Settings().group(Skyland.GROUP));
+	
 	public static final Item SKYROOT_SWORD = new SwordItem(SkyToolMaterials.SKYROOT, 3, -2.4F, new Item.Settings().group(Skyland.GROUP));
 	public static final Item SKYROOT_SHOVEL = new ShovelItem(SkyToolMaterials.SKYROOT, 1.5F, -3.0F, new Item.Settings().group(Skyland.GROUP));
 	public static final Item SKYROOT_PICKAXE = new ModdedPickaxeItem(SkyToolMaterials.SKYROOT, 1, -2.8F, new Item.Settings().group(Skyland.GROUP));
@@ -28,6 +31,9 @@ public class SkyItems {
 	public static final Item CERUCLASE_HOE = new ModdedHoeItem(SkyToolMaterials.CERUCLASE, -2, -1.0F, new Item.Settings().group(Skyland.GROUP));
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, new Item.Settings().group(Skyland.GROUP));
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, new Item.Settings().group(Skyland.GROUP));
+
+	public static final Item BARLEY_SEEDS = new AliasedBlockItem(SkyBlocks.BARLEY, new Item.Settings().group(Skyland.GROUP));
+	public static final Item BARLEY = new Item(new Item.Settings().group(Skyland.GROUP));
 	
 	public static void register() {
 		register("teleporter", SkyItems.TELEPORTER);
@@ -55,6 +61,9 @@ public class SkyItems {
 
 		register("skyroot_bucket", SkyItems.SKYROOT_BUCKET);
 		register("skyroot_water_bucket", SkyItems.SKYROOT_WATER_BUCKET);
+
+		register("barley_seeds", SkyItems.BARLEY_SEEDS);
+		register("barley", SkyItems.BARLEY);
 	}
 
 	private static void register(String name, Item item) {
