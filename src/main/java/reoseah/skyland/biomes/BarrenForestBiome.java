@@ -9,7 +9,7 @@ import reoseah.skyland.dimension.surfaces.SkySurfaceBuilders;
 public class BarrenForestBiome extends Biome implements SkylandBiome {
 	public BarrenForestBiome() {
 		super(new Biome.Settings()
-				.configureSurfaceBuilder(SkySurfaceBuilders.ROCKY, SkylandBiomesFeatures.SKY_GRASS_SURFACE_CONFIG)
+				.configureSurfaceBuilder(SkySurfaceBuilders.ROCKY, SkylandBiomesFeatures.SKY_GRASS_SURFACE)
 				.precipitation(Biome.Precipitation.RAIN)
 				.category(Biome.Category.FOREST)
 				.temperature(0.7F)
@@ -24,8 +24,8 @@ public class BarrenForestBiome extends Biome implements SkylandBiome {
 						.build())
 				.parent(null));
 
-		SkylandBiomesFeatures.addSkyOres(this);
-		SkylandBiomesFeatures.addEdgeVegetation(this);
+		SkylandBiomesFeatures.addOres(this);
+		SkylandBiomesFeatures.addSpecialVegetation(this);
 		SkylandBiomesFeatures.addSkyForestTrees(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 	}

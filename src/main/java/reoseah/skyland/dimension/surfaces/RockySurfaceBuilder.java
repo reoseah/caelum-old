@@ -28,7 +28,7 @@ public class RockySurfaceBuilder extends SkylandSurfaceBuilder {
 			int seaLevel, long seed, TernarySurfaceConfig surfaceBlocks) {
 		TernarySurfaceConfig config = surfaceBlocks;
 		if (noise <= -1 || 1 <= noise) {
-			config = SkylandBiomesFeatures.AERRACK_SURFACE_CONFIG;
+			config = SkylandBiomesFeatures.AERRACK_SURFACE;
 		}
 		SkySurfaceBuilders.DEFAULT.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, seaLevel, seed, config);
 
