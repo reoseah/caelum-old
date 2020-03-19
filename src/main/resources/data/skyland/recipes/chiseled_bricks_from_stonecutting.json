@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "skyland:aerrack"
+  },
+  "result": "skyland:chiseled_aerrack",
+  "count": 1
+}

@@ -22,21 +22,25 @@ public class SkyrootGroundBushFeature extends AbstractTreeFeature<TreeFeatureCon
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		if (isNaturalDirtOrGrass(world, pos)) {
 			pos = pos.up();
-			this.setLogBlockState(world, random, pos, logPositions, box, config);
+			placeBush(world, random, pos, logPositions, leavesPositions, box, config);
+		}
 
-			for (int dy = 0; dy <= 2; ++dy) {
-				int radius = 2 - dy;
+		return true;
+	}
 
-				for (int dx = -radius; dx <= radius; ++dx) {
-					for (int dz = -radius; dz <= radius; ++dz) {
-						if (Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) != 0) {
-							this.setLeavesBlockState(world, random, new BlockPos(dx + pos.getX(), dy + pos.getY(), dz + pos.getZ()), leavesPositions, box, config);
-						}
+	protected void placeBush(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, TreeFeatureConfig config) {
+		this.setLogBlockState(world, random, pos, logPositions, box, config);
+
+		for (int dy = 0; dy <= 2; ++dy) {
+			int radius = 2 - dy;
+
+			for (int dx = -radius; dx <= radius; ++dx) {
+				for (int dz = -radius; dz <= radius; ++dz) {
+					if (Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) != 0) {
+						this.setLeavesBlockState(world, random, new BlockPos(dx + pos.getX(), dy + pos.getY(), dz + pos.getZ()), leavesPositions, box, config);
 					}
 				}
 			}
 		}
-
-		return true;
 	}
 }

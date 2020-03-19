@@ -1,4 +1,4 @@
-package reoseah.skyland.dimension;
+package reoseah.skyland.biomes;
 
 import java.util.Arrays;
 
@@ -61,14 +61,14 @@ public class SkylandBiomesFeatures {
 	public static final void addEdgeVegetation(Biome biome) {
 		ConfiguredFeature<?, ?> commonBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(COMMON_SKYROOT_CONFIG);
 		ConfiguredFeature<?, ?> silverBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT_CONFIG);
-		ConfiguredFeature<?, ?> dwarfBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(DWARF_SKYROOT_CONFIG);
+		ConfiguredFeature<?, ?> dwarfBush = SkyFeatures.SKYROOT_BUSH_WITH_SOIL.configure(DWARF_SKYROOT_CONFIG);
 		ConfiguredFeature<?, ?> dwarfTallBush = SkyFeatures.SKYROOT_TALL_BUSH.configure(DWARF_SKYROOT_CONFIG);
 
 		ConfiguredFeature<?, ?> bushSelector = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 				Arrays.asList(
-						new RandomFeatureEntry<>(dwarfBush, 0.05F),
-						new RandomFeatureEntry<>(dwarfTallBush, 0.1F),
-						new RandomFeatureEntry<>(commonBush, 0.15F)),
+						new RandomFeatureEntry<>(dwarfBush, 0.35F),
+						new RandomFeatureEntry<>(dwarfTallBush, 0.05F),
+						new RandomFeatureEntry<>(commonBush, 0.10F)),
 				silverBush));
 
 		ConfiguredDecorator<?> exposedAerrack = SkyDecorators.EXPOSED_AERRACK_DECORATOR.configure(new CountExtraChanceDecoratorConfig(3, 0.1F, 1));

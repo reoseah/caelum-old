@@ -4,7 +4,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
-import reoseah.skyland.dimension.SkylandBiomesFeatures;
 import reoseah.skyland.dimension.surfaces.SkySurfaceBuilders;
 
 public class BarrenForestBiome extends Biome implements SkylandBiome {

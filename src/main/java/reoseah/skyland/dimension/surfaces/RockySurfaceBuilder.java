@@ -9,8 +9,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
+import reoseah.skyland.biomes.SkylandBiomesFeatures;
 import reoseah.skyland.blocks.SkyBlocks;
-import reoseah.skyland.dimension.SkylandBiomesFeatures;
 
 public class RockySurfaceBuilder extends SkylandSurfaceBuilder {
 	public static final BlockState AERRACK = SkyBlocks.AERRACK.getDefaultState();
