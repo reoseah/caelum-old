@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "tag": "skyland:aerrack_full_blocks"
+  },
+  "result": "skyland:aerrack_brick_stairs",
+  "count": 1
+}

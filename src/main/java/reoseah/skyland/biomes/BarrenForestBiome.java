@@ -28,6 +28,7 @@ public class BarrenForestBiome extends Biome implements SkylandBiome {
 		SkylandBiomesFeatures.addWaterSprings(this);
 		SkylandBiomesFeatures.addSpecialVegetation(this);
 		SkylandBiomesFeatures.addSkyForestTrees(this);
+		SkylandBiomesFeatures.addSkyStructures(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 	}
 

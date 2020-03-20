@@ -45,18 +45,27 @@ public class SkyrootBushWithSoilFeature extends SkyrootGroundBushFeature {
 		return true;
 	}
 
-	protected void placeSiltPatch(ModifiableTestableWorld world, Random random, BlockPos pos, Set<Direction> flatNeighbors) {
-		setBlockState(world, pos, SkyBlocks.SKY_SILT.getDefaultState());
-		setBlockState(world, pos.down(), SkyBlocks.SKY_SILT.getDefaultState());
-		setBlockState(world, pos.down(2), SkyBlocks.SKY_SILT.getDefaultState());
+	protected void placeSiltPatch(ModifiableTestableWorld world, Random random, BlockPos pos, Set<Direction> sides) {
+		setToDirt(world, pos);
+		setToDirt(world, pos.down());
+		setToDirt(world, pos.down(2));
 
-		for (Direction direction : flatNeighbors) {
+		for (Direction direction : sides) {
 			setBlockState(world, pos.offset(direction), SkyBlocks.SKY_GRASS.getDefaultState());
-			setBlockState(world, pos.offset(direction).down(), SkyBlocks.SKY_SILT.getDefaultState());
+			setToDirt(world, pos.offset(direction).down());
 			if (random.nextBoolean()) {
-				setBlockState(world, pos.offset(direction).down(2), SkyBlocks.SKY_SILT.getDefaultState());
+				setToDirt(world, pos.offset(direction).down(2));
 			}
 		}
+	}
+
+	@Override
+	protected void setToDirt(ModifiableTestableWorld world, BlockPos pos) {
+		if (world.testBlockState(pos, state -> state.getBlock() == SkyBlocks.AERRACK)) {
+			setBlockState(world, pos, SkyBlocks.SKY_SILT.getDefaultState());
+			return;
+		}
+		super.setToDirt(world, pos);
 	}
 
 }

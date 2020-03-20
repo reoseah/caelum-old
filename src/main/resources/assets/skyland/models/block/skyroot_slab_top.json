@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "skyland:block/skyroot_planks",
+    "top": "skyland:block/skyroot_planks",
+    "side": "skyland:block/skyroot_planks"
+  }
+}

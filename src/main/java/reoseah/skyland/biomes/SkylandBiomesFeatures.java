@@ -13,6 +13,7 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
 import net.minecraft.world.gen.feature.SpringFeatureConfig;
@@ -61,7 +62,7 @@ public class SkylandBiomesFeatures {
 
 	public static final void addWaterSprings(Biome biome) {
 		ConfiguredFeature<?, ?> enclosedSprings = Feature.SPRING_FEATURE.configure(ENCLOSED_SKYLAND_WATER_SPRING);
-		ConfiguredDecorator<?> decorator = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(8, 10, 20, 72));
+		ConfiguredDecorator<?> decorator = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(16, 10, 20, 72));
 
 		biome.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, enclosedSprings.createDecoratedFeature(decorator));
 	}
@@ -114,4 +115,7 @@ public class SkylandBiomesFeatures {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, bushSelector.createDecoratedFeature(bushDecorator));
 	}
 
+	public static final void addSkyStructures(Biome biome) {
+		biome.addStructureFeature(SkyFeatures.LARGE_ISLAND.configure(FeatureConfig.DEFAULT));
+	}
 }
