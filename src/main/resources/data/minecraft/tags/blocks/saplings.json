@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "skyland:common_skyroot_sapling",
+    "skyland:silver_skyroot_sapling",
+    "skyland:dwarf_skyroot_sapling"
+  ]
+}

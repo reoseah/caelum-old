@@ -22,28 +22,31 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		if (isNaturalDirtOrGrass(world, pos)) {
 			pos = pos.up();
-			this.setLogBlockState(world, random, pos, logPositions, box, config);
 
 			int[] shape = config.skyrootTreeShape.chooseShape(random);
 			int trunk = shape.length - 2 - random.nextInt(2);
 
-			BlockPos.Mutable p = new BlockPos.Mutable();
-			for (int dy = 0; dy < shape.length; dy++) {
-				int radius = shape[dy];
-				for (int dx = -radius; dx <= radius; dx++) {
-					for (int dz = -radius; dz <= radius; dz++) {
-						p.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
-						if (dx == 0 && dz == 0 && dy < trunk) {
-							this.setLogBlockState(world, random, p, logPositions, box, config);
-						} else if ((Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) == 0)
-								&& isAirOrLeaves(world, p)) {
-							this.setLeavesBlockState(world, random, p, leavesPositions, box, config);
-						}
+			placeShape(world, random, pos, logPositions, leavesPositions, box, config, shape, trunk);
+		}
+
+		return true;
+	}
+
+	protected void placeShape(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, SkyrootFeatureConfig config, int[] shape, int trunk) {
+		BlockPos.Mutable p = new BlockPos.Mutable();
+		for (int dy = 0; dy < shape.length; dy++) {
+			int radius = shape[dy];
+			for (int dx = -radius; dx <= radius; dx++) {
+				for (int dz = -radius; dz <= radius; dz++) {
+					p.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
+					if (dx == 0 && dz == 0 && dy < trunk) {
+						this.setLogBlockState(world, random, p, logPositions, box, config);
+					} else if ((Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) == 0)
+							&& isAirOrLeaves(world, p)) {
+						this.setLeavesBlockState(world, random, p, leavesPositions, box, config);
 					}
 				}
 			}
 		}
-
-		return true;
 	}
 }

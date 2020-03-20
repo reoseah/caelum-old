@@ -28,6 +28,10 @@ public class SkyBlocks {
 	public static final Block COMMON_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).breakByHand(true).build());
+	public static final Block COMMON_SKYROOT_SAPLING = new ModdedSaplingBlock(new SkyrootSaplingGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
+	public static final Block SILVER_SKYROOT_SAPLING = new ModdedSaplingBlock(new SkyrootSaplingGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
+	public static final Block DWARF_SKYROOT_SAPLING = new ModdedSaplingBlock(new SkyrootSaplingGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
+
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block CHISELED_AERRACK = new PillarBlock(FabricBlockSettings.copy(AERRACK_BRICKS).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block AERRACK_BRICK_STAIRS = new ModdedStairsBlock(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copy(AERRACK_BRICKS).breakByTool(FabricToolTags.PICKAXES, 0).build());
@@ -51,6 +55,9 @@ public class SkyBlocks {
 		register("common_skyroot_leaves", COMMON_SKYROOT_LEAVES);
 		register("silver_skyroot_leaves", SILVER_SKYROOT_LEAVES);
 		register("dwarf_skyroot_leaves", DWARF_SKYROOT_LEAVES);
+		register("common_skyroot_sapling", COMMON_SKYROOT_SAPLING);
+		register("silver_skyroot_sapling", SILVER_SKYROOT_SAPLING);
+		register("dwarf_skyroot_sapling", DWARF_SKYROOT_SAPLING);
 		register("aerrack_bricks", AERRACK_BRICKS);
 		register("aerrack_brick_stairs", AERRACK_BRICK_STAIRS);
 		register("aerrack_brick_slab", AERRACK_BRICK_SLAB);
@@ -72,6 +79,9 @@ public class SkyBlocks {
 		register("common_skyroot_leaves", new BlockItem(COMMON_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
 		register("silver_skyroot_leaves", new BlockItem(SILVER_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
 		register("dwarf_skyroot_leaves", new BlockItem(DWARF_SKYROOT_LEAVES, new Item.Settings().group(Skyland.GROUP)));
+		register("common_skyroot_sapling", new BlockItem(COMMON_SKYROOT_SAPLING, new Item.Settings().group(Skyland.GROUP)));
+		register("silver_skyroot_sapling", new BlockItem(SILVER_SKYROOT_SAPLING, new Item.Settings().group(Skyland.GROUP)));
+		register("dwarf_skyroot_sapling", new BlockItem(DWARF_SKYROOT_SAPLING, new Item.Settings().group(Skyland.GROUP)));
 		register("ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Skyland.GROUP)));
 		register("aerrack_bricks", new BlockItem(AERRACK_BRICKS, new Item.Settings().group(Skyland.GROUP)));
 		register("chiseled_aerrack", new BlockItem(CHISELED_AERRACK, new Item.Settings().group(Skyland.GROUP)));
