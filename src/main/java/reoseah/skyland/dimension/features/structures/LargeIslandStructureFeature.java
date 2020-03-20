@@ -25,7 +25,7 @@ public class LargeIslandStructureFeature extends SkylandStructureFeature {
 				return new StructureStart(feature, x, z, box, references, chunk) {
 					@Override
 					public void initialize(ChunkGenerator<?> chunkGenerator, StructureManager structureManager, int x, int z, Biome biome) {
-						System.out.println("initialize at " + x + " " + z);
+						System.out.println("initialize " + getName() + " at " + x + " " + z);
 					}
 				};
 			}
@@ -40,5 +40,10 @@ public class LargeIslandStructureFeature extends SkylandStructureFeature {
 	@Override
 	public int getRadius() {
 		return 8;
+	}
+
+	@Override
+	protected int getStructureSalt() {
+		return 10387319;
 	}
 }

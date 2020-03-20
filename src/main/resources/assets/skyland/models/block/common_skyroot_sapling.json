@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "skyland:block/common_skyroot_sapling"
+    }
+}

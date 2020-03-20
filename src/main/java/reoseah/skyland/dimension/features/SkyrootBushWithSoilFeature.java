@@ -61,11 +61,10 @@ public class SkyrootBushWithSoilFeature extends SkyrootGroundBushFeature {
 
 	@Override
 	protected void setToDirt(ModifiableTestableWorld world, BlockPos pos) {
-		if (world.testBlockState(pos, state -> state.getBlock() == SkyBlocks.AERRACK)) {
+		if (world.testBlockState(pos, state -> !state.isAir())) {
 			setBlockState(world, pos, SkyBlocks.SKY_SILT.getDefaultState());
 			return;
 		}
-		super.setToDirt(world, pos);
 	}
 
 }
