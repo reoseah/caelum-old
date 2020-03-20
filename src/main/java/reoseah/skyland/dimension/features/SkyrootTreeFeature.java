@@ -22,6 +22,7 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		if (isNaturalDirtOrGrass(world, pos)) {
 			pos = pos.up();
+			this.setLogBlockState(world, random, pos, logPositions, box, config);
 
 			int[] shape = config.skyrootTreeShape.chooseShape(random);
 			int trunk = shape.length - 2 - random.nextInt(2);

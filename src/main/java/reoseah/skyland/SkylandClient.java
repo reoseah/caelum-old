@@ -9,6 +9,9 @@ public class SkylandClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
+				SkyBlocks.COMMON_SKYROOT_SAPLING,
+				SkyBlocks.SILVER_SKYROOT_SAPLING,
+				SkyBlocks.DWARF_SKYROOT_SAPLING,
 				SkyBlocks.BARLEY);
 	}
 

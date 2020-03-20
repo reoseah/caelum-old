@@ -15,6 +15,7 @@ public class SkyFeatures {
 	public static final Feature<TreeFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
+	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
 
 	public static final StructureFeature<DefaultFeatureConfig> LARGE_ISLAND = new LargeIslandStructureFeature(DefaultFeatureConfig::deserialize);
@@ -24,6 +25,7 @@ public class SkyFeatures {
 		register("tall_bush", SKYROOT_TALL_BUSH);
 		register("sky_tree", SKYROOT_TREE);
 		register("bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
+		register("dwarf_sky_tree", DWARF_SKYROOT_TREE);
 		register("aerrack_ore", AERRACK_ORE);
 
 		registerStructure("large_island", LARGE_ISLAND);
