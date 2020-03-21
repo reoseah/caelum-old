@@ -4,15 +4,19 @@ import java.util.Random;
 import java.util.stream.IntStream;
 
 import net.minecraft.util.Util;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
 import reoseah.skyland.biomes.SkylandBiome;
+import reoseah.skyland.dimension.features.SkyFeatures;
+import reoseah.skyland.dimension.features.structures.LargeIslandStructureFeature;
 
 public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 	private static final float[] KERNEL = Util.make(new float[25], values -> {
@@ -92,11 +96,11 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 
 	protected static class PointInfo {
 		public final double islandSize;
-		public final double distSqToPointOfInterest;
+		public final double structureCoeff;
 
-		public PointInfo(double islandSize, double distSqToPointOfInterest) {
+		public PointInfo(double islandSize, double structureCoeff) {
 			this.islandSize = islandSize;
-			this.distSqToPointOfInterest = distSqToPointOfInterest;
+			this.structureCoeff = structureCoeff;
 		}
 	}
 
@@ -121,18 +125,24 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 		}
 		depthTotal /= weightTotal;
 
-		// place large islands each 2048x2048 blocks
-		// might elaborate in the future
-		// one of these is always at (0, 0)
-		// so there's always some land there
-		int dX = (Math.abs(x) + 256) % 512 - 256;
-		int dZ = (Math.abs(z) + 256) % 512 - 256;
+		double structureCoeff = 256 * 256 * 2;
+		if (this.world instanceof World) {
+			BlockPos structurePos = ((LargeIslandStructureFeature) SkyFeatures.LARGE_ISLAND).locateStructure(this.world, this, new BlockPos(x * 4, 0, z * 4), 100, false);
 
-		return new PointInfo(depthTotal, dX * dX + dZ * dZ);
+			int dX = x - structurePos.getX() / 4;
+			int dZ = z - structurePos.getZ() / 4;
+
+			int distX = Math.min(256, Math.abs(dX));
+			int distZ = Math.min(256, Math.abs(dZ));
+
+			structureCoeff = distX * distX + distZ * distZ;
+		}
+
+		return new PointInfo(depthTotal, structureCoeff);
 	}
 
 	private double computeNoiseModifier(PointInfo pointInfo, int y) {
-		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(pointInfo.distSqToPointOfInterest) / 3);
+		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(pointInfo.structureCoeff) / 3);
 		double heightEffect = 0;
 		if (y > 16) {
 			heightEffect = Math.max((y - 16) / 6f, 1);
