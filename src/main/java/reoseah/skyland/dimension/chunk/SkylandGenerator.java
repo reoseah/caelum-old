@@ -9,7 +9,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
@@ -125,19 +124,13 @@ public class SkylandGenerator extends SurfaceChunkGenerator<SkylandConfig> {
 		}
 		depthTotal /= weightTotal;
 
-		double structureCoeff = 256 * 256 * 2;
-		if (this.world instanceof World) {
-			BlockPos structurePos = ((LargeIslandStructureFeature) SkyFeatures.LARGE_ISLAND).locateStructure(this.world, this, new BlockPos(x * 4, 0, z * 4), 100, false);
+		BlockPos structurePos = ((LargeIslandStructureFeature) SkyFeatures.LARGE_ISLAND).locateStructure(this.world, this, new BlockPos(x * 4, 0, z * 4), 100, false);
 
-			int dX = x - structurePos.getX() / 4;
-			int dZ = z - structurePos.getZ() / 4;
+		int distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4));
+		int distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4));
 
-			int distX = Math.min(256, Math.abs(dX));
-			int distZ = Math.min(256, Math.abs(dZ));
-
-			structureCoeff = distX * distX + distZ * distZ;
-		}
-
+		double structureCoeff = distX * distX + distZ * distZ;
+		
 		return new PointInfo(depthTotal, structureCoeff);
 	}
 

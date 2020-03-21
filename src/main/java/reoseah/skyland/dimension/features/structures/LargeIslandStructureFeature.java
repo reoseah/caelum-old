@@ -41,21 +41,7 @@ public class LargeIslandStructureFeature extends SkylandStructureFeature {
 						boolean bl2 = n == -l || n == l;
 						if (bl || bl2) {
 							ChunkPos chunkPos = this.getStart(chunkGenerator, chunkRandom, j, k, m, n);
-							StructureStart structureStart = world.getChunk(chunkPos.x, chunkPos.z, ChunkStatus.STRUCTURE_STARTS).getStructureStart(this.getName());
-							if (structureStart != null && structureStart.hasChildren()) {
-								if (skipExistingChunks && structureStart.isInExistingChunk()) {
-									structureStart.incrementReferences();
-									return structureStart.getPos();
-								}
-
-								if (!skipExistingChunks) {
-									return structureStart.getPos();
-								}
-							}
-
-							if (l == 0) {
-								break;
-							}
+							return chunkPos.getCenterBlockPos();
 						}
 					}
 
@@ -93,7 +79,7 @@ public class LargeIslandStructureFeature extends SkylandStructureFeature {
 				return new StructureStart(feature, x, z, box, references, chunk) {
 					@Override
 					public void initialize(ChunkGenerator<?> chunkGenerator, StructureManager structureManager, int x, int z, Biome biome) {
-						System.out.println("initialize " + getName() + " at " + x + " " + z);
+
 					}
 
 					@Override
