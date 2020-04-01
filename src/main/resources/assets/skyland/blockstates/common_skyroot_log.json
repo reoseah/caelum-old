@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=y":  { "model": "skyland:block/common_skyroot_log" },
-        "axis=z":   { "model": "skyland:block/common_skyroot_log", "x": 90 },
-        "axis=x":   { "model": "skyland:block/common_skyroot_log", "x": 90, "y": 90 }
-    }
-}
-

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "skyland:silver_skyroot_log"
+          "name": "skyland:skyroot_log"
         }
       ],
       "conditions": [

@@ -27,12 +27,10 @@ import reoseah.skyland.dimension.features.SkyrootFeatureConfig;
 import reoseah.skyland.dimension.features.SkyrootTreeShape;
 
 public class SkylandBiomesFeatures {
-	private static final SimpleBlockStateProvider DWARF_SKYROOT_LEAVES = new SimpleBlockStateProvider(SkyBlocks.DWARF_SKYROOT_LEAVES.getDefaultState());
-	private static final SimpleBlockStateProvider DWARF_SKYROOT_LOG = new SimpleBlockStateProvider(SkyBlocks.DWARF_SKYROOT_LOG.getDefaultState());
+	private static final SimpleBlockStateProvider SKYROOT_LOG = new SimpleBlockStateProvider(SkyBlocks.SKYROOT_LOG.getDefaultState());
 	private static final SimpleBlockStateProvider SILVER_SKYROOT_LEAVES = new SimpleBlockStateProvider(SkyBlocks.SILVER_SKYROOT_LEAVES.getDefaultState());
-	private static final SimpleBlockStateProvider SILVER_SKYROOT_LOG = new SimpleBlockStateProvider(SkyBlocks.SILVER_SKYROOT_LOG.getDefaultState());
-	private static final SimpleBlockStateProvider COMMON_SKYROOT_LEAVES = new SimpleBlockStateProvider(SkyBlocks.COMMON_SKYROOT_LEAVES.getDefaultState());
-	private static final SimpleBlockStateProvider COMMON_SKYROOT_LOG = new SimpleBlockStateProvider(SkyBlocks.COMMON_SKYROOT_LOG.getDefaultState());
+	private static final SimpleBlockStateProvider SKYROOT_LEAVES = new SimpleBlockStateProvider(SkyBlocks.SKYROOT_LEAVES.getDefaultState());
+	private static final SimpleBlockStateProvider DWARF_SKYROOT_LEAVES = new SimpleBlockStateProvider(SkyBlocks.DWARF_SKYROOT_LEAVES.getDefaultState());
 
 	public static final TernarySurfaceConfig SKY_GRASS_SURFACE = new TernarySurfaceConfig(
 			SkyBlocks.SKY_GRASS.getDefaultState(),
@@ -44,10 +42,10 @@ public class SkylandBiomesFeatures {
 			SkyBlocks.AERRACK.getDefaultState(),
 			SkyBlocks.AERRACK.getDefaultState());
 
-	public static final SkyrootFeatureConfig COMMON_SKYROOT = new SkyrootFeatureConfig(COMMON_SKYROOT_LOG, COMMON_SKYROOT_LEAVES, 5, SkyrootTreeShape.NORMAL);
-	public static final SkyrootFeatureConfig TALL_COMMON_SKYROOT = new SkyrootFeatureConfig(COMMON_SKYROOT_LOG, COMMON_SKYROOT_LEAVES, 7, SkyrootTreeShape.TALL);
-	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SILVER_SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
-	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(DWARF_SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
+	public static final SkyrootFeatureConfig SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, 5, SkyrootTreeShape.NORMAL);
+	public static final SkyrootFeatureConfig TALL_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, 7, SkyrootTreeShape.TALL);
+	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
+	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
 
 	public static final AerrackOreConfig CERUCLASE_ORE = new AerrackOreConfig(SkyBlocks.CERUCLASE_ORE.getDefaultState(), 9);
 
@@ -68,7 +66,7 @@ public class SkylandBiomesFeatures {
 	}
 
 	public static final void addSpecialVegetation(Biome biome) {
-		ConfiguredFeature<?, ?> commonBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(COMMON_SKYROOT);
+		ConfiguredFeature<?, ?> commonBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SKYROOT);
 		ConfiguredFeature<?, ?> silverBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> dwarfBush = SkyFeatures.SKYROOT_BUSH_WITH_SOIL.configure(DWARF_SKYROOT);
 		ConfiguredFeature<?, ?> dwarfTallBush = SkyFeatures.SKYROOT_TALL_BUSH.configure(DWARF_SKYROOT);
@@ -86,8 +84,8 @@ public class SkylandBiomesFeatures {
 	}
 
 	public static final void addSkyForestTrees(Biome biome) {
-		ConfiguredFeature<?, ?> commonTree = SkyFeatures.SKYROOT_TREE.configure(SkylandBiomesFeatures.COMMON_SKYROOT);
-		ConfiguredFeature<?, ?> commonTallTree = SkyFeatures.SKYROOT_TREE.configure(SkylandBiomesFeatures.TALL_COMMON_SKYROOT);
+		ConfiguredFeature<?, ?> commonTree = SkyFeatures.SKYROOT_TREE.configure(SkylandBiomesFeatures.SKYROOT);
+		ConfiguredFeature<?, ?> commonTallTree = SkyFeatures.SKYROOT_TREE.configure(SkylandBiomesFeatures.TALL_SKYROOT);
 		ConfiguredFeature<?, ?> silverTree = SkyFeatures.SKYROOT_TREE.configure(SkylandBiomesFeatures.SILVER_SKYROOT);
 
 		ConfiguredFeature<?, ?> treeSelector = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
@@ -100,7 +98,7 @@ public class SkylandBiomesFeatures {
 
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, treeSelector.createDecoratedFeature(treeDecorator));
 
-		ConfiguredFeature<?, ?> commonBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SkylandBiomesFeatures.COMMON_SKYROOT);
+		ConfiguredFeature<?, ?> commonBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SkylandBiomesFeatures.SKYROOT);
 		ConfiguredFeature<?, ?> silverBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SkylandBiomesFeatures.SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> dwarfBush = SkyFeatures.SKYROOT_GROUND_BUSH.configure(SkylandBiomesFeatures.DWARF_SKYROOT);
 

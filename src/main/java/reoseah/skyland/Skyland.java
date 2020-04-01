@@ -31,19 +31,24 @@ public class Skyland implements ModInitializer {
 	public static final EntityPlacer TELEPORTING_PLACER = (entity, world, dim, offsetX, offsetZ) -> {
 		BlockPos entityPos = entity.getSenseCenterPos();
 
-		BlockPos structurePos = SkyFeatures.LARGE_ISLAND.locateStructure(world,
-				world.getChunkManager().getChunkGenerator(), entityPos, 100, false);
+		BlockPos structurePos = SkyFeatures.LARGE_ISLAND.locateStructure(
+				world, world.getChunkManager().getChunkGenerator(),
+				entityPos, 100, false);
 
-		int height = world.getChunk(
-				structurePos.getX() >> 4,
-				structurePos.getZ() >> 4)
+		int surfaceY = world
+				.getChunk(
+						structurePos.getX() >> 4,
+						structurePos.getZ() >> 4)
 				.sampleHeightmap(
 						Heightmap.Type.MOTION_BLOCKING,
 						structurePos.getX() & 15,
 						structurePos.getZ() & 15);
 
 		return new BlockPattern.TeleportTarget(
-				new Vec3d(structurePos.getX(), height + 2, structurePos.getZ()),
+				new Vec3d(
+						structurePos.getX(),
+						surfaceY + 2,
+						structurePos.getZ()),
 				entity.getVelocity(),
 				(int) entity.yaw);
 	};

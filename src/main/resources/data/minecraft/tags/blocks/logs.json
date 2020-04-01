@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "skyland:common_skyroot_log",
-    "skyland:silver_skyroot_log",
-    "skyland:dwarf_skyroot_log"
+    "skyland:skyroot_log"
   ]
 }

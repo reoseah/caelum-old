@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "skyland:block/common_skyroot_sapling"
+    "layer0": "skyland:block/skyroot_sapling"
   }
 }

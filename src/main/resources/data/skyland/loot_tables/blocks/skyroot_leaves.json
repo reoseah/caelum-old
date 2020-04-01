@@ -35,7 +35,7 @@
                   ]
                 }
               ],
-              "name": "skyland:common_skyroot_leaves"
+              "name": "skyland:skyroot_leaves"
             },
             {
               "type": "minecraft:item",
@@ -54,7 +54,7 @@
                   ]
                 }
               ],
-              "name": "skyland:common_skyroot_sapling"
+              "name": "skyland:skyroot_sapling"
             }
           ]
         }
