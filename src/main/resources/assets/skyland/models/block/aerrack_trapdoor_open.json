@@ -2,7 +2,7 @@
     "parent": "block/block",
 	"textures": {
 		"0": "skyland:block/aerrack_trapdoor",
-		"1": "skyland:block/aerrack_door_top",
+		"1": "skyland:block/aerrack_door_end",
 		"particle": "skyland:block/aerrack_trapdoor"
 	},
 	"elements": [

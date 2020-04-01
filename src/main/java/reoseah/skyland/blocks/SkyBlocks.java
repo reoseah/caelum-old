@@ -12,6 +12,7 @@ import net.minecraft.block.PillarBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import reoseah.skyland.Skyland;
@@ -40,8 +41,10 @@ public class SkyBlocks {
 	public static final Block SKYROOT_STAIRS = new ModdedStairsBlock(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+
 	public static final Block AERRACK_TRAPDOOR = new AerrackTrapdoorBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 0).build());
-	
+	public static final Block AERRACK_DOOR = new AerrackDoorBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 0).build());
+
 	public static void register() {
 		register("aerrack", AERRACK);
 		register("sky_grass", SKY_GRASS);
@@ -66,6 +69,7 @@ public class SkyBlocks {
 		register("skyroot_slab", SKYROOT_SLAB);
 		register("barley", BARLEY);
 		register("aerrack_trapdoor", AERRACK_TRAPDOOR);
+		register("aerrack_door", AERRACK_DOOR);
 
 		register("aerrack", new BlockItem(AERRACK, new Item.Settings().group(Skyland.GROUP)));
 		register("sky_grass", new BlockItem(SKY_GRASS, new Item.Settings().group(Skyland.GROUP)));
@@ -89,6 +93,7 @@ public class SkyBlocks {
 		register("skyroot_stairs", new BlockItem(SKYROOT_STAIRS, new Item.Settings().group(Skyland.GROUP)));
 		register("skyroot_slab", new BlockItem(SKYROOT_SLAB, new Item.Settings().group(Skyland.GROUP)));
 		register("aerrack_trapdoor", new BlockItem(AERRACK_TRAPDOOR, new Item.Settings().group(Skyland.GROUP)));
+		register("aerrack_door", new TallBlockItem(AERRACK_DOOR, new Item.Settings().group(Skyland.GROUP)));
 	}
 
 	private static void register(String name, Block block) {
