@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.source.HorizontalVoronoiBiomeAccessType;
 import net.minecraft.world.dimension.DimensionType;
 import reoseah.skyland.biomes.SkyBiomes;
@@ -32,7 +33,7 @@ public class Skyland implements ModInitializer {
 		BlockPos entityPos = entity.getSenseCenterPos();
 
 		BlockPos structurePos = SkyFeatures.LARGE_ISLAND.locateStructure(
-				world, world.getChunkManager().getChunkGenerator(),
+				(IWorld) world, world.getChunkManager().getChunkGenerator(),
 				entityPos, 100, false);
 
 		int surfaceY = world

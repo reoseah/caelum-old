@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "skyland:aerrack_lamp"
+          "name": "skyland:sky_lantern"
         }
       ],
       "conditions": [

@@ -12,7 +12,8 @@ public class SkylandClient implements ClientModInitializer {
 				SkyBlocks.SKYROOT_SAPLING,
 				SkyBlocks.SILVER_SKYROOT_SAPLING,
 				SkyBlocks.DWARF_SKYROOT_SAPLING,
-				SkyBlocks.BARLEY);
+				SkyBlocks.BARLEY,
+				SkyBlocks.AERRACK_TRAPDOOR);
 	}
 
 }
