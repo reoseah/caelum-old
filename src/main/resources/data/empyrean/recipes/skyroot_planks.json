@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "empyrean:skyroot_logs"
+    }
+  ],
+  "result": {
+    "item": "empyrean:skyroot_planks",
+    "count": 4
+  }
+}

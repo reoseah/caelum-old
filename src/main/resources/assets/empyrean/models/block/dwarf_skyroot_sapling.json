@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "empyrean:block/dwarf_skyroot_sapling"
+    }
+}

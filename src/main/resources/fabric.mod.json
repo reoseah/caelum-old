@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "skyland",
+  "id": "empyrean",
   "version": "${version}",
 
-  "name": "Skyland",
-  "description": "Rock is hard and soil is unyielding.",
+  "name": "Empyrean",
+  "description": "Rock is hard and soil is unyielding...",
   "authors": [
     "Reoseah"
   ],
   "contact": {
-    "homepage": "https://github.com/Reoseah/skyland",
-    "sources": "https://github.com/Reoseah/skyland"
+    "homepage": "https://github.com/Reoseah/empyrean",
+    "sources": "https://github.com/Reoseah/empyrean"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/skyland/icon.png",
+  "icon": "assets/empyrean/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "reoseah.skyland.Skyland"
+      "reoseah.empyrean.Empyrean"
     ],
     "client": [
-      "reoseah.skyland.SkylandClient"
+      "reoseah.empyrean.EmpyreanClient"
     ]
   },
   "mixins": [
-    "skyland.mixins.json"
+    "empyrean.mixins.json"
   ],
 
   "depends": {

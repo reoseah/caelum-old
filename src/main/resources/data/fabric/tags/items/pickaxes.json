@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "skyland:skyroot_pickaxe",
-    "skyland:aerrack_pickaxe",
-    "skyland:ceruclase_pickaxe"
+    "empyrean:skyroot_pickaxe",
+    "empyrean:aerrack_pickaxe",
+    "empyrean:ceruclase_pickaxe"
   ]
 }

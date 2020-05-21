@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "skyland:block/aerrack_bricks",
-    "top": "skyland:block/aerrack_bricks",
-    "side": "skyland:block/aerrack_bricks"
-  }
-}

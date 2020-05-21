@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    " # ",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "empyrean:skyroot_stick"
+    },
+    "X": {
+      "item": "empyrean:skyroot_planks"
+    }
+  },
+  "result": {
+    "item": "empyrean:skyroot_pickaxe"
+  }
+}

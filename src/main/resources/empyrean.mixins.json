@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "reoseah.empyrean.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FeatureMixin",
+    "AbstractTreeFeatureMixin",
+    "CropBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

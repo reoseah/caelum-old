@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "empyrean:block/aerrack_brick_slab"
+    },
+    "type=double": {
+      "model": "empyrean:block/aerrack_bricks"
+    },
+    "type=top": {
+      "model": "empyrean:block/aerrack_brick_slab_top"
+    }
+  }
+}

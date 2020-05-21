@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "skyland:skyroot_sapling",
-    "skyland:silver_skyroot_sapling",
-    "skyland:dwarf_skyroot_sapling"
+    "empyrean:skyroot_sapling",
+    "empyrean:silver_skyroot_sapling",
+    "empyrean:dwarf_skyroot_sapling"
   ]
 }

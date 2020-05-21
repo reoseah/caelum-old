@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "skyland:skyroot_sword",
-    "skyland:aerrack_sword",
-    "skyland:ceruclase_sword"
+    "empyrean:skyroot_sword",
+    "empyrean:aerrack_sword",
+    "empyrean:ceruclase_sword"
   ]
 }

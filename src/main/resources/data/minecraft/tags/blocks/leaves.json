@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "skyland:skyroot_leaves",
-    "skyland:silver_skyroot_leaves",
-    "skyland:dwarf_skyroot_leaves"
+    "empyrean:skyroot_leaves",
+    "empyrean:silver_skyroot_leaves",
+    "empyrean:dwarf_skyroot_leaves"
   ]
 }

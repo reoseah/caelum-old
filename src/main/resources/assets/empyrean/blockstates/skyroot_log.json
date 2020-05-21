@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=y":  { "model": "empyrean:block/skyroot_log" },
+        "axis=z":   { "model": "empyrean:block/skyroot_log", "x": 90 },
+        "axis=x":   { "model": "empyrean:block/skyroot_log", "x": 90, "y": 90 }
+    }
+}
+

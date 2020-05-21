@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XX",
+    " #",
+    " #"
+  ],
+  "key": {
+    "#": {
+      "item": "empyrean:skyroot_stick"
+    },
+    "X": {
+      "item": "empyrean:ceruclase"
+    }
+  },
+  "result": {
+    "item": "empyrean:ceruclase_hoe"
+  }
+}

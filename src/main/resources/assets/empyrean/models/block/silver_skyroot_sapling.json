@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "empyrean:block/silver_skyroot_sapling"
+    }
+}

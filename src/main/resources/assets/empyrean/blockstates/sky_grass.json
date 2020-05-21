@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "empyrean:block/sky_grass"
+      },
+      {
+        "model": "empyrean:block/sky_grass",
+        "y": 90
+      },
+      {
+        "model": "empyrean:block/sky_grass",
+        "y": 180
+      },
+      {
+        "model": "empyrean:block/sky_grass",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "empyrean:block/sky_grass_snow"
+    }
+  }
+}

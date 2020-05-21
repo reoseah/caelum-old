@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "empyrean:ceruclase_block"
+    }
+  ],
+  "result": {
+    "item": "empyrean:ceruclase",
+    "count": 9
+  }
+}

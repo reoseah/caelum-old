@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "empyrean:aerrack"
+  },
+  "result": "empyrean:chiseled_aerrack",
+  "count": 1
+}

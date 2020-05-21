@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "empyrean:aerrack"
+  },
+  "result": "empyrean:aerrack_bricks",
+  "count": 1
+}
