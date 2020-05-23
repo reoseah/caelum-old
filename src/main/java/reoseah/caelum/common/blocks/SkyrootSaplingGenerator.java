@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumFeatures;
-import reoseah.caelum.common.dimension.CaelumBiomesFeatures;
+import reoseah.caelum.common.biomes.CaelumBiomesFeatures;
 
 public class SkyrootSaplingGenerator extends SaplingGenerator {
 	public boolean generate(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random random) {

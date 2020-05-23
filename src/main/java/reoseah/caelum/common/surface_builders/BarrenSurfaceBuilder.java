@@ -10,7 +10,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.CaelumFeatures;
-import reoseah.caelum.common.dimension.CaelumBiomesFeatures;
+import reoseah.caelum.common.biomes.CaelumBiomesFeatures;
 
 public class BarrenSurfaceBuilder extends CaelumSurfaceBuilder {
 	public BarrenSurfaceBuilder(Function<Dynamic<?>, ? extends TernarySurfaceConfig> deserialize) {

@@ -5,7 +5,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import reoseah.caelum.common.CaelumFeatures;
-import reoseah.caelum.common.dimension.CaelumBiomesFeatures;
 
 public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 	public BarrenForestBiome() {
