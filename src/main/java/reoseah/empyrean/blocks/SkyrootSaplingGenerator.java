@@ -11,7 +11,7 @@ import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import reoseah.empyrean.SkyBlocks;
 import reoseah.empyrean.SkyFeatures;
-import reoseah.empyrean.world.biomes.SkylandBiomesFeatures;
+import reoseah.empyrean.SkylandBiomesFeatures;
 
 public class SkyrootSaplingGenerator extends SaplingGenerator {
 	public boolean generate(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random random) {

@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "empyrean:block/sky_lantern"
-    },
-    "ambientocclusion": true
-}

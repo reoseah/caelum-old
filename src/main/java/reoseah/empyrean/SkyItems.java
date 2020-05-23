@@ -7,10 +7,10 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.registry.Registry;
+import reoseah.empyrean.items.EmpyreanToolMaterials;
 import reoseah.empyrean.items.ModAxeItem;
 import reoseah.empyrean.items.ModHoeItem;
 import reoseah.empyrean.items.ModPickaxeItem;
-import reoseah.empyrean.items.EmpyreanToolMaterials;
 import reoseah.empyrean.items.SkyrootBucketItem;
 import reoseah.empyrean.items.TeleporterItem;
 
@@ -24,11 +24,6 @@ public class SkyItems {
 	public static final Item SKYROOT_PICKAXE = new ModPickaxeItem(EmpyreanToolMaterials.SKYROOT, 1, -2.8F, new Item.Settings().group(Empyrean.GROUP));
 	public static final Item SKYROOT_AXE = new ModAxeItem(EmpyreanToolMaterials.SKYROOT, 6.0F, -3.2F, new Item.Settings().group(Empyrean.GROUP));
 	public static final Item SKYROOT_HOE = new ModHoeItem(EmpyreanToolMaterials.SKYROOT, 0, -3.0F, new Item.Settings().group(Empyrean.GROUP));
-	public static final Item AERRACK_SWORD = new SwordItem(EmpyreanToolMaterials.AERRACK, 3, -2.4F, new Item.Settings().group(Empyrean.GROUP));
-	public static final Item AERRACK_SHOVEL = new ShovelItem(EmpyreanToolMaterials.AERRACK, 1.5F, -3.0F, new Item.Settings().group(Empyrean.GROUP));
-	public static final Item AERRACK_PICKAXE = new ModPickaxeItem(EmpyreanToolMaterials.AERRACK, 1, -2.8F, new Item.Settings().group(Empyrean.GROUP));
-	public static final Item AERRACK_AXE = new ModAxeItem(EmpyreanToolMaterials.AERRACK, 7.0F, -3.2F, new Item.Settings().group(Empyrean.GROUP));
-	public static final Item AERRACK_HOE = new ModHoeItem(EmpyreanToolMaterials.AERRACK, -1, -2.0F, new Item.Settings().group(Empyrean.GROUP));
 	public static final Item CERUCLASE_SWORD = new SwordItem(EmpyreanToolMaterials.CERUCLASE, 3, -2.4F, new Item.Settings().group(Empyrean.GROUP));
 	public static final Item CERUCLASE_SHOVEL = new ShovelItem(EmpyreanToolMaterials.CERUCLASE, 1.5F, -3.0F, new Item.Settings().group(Empyrean.GROUP));
 	public static final Item CERUCLASE_PICKAXE = new ModPickaxeItem(EmpyreanToolMaterials.CERUCLASE, 1, -2.8F, new Item.Settings().group(Empyrean.GROUP));
@@ -52,12 +47,6 @@ public class SkyItems {
 		register("skyroot_pickaxe", SKYROOT_PICKAXE);
 		register("skyroot_axe", SKYROOT_AXE);
 		register("skyroot_hoe", SKYROOT_HOE);
-
-		register("aerrack_sword", AERRACK_SWORD);
-		register("aerrack_shovel", AERRACK_SHOVEL);
-		register("aerrack_pickaxe", AERRACK_PICKAXE);
-		register("aerrack_axe", AERRACK_AXE);
-		register("aerrack_hoe", AERRACK_HOE);
 
 		register("ceruclase_sword", CERUCLASE_SWORD);
 		register("ceruclase_shovel", CERUCLASE_SHOVEL);

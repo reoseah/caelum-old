@@ -8,6 +8,8 @@
     "CropBlockMixin"
   ],
   "client": [
+    "client.BlockModelRendererMixin",
+    "client.BlockRenderInfoMixin"
   ],
   "injectors": {
     "defaultRequire": 1

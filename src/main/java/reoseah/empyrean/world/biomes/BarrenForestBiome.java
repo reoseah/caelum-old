@@ -5,6 +5,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import reoseah.empyrean.SkySurfaceBuilders;
+import reoseah.empyrean.SkylandBiomesFeatures;
 
 public class BarrenForestBiome extends Biome implements EmpyreanBiome {
 	public BarrenForestBiome() {

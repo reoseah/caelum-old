@@ -1,4 +1,4 @@
-package reoseah.empyrean.world.biomes;
+package reoseah.empyrean;
 
 import java.util.Arrays;
 
@@ -7,6 +7,7 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.ConfiguredDecorator;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -19,9 +20,6 @@ import net.minecraft.world.gen.feature.RandomFeatureEntry;
 import net.minecraft.world.gen.feature.SpringFeatureConfig;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
-import reoseah.empyrean.SkyBlocks;
-import reoseah.empyrean.SkyDecorators;
-import reoseah.empyrean.SkyFeatures;
 import reoseah.empyrean.world.features.AerrackOreConfig;
 import reoseah.empyrean.world.features.SkyrootFeatureConfig;
 import reoseah.empyrean.world.features.SkyrootTreeShape;
@@ -94,7 +92,7 @@ public class SkylandBiomesFeatures {
 						new RandomFeatureEntry<>(commonTallTree, 0.15F)),
 				commonTree));
 
-		ConfiguredDecorator<?> treeDecorator = Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(3, 0.1F, 1));
+		ConfiguredDecorator<?> treeDecorator = SkyDecorators.SKYLAND_TREE_DECORATOR.configure(new ChanceDecoratorConfig(4));
 
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, treeSelector.createDecoratedFeature(treeDecorator));
 

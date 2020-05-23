@@ -10,7 +10,7 @@ import reoseah.empyrean.SkyItems;
 
 public enum EmpyreanToolMaterials implements ToolMaterial {
 	SKYROOT(0, 59, 2.0F, 0, 14, () -> Ingredient.ofItems(SkyBlocks.SKYROOT_PLANKS)),
-	AERRACK(1, 131, 4.0F, 1.0F, 8, () -> Ingredient.ofItems(SkyBlocks.AERRACK)),
+//	AERRACK(1, 131, 4.0F, 1.0F, 8, () -> Ingredient.ofItems(SkyBlocks.AERRACK)),
 	CERUCLASE(2, 550, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(SkyItems.CERUCLASE));
 
 	private final int miningLevel;
