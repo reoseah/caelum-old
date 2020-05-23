@@ -63,7 +63,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_block", CERUCLASE_BLOCK);
 		
 		Registry.register(Registry.BLOCK, "caelum:caelum_grass", CAELUM_GRASS);
-		Registry.register(Registry.BLOCK, "caelum:caelum_silt", CAELUM_DIRT);
+		Registry.register(Registry.BLOCK, "caelum:caelum_dirt", CAELUM_DIRT);
 		Registry.register(Registry.BLOCK, "caelum:caelum_farmland", CAELUM_FARMLAND);
 		
 		Registry.register(Registry.BLOCK, "caelum:skyroot_log", SKYROOT_LOG);
@@ -90,7 +90,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CERUCLASE_BLOCK, new Item.Settings().group(Caelum.GROUP)));
 		
 		Registry.register(Registry.ITEM, "caelum:caelum_grass", new BlockItem(CAELUM_GRASS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:caelum_silt", new BlockItem(CAELUM_DIRT, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.ITEM, "caelum:caelum_dirt", new BlockItem(CAELUM_DIRT, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:caelum_farmland", new BlockItem(CAELUM_FARMLAND, new Item.Settings().group(Caelum.GROUP)));
 		
 		Registry.register(Registry.ITEM, "caelum:skyroot_log", new BlockItem(SKYROOT_LOG, new Item.Settings().group(Caelum.GROUP)));
