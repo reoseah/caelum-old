@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_shovel",
-    "empyrean:aerrack_shovel",
-    "empyrean:ceruclase_shovel"
+    "caelum:skyroot_shovel",
+    "caelum:aerrack_shovel",
+    "caelum:ceruclase_shovel"
   ]
 }

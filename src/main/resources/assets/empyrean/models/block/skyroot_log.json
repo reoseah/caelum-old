@@ -1,7 +1,0 @@
-{
-    "parent": "block/cube_column",
-    "textures": {
-        "end": "empyrean:block/skyroot_log_top",
-        "side": "empyrean:block/skyroot_log"
-    }
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minecraft:stonecutting",
-  "ingredient": {
-    "tag": "empyrean:aerrack_full_blocks"
-  },
-  "result": "empyrean:aerrack_brick_stairs",
-  "count": 1
-}

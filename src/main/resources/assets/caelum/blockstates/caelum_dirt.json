@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "caelum:block/caelum_dirt"
+      },
+      {
+        "y": 90,
+        "model": "caelum:block/caelum_dirt"
+      },
+      {
+        "y": 180,
+        "model": "caelum:block/caelum_dirt"
+      },
+      {
+        "y": 270,
+        "model": "caelum:block/caelum_dirt"
+      }
+    ]
+  }
+}

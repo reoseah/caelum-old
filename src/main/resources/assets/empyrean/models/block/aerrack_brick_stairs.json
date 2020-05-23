@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "empyrean:block/aerrack_bricks",
-    "top": "empyrean:block/aerrack_bricks",
-    "side": "empyrean:block/aerrack_bricks"
-  }
-}

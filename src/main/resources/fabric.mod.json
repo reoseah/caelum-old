@@ -1,32 +1,32 @@
 {
   "schemaVersion": 1,
-  "id": "empyrean",
+  "id": "caelum",
   "version": "${version}",
 
-  "name": "Empyrean",
-  "description": "Rock is hard and soil is unyielding...",
+  "name": "Caelum",
+  "description": "",
   "authors": [
     "Reoseah"
   ],
   "contact": {
-    "homepage": "https://github.com/Reoseah/empyrean",
-    "sources": "https://github.com/Reoseah/empyrean"
+    "homepage": "https://github.com/Reoseah/caelum",
+    "sources": "https://github.com/Reoseah/caelum"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/empyrean/icon.png",
+  "icon": "assets/caelum/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "reoseah.empyrean.Empyrean"
+      "reoseah.caelum.Caelum"
     ],
     "client": [
-      "reoseah.empyrean.EmpyreanClient"
+      "reoseah.caelum.CaelumClient"
     ]
   },
   "mixins": [
-    "empyrean.mixins.json"
+    "caelum.mixins.json"
   ],
 
   "depends": {

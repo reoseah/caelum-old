@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_leaves",
-    "empyrean:silver_skyroot_leaves",
-    "empyrean:dwarf_skyroot_leaves"
+    "caelum:skyroot_leaves",
+    "caelum:silver_skyroot_leaves",
+    "caelum:dwarf_skyroot_leaves"
   ]
 }

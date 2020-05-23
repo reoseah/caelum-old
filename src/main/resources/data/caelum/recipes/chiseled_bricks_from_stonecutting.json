@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "caelum:aerrack"
+  },
+  "result": "caelum:chiseled_aerrack",
+  "count": 1
+}

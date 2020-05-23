@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_axe",
-    "empyrean:aerrack_axe",
-    "empyrean:ceruclase_axe"
+    "caelum:skyroot_axe",
+    "caelum:aerrack_axe",
+    "caelum:ceruclase_axe"
   ]
 }

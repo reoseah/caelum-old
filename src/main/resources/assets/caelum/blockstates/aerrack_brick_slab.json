@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "caelum:block/aerrack_brick_slab"
+    },
+    "type=double": {
+      "model": "caelum:block/aerrack_bricks"
+    },
+    "type=top": {
+      "model": "caelum:block/aerrack_brick_slab_top"
+    }
+  }
+}

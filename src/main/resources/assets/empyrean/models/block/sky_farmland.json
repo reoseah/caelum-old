@@ -1,8 +1,0 @@
-{
-    "parent": "block/template_farmland",
-    "textures": {
-        "particle": "empyrean:block/sky_silt",
-        "dirt": "empyrean:block/sky_silt",
-        "top": "empyrean:block/sky_farmland"
-    }
-}

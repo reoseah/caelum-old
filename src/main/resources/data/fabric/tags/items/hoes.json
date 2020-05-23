@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_hoe",
-    "empyrean:aerrack_hoe",
-    "empyrean:ceruclase_hoe"
+    "caelum:skyroot_hoe",
+    "caelum:aerrack_hoe",
+    "caelum:ceruclase_hoe"
   ]
 }

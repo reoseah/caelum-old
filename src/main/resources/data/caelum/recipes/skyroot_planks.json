@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "tag": "caelum:skyroot_logs"
+    }
+  ],
+  "result": {
+    "item": "caelum:skyroot_planks",
+    "count": 4
+  }
+}

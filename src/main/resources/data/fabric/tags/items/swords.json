@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_sword",
-    "empyrean:aerrack_sword",
-    "empyrean:ceruclase_sword"
+    "caelum:skyroot_sword",
+    "caelum:aerrack_sword",
+    "caelum:ceruclase_sword"
   ]
 }

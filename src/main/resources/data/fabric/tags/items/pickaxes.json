@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "empyrean:skyroot_pickaxe",
-    "empyrean:aerrack_pickaxe",
-    "empyrean:ceruclase_pickaxe"
+    "caelum:skyroot_pickaxe",
+    "caelum:aerrack_pickaxe",
+    "caelum:ceruclase_pickaxe"
   ]
 }

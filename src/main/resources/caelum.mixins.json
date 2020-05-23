@@ -1,0 +1,17 @@
+{
+  "required": true,
+  "package": "reoseah.caelum.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "FeatureMixin",
+    "AbstractTreeFeatureMixin",
+    "CropBlockMixin"
+  ],
+  "client": [
+    "client.BlockModelRendererMixin",
+    "client.BlockRenderInfoMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
