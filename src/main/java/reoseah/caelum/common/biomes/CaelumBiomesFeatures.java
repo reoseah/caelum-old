@@ -9,6 +9,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.ConfiguredDecorator;
+import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -17,7 +18,9 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.SpringFeatureConfig;
+import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.CaelumBlocks;
@@ -51,6 +54,8 @@ public abstract class CaelumBiomesFeatures {
 	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
 	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
 
+	public static final RandomPatchFeatureConfig SKY_FLOWERS = new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(CaelumBlocks.SKY_BLUE_FLOWER.getDefaultState()), new SimpleBlockPlacer()).cannotProject().tries(32).build();
+
 	public static final AerrackOreConfig CERUCLASE_ORE = new AerrackOreConfig(CaelumBlocks.CERUCLASE_ORE.getDefaultState(), 9);
 
 	public static final SpringFeatureConfig ENCLOSED_SKYLAND_WATER_SPRING = new SpringFeatureConfig(Fluids.WATER.getDefaultState(), false, 5, 0, ImmutableSet.of(CaelumBlocks.AERRACK));
@@ -69,7 +74,7 @@ public abstract class CaelumBiomesFeatures {
 		biome.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, enclosedSprings.createDecoratedFeature(decorator));
 	}
 
-	public static final void addSpecialVegetation(Biome biome) {
+	public static final void addBarrensVegetation(Biome biome) {
 		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SKYROOT);
 		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> silverBush2 = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(SILVER_SKYROOT);
@@ -121,5 +126,13 @@ public abstract class CaelumBiomesFeatures {
 
 	public static final void addSkyStructures(Biome biome) {
 		biome.addStructureFeature(CaelumFeatures.LARGE_ISLAND.configure(FeatureConfig.DEFAULT));
+	}
+
+	public static final void addSkyFlowers(Biome biome) {
+		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+				Feature.RANDOM_PATCH
+						.configure(SKY_FLOWERS)
+						.createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE
+								.configure(new CountDecoratorConfig(1))));
 	}
 }

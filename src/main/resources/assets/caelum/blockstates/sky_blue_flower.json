@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "caelum:block/sky_blue_flower"
+      },
+      {
+        "y": 90,
+        "model": "caelum:block/sky_blue_flower"
+      },
+      {
+        "y": 180,
+        "model": "caelum:block/sky_blue_flower"
+      },
+      {
+        "y": 270,
+        "model": "caelum:block/sky_blue_flower"
+      }
+    ]
+  }
+}
