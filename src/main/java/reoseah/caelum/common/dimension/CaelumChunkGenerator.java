@@ -124,7 +124,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		}
 		depthTotal /= weightTotal;
 
-		BlockPos structurePos = LargeIslandHelper.locateIsland(this.getSeed(), new BlockPos(x * 4, 0, z * 4), 10);
+		BlockPos structurePos = LargeIslandHelper.locateIsland(this.getSeed(), new BlockPos(x * 2, 0, z * 2), 10);
 
 		int distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4));
 		int distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4));

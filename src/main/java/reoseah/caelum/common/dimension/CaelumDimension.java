@@ -14,16 +14,11 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.source.FixedBiomeSource;
-import net.minecraft.world.biome.source.FixedBiomeSourceConfig;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.caelum.Caelum;
-import reoseah.caelum.common.CaelumBiomes;
-import reoseah.caelum.common.CaelumFeatures;
 
 public class CaelumDimension extends Dimension {
 	public CaelumDimension(World world, DimensionType type) {
@@ -37,8 +32,8 @@ public class CaelumDimension extends Dimension {
 
 	@Override
 	public ChunkGenerator<?> createChunkGenerator() {
-		return new CaelumChunkGenerator(world,
-				new FixedBiomeSource(new FixedBiomeSourceConfig(world.getSeed()).setBiome(CaelumBiomes.BARREN_FOREST)),
+		return new CaelumChunkGenerator(this.world,
+				new CaelumBiomeSource(this.world.getSeed()),
 				new CaelumChunkGeneratorConfig());
 	}
 
