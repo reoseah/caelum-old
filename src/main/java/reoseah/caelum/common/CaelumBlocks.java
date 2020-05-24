@@ -16,10 +16,11 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.Caelum;
 import reoseah.caelum.common.blocks.BarleyBlock;
-import reoseah.caelum.common.blocks.ModStairsBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumFlowerBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
+import reoseah.caelum.common.blocks.CaelumSproutsBlock;
+import reoseah.caelum.common.blocks.ModStairsBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 
@@ -46,7 +47,8 @@ public class CaelumBlocks {
 	public static final Block SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(new SkyrootSaplingGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
 	public static final Block DWARF_SKYROOT_SAPLING = new SkyrootSaplingBlock(new SkyrootSaplingGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
 
-	public static final Block SKY_BLUE_FLOWER = new CaelumFlowerBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
+	public static final Block CAELUM_SPROUTS = new CaelumSproutsBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
+	public static final Block SKY_BLUE_FLOWER = new CaelumFlowerBlock(FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS).build());
 
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block SKYROOT_STAIRS = new ModStairsBlock(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
@@ -77,6 +79,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:silver_skyroot_sapling", SILVER_SKYROOT_SAPLING);
 		Registry.register(Registry.BLOCK, "caelum:dwarf_skyroot_sapling", DWARF_SKYROOT_SAPLING);
 
+		Registry.register(Registry.BLOCK, "caelum:caelum_sprouts", CAELUM_SPROUTS);
 		Registry.register(Registry.BLOCK, "caelum:sky_blue_flower", SKY_BLUE_FLOWER);
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_planks", SKYROOT_PLANKS);
@@ -106,6 +109,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:silver_skyroot_sapling", new BlockItem(SILVER_SKYROOT_SAPLING, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_sapling", new BlockItem(DWARF_SKYROOT_SAPLING, new Item.Settings().group(Caelum.GROUP)));
 
+		Registry.register(Registry.ITEM, "caelum:caelum_sprouts", new BlockItem(CAELUM_SPROUTS, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:sky_blue_flower", new BlockItem(SKY_BLUE_FLOWER, new Item.Settings().group(Caelum.GROUP)));
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(SKYROOT_PLANKS, new Item.Settings().group(Caelum.GROUP)));

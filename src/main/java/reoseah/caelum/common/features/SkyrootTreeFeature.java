@@ -6,11 +6,14 @@ import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
+import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.ModifiableTestableWorld;
+import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
 public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig> {
 	public SkyrootTreeFeature(Function<Dynamic<?>, ? extends SkyrootFeatureConfig> function) {
@@ -49,5 +52,22 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 				}
 			}
 		}
+	}
+
+	protected boolean setLogBlockState(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, BlockBox box, TreeFeatureConfig config) {
+		if (!isAirOrLeaves(world, pos) && !isAnyPlant(world, pos) && !isWater(world, pos)) {
+			return false;
+		} else {
+			this.setBlockState(world, pos, config.trunkProvider.getBlockState(random, pos), box);
+			logPositions.add(pos.toImmutable());
+			return true;
+		}
+	}
+
+	public static boolean isAnyPlant(TestableWorld world, BlockPos pos) {
+		return world.testBlockState(pos, (state) -> {
+			Material material = state.getMaterial();
+			return material == Material.PLANT || material == Material.REPLACEABLE_PLANT;
+		});
 	}
 }

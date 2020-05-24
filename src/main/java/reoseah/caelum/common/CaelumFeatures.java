@@ -30,7 +30,7 @@ public class CaelumFeatures {
 	public static final SurfaceBuilder<TernarySurfaceConfig> BARREN_SURFACE = new BarrenSurfaceBuilder(TernarySurfaceConfig::deserialize);
 
 	public static final Decorator<CountExtraChanceDecoratorConfig> EXPOSED_AERRACK_DECORATOR = new ExposedAerrackDecorator(CountExtraChanceDecoratorConfig::deserialize);
-	public static final Decorator<ChanceDecoratorConfig> SKYLAND_TREE_DECORATOR = new SkylandTreeDecorator(ChanceDecoratorConfig::deserialize);
+	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new SkylandTreeDecorator(ChanceDecoratorConfig::deserialize);
 
 	public static final Feature<TreeFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(TreeFeatureConfig::deserialize);
@@ -48,7 +48,7 @@ public class CaelumFeatures {
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:barren", CaelumFeatures.BARREN_SURFACE);
 
 		Registry.register(Registry.DECORATOR, "caelum:exposed_aerrack", CaelumFeatures.EXPOSED_AERRACK_DECORATOR);
-		Registry.register(Registry.DECORATOR, "caelum:skyland_tree", CaelumFeatures.SKYLAND_TREE_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:caelum_tree", CaelumFeatures.CAELUM_TREE_DECORATOR);
 
 		Registry.register(Registry.FEATURE, "caelum:ground_bush", SKYROOT_GROUND_BUSH);
 		Registry.register(Registry.FEATURE, "caelum:tall_bush", SKYROOT_TALL_BUSH);
