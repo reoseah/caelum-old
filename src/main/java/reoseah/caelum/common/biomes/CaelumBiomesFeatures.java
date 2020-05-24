@@ -16,7 +16,6 @@ import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
 import net.minecraft.world.gen.feature.SpringFeatureConfig;
@@ -125,10 +124,6 @@ public abstract class CaelumBiomesFeatures {
 		ConfiguredDecorator<?> bushDecorator = Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(2, 0.1F, 1));
 
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, bushSelector.createDecoratedFeature(bushDecorator));
-	}
-
-	public static final void addSkyStructures(Biome biome) {
-		biome.addStructureFeature(CaelumFeatures.LARGE_ISLAND.configure(FeatureConfig.DEFAULT));
 	}
 
 	public static final void addSkyGrass(Biome biome) {

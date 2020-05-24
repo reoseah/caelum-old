@@ -92,9 +92,7 @@ public class CaelumDimension extends Dimension {
 	public static TeleportTarget placeEntity(Entity entity, ServerWorld world, Direction dim, double offsetX, double offsetZ) {
 		BlockPos entityPos = entity.getSenseCenterPos();
 
-		BlockPos structurePos = CaelumFeatures.LARGE_ISLAND.locateStructure(
-				(IWorld) world, world.getChunkManager().getChunkGenerator(),
-				entityPos, 100, false);
+		BlockPos structurePos = LargeIslandHelper.locateIsland(world.getSeed(), entityPos, 100);
 
 		int surfaceY = world
 				.getChunk(structurePos.getX() >> 4, structurePos.getZ() >> 4)

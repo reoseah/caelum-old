@@ -29,7 +29,6 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 		CaelumBiomesFeatures.addBarrensVegetation(this);
 		CaelumBiomesFeatures.addSkyForestTrees(this);
 		CaelumBiomesFeatures.addSkyGrass(this);
-		CaelumBiomesFeatures.addSkyStructures(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 	}
 

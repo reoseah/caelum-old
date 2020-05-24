@@ -25,6 +25,13 @@ public class CaelumItems {
 	public static final Item SKYROOT_PICKAXE = new ModPickaxeItem(CaelumToolMaterials.SKYROOT, 1, -2.8F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_AXE = new ModAxeItem(CaelumToolMaterials.SKYROOT, 6.0F, -3.2F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_HOE = new ModHoeItem(CaelumToolMaterials.SKYROOT, 0, -3.0F, new Item.Settings().group(Caelum.GROUP));
+
+	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item AERRACK_SHOVEL = new ShovelItem(CaelumToolMaterials.AERRACK, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item AERRACK_PICKAXE = new ModPickaxeItem(CaelumToolMaterials.AERRACK, 1, -2.8F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item AERRACK_AXE = new ModAxeItem(CaelumToolMaterials.AERRACK, 7.0F, -3.2F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item AERRACK_HOE = new ModHoeItem(CaelumToolMaterials.AERRACK, -1, -2.0F, new Item.Settings().group(Caelum.GROUP));
+
 	public static final Item CERUCLASE_SWORD = new SwordItem(CaelumToolMaterials.CERUCLASE, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_SHOVEL = new ShovelItem(CaelumToolMaterials.CERUCLASE, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_PICKAXE = new ModPickaxeItem(CaelumToolMaterials.CERUCLASE, 1, -2.8F, new Item.Settings().group(Caelum.GROUP));
@@ -48,6 +55,12 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_pickaxe", SKYROOT_PICKAXE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_axe", SKYROOT_AXE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_hoe", SKYROOT_HOE);
+		
+		Registry.register(Registry.ITEM, "caelum:aerrack_sword", AERRACK_SWORD);
+		Registry.register(Registry.ITEM, "caelum:aerrack_shovel", AERRACK_SHOVEL);
+		Registry.register(Registry.ITEM, "caelum:aerrack_pickaxe", AERRACK_PICKAXE);
+		Registry.register(Registry.ITEM, "caelum:aerrack_axe", AERRACK_AXE);
+		Registry.register(Registry.ITEM, "caelum:aerrack_hoe", AERRACK_HOE);
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase_sword", CERUCLASE_SWORD);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_shovel", CERUCLASE_SHOVEL);

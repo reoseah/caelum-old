@@ -13,9 +13,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
-import reoseah.caelum.common.CaelumFeatures;
 import reoseah.caelum.common.biomes.FloatingIslandsBiome;
-import reoseah.caelum.common.structures.LargeIslandStructureFeature;
 
 public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGeneratorConfig> {
 	private static final float[] KERNEL = Util.make(new float[25], values -> {
@@ -26,13 +24,16 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		}
 	});
 
+	public static final int VERTICAL_RESOLUTION = 4;
+	public static final int HORIZONTAL_RESOLUTION = 8;
+
 	// same as ones in parent, because they are private
 	protected final OctavePerlinNoiseSampler noise1;
 	protected final OctavePerlinNoiseSampler noise2;
 	protected final OctavePerlinNoiseSampler noiseMask;
 
 	public CaelumChunkGenerator(IWorld world, BiomeSource biomeSource, CaelumChunkGeneratorConfig config) {
-		super(world, biomeSource, 4, 8, 128, config, true);
+		super(world, biomeSource, VERTICAL_RESOLUTION, HORIZONTAL_RESOLUTION, 128, config, true);
 
 		this.noise1 = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-15, 0));
 		this.noise2 = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-15, 0));
@@ -46,7 +47,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		double minHeight = this.method_16410();
 
 		for (int y = 0; y < this.getNoiseSizeY(); ++y) {
-			double value = this.empyreansSampleNoise(x, y, z, d, e, f, g);
+			double value = this.customSampleNoise(x, y, z, d, e, f, g);
 			value -= this.computeNoiseModifier(pointInfo, y);
 			if (y > maxHeight) {
 				value = MathHelper.clampedLerp(value, j, (y - maxHeight) / i);
@@ -58,8 +59,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		}
 	}
 
-	// same as SurfaceChunkGenerator#sampleNoise
-	protected double empyreansSampleNoise(int x, int y, int z, double scaleXZ, double scaleY, double maskScaleXZ, double maskScaleY) {
+	protected double customSampleNoise(int x, int y, int z, double scaleXZ, double scaleY, double maskScaleXZ, double maskScaleY) {
 		double sample1 = 0.0D;
 		double sample2 = 0.0D;
 		double maskSample = 0.0D;
@@ -124,13 +124,13 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		}
 		depthTotal /= weightTotal;
 
-		BlockPos structurePos = ((LargeIslandStructureFeature) CaelumFeatures.LARGE_ISLAND).locateStructure(this.world, this, new BlockPos(x * 4, 0, z * 4), 100, false);
+		BlockPos structurePos = LargeIslandHelper.locateIsland(this.getSeed(), new BlockPos(x * 4, 0, z * 4), 10);
 
 		int distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4));
 		int distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4));
 
 		double structureCoeff = distX * distX + distZ * distZ;
-		
+
 		return new PointInfo(depthTotal, structureCoeff);
 	}
 

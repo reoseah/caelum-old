@@ -7,7 +7,6 @@ import com.mojang.datafixers.Dynamic;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;

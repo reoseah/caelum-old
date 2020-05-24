@@ -5,7 +5,6 @@ import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
-import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
@@ -23,7 +22,6 @@ import reoseah.caelum.common.features.SkyrootFeatureConfig;
 import reoseah.caelum.common.features.SkyrootGroundBushFeature;
 import reoseah.caelum.common.features.SkyrootTallBushFeature;
 import reoseah.caelum.common.features.SkyrootTreeFeature;
-import reoseah.caelum.common.structures.LargeIslandStructureFeature;
 import reoseah.caelum.common.surface_builders.BarrenSurfaceBuilder;
 import reoseah.caelum.common.surface_builders.CaelumSurfaceBuilder;
 
@@ -42,8 +40,6 @@ public class CaelumFeatures {
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 
-	public static final LargeIslandStructureFeature LARGE_ISLAND = new LargeIslandStructureFeature(DefaultFeatureConfig::deserialize);
-
 	public static void register() {
 		Registry.register(Registry.CHUNK_GENERATOR_TYPE, "caelum:sky", new CaelumChunkGeneratorType(false, CaelumChunkGeneratorConfig::new));
 
@@ -60,9 +56,5 @@ public class CaelumFeatures {
 		Registry.register(Registry.FEATURE, "caelum:dwarf_sky_tree", DWARF_SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
 		Registry.register(Registry.FEATURE, "caelum:vegetation", CAELUM_VEGETATION);
-
-		Registry.register(Registry.STRUCTURE_FEATURE, "caelum:large_island", LARGE_ISLAND);
-		Feature.STRUCTURES.put("large_island", LARGE_ISLAND);
 	}
-
 }
