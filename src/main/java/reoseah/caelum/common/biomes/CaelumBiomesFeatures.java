@@ -13,14 +13,13 @@ import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
+import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
-import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.SpringFeatureConfig;
-import net.minecraft.world.gen.placer.SimpleBlockPlacer;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
@@ -55,11 +54,10 @@ public abstract class CaelumBiomesFeatures {
 	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
 	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
 
-	public static final RandomPatchFeatureConfig CAELUM_SPROUTS = new RandomPatchFeatureConfig.Builder(
+	public static final BlockPileFeatureConfig CAELUM_VEGETATION = new BlockPileFeatureConfig(
 			new WeightedBlockStateProvider()
 					.addState(CaelumBlocks.CAELUM_SPROUTS.getDefaultState(), 9)
-					.addState(CaelumBlocks.SKY_BLUE_FLOWER.getDefaultState(), 1),
-			new SimpleBlockPlacer()).tries(32).build();
+					.addState(CaelumBlocks.SKY_BLUE_FLOWER.getDefaultState(), 1));
 
 	public static final AerrackOreConfig CERUCLASE_ORE = new AerrackOreConfig(CaelumBlocks.CERUCLASE_ORE.getDefaultState(), 9);
 
@@ -135,8 +133,8 @@ public abstract class CaelumBiomesFeatures {
 
 	public static final void addSkyGrass(Biome biome) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-				Feature.RANDOM_PATCH
-						.configure(CAELUM_SPROUTS)
+				CaelumFeatures.CAELUM_VEGETATION
+						.configure(CAELUM_VEGETATION)
 						.createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE
 								.configure(new CountDecoratorConfig(3))));
 	}

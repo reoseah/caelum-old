@@ -4,6 +4,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
@@ -15,6 +16,7 @@ import reoseah.caelum.common.dimension.CaelumChunkGeneratorConfig;
 import reoseah.caelum.common.dimension.CaelumChunkGeneratorType;
 import reoseah.caelum.common.features.AerrackOreConfig;
 import reoseah.caelum.common.features.AerrackOreFeature;
+import reoseah.caelum.common.features.CaelumVegetationFeature;
 import reoseah.caelum.common.features.DwarfSkyrootTreeFeature;
 import reoseah.caelum.common.features.SkyrootBushWithSoilFeature;
 import reoseah.caelum.common.features.SkyrootFeatureConfig;
@@ -38,6 +40,7 @@ public class CaelumFeatures {
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
+	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 
 	public static final LargeIslandStructureFeature LARGE_ISLAND = new LargeIslandStructureFeature(DefaultFeatureConfig::deserialize);
 
@@ -56,6 +59,7 @@ public class CaelumFeatures {
 		Registry.register(Registry.FEATURE, "caelum:bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
 		Registry.register(Registry.FEATURE, "caelum:dwarf_sky_tree", DWARF_SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
+		Registry.register(Registry.FEATURE, "caelum:vegetation", CAELUM_VEGETATION);
 
 		Registry.register(Registry.STRUCTURE_FEATURE, "caelum:large_island", LARGE_ISLAND);
 		Feature.STRUCTURES.put("large_island", LARGE_ISLAND);
