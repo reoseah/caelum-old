@@ -16,6 +16,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.Caelum;
 import reoseah.caelum.common.blocks.BarleyBlock;
+import reoseah.caelum.common.blocks.ModCraftingTableBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumFlowerBlock;
 import reoseah.caelum.common.blocks.CaelumFlowersBlock;
@@ -56,6 +57,8 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_STAIRS = new ModStairsBlock(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 
+	public static final Block CAELUM_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
+
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
 	public static void register() {
@@ -88,6 +91,9 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_planks", SKYROOT_PLANKS);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_stairs", SKYROOT_STAIRS);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
+
+		Registry.register(Registry.BLOCK, "caelum:caelum_crafting_table", CAELUM_CRAFTING_TABLE);
+
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
@@ -119,5 +125,8 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(SKYROOT_PLANKS, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:skyroot_stairs", new BlockItem(SKYROOT_STAIRS, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(SKYROOT_SLAB, new Item.Settings().group(Caelum.GROUP)));
+
+		Registry.register(Registry.ITEM, "caelum:caelum_crafting_table", new BlockItem(CAELUM_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
+
 	}
 }
