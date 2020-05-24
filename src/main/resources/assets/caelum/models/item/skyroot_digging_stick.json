@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "caelum:item/skyroot_axe"
+    "layer0": "caelum:item/skyroot_digging_stick"
   }
 }

@@ -13,18 +13,15 @@ import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
-import reoseah.caelum.common.items.TeleporterItem;
+import reoseah.caelum.common.items.CelestialCrystalItem;
 
 public class CaelumItems {
-	public static final Item TELEPORTER = new TeleporterItem(new Item.Settings().group(null));
+	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(null));
 	public static final Item CERUCLASE = new Item(new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_STICK = new Item(new Item.Settings().group(Caelum.GROUP));
 
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item SKYROOT_SHOVEL = new ShovelItem(CaelumToolMaterials.SKYROOT, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item SKYROOT_PICKAXE = new ModPickaxeItem(CaelumToolMaterials.SKYROOT, 1, -2.8F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item SKYROOT_AXE = new ModAxeItem(CaelumToolMaterials.SKYROOT, 6.0F, -3.2F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item SKYROOT_HOE = new ModHoeItem(CaelumToolMaterials.SKYROOT, 0, -3.0F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item SKYROOT_DIGGING_STICK = new ShovelItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, new Item.Settings().group(Caelum.GROUP));
 
 	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item AERRACK_SHOVEL = new ShovelItem(CaelumToolMaterials.AERRACK, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
@@ -51,11 +48,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_sword", SKYROOT_SWORD);
-		Registry.register(Registry.ITEM, "caelum:skyroot_shovel", SKYROOT_SHOVEL);
-		Registry.register(Registry.ITEM, "caelum:skyroot_pickaxe", SKYROOT_PICKAXE);
-		Registry.register(Registry.ITEM, "caelum:skyroot_axe", SKYROOT_AXE);
-		Registry.register(Registry.ITEM, "caelum:skyroot_hoe", SKYROOT_HOE);
-		
+		Registry.register(Registry.ITEM, "caelum:skyroot_digging_stick", SKYROOT_DIGGING_STICK);
+
 		Registry.register(Registry.ITEM, "caelum:aerrack_sword", AERRACK_SWORD);
 		Registry.register(Registry.ITEM, "caelum:aerrack_shovel", AERRACK_SHOVEL);
 		Registry.register(Registry.ITEM, "caelum:aerrack_pickaxe", AERRACK_PICKAXE);

@@ -11,8 +11,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 import reoseah.caelum.Caelum;
 
-public class TeleporterItem extends Item {
-	public TeleporterItem(Item.Settings settings) {
+public class CelestialCrystalItem extends Item {
+	public CelestialCrystalItem(Item.Settings settings) {
 		super(settings);
 	}
 
