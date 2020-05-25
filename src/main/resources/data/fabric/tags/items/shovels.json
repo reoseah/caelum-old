@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "caelum:skyroot_digging_stick",
-    "caelum:aerrack_shovel",
-    "caelum:ceruclase_shovel"
+    "caelum:aerrack_shovel"
   ]
 }
