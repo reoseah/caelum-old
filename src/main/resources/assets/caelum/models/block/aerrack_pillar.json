@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "caelum:block/aerrack",
-    "side": "caelum:block/chiseled_aerrack"
+    "side": "caelum:block/aerrack_pillar"
   }
 }

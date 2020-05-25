@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "caelum:chiseled_aerrack"
+          "name": "caelum:aerrack_pillar"
         }
       ],
       "conditions": [

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "caelum:inlaid_aerrack_bricks"
+          "name": "caelum:caelum_crafting_table"
         }
       ],
       "conditions": [

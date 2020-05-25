@@ -10,10 +10,10 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import reoseah.caelum.common.CaelumBlocks;
 
-public class CaelumFlowersBlock extends PlantBlock {
+public class BlossomingCaelumSproutsBlock extends PlantBlock {
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 5.0D, 14.0D);
 
-	public CaelumFlowersBlock(Block.Settings settings) {
+	public BlossomingCaelumSproutsBlock(Block.Settings settings) {
 		super(settings);
 	}
 

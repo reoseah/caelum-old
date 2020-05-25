@@ -13,7 +13,7 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.SILVER_SKYROOT_SAPLING,
 				CaelumBlocks.DWARF_SKYROOT_SAPLING,
 				CaelumBlocks.CAELUM_SPROUTS,
-				CaelumBlocks.CAELUM_FLOWERS,
+				CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS,
 				CaelumBlocks.SKY_BLUE_FLOWER,
 				CaelumBlocks.BARLEY);
 	}

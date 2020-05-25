@@ -14,8 +14,8 @@
         }
     ],
     "textures": {
-        "particle": "caelum:block/chiseled_aerrack",
+        "particle": "caelum:block/aerrack_pillar",
         "end": "caelum:block/aerrack",
-		"side": "caelum:block/chiseled_aerrack"
+		"side": "caelum:block/aerrack_pillar"
     }
 }

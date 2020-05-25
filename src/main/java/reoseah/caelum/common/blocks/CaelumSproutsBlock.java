@@ -51,7 +51,7 @@ public class CaelumSproutsBlock extends PlantBlock implements Fertilizable {
 
 	@Override
 	public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-		BlockState newState = CaelumBlocks.CAELUM_FLOWERS.getDefaultState();
+		BlockState newState = CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS.getDefaultState();
 		if (newState.canPlaceAt(world, pos)) {
 			world.setBlockState(pos, newState);
 		}

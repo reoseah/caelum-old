@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BB",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "caelum:aerrack"
+    },
+    "B": {
+      "item": "caelum:aerrack_bricks"
+    }
+  },
+  "result": {
+    "item": "caelum:caelum_crafting_table"
+  }
+}

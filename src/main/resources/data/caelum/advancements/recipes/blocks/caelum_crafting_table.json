@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "caelum:blocks/caelum_crafting_table"
+    ]
+  },
+  "criteria": {
+    "has_aerrack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "caelum:aerrack"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "caelum:blocks/caelum_crafting_table"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_aerrack",
+      "has_the_recipe"
+    ]
+  ]
+}

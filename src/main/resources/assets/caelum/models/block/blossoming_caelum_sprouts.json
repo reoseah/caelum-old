@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "caelum:block/blossoming_caelum_sprouts"
+    }
+}

@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "caelum:block/inlaid_aerrack_bricks"
+        "all": "caelum:block/aerrack_lightstone"
     }
 }
