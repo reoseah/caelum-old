@@ -58,6 +58,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 
 	public static final Block CAELUM_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
+	public static final Block IMPROVED_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
@@ -93,6 +94,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_crafting_table", CAELUM_CRAFTING_TABLE);
+		Registry.register(Registry.BLOCK, "caelum:improved_crafting_table", IMPROVED_CRAFTING_TABLE);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 
@@ -127,6 +129,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(SKYROOT_SLAB, new Item.Settings().group(Caelum.GROUP)));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_crafting_table", new BlockItem(CAELUM_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.ITEM, "caelum:improved_crafting_table", new BlockItem(IMPROVED_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
 
 	}
 }
