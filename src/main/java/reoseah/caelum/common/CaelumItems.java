@@ -16,7 +16,7 @@ import reoseah.caelum.common.items.SkyrootBucketItem;
 import reoseah.caelum.common.items.CelestialCrystalItem;
 
 public class CaelumItems {
-	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(null));
+	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE = new Item(new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_STICK = new Item(new Item.Settings().group(Caelum.GROUP));
 
@@ -42,7 +42,7 @@ public class CaelumItems {
 	public static final Item SKY_APPLE = new Item(new Item.Settings().group(Caelum.GROUP).food(FoodComponents.APPLE));
 
 	public static void register() {
-		Registry.register(Registry.ITEM, "caelum:teleporter", TELEPORTER);
+		Registry.register(Registry.ITEM, "caelum:celestial_crystal", TELEPORTER);
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
