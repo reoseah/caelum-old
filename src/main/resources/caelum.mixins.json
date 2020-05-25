@@ -6,7 +6,8 @@
     "FeatureMixin",
     "AbstractTreeFeatureMixin",
     "CropBlockMixin",
-    "CraftingScreenHandlerMixin"
+    "CraftingScreenHandlerMixin",
+    "ItemStackMixin"
   ],
   "client": [
     "client.BlockModelRendererMixin",

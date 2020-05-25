@@ -9,11 +9,13 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.Caelum;
 import reoseah.caelum.common.items.CaelumToolMaterials;
+import reoseah.caelum.common.items.CelestialCrystalItem;
+import reoseah.caelum.common.items.CeruclaseRockcutterItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
-import reoseah.caelum.common.items.CelestialCrystalItem;
+import reoseah.caelum.common.items.SkyrootDiggingStickItem;
 
 public class CaelumItems {
 	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(Caelum.GROUP));
@@ -21,7 +23,7 @@ public class CaelumItems {
 	public static final Item SKYROOT_STICK = new Item(new Item.Settings().group(Caelum.GROUP));
 
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item SKYROOT_DIGGING_STICK = new ShovelItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item SKYROOT_DIGGING_STICK = new SkyrootDiggingStickItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, new Item.Settings().group(Caelum.GROUP));
 
 	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item AERRACK_SHOVEL = new ShovelItem(CaelumToolMaterials.AERRACK, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
@@ -31,9 +33,10 @@ public class CaelumItems {
 
 	public static final Item CERUCLASE_SWORD = new SwordItem(CaelumToolMaterials.CERUCLASE, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_SHOVEL = new ShovelItem(CaelumToolMaterials.CERUCLASE, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item CERUCLASE_PICKAXE = new ModPickaxeItem(CaelumToolMaterials.CERUCLASE, 1, -2.8F, new Item.Settings().group(Caelum.GROUP));
+	public static final Item CERUCLASE_ROCKCUTTER = new CeruclaseRockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_AXE = new ModAxeItem(CaelumToolMaterials.CERUCLASE, 6.0F, -3.1F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_HOE = new ModHoeItem(CaelumToolMaterials.CERUCLASE, -2, -1.0F, new Item.Settings().group(Caelum.GROUP));
+
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, new Item.Settings().group(Caelum.GROUP));
 
@@ -58,7 +61,7 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase_sword", CERUCLASE_SWORD);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_shovel", CERUCLASE_SHOVEL);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_pickaxe", CERUCLASE_PICKAXE);
+		Registry.register(Registry.ITEM, "caelum:ceruclase_rockcutter", CERUCLASE_ROCKCUTTER);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_axe", CERUCLASE_AXE);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_hoe", CERUCLASE_HOE);
 

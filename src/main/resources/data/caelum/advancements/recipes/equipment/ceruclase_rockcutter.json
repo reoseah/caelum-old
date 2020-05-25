@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:skyroot_stick"
+      "caelum:materials/ceruclase_rockcutter"
     ]
   },
   "criteria": {
-    "has_stick": {
+    "has_ceruclase": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "caelum:skyroot"
+            "item": "caelum:ceruclase"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:skyroot_stick"
+        "recipe": "caelum:materials/skyroot_sword"
       }
     }
   },
   "requirements": [
     [
-      "has_stick",
+      "has_ceruclase",
       "has_the_recipe"
     ]
   ]
