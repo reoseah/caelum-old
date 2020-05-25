@@ -10,6 +10,7 @@ import net.minecraft.util.registry.Registry;
 import reoseah.caelum.Caelum;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
+import reoseah.caelum.common.items.CeruclaseDrawknifeItem;
 import reoseah.caelum.common.items.CeruclaseRockcutterItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
@@ -32,11 +33,9 @@ public class CaelumItems {
 	public static final Item AERRACK_HOE = new ModHoeItem(CaelumToolMaterials.AERRACK, -1, -2.0F, new Item.Settings().group(Caelum.GROUP));
 
 	public static final Item CERUCLASE_SWORD = new SwordItem(CaelumToolMaterials.CERUCLASE, 3, -2.4F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item CERUCLASE_SHOVEL = new ShovelItem(CaelumToolMaterials.CERUCLASE, 1.5F, -3.0F, new Item.Settings().group(Caelum.GROUP));
 	public static final Item CERUCLASE_ROCKCUTTER = new CeruclaseRockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item CERUCLASE_AXE = new ModAxeItem(CaelumToolMaterials.CERUCLASE, 6.0F, -3.1F, new Item.Settings().group(Caelum.GROUP));
-	public static final Item CERUCLASE_HOE = new ModHoeItem(CaelumToolMaterials.CERUCLASE, -2, -1.0F, new Item.Settings().group(Caelum.GROUP));
-
+	public static final Item CERUCLASE_DRAWKNIFE = new CeruclaseDrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, new Item.Settings().group(Caelum.GROUP));
+	
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, new Item.Settings().group(Caelum.GROUP));
 
@@ -60,10 +59,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:aerrack_hoe", AERRACK_HOE);
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase_sword", CERUCLASE_SWORD);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_shovel", CERUCLASE_SHOVEL);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_rockcutter", CERUCLASE_ROCKCUTTER);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_axe", CERUCLASE_AXE);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_hoe", CERUCLASE_HOE);
+		Registry.register(Registry.ITEM, "caelum:ceruclase_drawknife", CERUCLASE_DRAWKNIFE);
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
