@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.Caelum;
+import reoseah.caelum.common.Caelum;
 
 public class CaelumDimension extends Dimension {
 	public CaelumDimension(World world, DimensionType type) {

@@ -14,7 +14,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.Caelum;
 import reoseah.caelum.common.blocks.BarleyBlock;
 import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;

@@ -19,10 +19,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "reoseah.caelum.Caelum"
+      "reoseah.caelum.common.Caelum"
     ],
     "client": [
-      "reoseah.caelum.CaelumClient"
+      "reoseah.caelum.client.CaelumClient"
     ]
   },
   "mixins": [

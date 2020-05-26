@@ -7,7 +7,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.Caelum;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
 import reoseah.caelum.common.items.CeruclaseDrawknifeItem;

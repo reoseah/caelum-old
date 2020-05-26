@@ -15,7 +15,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
-import reoseah.caelum.Caelum;
+import reoseah.caelum.common.Caelum;
 
 public class CelestialCrystalItem extends Item {
 	public CelestialCrystalItem(Item.Settings settings) {
