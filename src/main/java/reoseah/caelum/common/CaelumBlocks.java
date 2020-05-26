@@ -16,12 +16,12 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.Caelum;
 import reoseah.caelum.common.blocks.BarleyBlock;
-import reoseah.caelum.common.blocks.ModCraftingTableBlock;
+import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumFlowerBlock;
-import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
 import reoseah.caelum.common.blocks.CaelumSproutsBlock;
+import reoseah.caelum.common.blocks.ModCraftingTableBlock;
 import reoseah.caelum.common.blocks.ModStairsBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
@@ -42,6 +42,8 @@ public class CaelumBlocks {
 	public static final Block CAELUM_FARMLAND = new CaelumFarmlandBlock(FabricBlockSettings.of(Material.EARTH).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS).build());
 
 	public static final Block SKYROOT_LOG = new LogBlock(MaterialColor.WOOD, FabricBlockSettings.copy(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES).build());
+	public static final Block STRIPPED_SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES).build());
+	
 	public static final Block SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
@@ -58,7 +60,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 
 	public static final Block CAELUM_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
-	public static final Block IMPROVED_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
+	public static final Block CELESTIAL_ALTAR = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
@@ -78,6 +80,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:caelum_farmland", CAELUM_FARMLAND);
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_log", SKYROOT_LOG);
+		Registry.register(Registry.BLOCK, "caelum:stripped_skyroot_log", STRIPPED_SKYROOT_LOG);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_leaves", SKYROOT_LEAVES);
 		Registry.register(Registry.BLOCK, "caelum:silver_skyroot_leaves", SILVER_SKYROOT_LEAVES);
 		Registry.register(Registry.BLOCK, "caelum:dwarf_skyroot_leaves", DWARF_SKYROOT_LEAVES);
@@ -94,7 +97,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_crafting_table", CAELUM_CRAFTING_TABLE);
-		Registry.register(Registry.BLOCK, "caelum:improved_crafting_table", IMPROVED_CRAFTING_TABLE);
+		Registry.register(Registry.BLOCK, "caelum:celestial_altar", CELESTIAL_ALTAR);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 
@@ -113,6 +116,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:caelum_farmland", new BlockItem(CAELUM_FARMLAND, new Item.Settings().group(Caelum.GROUP)));
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_log", new BlockItem(SKYROOT_LOG, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.ITEM, "caelum:stripped_skyroot_log", new BlockItem(STRIPPED_SKYROOT_LOG, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:skyroot_leaves", new BlockItem(SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:silver_skyroot_leaves", new BlockItem(SILVER_SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_leaves", new BlockItem(DWARF_SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
@@ -129,7 +133,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(SKYROOT_SLAB, new Item.Settings().group(Caelum.GROUP)));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_crafting_table", new BlockItem(CAELUM_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:improved_crafting_table", new BlockItem(IMPROVED_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.ITEM, "caelum:celestial_altar", new BlockItem(CELESTIAL_ALTAR, new Item.Settings().group(Caelum.GROUP)));
 
 	}
 }

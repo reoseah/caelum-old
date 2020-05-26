@@ -10,7 +10,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.AxeItem;
 import reoseah.caelum.common.CaelumBlocks;
 
@@ -21,7 +20,7 @@ public class AxeItemMixin {
 
 	static {
 		STRIPPED_BLOCKS = ImmutableMap.<Block, Block>builder().putAll(STRIPPED_BLOCKS)
-				.put(CaelumBlocks.SKYROOT_LOG, Blocks.OAK_LOG) // FIXME test
+				.put(CaelumBlocks.SKYROOT_LOG, CaelumBlocks.STRIPPED_SKYROOT_LOG)
 				.build();
 	}
 }

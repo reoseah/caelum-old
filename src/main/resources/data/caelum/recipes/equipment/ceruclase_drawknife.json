@@ -1,9 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "XX",
-    "X#",
-    " #"
+    "#X#"
   ],
   "key": {
     "#": {
@@ -14,6 +12,6 @@
     }
   },
   "result": {
-    "item": "caelum:ceruclase_axe"
+    "item": "caelum:ceruclase_drawknife"
   }
 }

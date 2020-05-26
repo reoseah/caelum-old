@@ -6,18 +6,17 @@
             "faces": {
                 "down":  { "texture": "#bottom", "cullface": "down" },
                 "up":    { "texture": "#top", "cullface": "up" },
-                "north": { "texture": "#front", "cullface": "north" },
-                "south": { "texture": "#front", "cullface": "south" },
+                "north": { "texture": "#side", "cullface": "north" },
+                "south": { "texture": "#side", "cullface": "south" },
                 "west":  { "texture": "#side", "cullface": "west" },
                 "east":  { "texture": "#side", "cullface": "east" }
             }
         }
     ],
     "textures": {
-        "particle": "caelum:block/improved_crafting_table_side",
-        "top": "caelum:block/caelum_crafting_table_top",
-		"front": "caelum:block/improved_crafting_table_front",
-		"side": "caelum:block/improved_crafting_table_side",
-		"bottom": "caelum:block/skyroot_planks"
+        "particle": "caelum:block/celestial_altar_side",
+        "top": "caelum:block/celestial_altar_top",
+		"side": "caelum:block/celestial_altar_side",
+		"bottom": "caelum:block/aerrack"
     }
 }
