@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "caelum:block/mossy_aerrack",
+    "side": "caelum:block/mossy_aerrack_pillar"
+  }
+}

@@ -22,6 +22,5 @@ public class DemonEntityRenderer extends MobEntityRenderer<DemonEntity, DemonMod
 	}
 
 	protected void scale(DemonEntity entity, MatrixStack matrices, float f) {
-		matrices.scale(0.9375F, 0.9375F, 0.9375F);
 	}
 }

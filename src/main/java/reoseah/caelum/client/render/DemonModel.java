@@ -24,22 +24,28 @@ public class DemonModel extends CompositeEntityModel<DemonEntity> implements Mod
 		this.head = new ModelPart(this).setTextureSize(width, height);
 		this.head.setPivot(0.0F, 0.0F, 0.0F);
 		this.head.setTextureOffset(0, 0).addCuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, scale);
+		// right horn
+		this.head.setTextureOffset(0, 34).addCuboid(-8, -9, -3, 4, 7, 6);
+		this.head.setTextureOffset(0, 47).addCuboid(-8, -5, -6, 4, 3, 3);
+		// left horn
+		this.head.setTextureOffset(20, 34).addCuboid(4, -9, -3, 4, 7, 6);
+		this.head.setTextureOffset(14, 47).addCuboid(4, -6, -6, 4, 3, 3);
 		this.torso = new ModelPart(this).setTextureSize(width, height);
 		this.torso.setPivot(0.0F, 0.0F, 0.0F);
 		this.torso.setTextureOffset(16, 16).addCuboid(-4.0F, 0.0F, -3.0F, 8.0F, 12.0F, 6.0F, scale);
 		this.robe = new ModelPart(this).setTextureSize(width, height);
-		this.robe.setPivot(0.0F, 0.0F, 0.0F);
-		this.robe.setTextureOffset(0, 34).addCuboid(-4.0F, 0.0F, -3.0F, 8.0F, 18.0F, 6.0F, scale + 0.5F);
-		this.torso.addChild(this.robe);
+//		this.robe.setPivot(0.0F, 0.0F, 0.0F);
+//		this.robe.setTextureOffset(0, 34).addCuboid(-4.0F, 0.0F, -3.0F, 8.0F, 18.0F, 6.0F, scale + 0.5F);
+//		this.torso.addChild(this.robe);
 		this.arms = new ModelPart(this).setTextureSize(width, height);
 		this.arms.setPivot(0.0F, 2.0F, 0.0F);
-		this.arms.setTextureOffset(44, 18).addCuboid(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, scale);
-		this.arms.setTextureOffset(44, 18).addCuboid(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, scale, true);
+		this.arms.setTextureOffset(44, 16).addCuboid(-8.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, scale);
+		this.arms.setTextureOffset(44, 16).addCuboid(4.0F, -2.0F, -2.0F, 4.0F, 8.0F, 4.0F, scale, true);
 		this.arms.setTextureOffset(40, 34).addCuboid(-4.0F, 2.0F, -2.0F, 8.0F, 4.0F, 4.0F, scale);
-		this.rightLeg = new ModelPart(this, 0, 18).setTextureSize(width, height);
+		this.rightLeg = new ModelPart(this, 0, 16).setTextureSize(width, height);
 		this.rightLeg.setPivot(-2.0F, 12.0F, 0.0F);
 		this.rightLeg.addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale);
-		this.leftLeg = new ModelPart(this, 0, 18).setTextureSize(width, height);
+		this.leftLeg = new ModelPart(this, 0, 16).setTextureSize(width, height);
 		this.leftLeg.mirror = true;
 		this.leftLeg.setPivot(2.0F, 12.0F, 0.0F);
 		this.leftLeg.addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, scale);

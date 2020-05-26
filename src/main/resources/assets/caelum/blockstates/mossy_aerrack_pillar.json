@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "caelum:block/mossy_aerrack_pillar_x"
+    },
+    "axis=y": {
+      "model": "caelum:block/mossy_aerrack_pillar"
+    },
+    "axis=z": {
+      "model": "caelum:block/mossy_aerrack_pillar_z"
+    }
+  }
+}
