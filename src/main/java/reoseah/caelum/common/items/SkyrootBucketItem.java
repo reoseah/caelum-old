@@ -1,12 +1,12 @@
 package reoseah.caelum.common.items;
 
-import net.minecraft.advancement.criterion.Criterions;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FluidDrainable;
 import net.minecraft.block.FluidFillable;
 import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.BaseFluid;
+import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
@@ -24,9 +24,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.RayTraceContext;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import reoseah.caelum.common.CaelumItems;
 
 public class SkyrootBucketItem extends Item {
@@ -60,7 +60,7 @@ public class SkyrootBucketItem extends Item {
 							player.playSound(FluidTags.LAVA.contains(fluid) ? SoundEvents.ITEM_BUCKET_FILL_LAVA : SoundEvents.ITEM_BUCKET_FILL, 1.0F, 1.0F);
 							ItemStack filled = this.getFilledStack(stack, player, CaelumItems.SKYROOT_WATER_BUCKET);
 							if (!world.isClient) {
-								Criterions.FILLED_BUCKET.trigger((ServerPlayerEntity) player, new ItemStack(fluid.getBucketItem()));
+								Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity) player, new ItemStack(fluid.getBucketItem()));
 							}
 
 							return new TypedActionResult<>(ActionResult.SUCCESS, filled);
@@ -76,7 +76,7 @@ public class SkyrootBucketItem extends Item {
 					if (this.placeFluid(player, world, pos2, blockHitResult)) {
 						this.onEmptied(world, stack, pos2);
 						if (player instanceof ServerPlayerEntity) {
-							Criterions.PLACED_BLOCK.trigger((ServerPlayerEntity) player, pos2, stack);
+							Criteria.PLACED_BLOCK.trigger((ServerPlayerEntity) player, pos2, stack);
 						}
 
 						player.incrementStat(Stats.USED.getOrCreateStat(this));
@@ -116,7 +116,7 @@ public class SkyrootBucketItem extends Item {
 	}
 
 	public boolean placeFluid(PlayerEntity player, World world, BlockPos pos, BlockHitResult hitResult) {
-		if (!(this.fluid instanceof BaseFluid)) {
+		if (!(this.fluid instanceof FlowableFluid)) {
 			return false;
 		} else {
 			BlockState state = world.getBlockState(pos);
@@ -135,7 +135,7 @@ public class SkyrootBucketItem extends Item {
 						world.addParticle(ParticleTypes.LARGE_SMOKE, x + Math.random(), y + Math.random(), z + Math.random(), 0.0D, 0.0D, 0.0D);
 					}
 				} else if (state.getBlock() instanceof FluidFillable && this.fluid == Fluids.WATER) {
-					if (((FluidFillable) state.getBlock()).tryFillWithFluid(world, pos, state, ((BaseFluid) this.fluid).getStill(false))) {
+					if (((FluidFillable) state.getBlock()).tryFillWithFluid(world, pos, state, ((FlowableFluid) this.fluid).getStill(false))) {
 						this.playEmptyingSound(player, world, pos);
 					}
 				} else {
@@ -154,7 +154,7 @@ public class SkyrootBucketItem extends Item {
 		}
 	}
 
-	protected void playEmptyingSound(PlayerEntity player, IWorld world, BlockPos pos) {
+	protected void playEmptyingSound(PlayerEntity player, WorldAccess world, BlockPos pos) {
 		SoundEvent sound = FluidTags.LAVA.contains(this.fluid) ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY;
 		world.playSound(player, pos, sound, SoundCategory.BLOCKS, 1.0F, 1.0F);
 	}

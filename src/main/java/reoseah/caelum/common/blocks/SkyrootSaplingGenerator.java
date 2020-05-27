@@ -4,17 +4,17 @@ import java.util.Random;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.feature.BranchedTreeFeatureConfig;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumFeatures;
 import reoseah.caelum.common.biomes.CaelumBiomesFeatures;
 
 public class SkyrootSaplingGenerator extends SaplingGenerator {
-	public boolean generate(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random random) {
+	public boolean generate(ServerWorld world, ChunkGenerator generator, BlockPos pos, BlockState state, Random random) {
 		ConfiguredFeature<?, ?> feature = null;
 		if (state.getBlock() == CaelumBlocks.SKYROOT_SAPLING) {
 			feature = random.nextInt(10) == 0
@@ -31,7 +31,7 @@ public class SkyrootSaplingGenerator extends SaplingGenerator {
 			return false;
 		}
 
-		if (feature.generate(world, generator, random, pos)) {
+		if (feature.generate(world, world.getStructureAccessor(), generator, random, pos)) {
 			world.setBlockState(pos, CaelumBlocks.SKYROOT_LOG.getDefaultState(), 4);
 			return true;
 		}
@@ -39,7 +39,7 @@ public class SkyrootSaplingGenerator extends SaplingGenerator {
 	}
 
 	@Override
-	protected ConfiguredFeature<BranchedTreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
+	protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
 		return null;
 	}
 }

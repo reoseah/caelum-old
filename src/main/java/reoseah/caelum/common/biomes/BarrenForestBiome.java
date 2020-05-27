@@ -1,6 +1,6 @@
 package reoseah.caelum.common.biomes;
 
-import net.minecraft.sound.SoundEvents;
+import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
@@ -20,7 +20,7 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 						.fogColor(0xC0D8FF)
 						.waterColor(0x3D57D6)
 						.waterFogColor(0x050533)
-						.moodSound(SoundEvents.AMBIENT_CAVE)
+						.moodSound(BiomeMoodSound.CAVE)
 						.build())
 				.parent(null));
 

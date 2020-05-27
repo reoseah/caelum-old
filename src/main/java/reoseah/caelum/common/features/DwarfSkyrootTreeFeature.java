@@ -1,18 +1,20 @@
 package reoseah.caelum.common.features;
 
 import java.util.Random;
-import java.util.Set;
 import java.util.function.Function;
 
 import com.mojang.datafixers.Dynamic;
 
-import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.ModifiableTestableWorld;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.gen.StructureAccessor;
+import net.minecraft.world.gen.chunk.ChunkGenerator;
+import net.minecraft.world.gen.feature.TreeFeature;
+import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
-public class DwarfSkyrootTreeFeature extends SkyrootTreeFeature {
+public class DwarfSkyrootTreeFeature extends TreeFeature {
 	public static final int[][] PATTERNS = {
 			{ 2, 1, 2, 1, 0 },
 			{ 1, 2, 1, 2, 1, 0 },
@@ -23,8 +25,8 @@ public class DwarfSkyrootTreeFeature extends SkyrootTreeFeature {
 	}
 
 	@Override
-	protected boolean generate(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, SkyrootFeatureConfig config) {
-		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
+	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator chunkGenerator, Random random, BlockPos pos, TreeFeatureConfig config) {
+			pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		Direction direction = Direction.fromHorizontal(random.nextInt(4));
 		if (!canTreeReplace(world, pos.up(2).offset(direction))) {
 			direction = Direction.fromHorizontal(random.nextInt(4));

@@ -4,12 +4,12 @@ import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 public class DemonEntity extends PassiveEntity {
 	public DemonEntity(EntityType<? extends PassiveEntity> type, World world) {
@@ -17,13 +17,13 @@ public class DemonEntity extends PassiveEntity {
 	}
 
 	@Override
-	public EntityData initialize(IWorld world, LocalDifficulty difficulty, SpawnType spawnType, /* @Nullable */ EntityData data, /* @Nullable */ CompoundTag tag) {
+	public EntityData initialize(WorldAccess world, LocalDifficulty difficulty, SpawnReason reason, /* @Nullable */ EntityData data, /* @Nullable */ CompoundTag tag) {
 		if (data == null) {
 			data = new PassiveEntity.PassiveData();
 			((PassiveEntity.PassiveData) data).setBabyAllowed(false);
 		}
 
-		return super.initialize(world, difficulty, spawnType, data, tag);
+		return super.initialize(world, difficulty, reason, data, tag);
 	}
 
 	@Override

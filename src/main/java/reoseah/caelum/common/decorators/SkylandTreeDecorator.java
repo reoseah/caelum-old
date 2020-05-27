@@ -9,9 +9,8 @@ import com.mojang.datafixers.Dynamic;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 
@@ -20,7 +19,7 @@ public class SkylandTreeDecorator extends Decorator<ChanceDecoratorConfig> {
 		super(function);
 	}
 
-	public Stream<BlockPos> getPositions(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random, ChanceDecoratorConfig config, BlockPos pos) {
+	public Stream<BlockPos> getPositions(WorldAccess world, ChunkGenerator chunkGenerator, Random random, ChanceDecoratorConfig config, BlockPos pos) {
 		return IntStream.range(0, 16).mapToObj((i) -> {
 			int j = i / 4;
 			int k = i % 4;

@@ -10,9 +10,9 @@ import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.ServerWorldAccess;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import reoseah.caelum.common.CaelumBlocks;
 
@@ -24,7 +24,7 @@ public class AerrackOreFeature extends Feature<AerrackOreConfig> {
 	}
 
 	@Override
-	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, AerrackOreConfig config) {
+	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator chunkGenerator, Random random, BlockPos pos, AerrackOreConfig config) {
 		float phase = random.nextFloat() * 3.1415927F;
 		float radius = config.size / 8.0F;
 		int size = MathHelper.ceil((config.size / 16.0F * 2.0F + 1.0F) / 2.0F);
@@ -51,7 +51,7 @@ public class AerrackOreFeature extends Feature<AerrackOreConfig> {
 		return false;
 	}
 
-	protected boolean generateVeinPart(IWorld world, Random random, AerrackOreConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int width, int height) {
+	protected boolean generateVeinPart(ServerWorldAccess world, Random random, AerrackOreConfig config, double startX, double endX, double startZ, double endZ, double startY, double endY, int x, int y, int z, int width, int height) {
 		int count = 0;
 		BitSet bitset = new BitSet(width * height * width);
 		BlockPos.Mutable pos = new BlockPos.Mutable();

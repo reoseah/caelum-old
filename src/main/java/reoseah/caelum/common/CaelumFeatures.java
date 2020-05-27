@@ -11,8 +11,6 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.decorators.ExposedAerrackDecorator;
 import reoseah.caelum.common.decorators.SkylandTreeDecorator;
-import reoseah.caelum.common.dimension.CaelumChunkGeneratorConfig;
-import reoseah.caelum.common.dimension.CaelumChunkGeneratorType;
 import reoseah.caelum.common.features.AerrackOreConfig;
 import reoseah.caelum.common.features.AerrackOreFeature;
 import reoseah.caelum.common.features.CaelumVegetationFeature;
@@ -41,8 +39,6 @@ public class CaelumFeatures {
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 
 	public static void register() {
-		Registry.register(Registry.CHUNK_GENERATOR_TYPE, "caelum:sky", new CaelumChunkGeneratorType(false, CaelumChunkGeneratorConfig::new));
-
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:default", CaelumFeatures.DEFAULT_SURFACE);
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:barren", CaelumFeatures.BARREN_SURFACE);
 

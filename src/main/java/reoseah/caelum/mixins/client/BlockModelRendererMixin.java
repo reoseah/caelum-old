@@ -27,7 +27,7 @@ public class BlockModelRendererMixin {
 	public void render(BlockRenderView world, BakedModel model, BlockState state, BlockPos pos, MatrixStack matrix, VertexConsumer vertexConsumer, boolean cull, Random random, long seed, int overlay, CallbackInfoReturnable<Boolean> ci) {
 		if (state.getBlock() == CaelumBlocks.AERRACK_LIGHTSTONE) {
 			boolean ao = MinecraftClient.isAmbientOcclusionEnabled();
-			Vec3d offset = state.getOffsetPos(world, pos);
+			Vec3d offset = state.getModelOffset(world, pos);
 			matrix.translate(offset.x, offset.y, offset.z);
 
 			try {

@@ -11,7 +11,9 @@ import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.ModifiableTestableWorld;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.TestableWorld;
+import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 
@@ -21,7 +23,7 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 	}
 
 	@Override
-	protected boolean generate(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, SkyrootFeatureConfig config) {
+	protected boolean generate(ServerWorldAccess world, StructureAccessor structures, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, SkyrootFeatureConfig config) {
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		if (isNaturalDirtOrGrass(world, pos)) {
 			pos = pos.up();

@@ -24,11 +24,11 @@ public class ItemStackMixin {
 	@Shadow
 	private @Final Item item;
 
-	@Inject(method = "getEnchantments", at = @At("RETURN"), cancellable = true)
+	@Inject(method = "fromTag", at = @At("RETURN"), cancellable = true)
 	public void getEnchantments(CallbackInfoReturnable<ListTag> ci) {
 		if (item == CaelumItems.CERUCLASE_ROCKCUTTER) {
 			ListTag tag = ci.getReturnValue();
-			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tag);
+			Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromTag(tag);
 			if (!enchantments.containsKey(Enchantments.SILK_TOUCH)) {
 				ListTag newtag = new ListTag();
 				newtag.addAll(tag);

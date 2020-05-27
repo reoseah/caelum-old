@@ -11,9 +11,8 @@ import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import reoseah.caelum.common.CaelumBlocks;
@@ -24,7 +23,7 @@ public class ExposedAerrackDecorator extends Decorator<CountExtraChanceDecorator
 	}
 
 	@Override
-	public Stream<BlockPos> getPositions(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, CountExtraChanceDecoratorConfig config, BlockPos pos) {
+	public Stream<BlockPos> getPositions(WorldAccess world, ChunkGenerator generator, Random random, CountExtraChanceDecoratorConfig config, BlockPos pos) {
 		int count = config.count;
 		if (random.nextFloat() < config.extraChance) {
 			count += config.extraCount;
