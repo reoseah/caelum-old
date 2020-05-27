@@ -8,7 +8,9 @@
     "CraftingScreenHandlerMixin",
     "ItemStackMixin",
     "AxeItemMixin",
-    "DimensionTypeMixin"
+    "DimensionTypeMixin",
+    "MinecraftServerMixin",
+    "PortalForcerMixin"
   ],
   "client": [
     "client.BlockModelRendererMixin",

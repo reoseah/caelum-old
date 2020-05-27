@@ -18,6 +18,7 @@ import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.VerticalBlockSample;
+import reoseah.caelum.common.CaelumBlocks;
 
 public class CaelumChunkGenerator extends ChunkGenerator {
 	public static final Codec<CaelumChunkGenerator> CODEC = PrimitiveCodec.LONG.fieldOf("seed")
@@ -53,7 +54,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		Heightmap oceanFloor = chunk.getHeightmap(Heightmap.Type.OCEAN_FLOOR_WG);
 		Heightmap surface = chunk.getHeightmap(Heightmap.Type.WORLD_SURFACE_WG);
 
-		BlockState state = Blocks.GRASS_BLOCK.getDefaultState();
+		BlockState state = CaelumBlocks.CAELUM_GRASS.getDefaultState();
 
 		for (int dx = 0; dx < 16; dx++) {
 			for (int dz = 0; dz < 16; dz++) {
@@ -73,7 +74,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 	public BlockView getColumnSample(int x, int z) {
 		BlockState[] blockStates = new BlockState[128];
 		Arrays.fill(blockStates, Blocks.AIR.getDefaultState());
-		blockStates[1] = Blocks.GRASS_BLOCK.getDefaultState();
+		blockStates[1] = CaelumBlocks.CAELUM_GRASS.getDefaultState();
 		return new VerticalBlockSample(blockStates);
 	}
 
