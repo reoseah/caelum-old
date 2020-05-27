@@ -22,6 +22,7 @@ import reoseah.caelum.common.blocks.CaelumGrassBlock;
 import reoseah.caelum.common.blocks.CaelumSproutsBlock;
 import reoseah.caelum.common.blocks.ModCraftingTableBlock;
 import reoseah.caelum.common.blocks.ModStairsBlock;
+import reoseah.caelum.common.blocks.SealstoneBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 
@@ -42,7 +43,7 @@ public class CaelumBlocks {
 
 	public static final Block SKYROOT_LOG = new LogBlock(MaterialColor.WOOD, FabricBlockSettings.copy(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES).build());
 	public static final Block STRIPPED_SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copy(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES).build());
-	
+
 	public static final Block SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES).build());
@@ -64,8 +65,12 @@ public class CaelumBlocks {
 	public static final Block MOSSY_AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
 	public static final Block MOSSY_AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block MOSSY_AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.copy(AERRACK_BRICKS).breakByTool(FabricToolTags.PICKAXES, 0).build());
-	
-	
+
+	public static final Block SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(8).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
+	public static final Block INERT_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
+	public static final Block MOSSY_SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(8).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
+	public static final Block INERT_MOSSY_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
+
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
 	public static void register() {
@@ -106,7 +111,12 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack", MOSSY_AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack_bricks", MOSSY_AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack_pillar", MOSSY_AERRACK_PILLAR);
-		
+
+		Registry.register(Registry.BLOCK, "caelum:sealstone", SEALSTONE);
+		Registry.register(Registry.BLOCK, "caelum:inert_sealstone", INERT_SEALSTONE);
+		Registry.register(Registry.BLOCK, "caelum:mossy_sealstone", MOSSY_SEALSTONE);
+		Registry.register(Registry.BLOCK, "caelum:inert_mossy_sealstone", INERT_MOSSY_SEALSTONE);
+
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
@@ -146,5 +156,10 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack", new BlockItem(MOSSY_AERRACK, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_bricks", new BlockItem(MOSSY_AERRACK_BRICKS, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_pillar", new BlockItem(MOSSY_AERRACK_PILLAR, new Item.Settings().group(Caelum.GROUP)));
+
+		Registry.register(Registry.ITEM, "caelum:sealstone", new BlockItem(SEALSTONE, new Item.Settings().group(null)));
+		Registry.register(Registry.ITEM, "caelum:inert_sealstone", new BlockItem(INERT_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.ITEM, "caelum:mossy_sealstone", new BlockItem(MOSSY_SEALSTONE, new Item.Settings().group(null)));
+		Registry.register(Registry.ITEM, "caelum:inert_mossy_sealstone", new BlockItem(INERT_MOSSY_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
 	}
 }

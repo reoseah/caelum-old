@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "caelum:block/sealstone"
+    },
+    "lit=true": {
+      "model": "caelum:block/sealstone_on"
+    }
+  }
+}
