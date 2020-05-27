@@ -7,14 +7,14 @@ import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.client.particle.ParticleTextureSheet;
 import net.minecraft.client.particle.SpriteBillboardParticle;
 import net.minecraft.client.particle.SpriteProvider;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
 
 public class GlowingDustParticle extends SpriteBillboardParticle {
 	private final SpriteProvider spriteProvider;
 
-	protected GlowingDustParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+	protected GlowingDustParticle(World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
 		super(world, x, y, z, velocityX, velocityY, velocityZ);
 		this.spriteProvider = spriteProvider;
 
@@ -77,7 +77,7 @@ public class GlowingDustParticle extends SpriteBillboardParticle {
 		}
 
 		@Override
-		public Particle createParticle(DefaultParticleType type, ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
+		public Particle createParticle(DefaultParticleType type, World world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
 			return new GlowingDustParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
 		}
 	}
