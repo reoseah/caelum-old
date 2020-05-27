@@ -1,8 +1,13 @@
 package reoseah.caelum.common.features;
 
+import java.util.Locale;
 import java.util.Random;
 
-public enum SkyrootTreeShape {
+import com.mojang.serialization.Codec;
+
+import net.minecraft.util.StringIdentifiable;
+
+public enum SkyrootTreeShape implements StringIdentifiable {
 	NORMAL {
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(6)) {
@@ -36,6 +41,8 @@ public enum SkyrootTreeShape {
 		}
 	};
 
+	public static final Codec<SkyrootTreeShape> CODEC = StringIdentifiable.method_28140(SkyrootTreeShape::values, SkyrootTreeShape::byName);
+
 	// Leaf shapes hard-coded from bottom to top
 	private static final int[] NORMAL1 = { 0, 0, 1, 2, 1, 2, 1, 0 };
 	private static final int[] NORMAL2 = { 0, 0, 2, 2, 1, 2, 1, 0 };
@@ -53,10 +60,20 @@ public enum SkyrootTreeShape {
 		return this.ordinal();
 	}
 
-	public static SkyrootTreeShape fromInteger(int value) {
-		if (value < 0 || value >= values().length) {
+	public String asString() {
+		return this.name().toLowerCase(Locale.ROOT);
+	}
+
+	public static SkyrootTreeShape byName(String name) {
+		switch (name) {
+		case "normal":
 			return NORMAL;
+		case "tall":
+			return TALL;
+		case "small":
+			return SMALL;
+		default:
+			return null;
 		}
-		return values()[value];
 	}
 }

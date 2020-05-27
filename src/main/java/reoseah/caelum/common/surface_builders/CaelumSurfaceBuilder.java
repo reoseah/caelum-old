@@ -1,9 +1,8 @@
 package reoseah.caelum.common.surface_builders;
 
 import java.util.Random;
-import java.util.function.Function;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,7 +13,7 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 
 public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
-	public CaelumSurfaceBuilder(Function<Dynamic<?>, ? extends TernarySurfaceConfig> deserialize) {
+	public CaelumSurfaceBuilder(Codec<TernarySurfaceConfig> deserialize) {
 		super(deserialize);
 	}
 

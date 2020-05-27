@@ -48,10 +48,10 @@ public abstract class CaelumBiomesFeatures {
 			CaelumBlocks.AERRACK.getDefaultState(),
 			CaelumBlocks.AERRACK.getDefaultState());
 
-	public static final SkyrootFeatureConfig SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, 5, SkyrootTreeShape.NORMAL);
-	public static final SkyrootFeatureConfig TALL_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, 7, SkyrootTreeShape.TALL);
-	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
-	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL);
+	public static final SkyrootFeatureConfig SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, SkyrootTreeShape.NORMAL);
+	public static final SkyrootFeatureConfig TALL_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, SkyrootTreeShape.TALL);
+	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, SkyrootTreeShape.SMALL);
+	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, SkyrootTreeShape.SMALL);
 
 	public static final BlockPileFeatureConfig CAELUM_VEGETATION = new BlockPileFeatureConfig(
 			new WeightedBlockStateProvider()

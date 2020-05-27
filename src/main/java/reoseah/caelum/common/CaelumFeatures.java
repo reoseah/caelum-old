@@ -6,7 +6,6 @@ import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.decorators.ExposedAerrackDecorator;
@@ -24,19 +23,19 @@ import reoseah.caelum.common.surface_builders.BarrenSurfaceBuilder;
 import reoseah.caelum.common.surface_builders.CaelumSurfaceBuilder;
 
 public class CaelumFeatures {
-	public static final SurfaceBuilder<TernarySurfaceConfig> DEFAULT_SURFACE = new CaelumSurfaceBuilder(TernarySurfaceConfig::deserialize);
-	public static final SurfaceBuilder<TernarySurfaceConfig> BARREN_SURFACE = new BarrenSurfaceBuilder(TernarySurfaceConfig::deserialize);
+	public static final SurfaceBuilder<TernarySurfaceConfig> DEFAULT_SURFACE = new CaelumSurfaceBuilder(TernarySurfaceConfig.CODEC);
+	public static final SurfaceBuilder<TernarySurfaceConfig> BARREN_SURFACE = new BarrenSurfaceBuilder(TernarySurfaceConfig.CODEC);
 
-	public static final Decorator<CountExtraChanceDecoratorConfig> EXPOSED_AERRACK_DECORATOR = new ExposedAerrackDecorator(CountExtraChanceDecoratorConfig::deserialize);
-	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new SkylandTreeDecorator(ChanceDecoratorConfig::deserialize);
+	public static final Decorator<CountExtraChanceDecoratorConfig> EXPOSED_AERRACK_DECORATOR = new ExposedAerrackDecorator(CountExtraChanceDecoratorConfig.CODEC);
+	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new SkylandTreeDecorator(ChanceDecoratorConfig.field_24980);
 
-	public static final Feature<TreeFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(TreeFeatureConfig::deserialize);
-	public static final Feature<TreeFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(TreeFeatureConfig::deserialize);
-	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
-	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
-	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
-	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
-	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig.CODEC);
+	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig.field_24873);
 
 	public static void register() {
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:default", CaelumFeatures.DEFAULT_SURFACE);

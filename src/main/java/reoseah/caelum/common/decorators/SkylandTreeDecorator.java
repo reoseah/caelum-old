@@ -1,11 +1,10 @@
 package reoseah.caelum.common.decorators;
 
 import java.util.Random;
-import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
@@ -15,7 +14,7 @@ import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 
 public class SkylandTreeDecorator extends Decorator<ChanceDecoratorConfig> {
-	public SkylandTreeDecorator(Function<Dynamic<?>, ? extends ChanceDecoratorConfig> function) {
+	public SkylandTreeDecorator(Codec<ChanceDecoratorConfig> function) {
 		super(function);
 	}
 

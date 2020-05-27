@@ -2,9 +2,8 @@ package reoseah.caelum.common.features;
 
 import java.util.BitSet;
 import java.util.Random;
-import java.util.function.Function;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
@@ -19,7 +18,7 @@ import reoseah.caelum.common.CaelumBlocks;
 public class AerrackOreFeature extends Feature<AerrackOreConfig> {
 	private static final Block AERRACK = CaelumBlocks.AERRACK;
 
-	public AerrackOreFeature(Function<Dynamic<?>, ? extends AerrackOreConfig> configDeserializer) {
+	public AerrackOreFeature(Codec<AerrackOreConfig> configDeserializer) {
 		super(configDeserializer);
 	}
 

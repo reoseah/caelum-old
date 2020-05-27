@@ -1,6 +1,6 @@
 package reoseah.caelum.common.dimension;
 
-import java.util.HashSet;
+import java.util.ArrayList;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
@@ -11,7 +11,7 @@ public class CaelumBiomeSource extends BiomeSource {
 	protected final long seed;
 	
 	public CaelumBiomeSource(long seed) {
-		super(new HashSet<>());
+		super(new ArrayList<>());
 		this.biomes.add(CaelumBiomes.BARREN_FOREST);
 		
 		this.seed = seed;

@@ -1,11 +1,10 @@
 package reoseah.caelum.common.decorators;
 
 import java.util.Random;
-import java.util.function.Function;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
@@ -18,7 +17,7 @@ import net.minecraft.world.gen.decorator.Decorator;
 import reoseah.caelum.common.CaelumBlocks;
 
 public class ExposedAerrackDecorator extends Decorator<CountExtraChanceDecoratorConfig> {
-	public ExposedAerrackDecorator(Function<Dynamic<?>, ? extends CountExtraChanceDecoratorConfig> deserialize) {
+	public ExposedAerrackDecorator(Codec<CountExtraChanceDecoratorConfig> deserialize) {
 		super(deserialize);
 	}
 

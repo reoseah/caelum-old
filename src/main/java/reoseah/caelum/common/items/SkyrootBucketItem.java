@@ -125,7 +125,7 @@ public class SkyrootBucketItem extends Item {
 			boolean replaceable = material.isReplaceable();
 			if (world.isAir(pos) || notSolid || replaceable
 					|| state.getBlock() instanceof FluidFillable && ((FluidFillable) state.getBlock()).canFillWithFluid(world, pos, state, this.fluid)) {
-				if (world.dimension.doesWaterVaporize() && FluidTags.WATER.contains(this.fluid)) {
+				if (world.getDimension().isUltrawarm() && FluidTags.WATER.contains(this.fluid)) {
 					int x = pos.getX();
 					int y = pos.getY();
 					int z = pos.getZ();

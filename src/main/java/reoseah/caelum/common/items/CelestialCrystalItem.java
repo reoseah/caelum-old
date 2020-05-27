@@ -2,7 +2,6 @@ package reoseah.caelum.common.items;
 
 import java.util.List;
 
-import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -25,11 +24,11 @@ public class CelestialCrystalItem extends Item {
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 		if (!world.isClient) {
-			DimensionType destination = player.world.dimension.getType() == Caelum.DIMENSION_TYPE
-					? DimensionType.OVERWORLD
+			DimensionType destination = player.world.getDimension() == Caelum.DIMENSION_TYPE
+					? DimensionType.getDefaultDimensionType()
 					: Caelum.DIMENSION_TYPE;
 
-			FabricDimensions.teleport(player, destination);
+//			FabricDimensions.teleport(player, destination);
 		}
 		return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand));
 	}

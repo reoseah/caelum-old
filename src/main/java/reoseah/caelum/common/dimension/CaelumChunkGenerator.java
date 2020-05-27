@@ -8,14 +8,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
-import net.minecraft.world.IWorld;
+import net.minecraft.world.WorldAccess;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
 import reoseah.caelum.common.biomes.FloatingIslandsBiome;
 
-public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGeneratorConfig> {
+public class CaelumChunkGenerator extends SurfaceChunkGenerator {
 	private static final float[] KERNEL = Util.make(new float[25], values -> {
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
@@ -32,7 +32,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 	protected final OctavePerlinNoiseSampler noise2;
 	protected final OctavePerlinNoiseSampler noiseMask;
 
-	public CaelumChunkGenerator(IWorld world, BiomeSource biomeSource, CaelumChunkGeneratorConfig config) {
+	public CaelumChunkGenerator(WorldAccess world, BiomeSource biomeSource) {
 		super(world, biomeSource, VERTICAL_RESOLUTION, HORIZONTAL_RESOLUTION, 128, config, true);
 
 		this.noise1 = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-15, 0));

@@ -1,9 +1,8 @@
 package reoseah.caelum.common.features;
 
 import java.util.Random;
-import java.util.function.Function;
 
-import com.mojang.datafixers.Dynamic;
+import com.mojang.serialization.Codec;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,7 +16,7 @@ import net.minecraft.world.gen.feature.Feature;
 import reoseah.caelum.common.CaelumBlocks;
 
 public class CaelumVegetationFeature extends Feature<BlockPileFeatureConfig> {
-	public CaelumVegetationFeature(Function<Dynamic<?>, ? extends BlockPileFeatureConfig> function) {
+	public CaelumVegetationFeature(Codec<BlockPileFeatureConfig> function) {
 		super(function);
 	}
 
