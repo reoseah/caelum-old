@@ -101,120 +101,112 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 	@Override
 	public void buildSurface(ChunkRegion region, Chunk chunk) {
 		ChunkPos chunkPos = chunk.getPos();
-		int i = chunkPos.x;
-		int j = chunkPos.z;
-		ChunkRandom chunkRandom = new ChunkRandom();
-		chunkRandom.setTerrainSeed(i, j);
-		ChunkPos chunkPos2 = chunk.getPos();
-		int k = chunkPos2.getStartX();
-		int l = chunkPos2.getStartZ();
-		BlockPos.Mutable mutable = new BlockPos.Mutable();
+		int chunkX = chunkPos.x;
+		int chunkZ = chunkPos.z;
+		ChunkRandom random = new ChunkRandom();
+		random.setTerrainSeed(chunkX, chunkZ);
 
-		for (int m = 0; m < 16; ++m) {
-			for (int n = 0; n < 16; ++n) {
-				int o = k + m;
-				int p = l + n;
-				int q = chunk.sampleHeightmap(Heightmap.Type.WORLD_SURFACE_WG, m, n) + 1;
-				double e = this.surfaceDepthNoise.sample((double) o * 0.0625D, (double) p * 0.0625D, 0.0625D, (double) m * 0.0625D) * 15.0D;
-				region.getBiome(mutable.set(k + m, q, l + n))
-						.buildSurface(chunkRandom, chunk, o, p, q, e, CaelumBlocks.AERRACK.getDefaultState(), Blocks.WATER.getDefaultState(), this.getSeaLevel(), region.getSeed());
+		int startX = chunkPos.getStartX();
+		int startZ = chunkPos.getStartZ();
+		BlockPos.Mutable pos = new BlockPos.Mutable();
+
+		for (int dX = 0; dX < 16; ++dX) {
+			for (int dZ = 0; dZ < 16; ++dZ) {
+				int x = startX + dX;
+				int z = startZ + dZ;
+				int heightmap = chunk.sampleHeightmap(Heightmap.Type.WORLD_SURFACE_WG, dX, dZ) + 1;
+				double surfaceDepth = this.surfaceDepthNoise.sample(x * 0.0625D, z * 0.0625D, 0.0625D, dX * 0.0625D) * 15.0D;
+				region.getBiome(pos.set(startX + dX, heightmap, startZ + dZ))
+						.buildSurface(random, chunk, x, z, heightmap, surfaceDepth, CaelumBlocks.AERRACK.getDefaultState(), Blocks.WATER.getDefaultState(), this.getSeaLevel(), region.getSeed());
 			}
 		}
 	}
 
-	public void populateNoise(WorldAccess world, StructureAccessor accessor, Chunk chunk) {
-		int i = this.getSeaLevel();
+	public void populateNoise(WorldAccess world, StructureAccessor structures, Chunk chunk) {
 		ChunkPos chunkPos = chunk.getPos();
-		int j = chunkPos.x;
-		int k = chunkPos.z;
-		int l = j << 4;
-		int m = k << 4;
+		int chunkX = chunkPos.x;
+		int chunkZ = chunkPos.z;
+		int startX = chunkX << 4;
+		int startZ = chunkZ << 4;
 
-		double[][][] ds = new double[2][this.noiseSizeZ + 1][this.noiseSizeY + 1];
+		double[][][] buffers = new double[2][this.noiseSizeZ + 1][this.noiseSizeY + 1];
 
-		for (int q = 0; q < this.noiseSizeZ + 1; ++q) {
-			ds[0][q] = new double[this.noiseSizeY + 1];
-			this.sampleNoiseColumn(ds[0][q], j * this.noiseSizeX, k * this.noiseSizeZ + q);
-			ds[1][q] = new double[this.noiseSizeY + 1];
+		for (int z = 0; z < this.noiseSizeZ + 1; ++z) {
+			buffers[0][z] = new double[this.noiseSizeY + 1];
+			this.sampleNoiseColumn(buffers[0][z], chunkX * this.noiseSizeX, chunkZ * this.noiseSizeZ + z);
+			buffers[1][z] = new double[this.noiseSizeY + 1];
 		}
 
 		ProtoChunk protoChunk = (ProtoChunk) chunk;
-		Heightmap heightmap = protoChunk.getHeightmap(Heightmap.Type.OCEAN_FLOOR_WG);
-		Heightmap heightmap2 = protoChunk.getHeightmap(Heightmap.Type.WORLD_SURFACE_WG);
-		BlockPos.Mutable mutable = new BlockPos.Mutable();
+		Heightmap oceanFloorMap = protoChunk.getHeightmap(Heightmap.Type.OCEAN_FLOOR_WG);
+		Heightmap worldSurfaceMap = protoChunk.getHeightmap(Heightmap.Type.WORLD_SURFACE_WG);
+		BlockPos.Mutable pos = new BlockPos.Mutable();
 
-		for (int r = 0; r < this.noiseSizeX; ++r) {
-			int t;
-			for (t = 0; t < this.noiseSizeZ + 1; ++t) {
-				this.sampleNoiseColumn(ds[1][t], j * this.noiseSizeX + r + 1, k * this.noiseSizeZ + t);
+		for (int regionX = 0; regionX < this.noiseSizeX; ++regionX) {
+			for (int regionZ = 0; regionZ < this.noiseSizeZ + 1; ++regionZ) {
+				this.sampleNoiseColumn(buffers[1][regionZ], chunkX * this.noiseSizeX + regionX + 1, chunkZ * this.noiseSizeZ + regionZ);
 			}
 
-			for (t = 0; t < this.noiseSizeZ; ++t) {
+			for (int regionZ = 0; regionZ < this.noiseSizeZ; ++regionZ) {
 				ChunkSection chunkSection = protoChunk.getSection(15);
 				chunkSection.lock();
 
-				for (int u = this.noiseSizeY - 1; u >= 0; --u) {
-					double d = ds[0][t][u];
-					double e = ds[0][t + 1][u];
-					double f = ds[1][t][u];
-					double g = ds[1][t + 1][u];
-					double h = ds[0][t][u + 1];
-					double v = ds[0][t + 1][u + 1];
-					double w = ds[1][t][u + 1];
-					double x = ds[1][t + 1][u + 1];
+				for (int regionY = this.noiseSizeY - 1; regionY >= 0; --regionY) {
+					double noiseNW = buffers[0][regionZ][regionY];
+					double noiseSW = buffers[0][regionZ + 1][regionY];
+					double noiseNE = buffers[1][regionZ][regionY];
+					double noiseSE = buffers[1][regionZ + 1][regionY];
+					double noiseNextNW = buffers[0][regionZ][regionY + 1];
+					double noiseNextSW = buffers[0][regionZ + 1][regionY + 1];
+					double noiseNextNE = buffers[1][regionZ][regionY + 1];
+					double noiseNextSE = buffers[1][regionZ + 1][regionY + 1];
 
-					for (int y = this.verticalNoiseResolution - 1; y >= 0; --y) {
-						int z = u * this.verticalNoiseResolution + y;
-						int aa = z & 15;
-						int ab = z >> 4;
-						if (chunkSection.getYOffset() >> 4 != ab) {
+					for (int dY = this.verticalNoiseResolution - 1; dY >= 0; --dY) {
+						int y = regionY * this.verticalNoiseResolution + dY;
+						int relativeY = y & 15;
+						int sectionY = y >> 4;
+						if (chunkSection.getYOffset() >> 4 != sectionY) {
 							chunkSection.unlock();
-							chunkSection = protoChunk.getSection(ab);
+							chunkSection = protoChunk.getSection(sectionY);
 							chunkSection.lock();
 						}
 
-						double ac = (double) y / (double) this.verticalNoiseResolution;
-						double ad = MathHelper.lerp(ac, d, h);
-						double ae = MathHelper.lerp(ac, f, w);
-						double af = MathHelper.lerp(ac, e, v);
-						double ag = MathHelper.lerp(ac, g, x);
+						double deltaY = (double) dY / (double) this.verticalNoiseResolution;
+						double noiseCurrentNW = MathHelper.lerp(deltaY, noiseNW, noiseNextNW);
+						double noiseCurrentNE = MathHelper.lerp(deltaY, noiseNE, noiseNextNE);
+						double noiseCurrentSW = MathHelper.lerp(deltaY, noiseSW, noiseNextSW);
+						double noiseCurrentSE = MathHelper.lerp(deltaY, noiseSE, noiseNextSE);
 
-						for (int ah = 0; ah < this.horizontalNoiseResolution; ++ah) {
-							int ai = l + r * this.horizontalNoiseResolution + ah;
-							int aj = ai & 15;
-							double ak = (double) ah / (double) this.horizontalNoiseResolution;
-							double al = MathHelper.lerp(ak, ad, ae);
-							double am = MathHelper.lerp(ak, af, ag);
+						for (int dX = 0; dX < this.horizontalNoiseResolution; ++dX) {
+							int x = startX + regionX * this.horizontalNoiseResolution + dX;
+							int relativeX = x & 15;
+							double deltaX = (double) dX / (double) this.horizontalNoiseResolution;
+							double noiseCurrentNorth = MathHelper.lerp(deltaX, noiseCurrentNW, noiseCurrentNE);
+							double noiseCurrentSouth = MathHelper.lerp(deltaX, noiseCurrentSW, noiseCurrentSE);
 
-							for (int an = 0; an < this.horizontalNoiseResolution; ++an) {
-								int ao = m + t * this.horizontalNoiseResolution + an;
-								int ap = ao & 15;
-								double aq = (double) an / (double) this.horizontalNoiseResolution;
-								double ar = MathHelper.lerp(aq, al, am);
-								double as = MathHelper.clamp(ar / 200.0D, -1.0D, 1.0D);
+							for (int dZ = 0; dZ < this.horizontalNoiseResolution; ++dZ) {
+								int z = startZ + regionZ * this.horizontalNoiseResolution + dZ;
+								int relativeZ = z & 15;
+								double deltaZ = (double) dZ / (double) this.horizontalNoiseResolution;
+								double noiseRaw = MathHelper.lerp(deltaZ, noiseCurrentNorth, noiseCurrentSouth);
+								double noise = MathHelper.clamp(noiseRaw / 200.0D, -1.0D, 1.0D);
 
-								int ax;
-								int ay;
-								int av;
-
-								BlockState blockState3;
-								if (as > 0.0D) {
-									blockState3 = this.defaultBlock;
-								} else if (z < i) {
-									blockState3 = this.defaultFluid;
+								BlockState state;
+								if (noise > 0.0D) {
+									state = this.defaultBlock;
 								} else {
-									blockState3 = AIR;
+									state = AIR;
 								}
 
-								if (blockState3 != AIR) {
-									if (blockState3.getLuminance() != 0) {
-										mutable.set(ai, z, ao);
-										protoChunk.addLightSource(mutable);
+								if (state != AIR) {
+									if (state.getLuminance() != 0) {
+										pos.set(x, y, z);
+										protoChunk.addLightSource(pos);
 									}
 
-									chunkSection.setBlockState(aj, aa, ap, blockState3, false);
-									heightmap.trackUpdate(aj, z, ap, blockState3);
-									heightmap2.trackUpdate(aj, z, ap, blockState3);
+									chunkSection.setBlockState(relativeX, relativeY, relativeZ, state, false);
+									oceanFloorMap.trackUpdate(relativeX, y, relativeZ, state);
+									worldSurfaceMap.trackUpdate(relativeX, y, relativeZ, state);
 								}
 							}
 						}
@@ -224,9 +216,9 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 				chunkSection.unlock();
 			}
 
-			double[][] es = ds[0];
-			ds[0] = ds[1];
-			ds[1] = es;
+			double[][] temp = buffers[0];
+			buffers[0] = buffers[1];
+			buffers[1] = temp;
 		}
 	}
 

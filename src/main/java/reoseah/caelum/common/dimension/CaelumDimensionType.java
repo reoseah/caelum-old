@@ -15,7 +15,7 @@ public class CaelumDimensionType extends DimensionType {
 	public static final DimensionType INSTANCE = new CaelumDimensionType();
 
 	public CaelumDimensionType() {
-		super("_suffix",
+		super("_caelum",
 				/* fixedTime */ OptionalLong.empty(),
 				/* hasSkylight */ true,
 				/* hasCeiling */ false,
