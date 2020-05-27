@@ -44,8 +44,9 @@ public class MinecraftServerMixin {
 
 	@Inject(method = "createWorlds", at = @At("RETURN"))
 	protected void createWorlds(WorldGenerationProgressListener listener, CallbackInfo callback) {
-		this.field_25132.add(CaelumDimensionType.REGISTRY_KEY, CaelumDimensionType.INSTANCE);
-
+		if (!this.field_25132.getRegistry().containsKey(CaelumDimensionType.REGISTRY_KEY)) {
+			this.field_25132.add(CaelumDimensionType.REGISTRY_KEY, CaelumDimensionType.INSTANCE);
+		}
 		GeneratorOptions options = this.field_24372.method_28057(); // getGeneratorOptions
 		long seed = options.getSeed();
 
