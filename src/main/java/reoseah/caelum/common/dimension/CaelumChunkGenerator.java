@@ -17,6 +17,7 @@ import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ChunkRegion;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.Heightmap.Type;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
@@ -26,7 +27,6 @@ import net.minecraft.world.chunk.ProtoChunk;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.chunk.VerticalBlockSample;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.biomes.FloatingIslandsBiome;
 
@@ -48,9 +48,14 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		}
 	}
 
-	public static final int VERTICAL_RESOLUTION = 4;
-	public static final int HORIZONTAL_RESOLUTION = 8;
-
+	private final int verticalNoiseResolution;
+	private final int horizontalNoiseResolution;
+	private final int noiseSizeX;
+	private final int noiseSizeY;
+	private final int noiseSizeZ;
+	protected final BlockState defaultBlock;
+	protected final BlockState defaultFluid;
+	private static final BlockState AIR = Blocks.AIR.getDefaultState();
 	protected final long seed;
 
 	protected final OctavePerlinNoiseSampler noise1;
@@ -70,6 +75,17 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 
 		this.surfaceDepthNoise = new OctavePerlinNoiseSampler(random, IntStream.rangeClosed(-3, 0));
 
+		int worldHeight = 128;
+
+		this.verticalNoiseResolution = 8;
+		this.horizontalNoiseResolution = 4;
+
+		this.noiseSizeX = 16 / this.horizontalNoiseResolution;
+		this.noiseSizeY = worldHeight / this.verticalNoiseResolution;
+		this.noiseSizeZ = 16 / this.horizontalNoiseResolution;
+
+		this.defaultBlock = CaelumBlocks.AERRACK.getDefaultState();
+		this.defaultFluid = Blocks.WATER.getDefaultState();
 	}
 
 	@Override
@@ -82,6 +98,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		return new CaelumChunkGenerator(new CaelumBiomeSource(seed), seed);
 	}
 
+	@Override
 	public void buildSurface(ChunkRegion region, Chunk chunk) {
 		ChunkPos chunkPos = chunk.getPos();
 		int i = chunkPos.x;
@@ -105,22 +122,20 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		}
 	}
 
-	@Override
 	public void populateNoise(WorldAccess world, StructureAccessor accessor, Chunk chunk) {
-		int noiseSizeZ = 2, noiseSizeX = 2, noiseSizeY = 128 / 4;
-
+		int i = this.getSeaLevel();
 		ChunkPos chunkPos = chunk.getPos();
 		int j = chunkPos.x;
 		int k = chunkPos.z;
 		int l = j << 4;
 		int m = k << 4;
 
-		double[][][] ds = new double[2][noiseSizeZ + 1][noiseSizeY + 1];
+		double[][][] ds = new double[2][this.noiseSizeZ + 1][this.noiseSizeY + 1];
 
-		for (int q = 0; q < noiseSizeZ + 1; ++q) {
-			ds[0][q] = new double[noiseSizeY + 1];
-			this.getColumnSample(ds[0][q], j * noiseSizeX, k * noiseSizeZ + q);
-			ds[1][q] = new double[noiseSizeY + 1];
+		for (int q = 0; q < this.noiseSizeZ + 1; ++q) {
+			ds[0][q] = new double[this.noiseSizeY + 1];
+			this.sampleNoiseColumn(ds[0][q], j * this.noiseSizeX, k * this.noiseSizeZ + q);
+			ds[1][q] = new double[this.noiseSizeY + 1];
 		}
 
 		ProtoChunk protoChunk = (ProtoChunk) chunk;
@@ -128,17 +143,17 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		Heightmap heightmap2 = protoChunk.getHeightmap(Heightmap.Type.WORLD_SURFACE_WG);
 		BlockPos.Mutable mutable = new BlockPos.Mutable();
 
-		for (int r = 0; r < noiseSizeX; ++r) {
+		for (int r = 0; r < this.noiseSizeX; ++r) {
 			int t;
-			for (t = 0; t < noiseSizeZ + 1; ++t) {
-				this.getColumnSample(ds[1][t], j * noiseSizeX + r + 1, k * noiseSizeZ + t);
+			for (t = 0; t < this.noiseSizeZ + 1; ++t) {
+				this.sampleNoiseColumn(ds[1][t], j * this.noiseSizeX + r + 1, k * this.noiseSizeZ + t);
 			}
 
-			for (t = 0; t < noiseSizeZ; ++t) {
+			for (t = 0; t < this.noiseSizeZ; ++t) {
 				ChunkSection chunkSection = protoChunk.getSection(15);
 				chunkSection.lock();
 
-				for (int u = noiseSizeY - 1; u >= 0; --u) {
+				for (int u = this.noiseSizeY - 1; u >= 0; --u) {
 					double d = ds[0][t][u];
 					double e = ds[0][t + 1][u];
 					double f = ds[1][t][u];
@@ -148,8 +163,8 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 					double w = ds[1][t][u + 1];
 					double x = ds[1][t + 1][u + 1];
 
-					for (int y = VERTICAL_RESOLUTION - 1; y >= 0; --y) {
-						int z = u * VERTICAL_RESOLUTION + y;
+					for (int y = this.verticalNoiseResolution - 1; y >= 0; --y) {
+						int z = u * this.verticalNoiseResolution + y;
 						int aa = z & 15;
 						int ab = z >> 4;
 						if (chunkSection.getYOffset() >> 4 != ab) {
@@ -158,34 +173,40 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 							chunkSection.lock();
 						}
 
-						double ac = (double) y / (double) VERTICAL_RESOLUTION;
+						double ac = (double) y / (double) this.verticalNoiseResolution;
 						double ad = MathHelper.lerp(ac, d, h);
 						double ae = MathHelper.lerp(ac, f, w);
 						double af = MathHelper.lerp(ac, e, v);
 						double ag = MathHelper.lerp(ac, g, x);
 
-						for (int ah = 0; ah < HORIZONTAL_RESOLUTION; ++ah) {
-							int ai = l + r * HORIZONTAL_RESOLUTION + ah;
+						for (int ah = 0; ah < this.horizontalNoiseResolution; ++ah) {
+							int ai = l + r * this.horizontalNoiseResolution + ah;
 							int aj = ai & 15;
-							double ak = (double) ah / (double) HORIZONTAL_RESOLUTION;
+							double ak = (double) ah / (double) this.horizontalNoiseResolution;
 							double al = MathHelper.lerp(ak, ad, ae);
 							double am = MathHelper.lerp(ak, af, ag);
 
-							for (int an = 0; an < HORIZONTAL_RESOLUTION; ++an) {
-								int ao = m + t * HORIZONTAL_RESOLUTION + an;
+							for (int an = 0; an < this.horizontalNoiseResolution; ++an) {
+								int ao = m + t * this.horizontalNoiseResolution + an;
 								int ap = ao & 15;
-								double aq = (double) an / (double) HORIZONTAL_RESOLUTION;
+								double aq = (double) an / (double) this.horizontalNoiseResolution;
 								double ar = MathHelper.lerp(aq, al, am);
 								double as = MathHelper.clamp(ar / 200.0D, -1.0D, 1.0D);
 
+								int ax;
+								int ay;
+								int av;
+
 								BlockState blockState3;
 								if (as > 0.0D) {
-									blockState3 = CaelumBlocks.AERRACK.getDefaultState();
+									blockState3 = this.defaultBlock;
+								} else if (z < i) {
+									blockState3 = this.defaultFluid;
 								} else {
-									blockState3 = Blocks.AIR.getDefaultState();
+									blockState3 = AIR;
 								}
 
-								if (blockState3 != Blocks.AIR.getDefaultState()) {
+								if (blockState3 != AIR) {
 									if (blockState3.getLuminance() != 0) {
 										mutable.set(ai, z, ao);
 										protoChunk.addLightSource(mutable);
@@ -207,92 +228,10 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 			ds[0] = ds[1];
 			ds[1] = es;
 		}
-
 	}
 
-	@Override
-	public int getHeight(int x, int z, Heightmap.Type type) {
-		return 10;
-	}
-
-	public BlockView getColumnSample(int x, int z) {
-		BlockState[] blockStates = new BlockState[128];
-		double[] buffer = new double[128];
+	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
 		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
-		for (int i = 0; i < 128; i++) {
-			if (buffer[i] > 0) {
-				blockStates[i] = CaelumBlocks.AERRACK.getDefaultState();
-			} else {
-				blockStates[i] = Blocks.AIR.getDefaultState();
-			}
-		}
-		return new VerticalBlockSample(blockStates);
-	}
-
-	public void getColumnSample(double[] buffer, int x, int z) {
-		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
-	}
-
-	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
-		PointInfo pointInfo = this.computePointInfo(x, z);
-		double maxHeight = 64;
-		double minHeight = 8;
-
-		for (int y = 0; y < 128 / VERTICAL_RESOLUTION; ++y) {
-			double value = this.sampleNoise(x, y, z, d, e, f, g);
-			value -= this.computeNoiseModifier(pointInfo, y);
-			if (y > maxHeight) {
-				value = MathHelper.clampedLerp(value, j, (y - maxHeight) / i);
-			} else if (y < minHeight) {
-				value = MathHelper.clampedLerp(value, -30.0D, (minHeight - y) / (minHeight - 1.0D));
-			}
-
-			buffer[y] = value;
-		}
-	}
-
-	protected double sampleNoise(int x, int y, int z, double scaleXZ, double scaleY, double maskScaleXZ, double maskScaleY) {
-		double sample1 = 0.0D;
-		double sample2 = 0.0D;
-		double maskSample = 0.0D;
-
-		double amplitude = 1.0D;
-		for (int i = 0; i < 16; ++i) {
-			double u = OctavePerlinNoiseSampler.maintainPrecision(x * scaleXZ * amplitude);
-			double v = OctavePerlinNoiseSampler.maintainPrecision(y * scaleY * amplitude);
-			double w = OctavePerlinNoiseSampler.maintainPrecision(z * scaleXZ * amplitude);
-			double p = scaleY * amplitude;
-			PerlinNoiseSampler sampler1 = this.noise1.getOctave(i);
-			if (sampler1 != null) {
-				sample1 += sampler1.sample(u, v, w, p, y * p) / amplitude;
-			}
-
-			PerlinNoiseSampler sampler2 = this.noise2.getOctave(i);
-			if (sampler2 != null) {
-				sample2 += sampler2.sample(u, v, w, p, y * p) / amplitude;
-			}
-
-			if (i < 8) {
-				PerlinNoiseSampler maskSampler = this.noiseMask.getOctave(i);
-				if (maskSampler != null) {
-					maskSample += maskSampler.sample(OctavePerlinNoiseSampler.maintainPrecision(x * maskScaleXZ * amplitude), OctavePerlinNoiseSampler.maintainPrecision(y * maskScaleY * amplitude), OctavePerlinNoiseSampler.maintainPrecision(z * maskScaleXZ * amplitude), maskScaleY * amplitude, y * maskScaleY * amplitude) / amplitude;
-				}
-			}
-
-			amplitude /= 2.0D;
-		}
-
-		return MathHelper.clampedLerp(sample1 / 512.0D, sample2 / 512.0D, (maskSample / 10.0D + 1.0D) / 2.0D);
-	}
-
-	protected static class PointInfo {
-		public final double islandSize;
-		public final double structureCoeff;
-
-		public PointInfo(double islandSize, double structureCoeff) {
-			this.islandSize = islandSize;
-			this.structureCoeff = structureCoeff;
-		}
 	}
 
 	protected PointInfo computePointInfo(int x, int z) {
@@ -326,6 +265,35 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		return new PointInfo(depthTotal, structureCoeff);
 	}
 
+	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
+		PointInfo pointInfo = this.computePointInfo(x, z);
+		double l = (double) (this.getNoiseSizeY() - 4) / 2;
+		double m = 8;
+
+		for (int n = 0; n < this.getNoiseSizeY(); ++n) {
+			double o = this.sampleNoise(x, n, z, d, e, f, g);
+			o -= this.computeNoiseModifier(pointInfo, n);
+			if ((double) n > l) {
+				o = MathHelper.clampedLerp(o, (double) j, ((double) n - l) / (double) i);
+			} else if ((double) n < m) {
+				o = MathHelper.clampedLerp(o, -30.0D, (m - (double) n) / (m - 1.0D));
+			}
+
+			buffer[n] = o;
+		}
+
+	}
+
+	protected static class PointInfo {
+		public final double islandSize;
+		public final double structureCoeff;
+
+		public PointInfo(double islandSize, double structureCoeff) {
+			this.islandSize = islandSize;
+			this.structureCoeff = structureCoeff;
+		}
+	}
+
 	private double computeNoiseModifier(PointInfo pointInfo, int y) {
 		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(pointInfo.structureCoeff) / 3);
 		double heightEffect = 0;
@@ -339,9 +307,47 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		return 12 - 15 * pointInfo.islandSize + 10 * pointOfInterestEffect * heightEffect;
 	}
 
+	private double sampleNoise(int x, int y, int z, double d, double e, double f, double g) {
+		double h = 0.0D;
+		double i = 0.0D;
+		double j = 0.0D;
+		double k = 1.0D;
+
+		for (int l = 0; l < 16; ++l) {
+			double m = OctavePerlinNoiseSampler.maintainPrecision((double) x * d * k);
+			double n = OctavePerlinNoiseSampler.maintainPrecision((double) y * e * k);
+			double o = OctavePerlinNoiseSampler.maintainPrecision((double) z * d * k);
+			double p = e * k;
+			PerlinNoiseSampler perlinNoiseSampler = this.noise1.getOctave(l);
+			if (perlinNoiseSampler != null) {
+				h += perlinNoiseSampler.sample(m, n, o, p, (double) y * p) / k;
+			}
+
+			PerlinNoiseSampler perlinNoiseSampler2 = this.noise2.getOctave(l);
+			if (perlinNoiseSampler2 != null) {
+				i += perlinNoiseSampler2.sample(m, n, o, p, (double) y * p) / k;
+			}
+
+			if (l < 8) {
+				PerlinNoiseSampler perlinNoiseSampler3 = this.noiseMask.getOctave(l);
+				if (perlinNoiseSampler3 != null) {
+					j += perlinNoiseSampler3.sample(OctavePerlinNoiseSampler.maintainPrecision((double) x * f * k), OctavePerlinNoiseSampler.maintainPrecision((double) y * g * k), OctavePerlinNoiseSampler.maintainPrecision((double) z * f * k), g * k, (double) y * g * k) / k;
+				}
+			}
+
+			k /= 2.0D;
+		}
+
+		return MathHelper.clampedLerp(h / 512.0D, i / 512.0D, (j / 10.0D + 1.0D) / 2.0D);
+	}
+
+	public int getNoiseSizeY() {
+		return this.noiseSizeY + 1;
+	}
+
 	@Override
-	public int getSpawnHeight() {
-		return 60;
+	public int getHeight(int x, int z, Type heightmapType) {
+		return 0;
 	}
 
 	@Override
@@ -349,4 +355,8 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		return 0;
 	}
 
+	@Override
+	public BlockView getColumnSample(int x, int z) {
+		return null;
+	}
 }
