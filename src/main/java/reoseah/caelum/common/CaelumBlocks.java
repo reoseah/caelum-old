@@ -13,22 +13,17 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.common.blocks.BarleyBlock;
-import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
-import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
-import reoseah.caelum.common.blocks.CaelumFlowerBlock;
-import reoseah.caelum.common.blocks.CaelumGrassBlock;
-import reoseah.caelum.common.blocks.CaelumSproutsBlock;
-import reoseah.caelum.common.blocks.ModCraftingTableBlock;
-import reoseah.caelum.common.blocks.ModStairsBlock;
-import reoseah.caelum.common.blocks.SealstoneBlock;
-import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
-import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
+import reoseah.caelum.common.blocks.*;
+import reoseah.caelum.common.tab.CreativeTab;
 
 public class CaelumBlocks {
+
+	// Natural //
 	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
 	public static final Block CERUCLASE_ORE = new Block(FabricBlockSettings.of(Material.STONE).lightLevel(7).nonOpaque().strength(5.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
+
 
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block AERRACK_BRICK_STAIRS = new ModStairsBlock(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copy(AERRACK_BRICKS).breakByTool(FabricToolTags.PICKAXES, 0).build());
@@ -58,6 +53,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block SKYROOT_STAIRS = new ModStairsBlock(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(SKYROOT_PLANKS).breakByTool(FabricToolTags.AXES, 0).build());
+	public static final Block SKYROOT_DOOR = registerBlock("skyroot_door", new ModDoorBlock(SKYROOT_PLANKS));
 
 	public static final Block CAELUM_CRAFTING_TABLE = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
 	public static final Block CELESTIAL_ALTAR = new ModCraftingTableBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0).build());
@@ -72,6 +68,21 @@ public class CaelumBlocks {
 	public static final Block INERT_MOSSY_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE).build());
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
+
+	private static Block registerBlock(String name, Block block)
+	{
+		Registry.register(Registry.BLOCK, new Identifier(Caelum.MOD_ID, name), block);
+		CaelumItems.registerItem(name, new BlockItem(block, new Item.Settings().group(CreativeTab.CAELUM_TAB)));
+
+		return block;
+	}
+
+	private static Block registerBlockNI(String name, Block block)
+	{
+		Registry.register(Registry.BLOCK, new Identifier(Caelum.MOD_ID, name), block);
+
+		return block;
+	}
 
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
