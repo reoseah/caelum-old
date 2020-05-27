@@ -9,6 +9,7 @@ import net.minecraft.util.StringIdentifiable;
 
 public enum SkyrootTreeShape implements StringIdentifiable {
 	NORMAL {
+		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(6)) {
 			case 0:
@@ -21,6 +22,7 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 		}
 	},
 	TALL {
+		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(2)) {
 			case 0:
@@ -31,6 +33,7 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 		}
 	},
 	SMALL {
+		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(4)) {
 			case 0:
@@ -60,6 +63,7 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 		return this.ordinal();
 	}
 
+	@Override
 	public String asString() {
 		return this.name().toLowerCase(Locale.ROOT);
 	}

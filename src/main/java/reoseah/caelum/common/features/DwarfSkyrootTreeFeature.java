@@ -35,9 +35,9 @@ public class DwarfSkyrootTreeFeature extends SkyrootTreeFeature {
 		if (isNaturalDirtOrGrass(world, pos)) {
 			BlockBox box = new BlockBox();
 			pos = pos.up();
-			this.setLogBlockState(world, random, pos,  box, config);
+			OldTreeThingsFeature.setLogBlockState(world, random, pos,  box, config);
 			pos = pos.up().offset(direction);
-			this.setLogBlockState(world, random, pos,  box, config);
+			OldTreeThingsFeature.setLogBlockState(world, random, pos,  box, config);
 
 			int[] shape = PATTERNS[random.nextInt(3)];
 			int trunk = shape.length - 2 - random.nextInt(2);

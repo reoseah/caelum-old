@@ -22,8 +22,8 @@ public abstract class OldTreeThingsFeature<T extends FeatureConfig> extends Feat
 	public OldTreeThingsFeature(Codec<T> codec) {
 		super(codec);
 	}
-	
-	
+
+
 
 	public static boolean setLogBlockState(ModifiableTestableWorld world, Random random, BlockPos pos, BlockBox box, SkyrootFeatureConfig config) {
 		if (!isAirOrLeaves(world, pos) && !isReplaceablePlant(world, pos) && !isWater(world, pos)) {
@@ -43,6 +43,7 @@ public abstract class OldTreeThingsFeature<T extends FeatureConfig> extends Feat
 		}
 	}
 
+	@Override
 	protected void setBlockState(ModifiableWorld world, BlockPos pos, BlockState state) {
 		setBlockStateWithoutUpdatingNeighbors(world, pos, state);
 	}

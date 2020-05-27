@@ -21,6 +21,7 @@ public class SkyrootBushWithSoilFeature extends SkyrootGroundBushFeature {
 		super(function);
 	}
 
+	@Override
 	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator generator, Random random, BlockPos pos, SkyrootFeatureConfig config) {
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		BlockBox box = new BlockBox();

@@ -20,6 +20,7 @@ public class CaelumVegetationFeature extends Feature<BlockPileFeatureConfig> {
 		super(function);
 	}
 
+	@Override
 	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator chunkGenerator, Random random, BlockPos pos, BlockPileFeatureConfig config) {
 		return generate(world, random, pos, config, 8, 4);
 	}

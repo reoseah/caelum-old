@@ -27,7 +27,7 @@ public class SkyrootTreeFeature extends OldTreeThingsFeature<SkyrootFeatureConfi
 		if (isNaturalDirtOrGrass(world, pos)) {
 			pos = pos.up();
 			BlockBox box = new BlockBox();
-			this.setLogBlockState(world, random, pos, box, config);
+			OldTreeThingsFeature.setLogBlockState(world, random, pos, box, config);
 
 			int[] shape = config.shape.chooseShape(random);
 			int trunk = shape.length - 2 - random.nextInt(2);
@@ -46,7 +46,7 @@ public class SkyrootTreeFeature extends OldTreeThingsFeature<SkyrootFeatureConfi
 				for (int dz = -radius; dz <= radius; dz++) {
 					p.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
 					if (dx == 0 && dz == 0 && dy < trunk) {
-						this.setLogBlockState(world, random, p, box, config);
+						OldTreeThingsFeature.setLogBlockState(world, random, p, box, config);
 					} else if ((Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) == 0)
 							&& isAirOrLeaves(world, p)) {
 						this.setLeavesBlockState(world, random, p, box, config);
@@ -60,7 +60,7 @@ public class SkyrootTreeFeature extends OldTreeThingsFeature<SkyrootFeatureConfi
 		if (!isAirOrLeaves(world, pos) && !isAnyPlant(world, pos) && !isWater(world, pos)) {
 			return false;
 		} else {
-			this.setBlockState(world, pos, config.trunkProvider.getBlockState(random, pos), box);
+			OldTreeThingsFeature.setBlockState(world, pos, config.trunkProvider.getBlockState(random, pos), box);
 			logPositions.add(pos.toImmutable());
 			return true;
 		}

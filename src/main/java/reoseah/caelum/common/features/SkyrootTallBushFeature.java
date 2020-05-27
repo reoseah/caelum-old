@@ -17,6 +17,7 @@ public class SkyrootTallBushFeature extends OldTreeThingsFeature<SkyrootFeatureC
 		super(function);
 	}
 
+	@Override
 	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator generator, Random random, BlockPos pos, SkyrootFeatureConfig config) {
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		Direction direction = Direction.fromHorizontal(random.nextInt(4));
@@ -29,9 +30,9 @@ public class SkyrootTallBushFeature extends OldTreeThingsFeature<SkyrootFeatureC
 		if (isNaturalDirtOrGrass(world, pos)) {
 			BlockBox box = new BlockBox();
 			pos = pos.up();
-			this.setLogBlockState(world, random, pos, box, config);
+			OldTreeThingsFeature.setLogBlockState(world, random, pos, box, config);
 			pos = pos.up().offset(direction);
-			this.setLogBlockState(world, random, pos, box, config);
+			OldTreeThingsFeature.setLogBlockState(world, random, pos, box, config);
 
 			for (int dy = 0; dy <= 2; ++dy) {
 				int radius = 2 - dy;

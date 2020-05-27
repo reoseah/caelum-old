@@ -12,6 +12,7 @@ public class CeruclaseDrawknifeItem extends ToolItem {
 		super(material, settings);
 	}
 
+	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
 		return StrippingHelper.tryStripBlock(context);
 	}
