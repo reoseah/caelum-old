@@ -13,6 +13,7 @@ import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.noise.NoiseSampler;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
+import net.minecraft.util.math.noise.OctaveSimplexNoiseSampler;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ChunkRegion;
@@ -73,7 +74,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		this.noise2 = new OctavePerlinNoiseSampler(random, IntStream.rangeClosed(-15, 0));
 		this.noiseMask = new OctavePerlinNoiseSampler(random, IntStream.rangeClosed(-7, 0));
 
-		this.surfaceDepthNoise = new OctavePerlinNoiseSampler(random, IntStream.rangeClosed(-3, 0));
+		this.surfaceDepthNoise = new OctaveSimplexNoiseSampler(random, IntStream.rangeClosed(-3, 0));
 
 		int worldHeight = 128;
 

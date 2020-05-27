@@ -13,6 +13,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import net.minecraft.world.dimension.DimensionType;
 import reoseah.caelum.common.dimension.CaelumDimensionType;
 
 public class CelestialCrystalItem extends Item {
@@ -28,8 +29,11 @@ public class CelestialCrystalItem extends Item {
 //					: Caelum.DIMENSION_TYPE;
 
 //			FabricDimensions.teleport(player, destination);
-			
-			player.changeDimension(CaelumDimensionType.REGISTRY_KEY);
+			if (player.getEntityWorld().getDimension() == DimensionType.getDefaultDimensionType()) {
+				player.changeDimension(CaelumDimensionType.REGISTRY_KEY);
+			} else if (player.getEntityWorld().getDimension() == CaelumDimensionType.INSTANCE) {
+				player.changeDimension(DimensionType.OVERWORLD_REGISTRY_KEY);
+			}
 		}
 		return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand));
 	}
