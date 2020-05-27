@@ -5,8 +5,8 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.dimension.DimensionType;
 import reoseah.caelum.client.CaelumParticles;
+import reoseah.caelum.common.dimension.CaelumDimensionType;
 import reoseah.caelum.common.misc.TillingHelper;
 
 public class Caelum implements ModInitializer {
@@ -22,6 +22,8 @@ public class Caelum implements ModInitializer {
 		CaelumBiomes.register();
 		CaelumEntities.register();
 		CaelumParticles.register();
+		
+		CaelumDimensionType.register();
 
 		TillingHelper.registerTilling();
 	}

@@ -13,6 +13,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import reoseah.caelum.common.dimension.CaelumDimensionType;
 
 public class CelestialCrystalItem extends Item {
 	public CelestialCrystalItem(Item.Settings settings) {
@@ -27,6 +28,8 @@ public class CelestialCrystalItem extends Item {
 //					: Caelum.DIMENSION_TYPE;
 
 //			FabricDimensions.teleport(player, destination);
+			
+			player.changeDimension(CaelumDimensionType.REGISTRY_KEY);
 		}
 		return new TypedActionResult<>(ActionResult.SUCCESS, player.getStackInHand(hand));
 	}
