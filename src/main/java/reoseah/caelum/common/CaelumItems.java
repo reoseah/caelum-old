@@ -44,6 +44,7 @@ public class CaelumItems {
 	public static Item registerItem(String name, Item item)
 	{
 		Registry.register(Registry.ITEM, new Identifier(Caelum.MOD_ID, name), item);
+
 		return item;
 	}
 
