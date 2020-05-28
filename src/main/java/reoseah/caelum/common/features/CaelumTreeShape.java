@@ -7,7 +7,7 @@ import com.mojang.serialization.Codec;
 
 import net.minecraft.util.StringIdentifiable;
 
-public enum SkyrootTreeShape implements StringIdentifiable {
+public enum CaelumTreeShape implements StringIdentifiable {
 	NORMAL {
 		@Override
 		public int[] chooseShape(Random random) {
@@ -42,9 +42,16 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 				return SMALL1;
 			}
 		}
+	},
+	DWARF {
+		@Override
+		public int[] chooseShape(Random random) {
+			return DWARF_SHAPES[random.nextInt(2)];
+		}
+		
 	};
 
-	public static final Codec<SkyrootTreeShape> CODEC = StringIdentifiable.method_28140(SkyrootTreeShape::values, SkyrootTreeShape::byName);
+	public static final Codec<CaelumTreeShape> CODEC = StringIdentifiable.method_28140(CaelumTreeShape::values, CaelumTreeShape::byName);
 
 	// Leaf shapes hard-coded from bottom to top
 	private static final int[] NORMAL1 = { 0, 0, 1, 2, 1, 2, 1, 0 };
@@ -56,6 +63,11 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 
 	private static final int[] SMALL1 = { 0, 1, 2, 1, 2, 1, 0 };
 	private static final int[] SMALL2 = { 0, 0, 1, 2, 1, 2, 1, 0 };
+	
+	public static final int[][] DWARF_SHAPES = {
+			{ 2, 1, 2, 1, 0 },
+			{ 1, 2, 1, 2, 1, 0 },
+	};
 
 	public abstract int[] chooseShape(Random random);
 
@@ -64,7 +76,7 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 		return this.name().toLowerCase(Locale.ROOT);
 	}
 
-	public static SkyrootTreeShape byName(String name) {
+	public static CaelumTreeShape byName(String name) {
 		switch (name) {
 		case "normal":
 			return NORMAL;
@@ -72,6 +84,8 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 			return TALL;
 		case "small":
 			return SMALL;
+		case "dawrf":
+			return DWARF;
 		default:
 			return null;
 		}

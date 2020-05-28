@@ -9,13 +9,13 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
-public class CaelumBushFeature extends CaelumTreeFeature<SkyrootFeatureConfig> {
-	public CaelumBushFeature(Codec<SkyrootFeatureConfig> codec) {
+public class CaelumBushFeature extends AbstractCaelumTreeFeature<CaelumTreeFeatureConfig> {
+	public CaelumBushFeature(Codec<CaelumTreeFeatureConfig> codec) {
 		super(codec);
 	}
 
 	@Override
-	public boolean generate(ServerWorldAccess world, StructureAccessor accessor, ChunkGenerator generator, Random random, BlockPos pos, SkyrootFeatureConfig config) {
+	public boolean generate(ServerWorldAccess world, StructureAccessor accessor, ChunkGenerator generator, Random random, BlockPos pos, CaelumTreeFeatureConfig config) {
 		if (!this.canGenerateAt(world, pos)) {
 			return false;
 		}
@@ -30,7 +30,7 @@ public class CaelumBushFeature extends CaelumTreeFeature<SkyrootFeatureConfig> {
 					if (Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) != 0) {
 						mpos.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
 						int distance = dy + Math.abs(dx) + Math.abs(dz);
-						this.trySetLeaves(world, mpos, distance, random, config);
+						trySetLeaves(world, mpos, distance, random, config);
 					}
 				}
 			}

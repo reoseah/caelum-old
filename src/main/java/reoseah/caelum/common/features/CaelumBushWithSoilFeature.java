@@ -15,12 +15,12 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.caelum.common.CaelumBlocks;
 
 public class CaelumBushWithSoilFeature extends CaelumBushFeature {
-	public CaelumBushWithSoilFeature(Codec<SkyrootFeatureConfig> codec) {
+	public CaelumBushWithSoilFeature(Codec<CaelumTreeFeatureConfig> codec) {
 		super(codec);
 	}
 
 	@Override
-	public boolean generate(ServerWorldAccess world, StructureAccessor accessor, ChunkGenerator generator, Random random, BlockPos pos, SkyrootFeatureConfig config) {
+	public boolean generate(ServerWorldAccess world, StructureAccessor accessor, ChunkGenerator generator, Random random, BlockPos pos, CaelumTreeFeatureConfig config) {
 		if (super.generate(world, accessor, generator, random, pos, config)) {
 			BlockPos.Mutable mpos = new BlockPos.Mutable();
 			trySetSoil(world, mpos.set(pos.getX(), pos.getY() - 1, pos.getZ()));
@@ -60,7 +60,7 @@ public class CaelumBushWithSoilFeature extends CaelumBushFeature {
 
 	@Override
 	protected boolean canGenerateAt(ServerWorldAccess world, BlockPos pos) {
-		if (this.isAirOrLeaves(world, pos)) {
+		if (isAirOrLeaves(world, pos)) {
 			BlockState ground = world.getBlockState(pos.down());
 			Block groundBlock = ground.getBlock();
 
@@ -74,7 +74,7 @@ public class CaelumBushWithSoilFeature extends CaelumBushFeature {
 				int freeSpace = 0;
 				for (Direction side : Direction.Type.HORIZONTAL) {
 					BlockPos sidePos = pos.offset(side);
-					if (this.isAirOrLeaves(world, sidePos)) {
+					if (isAirOrLeaves(world, sidePos)) {
 						Block sideGround = world.getBlockState(sidePos.down()).getBlock();
 						if (sideGround == CaelumBlocks.AERRACK
 								|| sideGround == CaelumBlocks.MOSSY_AERRACK) {

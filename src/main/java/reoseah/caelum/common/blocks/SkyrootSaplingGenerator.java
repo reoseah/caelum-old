@@ -19,12 +19,12 @@ public class SkyrootSaplingGenerator extends SaplingGenerator {
 		ConfiguredFeature<?, ?> feature = null;
 		if (state.getBlock() == CaelumBlocks.SKYROOT_SAPLING) {
 			feature = random.nextInt(10) == 0
-					? CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT)
-					: CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
+					? CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT)
+					: CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.SKYROOT);
 		} else if (state.getBlock() == CaelumBlocks.SILVER_SKYROOT_SAPLING) {
-			feature = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+			feature = CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
 		} else if (state.getBlock() == CaelumBlocks.DWARF_SKYROOT_SAPLING) {
-			feature = CaelumFeatures.DWARF_SKYROOT_TREE.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
+			feature = CaelumFeatures.CURVED_CAELUM_TREE.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
 
 		} else {
 			return false;

@@ -25,8 +25,8 @@ import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumFeatures;
 import reoseah.caelum.common.features.AerrackOreConfig;
-import reoseah.caelum.common.features.SkyrootFeatureConfig;
-import reoseah.caelum.common.features.SkyrootTreeShape;
+import reoseah.caelum.common.features.CaelumTreeFeatureConfig;
+import reoseah.caelum.common.features.CaelumTreeShape;
 
 public abstract class CaelumBiomesFeatures {
 	private CaelumBiomesFeatures() {
@@ -48,10 +48,10 @@ public abstract class CaelumBiomesFeatures {
 			CaelumBlocks.AERRACK.getDefaultState(),
 			CaelumBlocks.AERRACK.getDefaultState());
 
-	public static final SkyrootFeatureConfig SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, SkyrootTreeShape.NORMAL);
-	public static final SkyrootFeatureConfig TALL_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, SkyrootTreeShape.TALL);
-	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, SkyrootTreeShape.SMALL);
-	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, SkyrootTreeShape.SMALL);
+	public static final CaelumTreeFeatureConfig SKYROOT = new CaelumTreeFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, CaelumTreeShape.NORMAL);
+	public static final CaelumTreeFeatureConfig TALL_SKYROOT = new CaelumTreeFeatureConfig(SKYROOT_LOG, SKYROOT_LEAVES, CaelumTreeShape.TALL);
+	public static final CaelumTreeFeatureConfig SILVER_SKYROOT = new CaelumTreeFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, CaelumTreeShape.SMALL);
+	public static final CaelumTreeFeatureConfig DWARF_SKYROOT = new CaelumTreeFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, CaelumTreeShape.SMALL);
 
 	public static final BlockPileFeatureConfig CAELUM_VEGETATION = new BlockPileFeatureConfig(
 			new WeightedBlockStateProvider()
@@ -77,10 +77,10 @@ public abstract class CaelumBiomesFeatures {
 	}
 
 	public static final void addBarrensVegetation(Biome biome) {
-		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SKYROOT);
-		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT);
-		ConfiguredFeature<?, ?> silverBushWithSoil = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(SILVER_SKYROOT);
-		ConfiguredFeature<?, ?> dwarfBushWithSoil = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(DWARF_SKYROOT);
+		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.CAELUM_BUSH.configure(SKYROOT);
+		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.CAELUM_BUSH.configure(SILVER_SKYROOT);
+		ConfiguredFeature<?, ?> silverBushWithSoil = CaelumFeatures.CAELUM_BUSH_WITH_SOIL.configure(SILVER_SKYROOT);
+		ConfiguredFeature<?, ?> dwarfBushWithSoil = CaelumFeatures.CAELUM_BUSH_WITH_SOIL.configure(DWARF_SKYROOT);
 
 		ConfiguredFeature<?, ?> bushSelector = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 				Arrays.asList(
@@ -95,9 +95,9 @@ public abstract class CaelumBiomesFeatures {
 	}
 
 	public static final void addSkyForestTrees(Biome biome) {
-		ConfiguredFeature<?, ?> commonTree = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
-		ConfiguredFeature<?, ?> commonTallTree = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT);
-		ConfiguredFeature<?, ?> silverTree = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+		ConfiguredFeature<?, ?> commonTree = CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.SKYROOT);
+		ConfiguredFeature<?, ?> commonTallTree = CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT);
+		ConfiguredFeature<?, ?> silverTree = CaelumFeatures.CAELUM_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
 
 		ConfiguredFeature<?, ?> treeSelector = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 				Arrays.asList(
@@ -109,9 +109,9 @@ public abstract class CaelumBiomesFeatures {
 
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, treeSelector.createDecoratedFeature(treeDecorator));
 
-		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SKYROOT);
-		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
-		ConfiguredFeature<?, ?> dwarfBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
+		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.CAELUM_BUSH.configure(CaelumBiomesFeatures.SKYROOT);
+		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.CAELUM_BUSH.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+		ConfiguredFeature<?, ?> dwarfBush = CaelumFeatures.CAELUM_BUSH.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
 
 		ConfiguredFeature<?, ?> bushSelector = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 				Arrays.asList(
