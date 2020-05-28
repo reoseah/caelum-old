@@ -12,7 +12,7 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
-public class DwarfSkyrootTreeFeature extends SkyrootTreeFeature {
+public class DwarfSkyrootTreeFeature extends OldSkyrootTreeFeature {
 	public static final int[][] PATTERNS = {
 			{ 2, 1, 2, 1, 0 },
 			{ 1, 2, 1, 2, 1, 0 },

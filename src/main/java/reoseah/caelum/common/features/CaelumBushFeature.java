@@ -22,14 +22,15 @@ public class CaelumBushFeature extends CaelumTreeFeature<SkyrootFeatureConfig> {
 		BlockPos.Mutable mpos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
 
 		world.setBlockState(mpos, config.trunk.getBlockState(random, mpos), 0);
-		for (int y = 0; y <= 2; y++) {
-			int radius = 2 - y;
+		for (int dy = 0; dy <= 2; dy++) {
+			int radius = 2 - dy;
 
 			for (int dx = -radius; dx <= radius; dx++) {
 				for (int dz = -radius; dz <= radius; dz++) {
 					if (Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) != 0) {
-						int distance = y + Math.abs(dx) + Math.abs(dz);
-						this.trySetLeaves(world, mpos.set(pos.getX() + dx, pos.getY() + y, pos.getZ() + dz), distance, random, config);
+						mpos.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
+						int distance = dy + Math.abs(dx) + Math.abs(dz);
+						this.trySetLeaves(world, mpos, distance, random, config);
 					}
 				}
 			}
