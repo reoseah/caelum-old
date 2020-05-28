@@ -12,6 +12,7 @@ import net.minecraft.block.PillarBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.blocks.*;
@@ -65,7 +66,7 @@ public class CaelumBlocks {
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
-	public static final Block SKYROOT_DOOR = new ModDoorBlock(Block.Settings.copy(SKYROOT_PLANKS), "skyroot_door");
+	public static final Block SKYROOT_DOOR = new ModDoorBlock(SKYROOT_PLANKS);
 
 	public static void register() {
 		// Natural //
@@ -113,6 +114,9 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:inert_mossy_sealstone", INERT_MOSSY_SEALSTONE);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
+
+		Registry.register(Registry.ITEM, "caelum:skyroot_door", new TallBlockItem(SKYROOT_DOOR, new Item.Settings().group(Caelum.GROUP)));
 
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Caelum.GROUP)));

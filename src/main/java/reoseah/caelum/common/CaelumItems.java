@@ -3,7 +3,6 @@ package reoseah.caelum.common;
 import net.minecraft.entity.EntityType;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
@@ -14,7 +13,6 @@ import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
 import reoseah.caelum.common.items.SkyrootDiggingStickItem;
-import reoseah.caelum.common.tab.CreativeTab;
 
 public class CaelumItems {
 	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(Caelum.GROUP));
@@ -41,16 +39,9 @@ public class CaelumItems {
 	public static final Item BARLEY = new Item(new Item.Settings().group(Caelum.GROUP));
 	public static final Item SKY_APPLE = new Item(new Item.Settings().group(Caelum.GROUP).food(FoodComponents.APPLE));
 
-	public static Item registerItem(String name, Item item)
-	{
-		Registry.register(Registry.ITEM, new Identifier(Caelum.MOD_ID, name), item);
-
-		return item;
-	}
-
 	public static Item.Settings defaultSettings()
 	{
-		return new Item.Settings().group(CreativeTab.CAELUM_TAB);
+		return new Item.Settings().group(Caelum.GROUP);
 	}
 
 	private static SpawnEggItem makeEgg(EntityType<?> type, int background, int dots)

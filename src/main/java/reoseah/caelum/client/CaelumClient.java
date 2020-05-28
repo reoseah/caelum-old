@@ -13,6 +13,7 @@ import reoseah.caelum.common.CaelumEntities;
 public class CaelumClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
+
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
 				CaelumBlocks.SKYROOT_SAPLING,
 				CaelumBlocks.SILVER_SKYROOT_SAPLING,
@@ -20,7 +21,8 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.CAELUM_SPROUTS,
 				CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS,
 				CaelumBlocks.SKY_BLUE_FLOWER,
-				CaelumBlocks.BARLEY);
+				CaelumBlocks.BARLEY,
+				CaelumBlocks.SKYROOT_DOOR);
 
 		EntityRendererRegistry.INSTANCE.register(CaelumEntities.DEMON, (manager, context) -> new DemonEntityRenderer(manager));
 
