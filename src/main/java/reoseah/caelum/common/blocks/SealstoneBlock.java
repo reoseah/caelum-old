@@ -14,7 +14,9 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 import reoseah.caelum.client.CaelumParticles;
+import reoseah.caelum.common.CaelumBlocks;
 
 public class SealstoneBlock extends Block {
 	public static final BooleanProperty LIT = Properties.LIT;
@@ -79,5 +81,24 @@ public class SealstoneBlock extends Block {
 				world.addParticle(CaelumParticles.GLOWING_DUST, pos.getX() + x, pos.getY() + y, pos.getZ() + z, 0.0D, 0.0D, 0.0D);
 			}
 		}
+	}
+
+	@Override
+	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState newState, WorldAccess world, BlockPos pos, BlockPos posFrom) {
+		return super.getStateForNeighborUpdate(state, direction, newState, world, pos, posFrom);
+	}
+
+	@Override
+	public void neighborUpdate(BlockState state, World world, BlockPos pos, Block block, BlockPos fromPos, boolean notify) {
+		if (!world.isClient) {
+			if (CaelumBlocks.SEALSTONE_PROTECTED_BLOCKS.contains(block)) {
+				world.getBlockTickScheduler().schedule(pos, this, 2);
+			}
+		}
+		super.neighborUpdate(state, world, pos, block, fromPos, notify);
+	}
+
+	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+		world.setBlockState(pos, state.with(LIT, true), 3);
 	}
 }

@@ -1,6 +1,7 @@
 package reoseah.caelum.common;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -13,6 +14,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.property.Properties;
+import net.minecraft.tag.Tag;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.blocks.BarleyBlock;
 import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
@@ -66,12 +69,14 @@ public class CaelumBlocks {
 	public static final Block MOSSY_AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 	public static final Block MOSSY_AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 
-	public static final Block SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block INERT_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
-	public static final Block MOSSY_SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block MOSSY_SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block INERT_MOSSY_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+
+	public static final Tag<Block> SEALSTONE_PROTECTED_BLOCKS = TagRegistry.block(new Identifier("caelum:sealstone_protected_blocks"));
 
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
@@ -157,9 +162,9 @@ public class CaelumBlocks {
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_bricks", new BlockItem(MOSSY_AERRACK_BRICKS, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_pillar", new BlockItem(MOSSY_AERRACK_PILLAR, new Item.Settings().group(Caelum.GROUP)));
 
-		Registry.register(Registry.ITEM, "caelum:sealstone", new BlockItem(SEALSTONE, new Item.Settings().group(null)));
+		Registry.register(Registry.ITEM, "caelum:sealstone", new BlockItem(SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:inert_sealstone", new BlockItem(INERT_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:mossy_sealstone", new BlockItem(MOSSY_SEALSTONE, new Item.Settings().group(null)));
+		Registry.register(Registry.ITEM, "caelum:mossy_sealstone", new BlockItem(MOSSY_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:inert_mossy_sealstone", new BlockItem(INERT_MOSSY_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
 	}
 }
