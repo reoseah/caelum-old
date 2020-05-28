@@ -7,10 +7,10 @@
     "CropBlockMixin",
     "CraftingScreenHandlerMixin",
     "ItemStackMixin",
-    "AxeItemMixin",
     "DimensionTypeMixin",
     "MinecraftServerMixin",
-    "PortalForcerMixin"
+    "PortalForcerMixin",
+    "AxeItemMixin"
   ],
   "client": [
     "client.BlockModelRendererMixin",

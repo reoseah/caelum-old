@@ -13,7 +13,6 @@ import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.state.property.Properties;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -30,7 +29,7 @@ import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 
 public class CaelumBlocks {
-	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).sounds(BlockSoundGroup.STONE));
 	public static final Block CERUCLASE_ORE = new Block(FabricBlockSettings.of(Material.STONE).lightLevel(7).nonOpaque().strength(5.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
@@ -69,9 +68,9 @@ public class CaelumBlocks {
 	public static final Block MOSSY_AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 	public static final Block MOSSY_AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.of(Material.STONE).strength(4.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 
-	public static final Block SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(SealstoneBlock.LEVEL) > 0 ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block INERT_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
-	public static final Block MOSSY_SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(Properties.LIT) ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block MOSSY_SEALSTONE = new SealstoneBlock(FabricBlockSettings.of(Material.STONE).lightLevel(state -> state.get(SealstoneBlock.LEVEL) > 0 ? 8 : 0).nonOpaque().strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block INERT_MOSSY_SEALSTONE = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
