@@ -84,7 +84,6 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
 		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
 		
-		// Items from Blocks
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CaelumBlocks.CERUCLASE_ORE, new Item.Settings().group(Caelum.GROUP)));
 
