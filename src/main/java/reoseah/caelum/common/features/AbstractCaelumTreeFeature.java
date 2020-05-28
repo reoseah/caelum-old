@@ -68,15 +68,13 @@ public abstract class AbstractCaelumTreeFeature<T extends CaelumTreeFeatureConfi
 			for (int dx = -radius; dx <= radius; dx++) {
 				for (int dz = -radius; dz <= radius; dz++) {
 					mpos.set(pos.getX() + dx, pos.getY() + dy, pos.getZ() + dz);
-					if (dy < trunkHeight) {
-						if (dx == 0 && dz == 0) {
-							world.setBlockState(mpos, config.trunk.getBlockState(random, mpos), 19);
-						} else {
-							int distance = Math.abs(dx) + Math.abs(dz);
-							trySetLeaves(world, mpos, distance, random, config);
-						}
+					if (dy < trunkHeight && dx == 0 && dz == 0) {
+						world.setBlockState(mpos, config.trunk.getBlockState(random, mpos), 19);
 					} else if (Math.abs(dx) != radius || Math.abs(dz) != radius || random.nextInt(2) == 0) {
-						int distance = dy - trunkHeight + 1 + Math.abs(dx) + Math.abs(dz);
+						int distance = Math.abs(dx) + Math.abs(dz);
+						if (dy >= trunkHeight) {
+							distance += dy - trunkHeight + 1;
+						}
 						trySetLeaves(world, mpos, distance, random, config);
 					}
 				}
