@@ -30,7 +30,7 @@ public class CaelumBiomeSource extends BiomeSource {
 		int worldX = biomeX * 2;
 		int worldZ = biomeZ * 2;
 
-		BlockPos islandPos = LargeIslandHelper.locateIsland(this.seed, new BlockPos(worldX, 60, worldZ), 100);
+		BlockPos islandPos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(worldX, 60, worldZ), 100);
 
 		if (Math.abs(worldX - islandPos.getX()) <= 8 && Math.abs(worldZ - islandPos.getZ()) <= 8) {
 			return CaelumBiomes.BARREN_FOREST;

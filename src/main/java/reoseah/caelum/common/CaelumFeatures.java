@@ -12,11 +12,11 @@ import reoseah.caelum.common.decorators.ExposedAerrackDecorator;
 import reoseah.caelum.common.decorators.SkylandTreeDecorator;
 import reoseah.caelum.common.features.AerrackOreConfig;
 import reoseah.caelum.common.features.AerrackOreFeature;
+import reoseah.caelum.common.features.CaelumBushFeature;
+import reoseah.caelum.common.features.CaelumBushWithSoilFeature;
 import reoseah.caelum.common.features.CaelumVegetationFeature;
 import reoseah.caelum.common.features.DwarfSkyrootTreeFeature;
-import reoseah.caelum.common.features.SkyrootBushWithSoilFeature;
 import reoseah.caelum.common.features.SkyrootFeatureConfig;
-import reoseah.caelum.common.features.SkyrootGroundBushFeature;
 import reoseah.caelum.common.features.SkyrootTallBushFeature;
 import reoseah.caelum.common.features.SkyrootTreeFeature;
 import reoseah.caelum.common.surface_builders.BarrenSurfaceBuilder;
@@ -29,10 +29,10 @@ public class CaelumFeatures {
 	public static final Decorator<CountExtraChanceDecoratorConfig> EXPOSED_AERRACK_DECORATOR = new ExposedAerrackDecorator(CountExtraChanceDecoratorConfig.CODEC);
 	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new SkylandTreeDecorator(ChanceDecoratorConfig.field_24980);
 
-	public static final Feature<SkyrootFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_GROUND_BUSH = new CaelumBushFeature(SkyrootFeatureConfig.field_24921);
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(SkyrootFeatureConfig.field_24921);
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig.field_24921);
-	public static final Feature<SkyrootFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(SkyrootFeatureConfig.field_24921);
+	public static final Feature<SkyrootFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new CaelumBushWithSoilFeature(SkyrootFeatureConfig.field_24921);
 	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig.field_24921);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig.CODEC);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig.field_24873);

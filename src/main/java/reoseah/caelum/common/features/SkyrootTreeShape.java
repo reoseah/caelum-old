@@ -59,10 +59,6 @@ public enum SkyrootTreeShape implements StringIdentifiable {
 
 	public abstract int[] chooseShape(Random random);
 
-	public int toInteger() {
-		return this.ordinal();
-	}
-
 	@Override
 	public String asString() {
 		return this.name().toLowerCase(Locale.ROOT);

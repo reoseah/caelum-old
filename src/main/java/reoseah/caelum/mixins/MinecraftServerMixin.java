@@ -47,16 +47,18 @@ public class MinecraftServerMixin {
 		if (!this.field_25132.getRegistry().containsKey(CaelumDimensionType.REGISTRY_KEY)) {
 			this.field_25132.add(CaelumDimensionType.REGISTRY_KEY, CaelumDimensionType.INSTANCE);
 		}
-		GeneratorOptions options = this.field_24372.method_28057(); // getGeneratorOptions
-		long seed = options.getSeed();
+		if (!this.worlds.containsKey(CaelumDimensionType.REGISTRY_KEY)) {
+			GeneratorOptions options = this.field_24372.method_28057(); // getGeneratorOptions
+			long seed = options.getSeed();
 
-		CaelumChunkGenerator generator = new CaelumChunkGenerator(new CaelumBiomeSource(seed), seed);
-		UnmodifiableLevelProperties properties = new UnmodifiableLevelProperties(CaelumDimensionType.INSTANCE, this.field_24372, this.field_24372.getMainWorldProperties());
-		ServerWorld serverWorld = new ServerWorld((MinecraftServer) (Object) this, this.workerExecutor, this.session, properties, CaelumDimensionType.INSTANCE, listener, generator, false, BiomeAccess.hashSeed(seed), ImmutableList.of(), false);
+			CaelumChunkGenerator generator = new CaelumChunkGenerator(new CaelumBiomeSource(seed), seed);
+			UnmodifiableLevelProperties properties = new UnmodifiableLevelProperties(CaelumDimensionType.INSTANCE, this.field_24372, this.field_24372.getMainWorldProperties());
+			ServerWorld serverWorld = new ServerWorld((MinecraftServer) (Object) this, this.workerExecutor, this.session, properties, CaelumDimensionType.INSTANCE, listener, generator, false, BiomeAccess.hashSeed(seed), ImmutableList.of(), false);
 
-		WorldBorder worldBorder = this.worlds.get(DimensionType.OVERWORLD_REGISTRY_KEY).getWorldBorder();
-
-		worldBorder.addListener(new WorldBorderListener.WorldBorderSyncer(serverWorld.getWorldBorder()));
-		this.worlds.put(CaelumDimensionType.REGISTRY_KEY, serverWorld);
+			WorldBorder border = this.worlds.get(DimensionType.OVERWORLD_REGISTRY_KEY).getWorldBorder();
+			border.addListener(new WorldBorderListener.WorldBorderSyncer(serverWorld.getWorldBorder()));
+			
+			this.worlds.put(CaelumDimensionType.REGISTRY_KEY, serverWorld);
+		}
 	}
 }
