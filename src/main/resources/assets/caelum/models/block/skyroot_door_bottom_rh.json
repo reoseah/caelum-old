@@ -1,7 +1,7 @@
 {
   "textures": {
-    "particle": "caelum:block/skyroot_door_lower",
-    "front": "caelum:block/skyroot_door_lower",
+    "particle": "caelum:block/skyroot_door_bottom",
+    "front": "caelum:block/skyroot_door_bottom",
     "side": "caelum:block/skyroot_trapdoor"
   },
   "elements": [
