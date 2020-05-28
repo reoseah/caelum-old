@@ -21,7 +21,8 @@ public class CaelumBushFeature extends AbstractCaelumTreeFeature<CaelumTreeFeatu
 		}
 		BlockPos.Mutable mpos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
 
-		world.setBlockState(mpos, config.trunk.getBlockState(random, mpos), 0);
+		setBlockState(world, mpos, config.trunk.getBlockState(random, mpos));
+		trySetToDirt(world, pos.down());
 		for (int dy = 0; dy <= 2; dy++) {
 			int radius = 2 - dy;
 

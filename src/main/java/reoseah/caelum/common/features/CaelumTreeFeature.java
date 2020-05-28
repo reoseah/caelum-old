@@ -24,6 +24,7 @@ public class CaelumTreeFeature extends AbstractCaelumTreeFeature<CaelumTreeFeatu
 		int height = shape.length - 2 - random.nextInt(2);
 
 		placeHardcodedShape(world, random, pos, config, shape, height);
+		trySetToDirt(world, pos.down());
 		return true;
 	}
 

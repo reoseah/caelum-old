@@ -34,6 +34,7 @@ public class CurvedCaelumTreeFeature extends AbstractCaelumTreeFeature<CaelumTre
 		int height = shape.length - 2 - random.nextInt(2);
 
 		world.setBlockState(pos, config.trunk.getBlockState(random, pos), 19);
+		trySetToDirt(world, pos.down());
 		placeHardcodedShape(world, random, pos.up().offset(direction), config, shape, height);
 		return true;
 	}
