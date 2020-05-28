@@ -67,6 +67,7 @@ public class CaelumBlocks {
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
 	public static final Block SKYROOT_DOOR = new ModDoorBlock(SKYROOT_PLANKS);
+	public static final Block SKYROOT_TRAPDOOR = new ModTrapdoorBlock(SKYROOT_PLANKS);
 
 	public static void register() {
 		// Natural //
@@ -114,51 +115,8 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:inert_mossy_sealstone", INERT_MOSSY_SEALSTONE);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
-
-		Registry.register(Registry.ITEM, "caelum:skyroot_door", new TallBlockItem(SKYROOT_DOOR, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:aerrack_bricks", new BlockItem(AERRACK_BRICKS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:aerrack_brick_stairs", new BlockItem(AERRACK_BRICK_STAIRS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:aerrack_brick_slab", new BlockItem(AERRACK_BRICK_SLAB, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:aerrack_pillar", new BlockItem(AERRACK_PILLAR, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:aerrack_lightstone", new BlockItem(AERRACK_LIGHTSTONE, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CERUCLASE_BLOCK, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:caelum_grass", new BlockItem(CAELUM_GRASS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:caelum_dirt", new BlockItem(CAELUM_DIRT, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:caelum_farmland", new BlockItem(CAELUM_FARMLAND, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:skyroot_log", new BlockItem(SKYROOT_LOG, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:stripped_skyroot_log", new BlockItem(STRIPPED_SKYROOT_LOG, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:skyroot_leaves", new BlockItem(SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:silver_skyroot_leaves", new BlockItem(SILVER_SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_leaves", new BlockItem(DWARF_SKYROOT_LEAVES, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:skyroot_sapling", new BlockItem(SKYROOT_SAPLING, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:silver_skyroot_sapling", new BlockItem(SILVER_SKYROOT_SAPLING, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_sapling", new BlockItem(DWARF_SKYROOT_SAPLING, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:caelum_sprouts", new BlockItem(CAELUM_SPROUTS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:blossoming_caelum_sprouts", new BlockItem(BLOSSOMING_CAELUM_SPROUTS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:sky_blue_flower", new BlockItem(SKY_BLUE_FLOWER, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(SKYROOT_PLANKS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:skyroot_stairs", new BlockItem(SKYROOT_STAIRS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(SKYROOT_SLAB, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:caelum_crafting_table", new BlockItem(CAELUM_CRAFTING_TABLE, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:celestial_altar", new BlockItem(CELESTIAL_ALTAR, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:mossy_aerrack", new BlockItem(MOSSY_AERRACK, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_bricks", new BlockItem(MOSSY_AERRACK_BRICKS, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_pillar", new BlockItem(MOSSY_AERRACK_PILLAR, new Item.Settings().group(Caelum.GROUP)));
-
-		Registry.register(Registry.ITEM, "caelum:sealstone", new BlockItem(SEALSTONE, new Item.Settings().group(null)));
-		Registry.register(Registry.ITEM, "caelum:inert_sealstone", new BlockItem(INERT_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
-		Registry.register(Registry.ITEM, "caelum:mossy_sealstone", new BlockItem(MOSSY_SEALSTONE, new Item.Settings().group(null)));
-		Registry.register(Registry.ITEM, "caelum:inert_mossy_sealstone", new BlockItem(INERT_MOSSY_SEALSTONE, new Item.Settings().group(Caelum.GROUP)));
+		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
 	}
 }
