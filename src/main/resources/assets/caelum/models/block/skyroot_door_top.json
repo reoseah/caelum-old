@@ -1,8 +1,7 @@
 {
-  "parent": "minecraft:block/door",
+  "parent": "block/door_top",
   "textures": {
-    "particle": "caelum:block/skyroot_door_top",
-    "front": "caelum:block/skyroot_door_top",
-    "side": "caelum:block/skyroot_trapdoor"
+    "bottom": "caelum:block/skyroot_door_bottom",
+    "top": "caelum:block/skyroot_door_top"
   }
 }

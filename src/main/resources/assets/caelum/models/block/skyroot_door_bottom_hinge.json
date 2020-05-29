@@ -1,5 +1,5 @@
 {
-  "parent": "block/door_bottom",
+  "parent": "block/door_bottom_rh",
   "textures": {
     "bottom": "caelum:block/skyroot_door_bottom",
     "top": "caelum:block/skyroot_door_top"
