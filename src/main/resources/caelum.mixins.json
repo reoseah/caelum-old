@@ -9,7 +9,9 @@
     "DimensionTypeMixin",
     "MinecraftServerMixin",
     "PortalForcerMixin",
-    "AxeItemMixin"
+    "AxeItemMixin",
+    "EntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
     "client.BlockModelRendererMixin",
