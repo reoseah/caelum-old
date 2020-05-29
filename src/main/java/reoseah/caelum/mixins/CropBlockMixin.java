@@ -14,6 +14,7 @@ import reoseah.caelum.common.CaelumBlocks;
 public class CropBlockMixin {
 	@Redirect(method = "getAvailableMoisture", at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;"))
 	private static Block getBlock(BlockState state) {
+		// work around hard coded `block == Blocks.FARMLAND` check
 		if (state.getBlock() == CaelumBlocks.CAELUM_FARMLAND) {
 			return Blocks.FARMLAND;
 		}

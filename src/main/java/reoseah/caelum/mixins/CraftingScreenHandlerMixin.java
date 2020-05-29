@@ -27,6 +27,7 @@ public abstract class CraftingScreenHandlerMixin {
 	}
 
 	private static boolean canUse2(ScreenHandlerContext ctx, PlayerEntity player) {
+		// checks `instanceof CraftingTableBlock` instead of `== Blocks.CRAFTING_TABLE` in vanilla
 		return ctx.run((world, pos) -> {
 			return world.getBlockState(pos).getBlock() instanceof CraftingTableBlock
 					&& player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;

@@ -44,6 +44,7 @@ public class MinecraftServerMixin {
 
 	@Inject(method = "createWorlds", at = @At("RETURN"))
 	protected void createWorlds(WorldGenerationProgressListener listener, CallbackInfo callback) {
+
 		if (!this.field_25132.getRegistry().containsKey(CaelumDimensionType.REGISTRY_KEY)) {
 			this.field_25132.add(CaelumDimensionType.REGISTRY_KEY, CaelumDimensionType.INSTANCE);
 		}
@@ -58,6 +59,7 @@ public class MinecraftServerMixin {
 			WorldBorder border = this.worlds.get(DimensionType.OVERWORLD_REGISTRY_KEY).getWorldBorder();
 			border.addListener(new WorldBorderListener.WorldBorderSyncer(serverWorld.getWorldBorder()));
 			
+			// makes sure that a server world for our dimension exists
 			this.worlds.put(CaelumDimensionType.REGISTRY_KEY, serverWorld);
 		}
 	}

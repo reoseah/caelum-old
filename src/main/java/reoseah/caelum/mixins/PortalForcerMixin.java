@@ -20,7 +20,7 @@ public class PortalForcerMixin {
 	private ServerWorld world;
 
 	@Inject(method = "usePortal", at = @At("HEAD"), cancellable = true)
-	public void on_usePortal(Entity entity, float float_1, CallbackInfoReturnable<Boolean> infoReturnable) {
+	public void on_usePortal(Entity entity, float yawOffset, CallbackInfoReturnable<Boolean> infoReturnable) {
 		if (world.getDimension() == CaelumDimensionType.INSTANCE) {
 			CaelumDimensionHelper.onEntityEnters(entity, (ServerWorld) entity.getEntityWorld(), world);
 			infoReturnable.setReturnValue(true);

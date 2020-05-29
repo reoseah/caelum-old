@@ -26,6 +26,7 @@ public class ItemStackMixin {
 
 	@Inject(method = "getEnchantments", at = @At("RETURN"), cancellable = true)
 	public void at_getEnchantments(CallbackInfoReturnable<ListTag> ci) {
+		// Hack to make all of the code think Ceruclase Rockcutter has Silk Touch on it
 		if (item == CaelumItems.CERUCLASE_ROCKCUTTER) {
 			ListTag tag = ci.getReturnValue();
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.fromTag(tag);

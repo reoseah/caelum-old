@@ -28,7 +28,11 @@ public abstract class AbstractCaelumTreeFeature<T extends CaelumTreeFeatureConfi
 	}
 
 	protected boolean canGenerateAt(ServerWorldAccess world, BlockPos pos) {
-		if (isAirOrLeaves(world, pos)) {
+		BlockState state = world.getBlockState(pos);
+		if (state.isAir()
+				|| state.getMaterial() == Material.LEAVES
+				|| state.getMaterial() == Material.REPLACEABLE_PLANT
+				|| state.isIn(BlockTags.SAPLINGS)) {
 			BlockState ground = world.getBlockState(pos.down());
 			Block groundBlock = ground.getBlock();
 
