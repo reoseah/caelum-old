@@ -6,7 +6,6 @@ import java.util.function.LongFunction;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.layer.ScaleLayer;
 import net.minecraft.world.biome.layer.util.CachingLayerContext;
@@ -15,7 +14,6 @@ import net.minecraft.world.biome.layer.util.LayerFactory;
 import net.minecraft.world.biome.source.BiomeLayerSampler;
 import net.minecraft.world.biome.source.BiomeSource;
 import reoseah.caelum.common.CaelumBiomes;
-import reoseah.caelum.common.dimension.CaelumDimensionHelper;
 
 public class CaelumBiomeSource extends BiomeSource {
 	public static final Codec<CaelumBiomeSource> CODEC = RecordCodecBuilder.create(instance -> {
@@ -51,11 +49,11 @@ public class CaelumBiomeSource extends BiomeSource {
 	public Biome getBiomeForNoiseGen(int biomeX, int biomeY, int biomeZ) {
 		// "Noise Gen" coordinates have lesser resolution than normal blocks
 		// In Caelum generation (as well as Nether and End)
-		// 1 noise gen unit = 8 world blocks or 1/2 a chunk
+		// 1 noise gen unit = 4 world blocks or 1/4 a chunk
 
-		int worldX = biomeX * 8;
-		int worldZ = biomeZ * 8;
-		BlockPos islandPos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(worldX, 60, worldZ), 100);
+//		int worldX = biomeX * 4;
+//		int worldZ = biomeZ * 4;
+//		BlockPos islandPos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(worldX, 60, worldZ), 100);
 
 		return this.finalSampler.sample(biomeX, biomeZ);
 	}

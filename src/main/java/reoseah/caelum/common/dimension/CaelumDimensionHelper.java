@@ -17,7 +17,7 @@ public class CaelumDimensionHelper {
 					.getChunk(islandPos.getX() >> 4, islandPos.getZ() >> 4)
 					.sampleHeightmap(Heightmap.Type.MOTION_BLOCKING,
 							islandPos.getX() & 15, islandPos.getZ() & 15);
-			entity.updatePositionAndAngles(islandPos.getX(), surfaceY + 2, islandPos.getZ(), entity.yaw, entity.pitch);
+			entity.updatePositionAndAngles(islandPos.getX(), surfaceY + 1, islandPos.getZ(), entity.yaw, entity.pitch);
 		}
 	}
 

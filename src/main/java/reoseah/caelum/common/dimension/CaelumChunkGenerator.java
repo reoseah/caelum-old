@@ -249,10 +249,10 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		}
 		depthTotal /= weightTotal;
 
-		BlockPos structurePos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(x * 8, 0, z * 8), 10);
+		BlockPos structurePos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(x * 4, 0, z * 4), 10);
 
-		int distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4));
-		int distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4));
+		float distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4F));
+		float distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4F));
 
 		double structureCoeff = distX * distX + distZ * distZ;
 
@@ -261,14 +261,14 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
 		IslandData islandData = this.computeData(x, z);
-		double l = (double) (this.getNoiseSizeY() - 4) / 2;
+		double maxHeight = (double) (this.getNoiseSizeY() - 4) / 2;
 		double m = 8;
 
 		for (int n = 0; n < this.getNoiseSizeY(); ++n) {
 			double o = this.sampleNoise(x, n, z, d, e, f, g);
 			o -= this.computeNoiseModifier(islandData, n);
-			if ((double) n > l) {
-				o = MathHelper.clampedLerp(o, (double) j, ((double) n - l) / (double) i);
+			if ((double) n > maxHeight) {
+				o = MathHelper.clampedLerp(o, (double) j, ((double) n - maxHeight) / (double) i);
 			} else if ((double) n < m) {
 				o = MathHelper.clampedLerp(o, -30.0D, (m - (double) n) / (m - 1.0D));
 			}
