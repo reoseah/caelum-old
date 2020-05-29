@@ -34,6 +34,13 @@ public abstract class PlayerEntityMixin extends Entity implements CelestialCryst
 	}
 
 	@Override
+	public void stopUsingCelestialCrystal() {
+		this.usingCelestialCrystal = false;
+		this.inNetherPortal = false;
+		this.netherPortalTime = 0;
+	}
+
+	@Override
 	public boolean onNetherPortalTick() {
 		PlayerEntity player = (PlayerEntity) (Object) this;
 		int maxPortalTime = 79;
@@ -52,10 +59,12 @@ public abstract class PlayerEntityMixin extends Entity implements CelestialCryst
 						player.getX(), player.getY(), player.getZ(),
 						SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.NEUTRAL,
 						0.5F, 0.4F / (player.getRandom().nextFloat() * 0.4F + 0.8F));
+				player.world.getProfiler().push("portal");
 
 				if (player.world instanceof ServerWorld) {
 					player.changeDimension(CaelumDimensionType.REGISTRY_KEY);
 				}
+				player.world.getProfiler().push("portal");
 			}
 			this.usingCelestialCrystal = false;
 			this.inNetherPortal = false;

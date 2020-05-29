@@ -62,6 +62,14 @@ public class CelestialCrystalItem extends Item {
 	}
 
 	@Override
+	public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+		if (user instanceof PlayerEntity) {
+			PlayerEntity player = (PlayerEntity) user;
+			((CelestialCrystalUser) player).stopUsingCelestialCrystal();
+		}
+	}
+
+	@Override
 	public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext context) {
 		tooltip.add(new LiteralText("Right-click to get to and from Caelum (temporary).").formatted(Formatting.GRAY));
 	}
