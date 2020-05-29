@@ -30,6 +30,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.biomes.FloatingIslandsBiome;
+import reoseah.caelum.common.dimension.biome_source.CaelumBiomeSource;
 
 public class CaelumChunkGenerator extends ChunkGenerator {
 	public static final Codec<CaelumChunkGenerator> CODEC = PrimitiveCodec.LONG.fieldOf("seed")
@@ -227,7 +228,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
 	}
 
-	protected PointInfo computePointInfo(int x, int z) {
+	protected IslandData computeData(int x, int z) {
 		float depthTotal = 0.0F;
 		float weightTotal = 0.0F;
 		float centerDepth = this.biomeSource.getBiomeForNoiseGen(x, 0, z).getDepth();
@@ -248,24 +249,24 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		}
 		depthTotal /= weightTotal;
 
-		BlockPos structurePos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(x * 2, 0, z * 2), 10);
+		BlockPos structurePos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(x * 8, 0, z * 8), 10);
 
 		int distX = structurePos == null ? 256 : Math.min(256, Math.abs(x - structurePos.getX() / 4));
 		int distZ = structurePos == null ? 256 : Math.min(256, Math.abs(z - structurePos.getZ() / 4));
 
 		double structureCoeff = distX * distX + distZ * distZ;
 
-		return new PointInfo(depthTotal, structureCoeff);
+		return new IslandData(depthTotal, structureCoeff);
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
-		PointInfo pointInfo = this.computePointInfo(x, z);
+		IslandData islandData = this.computeData(x, z);
 		double l = (double) (this.getNoiseSizeY() - 4) / 2;
 		double m = 8;
 
 		for (int n = 0; n < this.getNoiseSizeY(); ++n) {
 			double o = this.sampleNoise(x, n, z, d, e, f, g);
-			o -= this.computeNoiseModifier(pointInfo, n);
+			o -= this.computeNoiseModifier(islandData, n);
 			if ((double) n > l) {
 				o = MathHelper.clampedLerp(o, (double) j, ((double) n - l) / (double) i);
 			} else if ((double) n < m) {
@@ -277,18 +278,18 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 
 	}
 
-	protected static class PointInfo {
+	protected static class IslandData {
 		public final double islandSize;
 		public final double structureCoeff;
 
-		public PointInfo(double islandSize, double structureCoeff) {
+		public IslandData(double islandSize, double structureCoeff) {
 			this.islandSize = islandSize;
 			this.structureCoeff = structureCoeff;
 		}
 	}
 
-	private double computeNoiseModifier(PointInfo pointInfo, int y) {
-		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(pointInfo.structureCoeff) / 3);
+	private double computeNoiseModifier(IslandData islandData, int y) {
+		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(islandData.structureCoeff) / 3);
 		double heightEffect = 0;
 		if (y > 16) {
 			heightEffect = Math.max((y - 16) / 6f, 1);
@@ -297,7 +298,7 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 		}
 		heightEffect = -heightEffect * heightEffect;
 
-		return 12 - 15 * pointInfo.islandSize + 10 * pointOfInterestEffect * heightEffect;
+		return 12 - 15 * islandData.islandSize + 10 * pointOfInterestEffect * heightEffect;
 	}
 
 	private double sampleNoise(int x, int y, int z, double d, double e, double f, double g) {

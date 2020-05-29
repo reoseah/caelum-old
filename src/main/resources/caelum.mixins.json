@@ -7,11 +7,11 @@
     "CraftingScreenHandlerMixin",
     "ItemStackMixin",
     "DimensionTypeMixin",
-    "MinecraftServerMixin",
     "PortalForcerMixin",
     "AxeItemMixin",
     "EntityMixin",
-    "PlayerEntityMixin"
+    "PlayerEntityMixin",
+    "DimensionTypeAccessor"
   ],
   "client": [
     "client.BlockModelRendererMixin",

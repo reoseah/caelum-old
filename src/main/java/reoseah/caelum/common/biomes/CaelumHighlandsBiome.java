@@ -6,13 +6,13 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import reoseah.caelum.common.CaelumFeatures;
 
-public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
-	public BarrenForestBiome() {
+public class CaelumHighlandsBiome extends Biome implements FloatingIslandsBiome {
+	public CaelumHighlandsBiome() {
 		super(new Biome.Settings()
 				.configureSurfaceBuilder(CaelumFeatures.BARREN_SURFACE, CaelumBiomesFeatures.SKY_GRASS_SURFACE)
 				.precipitation(Biome.Precipitation.RAIN)
 				.category(Biome.Category.FOREST)
-				.temperature(0.3F)
+				.temperature(0.25F)
 				.downfall(0.8F)
 				.scale(0)
 				.depth(0)
@@ -27,7 +27,6 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 		CaelumBiomesFeatures.addOres(this);
 		CaelumBiomesFeatures.addWaterSprings(this);
 		CaelumBiomesFeatures.addBarrensVegetation(this);
-		CaelumBiomesFeatures.addSkyForestTrees(this);
 		CaelumBiomesFeatures.addSkyGrass(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 	}

@@ -62,7 +62,7 @@ public abstract class PlayerEntityMixin extends Entity implements CelestialCryst
 				player.world.getProfiler().push("portal");
 
 				if (player.world instanceof ServerWorld) {
-					player.changeDimension(CaelumDimensionType.REGISTRY_KEY);
+					player.changeDimension(CaelumDimensionType.WORLD_KEY);
 				}
 				player.world.getProfiler().push("portal");
 			}

@@ -6,7 +6,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import reoseah.caelum.client.CaelumParticles;
-import reoseah.caelum.common.dimension.CaelumDimensionType;
 import reoseah.caelum.common.misc.TillingHelper;
 
 public class Caelum implements ModInitializer {
@@ -21,7 +20,7 @@ public class Caelum implements ModInitializer {
 		CaelumEntities.register();
 		CaelumParticles.register();
 
-		CaelumDimensionType.register();
+		//CaelumDimensionType.register();
 
 		TillingHelper.registerTilling();
 	}
