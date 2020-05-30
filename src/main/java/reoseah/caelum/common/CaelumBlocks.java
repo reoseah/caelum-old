@@ -117,26 +117,7 @@ public class CaelumBlocks {
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
-                
-		Registry.register(Registry.ITEM, "caelum:skyroot_sword", SKYROOT_SWORD);
-		Registry.register(Registry.ITEM, "caelum:skyroot_digging_stick", SKYROOT_DIGGING_STICK);
-
-		Registry.register(Registry.ITEM, "caelum:aerrack_sword", AERRACK_SWORD);
-		Registry.register(Registry.ITEM, "caelum:aerrack_shovel", AERRACK_SHOVEL);
-		Registry.register(Registry.ITEM, "caelum:aerrack_pickaxe", AERRACK_PICKAXE);
-		Registry.register(Registry.ITEM, "caelum:aerrack_axe", AERRACK_AXE);
-		Registry.register(Registry.ITEM, "caelum:aerrack_hoe", AERRACK_HOE);
-
-		Registry.register(Registry.ITEM, "caelum:ceruclase_sword", CERUCLASE_SWORD);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_rockcutter", CERUCLASE_ROCKCUTTER);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_drawknife", CERUCLASE_DRAWKNIFE);
-
-		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
-		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
-
-		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
-		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
-		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
+             
 		
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Caelum.GROUP)));
