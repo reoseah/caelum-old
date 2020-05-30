@@ -12,10 +12,21 @@ import net.minecraft.block.PillarBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.TallBlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.common.blocks.*;
+import reoseah.caelum.common.blocks.BarleyBlock;
+import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
+import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
+import reoseah.caelum.common.blocks.CaelumFlowerBlock;
+import reoseah.caelum.common.blocks.CaelumGrassBlock;
+import reoseah.caelum.common.blocks.CaelumSproutsBlock;
+import reoseah.caelum.common.blocks.ModCraftingTableBlock;
+import reoseah.caelum.common.blocks.ModDoorBlock;
+import reoseah.caelum.common.blocks.ModStairsBlock;
+import reoseah.caelum.common.blocks.ModTrapdoorBlock;
+import reoseah.caelum.common.blocks.SealstoneBlock;
+import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
+import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 
 public class CaelumBlocks {
 
@@ -65,11 +76,11 @@ public class CaelumBlocks {
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).build());
 
-	public static final Block SKYROOT_DOOR = new ModDoorBlock(SKYROOT_PLANKS);
-	public static final Block SKYROOT_TRAPDOOR = new ModTrapdoorBlock(SKYROOT_PLANKS);
+	public static final Block SKYROOT_DOOR = new ModDoorBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().build());
+	public static final Block SKYROOT_TRAPDOOR = new ModTrapdoorBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().build());
 
 	public static void register() {
-		
+
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
 
@@ -117,8 +128,7 @@ public class CaelumBlocks {
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
-             
-		
+
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(AERRACK, new Item.Settings().group(Caelum.GROUP)));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CERUCLASE_ORE, new Item.Settings().group(Caelum.GROUP)));
 
