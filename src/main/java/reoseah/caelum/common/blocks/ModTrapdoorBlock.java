@@ -14,9 +14,4 @@ public class ModTrapdoorBlock extends TrapdoorBlock {
     public ModTrapdoorBlock(Block block) {
         super(FabricBlockSettings.copy(block).nonOpaque().build());
     }
-
-    @Override
-    public List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder) {
-        return Collections.singletonList(new ItemStack(this.asItem()));
-    }
 }
