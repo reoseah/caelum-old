@@ -6,5 +6,5 @@ public interface FloatingIslandsBiome {
 	 * 
 	 * This value gets interpolated as to smoothen biome transitions and then simply added to noise.
 	 */
-	float getIslandsModifier();
+	float getLandThresholdModifier();
 }

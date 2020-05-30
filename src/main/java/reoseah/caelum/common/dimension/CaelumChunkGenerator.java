@@ -1,95 +1,43 @@
 package reoseah.caelum.common.dimension;
 
-import java.util.Random;
-
-import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
-import net.minecraft.util.math.noise.PerlinNoiseSampler;
+import net.minecraft.util.math.noise.NoiseSampler;
+import net.minecraft.util.math.noise.OctaveSimplexNoiseSampler;
+import net.minecraft.world.ChunkRegion;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.source.BiomeSource;
 import net.minecraft.world.chunk.Chunk;
-import net.minecraft.world.gen.chunk.SurfaceChunkGenerator;
+import net.minecraft.world.chunk.ProtoChunk;
+import net.minecraft.world.gen.ChunkRandom;
+import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.caelum.common.biomes.FloatingIslandsBiome;
 
-public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGeneratorConfig> {
-	private static final float[] KERNEL = Util.make(new float[25], values -> {
+public class CaelumChunkGenerator extends ChunkGenerator<CaelumChunkGeneratorConfig> {
+	private static final float[] KERNEL;
+	static {
+		KERNEL = new float[25];
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
-				values[dx + 2 + (dz + 2) * 5] = 10.0F / MathHelper.sqrt(dx * dx + dz * dz + 0.2F);
+				KERNEL[dx + 2 + (dz + 2) * 5] = 10.0F / MathHelper.sqrt(dx * dx + dz * dz + 0.2F);
 			}
 		}
-	});
+	}
 
-	public static final int VERTICAL_RESOLUTION = 4;
-	public static final int HORIZONTAL_RESOLUTION = 8;
+	protected final SimpleLandHelper land;
 
-	// same as ones in parent, because they are private
-	protected final OctavePerlinNoiseSampler noise1;
-	protected final OctavePerlinNoiseSampler noise2;
-	protected final OctavePerlinNoiseSampler noiseMask;
+	private final NoiseSampler surfaceDepthNoise;
 
 	public CaelumChunkGenerator(IWorld world, BiomeSource biomeSource, CaelumChunkGeneratorConfig config) {
-		super(world, biomeSource, VERTICAL_RESOLUTION, HORIZONTAL_RESOLUTION, 128, config, true);
+		super(world, biomeSource, config);
 
-		this.noise1 = new OctavePerlinNoiseSampler(this.random, 15, 0);
-		this.noise2 = new OctavePerlinNoiseSampler(this.random, 15, 0);
-		this.noiseMask = new OctavePerlinNoiseSampler(this.random, 7, 0);
-	}
+		ChunkRandom random = new ChunkRandom(this.seed);
+		this.land = new SimpleLandHelper(random, 128, 8, 4, 684.412D * 2, 684.412D);
 
-	@Override
-	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
-		PointInfo pointInfo = this.computePointInfo(x, z);
-		double maxHeight = this.method_16409();
-		double minHeight = this.method_16410();
-
-		for (int y = 0; y < this.getNoiseSizeY(); ++y) {
-			double value = this.customSampleNoise(x, y, z, d, e, f, g);
-			value -= this.computeNoiseModifier(pointInfo, y);
-			if (y > maxHeight) {
-				value = MathHelper.clampedLerp(value, j, (y - maxHeight) / i);
-			} else if (y < minHeight) {
-				value = MathHelper.clampedLerp(value, -30.0D, (minHeight - y) / (minHeight - 1.0D));
-			}
-
-			buffer[y] = value;
-		}
-	}
-
-	protected double customSampleNoise(int x, int y, int z, double scaleXZ, double scaleY, double maskScaleXZ, double maskScaleY) {
-		double sample1 = 0.0D;
-		double sample2 = 0.0D;
-		double maskSample = 0.0D;
-
-		double amplitude = 1.0D;
-		for (int i = 0; i < 16; ++i) {
-			double u = OctavePerlinNoiseSampler.maintainPrecision(x * scaleXZ * amplitude);
-			double v = OctavePerlinNoiseSampler.maintainPrecision(y * scaleY * amplitude);
-			double w = OctavePerlinNoiseSampler.maintainPrecision(z * scaleXZ * amplitude);
-			double p = scaleY * amplitude;
-			PerlinNoiseSampler sampler1 = this.noise1.getOctave(i);
-			if (sampler1 != null) {
-				sample1 += sampler1.sample(u, v, w, p, y * p) / amplitude;
-			}
-
-			PerlinNoiseSampler sampler2 = this.noise2.getOctave(i);
-			if (sampler2 != null) {
-				sample2 += sampler2.sample(u, v, w, p, y * p) / amplitude;
-			}
-
-			if (i < 8) {
-				PerlinNoiseSampler maskSampler = this.noiseMask.getOctave(i);
-				if (maskSampler != null) {
-					maskSample += maskSampler.sample(OctavePerlinNoiseSampler.maintainPrecision(x * maskScaleXZ * amplitude), OctavePerlinNoiseSampler.maintainPrecision(y * maskScaleY * amplitude), OctavePerlinNoiseSampler.maintainPrecision(z * maskScaleXZ * amplitude), maskScaleY * amplitude, y * maskScaleY * amplitude) / amplitude;
-				}
-			}
-
-			amplitude /= 2.0D;
-		}
-
-		return MathHelper.clampedLerp(sample1 / 512.0D, sample2 / 512.0D, (maskSample / 10.0D + 1.0D) / 2.0D);
+		this.surfaceDepthNoise = new OctaveSimplexNoiseSampler(random, 3, 0);
 	}
 
 	protected static class PointInfo {
@@ -110,7 +58,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
 				Biome biome = this.biomeSource.getBiomeForNoiseGen(x + dx, 0, z + dz);
-				float size = (biome instanceof FloatingIslandsBiome) ? ((FloatingIslandsBiome) biome).getIslandsModifier() : 0;
+				float size = biome instanceof FloatingIslandsBiome ? ((FloatingIslandsBiome) biome).getLandThresholdModifier() : 0;
 
 				float weight = KERNEL[dx + 2 + (dz + 2) * 5];
 				if (biome.getDepth() > centerDepth) {
@@ -147,11 +95,6 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 	}
 
 	@Override
-	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
-		this.sampleNoiseColumn(buffer, x, z, 0.5 * 684.412D, 0.5 * 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
-	}
-
-	@Override
 	public int getSpawnHeight() {
 		return 60;
 	}
@@ -162,27 +105,44 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 	}
 
 	@Override
-	protected void buildBedrock(Chunk chunk, Random random) {
-		// no op
+	public int getHeightOnGround(int x, int z, Heightmap.Type type) {
+		return this.land.getHeightOnGround(x, z, type);
 	}
 
 	@Override
-	protected double method_16409() {
-		return ((int) super.method_16409()) / 2;
+	public void buildSurface(ChunkRegion chunkRegion, Chunk chunk) {
+		ChunkPos chunkPos = chunk.getPos();
+		int chunkX = chunkPos.x;
+		int chunkZ = chunkPos.z;
+		ChunkRandom random = new ChunkRandom();
+		random.setSeed(chunkX, chunkZ);
+		int startX = chunkPos.getStartX();
+		int startZ = chunkPos.getStartZ();
+
+		BlockPos.Mutable mpos = new BlockPos.Mutable();
+
+		double noiseScale = 0.0625D;
+		for (int dX = 0; dX < 16; ++dX) {
+			for (int dZ = 0; dZ < 16; ++dZ) {
+				int x = startX + dX;
+				int z = startZ + dZ;
+				int y = chunk.sampleHeightmap(Heightmap.Type.WORLD_SURFACE_WG, dX, dZ) + 1;
+				double e = this.surfaceDepthNoise.sample(x * noiseScale, z * noiseScale, noiseScale, dX * noiseScale) * 15.0D;
+				chunkRegion.getBiome(mpos.set(startX + dX, y, startZ + dZ))
+						.buildSurface(random, chunk, x, z, y, e, this.getConfig().getDefaultBlock(), this.getConfig().getDefaultFluid(), this.getSeaLevel(), this.world.getSeed());
+			}
+		}
+
 	}
 
 	@Override
-	protected double method_16410() {
-		return 8.0D;
-	}
+	public void populateNoise(IWorld world, Chunk chunk) {
+		ChunkPos chunkPos = chunk.getPos();
 
-	@Override
-	protected double[] computeNoiseRange(int x, int z) {
-		throw new UnsupportedOperationException();
-	}
+		ProtoChunk protoChunk = (ProtoChunk) chunk;
+		Heightmap oceanFloorMap = protoChunk.getHeightmap(Heightmap.Type.OCEAN_FLOOR_WG);
+		Heightmap worldSurfaceMap = protoChunk.getHeightmap(Heightmap.Type.WORLD_SURFACE_WG);
 
-	@Override
-	protected double computeNoiseFalloff(double depth, double scale, int y) {
-		throw new UnsupportedOperationException();
+		this.land.placeIslands(chunkPos, protoChunk, oceanFloorMap, worldSurfaceMap);
 	}
 }

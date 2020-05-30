@@ -28,7 +28,7 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 	}
 
 	@Override
-	public float getIslandsModifier() {
+	public float getLandThresholdModifier() {
 		return -0.5F;
 	}
 }
