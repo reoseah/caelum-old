@@ -1,4 +1,4 @@
-package reoseah.caelum.common.dimension;
+package reoseah.caelum.common.dimension.chunk_generator;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;

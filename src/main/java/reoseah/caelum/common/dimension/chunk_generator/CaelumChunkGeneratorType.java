@@ -1,4 +1,4 @@
-package reoseah.caelum.common.dimension;
+package reoseah.caelum.common.dimension.chunk_generator;
 
 import java.util.function.Supplier;
 

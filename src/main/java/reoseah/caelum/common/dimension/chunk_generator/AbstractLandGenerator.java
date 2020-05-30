@@ -1,4 +1,4 @@
-package reoseah.caelum.common.dimension;
+package reoseah.caelum.common.dimension.chunk_generator;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -13,7 +13,7 @@ import net.minecraft.world.chunk.ProtoChunk;
 import net.minecraft.world.gen.ChunkRandom;
 import reoseah.caelum.common.CaelumBlocks;
 
-public class SimpleLandHelper {
+public abstract class AbstractLandGenerator<T> {
 	protected final OctavePerlinNoiseSampler noise1;
 	protected final OctavePerlinNoiseSampler noise2;
 	protected final OctavePerlinNoiseSampler noiseMask;
@@ -27,7 +27,7 @@ public class SimpleLandHelper {
 	private final double verticalScale;
 	private final double horizontalScale;
 
-	public SimpleLandHelper(ChunkRandom random, int worldHeight, int verticalResolution, int horizontalResolution, double verticalScale, double horizontalScale) {
+	public AbstractLandGenerator(ChunkRandom random, int worldHeight, int verticalResolution, int horizontalResolution, double verticalScale, double horizontalScale) {
 		this.noise1 = new OctavePerlinNoiseSampler(random, 15, 0);
 		this.noise2 = new OctavePerlinNoiseSampler(random, 15, 0);
 		this.noiseMask = new OctavePerlinNoiseSampler(random, 7, 0);
@@ -42,7 +42,7 @@ public class SimpleLandHelper {
 		this.horizontalScale = horizontalScale;
 	}
 
-	public void placeIslands(ChunkPos chunkPos, ProtoChunk protoChunk, Heightmap oceanFloorMap, Heightmap worldSurfaceMap) {
+	public void generate(ChunkPos chunkPos, ProtoChunk protoChunk, Heightmap oceanFloorMap, Heightmap worldSurfaceMap) {
 		int chunkX = chunkPos.x;
 		int chunkZ = chunkPos.z;
 		int startX = chunkX << 4;
@@ -76,8 +76,8 @@ public class SimpleLandHelper {
 					double noiseNextNE = buffers[1][regionZ][regionY + 1];
 					double noiseNextSE = buffers[1][regionZ + 1][regionY + 1];
 
-					for (int dY = this.verticalNoiseResolution - 1; dY >= 0; --dY) {
-						int y = regionY * this.verticalNoiseResolution + dY;
+					for (int interpY = this.verticalNoiseResolution - 1; interpY >= 0; --interpY) {
+						int y = regionY * this.verticalNoiseResolution + interpY;
 						int relativeY = y & 15;
 						int sectionY = y >> 4;
 						if (chunkSection.getYOffset() >> 4 != sectionY) {
@@ -86,23 +86,23 @@ public class SimpleLandHelper {
 							chunkSection.lock();
 						}
 
-						double deltaY = (double) dY / (double) this.verticalNoiseResolution;
+						double deltaY = (double) interpY / (double) this.verticalNoiseResolution;
 						double noiseCurrentNW = MathHelper.lerp(deltaY, noiseNW, noiseNextNW);
 						double noiseCurrentNE = MathHelper.lerp(deltaY, noiseNE, noiseNextNE);
 						double noiseCurrentSW = MathHelper.lerp(deltaY, noiseSW, noiseNextSW);
 						double noiseCurrentSE = MathHelper.lerp(deltaY, noiseSE, noiseNextSE);
 
-						for (int dX = 0; dX < this.horizontalNoiseResolution; ++dX) {
-							int x = startX + regionX * this.horizontalNoiseResolution + dX;
+						for (int interpX = 0; interpX < this.horizontalNoiseResolution; ++interpX) {
+							int x = startX + regionX * this.horizontalNoiseResolution + interpX;
 							int relativeX = x & 15;
-							double deltaX = (double) dX / (double) this.horizontalNoiseResolution;
+							double deltaX = (double) interpX / (double) this.horizontalNoiseResolution;
 							double noiseCurrentNorth = MathHelper.lerp(deltaX, noiseCurrentNW, noiseCurrentNE);
 							double noiseCurrentSouth = MathHelper.lerp(deltaX, noiseCurrentSW, noiseCurrentSE);
 
-							for (int dZ = 0; dZ < this.horizontalNoiseResolution; ++dZ) {
-								int z = startZ + regionZ * this.horizontalNoiseResolution + dZ;
+							for (int innterpZ = 0; innterpZ < this.horizontalNoiseResolution; ++innterpZ) {
+								int z = startZ + regionZ * this.horizontalNoiseResolution + innterpZ;
 								int relativeZ = z & 15;
-								double deltaZ = (double) dZ / (double) this.horizontalNoiseResolution;
+								double deltaZ = (double) innterpZ / (double) this.horizontalNoiseResolution;
 								double noiseRaw = MathHelper.lerp(deltaZ, noiseCurrentNorth, noiseCurrentSouth);
 								double noise = MathHelper.clamp(noiseRaw / 200.0D, -1.0D, 1.0D);
 
@@ -139,26 +139,31 @@ public class SimpleLandHelper {
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
 		int resolutionRatio = this.verticalNoiseResolution / this.horizontalNoiseResolution;
-		this.sampleNoiseColumn(buffer, x, z, 0.5 * this.horizontalScale, 0.5 * this.verticalScale * 2 * resolutionRatio, 684.412D / 80, 684.412D / 160, 64, -3000);
+		this.sampleNoiseColumn(buffer, x, z, 0.5 * this.horizontalScale, 0.5 * this.verticalScale * 2 * resolutionRatio, 684.412D / 160 * resolutionRatio, 684.412D / 160, 64, -3000);
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z, double horizontalScale, double verticalScale, double horizontalScale2, double verticalScale2, int i, int j) {
-		// PointInfo pointInfo = this.computePointInfo(x, z);
+		T columnData = this.createColumnData(x, z);
 		double maxHeight = (double) (this.noiseSizeY - 3) / 2;
 		double minHeight = 8.0D;
 
 		for (int y = 0; y < this.noiseSizeY + 1; ++y) {
-			double value = this.sampleNoise(x, y, z, horizontalScale, verticalScale, horizontalScale2, verticalScale2);
-			// value -= this.computeNoiseModifier(pointInfo, y);
+			double noise = this.sampleNoise(x, y, z, horizontalScale, verticalScale, horizontalScale2, verticalScale2);
+			noise = this.modifyNoise(noise, columnData, y);
+			
 			if (y > maxHeight) {
-				value = MathHelper.clampedLerp(value, j, (y - maxHeight) / i);
+				noise = MathHelper.clampedLerp(noise, j, (y - maxHeight) / i);
 			} else if (y < minHeight) {
-				value = MathHelper.clampedLerp(value, -30.0D, (minHeight - y) / (minHeight - 1.0D));
+				noise = MathHelper.clampedLerp(noise, -30.0D, (minHeight - y) / (minHeight - 1.0D));
 			}
 
-			buffer[y] = value;
+			buffer[y] = noise;
 		}
 	}
+	
+	protected abstract T createColumnData(int x, int z);
+	
+	protected abstract double modifyNoise(double noise, T data, int y);
 
 	protected double sampleNoise(int x, int y, int z, double horizontalScale, double verticalScale, double maskVerticalScale, double maskHorizontalScale) {
 		double sample1 = 0.0D;
@@ -193,7 +198,7 @@ public class SimpleLandHelper {
 
 		return MathHelper.clampedLerp(sample1 / 512.0D, sample2 / 512.0D, (maskSample / 10.0D + 1.0D) / 2.0D);
 	}
-	
+
 	public int getHeightOnGround(int x, int z, Heightmap.Type heightmapType) {
 		int i = Math.floorDiv(x, this.horizontalNoiseResolution);
 		int j = Math.floorDiv(z, this.horizontalNoiseResolution);
@@ -221,7 +226,7 @@ public class SimpleLandHelper {
 					BlockState blockState2 = Blocks.AIR.getDefaultState();
 					if (v > 0.0D) {
 						blockState2 = CaelumBlocks.AERRACK.getDefaultState();
-					} 
+					}
 
 					if (heightmapType.getBlockPredicate().test(blockState2)) {
 						return w + 1;
@@ -233,9 +238,9 @@ public class SimpleLandHelper {
 		return 0;
 	}
 
-	 protected double[] sampleNoiseColumn(int x, int z) {
-	      double[] ds = new double[this.noiseSizeY + 1];
-	      this.sampleNoiseColumn(ds, x, z);
-	      return ds;
-	   }
+	protected double[] sampleNoiseColumn(int x, int z) {
+		double[] ds = new double[this.noiseSizeY + 1];
+		this.sampleNoiseColumn(ds, x, z);
+		return ds;
+	}
 }

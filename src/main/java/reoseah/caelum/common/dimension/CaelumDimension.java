@@ -19,6 +19,8 @@ import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import reoseah.caelum.common.Caelum;
+import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGenerator;
+import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorConfig;
 
 public class CaelumDimension extends Dimension {
 	public CaelumDimension(World world, DimensionType type) {
@@ -87,7 +89,7 @@ public class CaelumDimension extends Dimension {
 	public static TeleportTarget placeEntity(Entity entity, ServerWorld world, Direction dim, double offsetX, double offsetZ) {
 		BlockPos entityPos = entity.getBlockPos();
 
-		BlockPos structurePos = LargeIslandHelper.locateIsland(world.getSeed(), entityPos, 100);
+		BlockPos structurePos = CaelumDimensionHelper.locateIsland(world.getSeed(), entityPos, 100);
 
 		int surfaceY = world
 				.getChunk(structurePos.getX() >> 4, structurePos.getZ() >> 4)
