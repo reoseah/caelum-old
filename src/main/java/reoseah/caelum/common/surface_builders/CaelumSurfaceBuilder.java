@@ -58,7 +58,7 @@ public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 			if (state.isAir()) {
 				if (!hadSurface) {
 					depth = -1;
-				}
+				} 
 				continue;
 			}
 			if (state.getBlock() != defaultBlock.getBlock()) {

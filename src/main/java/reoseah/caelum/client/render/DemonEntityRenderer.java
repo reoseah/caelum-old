@@ -21,7 +21,6 @@ public class DemonEntityRenderer extends MobEntityRenderer<DemonEntity, DemonMod
 		return TEXTURE;
 	}
 
-	@Override
 	protected void scale(DemonEntity entity, MatrixStack matrices, float f) {
 	}
 }

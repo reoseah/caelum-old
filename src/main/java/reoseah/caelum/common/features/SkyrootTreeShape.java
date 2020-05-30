@@ -4,7 +4,6 @@ import java.util.Random;
 
 public enum SkyrootTreeShape {
 	NORMAL {
-		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(6)) {
 			case 0:
@@ -17,7 +16,6 @@ public enum SkyrootTreeShape {
 		}
 	},
 	TALL {
-		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(2)) {
 			case 0:
@@ -28,7 +26,6 @@ public enum SkyrootTreeShape {
 		}
 	},
 	SMALL {
-		@Override
 		public int[] chooseShape(Random random) {
 			switch (random.nextInt(4)) {
 			case 0:

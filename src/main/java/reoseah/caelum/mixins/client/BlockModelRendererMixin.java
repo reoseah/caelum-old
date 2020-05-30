@@ -37,7 +37,7 @@ public class BlockModelRendererMixin {
 				CrashReport report = CrashReport.create(throwable, "Tesselating block model");
 				CrashReportSection section = report.addElement("Block model being tesselated");
 				CrashReportSection.addBlockInfo(section, pos, state);
-				section.add("Using AO", ao);
+				section.add("Using AO", (Object) ao);
 				throw new CrashException(report);
 			}
 		}

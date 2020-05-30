@@ -18,7 +18,6 @@ public class SkyrootGroundBushFeature extends AbstractTreeFeature<TreeFeatureCon
 		super(function);
 	}
 
-	@Override
 	public boolean generate(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, TreeFeatureConfig config) {
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		if (isNaturalDirtOrGrass(world, pos)) {

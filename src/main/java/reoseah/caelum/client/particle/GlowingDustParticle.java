@@ -39,12 +39,10 @@ public class GlowingDustParticle extends SpriteBillboardParticle {
 		return this.scale * MathHelper.clamp((this.age + tickDelta) / this.maxAge * 32.0F, 0.0F, 1.0F);
 	}
 
-	@Override
 	public int getColorMultiplier(float tint) {
 		return 15728880;
 	}
 
-	@Override
 	public void tick() {
 		this.prevPosX = this.x;
 		this.prevPosY = this.y;

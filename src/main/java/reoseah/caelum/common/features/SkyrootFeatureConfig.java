@@ -20,7 +20,6 @@ public class SkyrootFeatureConfig extends TreeFeatureConfig {
 		this.skyrootTreeShape = skyrootTreeShape;
 	}
 
-	@Override
 	public <T> Dynamic<T> serialize(DynamicOps<T> ops) {
 		ImmutableMap<T, T> map = ImmutableMap.of(ops.createString("skyrootTreeShape"), ops.createInt(this.skyrootTreeShape.toInteger()));
 

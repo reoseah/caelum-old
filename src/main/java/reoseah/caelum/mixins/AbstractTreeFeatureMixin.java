@@ -27,7 +27,6 @@ public abstract class AbstractTreeFeatureMixin extends Feature<DefaultFeatureCon
 		super(configDeserializer);
 	}
 
-	@Override
 	@Shadow
 	protected abstract void setBlockState(ModifiableWorld world, BlockPos pos, BlockState state);
 

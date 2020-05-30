@@ -37,14 +37,12 @@ public class CaelumDimension extends Dimension {
 				new CaelumChunkGeneratorConfig());
 	}
 
-	@Override
 	public BlockPos getSpawningBlockInChunk(ChunkPos chunkPos, boolean forMobs) {
 		Random random = new Random(this.world.getSeed());
 		BlockPos blockPos = new BlockPos(chunkPos.getStartX() + random.nextInt(15), 0, chunkPos.getEndZ() + random.nextInt(15));
 		return this.world.getTopNonAirState(blockPos).getMaterial().blocksMovement() ? blockPos : null;
 	}
 
-	@Override
 	public BlockPos getTopSpawningBlockPosition(int x, int z, boolean forMobs) {
 		return this.getSpawningBlockInChunk(new ChunkPos(x >> 4, z >> 4), forMobs);
 	}
@@ -61,10 +59,9 @@ public class CaelumDimension extends Dimension {
 		return true;
 	}
 
-	@Override
 	@Environment(EnvType.CLIENT)
 	public Vec3d modifyFogColor(Vec3d color, float tickDelta) {
-		return color.multiply(tickDelta * 0.94F + 0.06F, tickDelta * 0.94F + 0.06F, tickDelta * 0.91F + 0.09F);
+		return color.multiply((tickDelta * 0.94F + 0.06F), (tickDelta * 0.94F + 0.06F), (tickDelta * 0.91F + 0.09F));
 	}
 
 	@Override
