@@ -6,7 +6,7 @@ import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.entity.model.CompositeEntityModel;
 import net.minecraft.client.render.entity.model.ModelWithHead;
 import net.minecraft.util.math.MathHelper;
-import reoseah.caelum.entities.DemonEntity;
+import reoseah.caelum.common.entities.DemonEntity;
 
 public class DemonModel extends CompositeEntityModel<DemonEntity> implements ModelWithHead {
 	protected ModelPart head;

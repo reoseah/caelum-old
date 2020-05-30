@@ -4,7 +4,7 @@ import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.entities.DemonEntity;
+import reoseah.caelum.common.entities.DemonEntity;
 
 public class CaelumEntities {
 	public static final EntityType<DemonEntity> DEMON = new EntityType<>(DemonEntity::new, EntityCategory.MISC, true, true, true, true, EntityDimensions.fixed(0.6F, 1.95F));

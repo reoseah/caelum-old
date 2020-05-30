@@ -1,4 +1,4 @@
-package reoseah.caelum.entities;
+package reoseah.caelum.common.entities;
 
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;

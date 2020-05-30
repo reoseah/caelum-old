@@ -34,9 +34,9 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 	public CaelumChunkGenerator(IWorld world, BiomeSource biomeSource, CaelumChunkGeneratorConfig config) {
 		super(world, biomeSource, VERTICAL_RESOLUTION, HORIZONTAL_RESOLUTION, 128, config, true);
 
-		this.noise1 = new OctavePerlinNoiseSampler(this.random, -15, 0);
-		this.noise2 = new OctavePerlinNoiseSampler(this.random, -15, 0);
-		this.noiseMask = new OctavePerlinNoiseSampler(this.random, -7, 0);
+		this.noise1 = new OctavePerlinNoiseSampler(this.random, 15, 0);
+		this.noise2 = new OctavePerlinNoiseSampler(this.random, 15, 0);
+		this.noiseMask = new OctavePerlinNoiseSampler(this.random, 7, 0);
 	}
 
 	@Override
@@ -148,7 +148,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 
 	@Override
 	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
-		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
+		this.sampleNoiseColumn(buffer, x, z, 0.5 * 684.412D, 0.5 * 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
 	}
 
 	@Override
