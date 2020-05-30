@@ -22,7 +22,8 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS,
 				CaelumBlocks.SKY_BLUE_FLOWER,
 				CaelumBlocks.BARLEY,
-				CaelumBlocks.SKYROOT_DOOR);
+				CaelumBlocks.SKYROOT_DOOR,
+                                CaelumBlocks.SKYROOT_TRAPDOOR);
 
 		EntityRendererRegistry.INSTANCE.register(CaelumEntities.DEMON, (manager, context) -> new DemonEntityRenderer(manager));
 
