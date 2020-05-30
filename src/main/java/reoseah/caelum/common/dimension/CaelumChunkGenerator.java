@@ -225,13 +225,15 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
-		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 64, -3000);
+		this.sampleNoiseColumn(buffer, x, z, 684.412D, 684.412D * 4, 684.412D / 80, 684.412D / 160, 3, -10);
 	}
 
 	protected IslandData computeData(int x, int z) {
-		float depthTotal = 0.0F;
+		float sizeTotal = 0.0F;
 		float weightTotal = 0.0F;
-		float centerDepth = this.biomeSource.getBiomeForNoiseGen(x, 0, z).getDepth();
+		float centerSize = this.biomeSource.getBiomeForNoiseGen(x, 0, z).getDepth();
+
+		float heightTotal = 0;
 
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
@@ -239,15 +241,20 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 				float size = (biome instanceof FloatingIslandsBiome) ? ((FloatingIslandsBiome) biome).getIslandsModifier() : 0;
 
 				float weight = KERNEL[dx + 2 + (dz + 2) * 5];
-				if (biome.getDepth() > centerDepth) {
+				if (biome.getDepth() > centerSize) {
 					weight /= 2.0F;
 				}
 
-				depthTotal += size * weight;
+				sizeTotal += size * weight;
 				weightTotal += weight;
+
+				float height = (biome instanceof FloatingIslandsBiome) ? ((FloatingIslandsBiome) biome).getHeightModifier() : 0;
+
+				heightTotal += height * weight;
 			}
 		}
-		depthTotal /= weightTotal;
+		sizeTotal /= weightTotal;
+		heightTotal /= weightTotal;
 
 		BlockPos structurePos = CaelumDimensionHelper.locateIsland(this.seed, new BlockPos(x * 4, 0, z * 4), 10);
 
@@ -256,35 +263,38 @@ public class CaelumChunkGenerator extends ChunkGenerator {
 
 		double structureCoeff = distX * distX + distZ * distZ;
 
-		return new IslandData(depthTotal, structureCoeff);
+		return new IslandData(sizeTotal, structureCoeff, heightTotal);
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z, double d, double e, double f, double g, int i, int j) {
 		IslandData islandData = this.computeData(x, z);
-		double maxHeight = (double) (this.getNoiseSizeY() - 4) / 2;
-		double m = 8;
+		double maxHeight = (double) (this.getNoiseSizeY() - 4) / 2 + islandData.heightModifier;
+		double minHeight = 8 + islandData.heightModifier;
 
-		for (int n = 0; n < this.getNoiseSizeY(); ++n) {
-			double o = this.sampleNoise(x, n, z, d, e, f, g);
-			o -= this.computeNoiseModifier(islandData, n);
-			if ((double) n > maxHeight) {
-				o = MathHelper.clampedLerp(o, (double) j, ((double) n - maxHeight) / (double) i);
-			} else if ((double) n < m) {
-				o = MathHelper.clampedLerp(o, -30.0D, (m - (double) n) / (m - 1.0D));
+		for (int y = 0; y < this.getNoiseSizeY(); ++y) {
+			double o = this.sampleNoise(x, y, z, d, e, f, g);
+			o -= this.computeNoiseModifier(islandData, y);
+			double y2 = y;
+			y2 = MathHelper.clamp(y2, 0, this.getNoiseSizeY() - 1);
+			if ((double) y2 > maxHeight) {
+				o = MathHelper.clampedLerp(o, (double) j, ((double) y2 - maxHeight) / (double) i);
+			} else if ((double) y2 < minHeight) {
+				o = MathHelper.clampedLerp(o, -30.0D, (minHeight - (double) y2) / (minHeight - 1.0D));
 			}
 
-			buffer[n] = o;
+			buffer[y] = o;
 		}
-
 	}
 
 	protected static class IslandData {
 		public final double islandSize;
 		public final double structureCoeff;
+		public final double heightModifier;
 
-		public IslandData(double islandSize, double structureCoeff) {
+		public IslandData(double islandSize, double structureCoeff, double heightMod) {
 			this.islandSize = islandSize;
 			this.structureCoeff = structureCoeff;
+			this.heightModifier = heightMod;
 		}
 	}
 

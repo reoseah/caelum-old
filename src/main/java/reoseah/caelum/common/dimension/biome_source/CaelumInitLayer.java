@@ -13,6 +13,6 @@ public enum CaelumInitLayer implements InitLayer {
 
 	@Override
 	public int sample(LayerRandomnessSource context, int x, int y) {
-		return context.nextInt(4) == 0 ? CAELUM_HIGHLANDS : BARREN_FOREST;
+		return BARREN_FOREST;
 	}
 }

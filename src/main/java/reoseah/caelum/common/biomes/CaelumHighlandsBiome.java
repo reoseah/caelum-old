@@ -9,7 +9,7 @@ import reoseah.caelum.common.CaelumFeatures;
 public class CaelumHighlandsBiome extends Biome implements FloatingIslandsBiome {
 	public CaelumHighlandsBiome() {
 		super(new Biome.Settings()
-				.configureSurfaceBuilder(CaelumFeatures.BARREN_SURFACE, CaelumBiomesFeatures.SKY_GRASS_SURFACE)
+				.configureSurfaceBuilder(CaelumFeatures.DEFAULT_SURFACE, CaelumBiomesFeatures.AERRACK_SURFACE)
 				.precipitation(Biome.Precipitation.RAIN)
 				.category(Biome.Category.FOREST)
 				.temperature(0.25F)
@@ -34,5 +34,10 @@ public class CaelumHighlandsBiome extends Biome implements FloatingIslandsBiome 
 	@Override
 	public float getIslandsModifier() {
 		return -0.5F;
+	}
+
+	@Override
+	public float getHeightModifier() {
+		return 6;
 	}
 }
