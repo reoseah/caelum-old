@@ -16,6 +16,7 @@ import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
 import reoseah.caelum.common.items.SkyrootDiggingStickItem;
+import static reoseah.caelum.common.CaelumBlocks.*;
 
 public class CaelumItems {
 	public static final Item TELEPORTER = new CelestialCrystalItem(new Item.Settings().group(Caelum.GROUP));
