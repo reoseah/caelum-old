@@ -20,6 +20,7 @@ public class SkylandTreeDecorator extends Decorator<ChanceDecoratorConfig> {
 		super(function);
 	}
 
+	@Override
 	public Stream<BlockPos> getPositions(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random, ChanceDecoratorConfig config, BlockPos pos) {
 		return IntStream.range(0, 16).mapToObj((i) -> {
 			int j = i / 4;

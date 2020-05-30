@@ -19,6 +19,7 @@ public class SkyrootTallBushFeature extends AbstractTreeFeature<TreeFeatureConfi
 		super(function);
 	}
 
+	@Override
 	public boolean generate(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, Set<BlockPos> leavesPositions, BlockBox box, TreeFeatureConfig config) {
 		pos = world.getTopPosition(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, pos).down();
 		Direction direction = Direction.fromHorizontal(random.nextInt(4));

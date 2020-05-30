@@ -111,7 +111,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 		for (int dx = -2; dx <= 2; ++dx) {
 			for (int dz = -2; dz <= 2; ++dz) {
 				Biome biome = this.biomeSource.getBiomeForNoiseGen(x + dx, 0, z + dz);
-				float size = (biome instanceof FloatingIslandsBiome) ? ((FloatingIslandsBiome) biome).getIslandsModifier() : 0;
+				float size = biome instanceof FloatingIslandsBiome ? ((FloatingIslandsBiome) biome).getIslandsModifier() : 0;
 
 				float weight = KERNEL[dx + 2 + (dz + 2) * 5];
 				if (biome.getDepth() > centerDepth) {
@@ -169,7 +169,7 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 
 	@Override
 	protected double method_16409() {
-		return ((int) super.method_16409()) / 2;
+		return (int) super.method_16409() / 2;
 	}
 
 	@Override
