@@ -69,7 +69,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_TRAPDOOR = new ModTrapdoorBlock(SKYROOT_PLANKS);
 
 	public static void register() {
-		// Natural //
+		
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
 
