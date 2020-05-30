@@ -16,13 +16,4 @@ public class ModDoorBlock extends DoorBlock {
     {
         super(FabricBlockSettings.copy(block).nonOpaque().build());
     }
-
-    @Override
-    public List<ItemStack> getDroppedStacks(BlockState state, LootContext.Builder builder)
-    {
-        if (state.get(HALF) == DoubleBlockHalf.LOWER)
-            return Collections.singletonList(new ItemStack(this.asItem()));
-        else
-            return Collections.emptyList();
-    }
 }
