@@ -8,15 +8,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.block.CraftingTableBlock;
+import net.minecraft.container.BlockContext;
+import net.minecraft.container.CraftingTableContainer;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.screen.CraftingScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
 
-@Mixin(CraftingScreenHandler.class)
+@Mixin(CraftingTableContainer.class)
 public abstract class CraftingScreenHandlerMixin {
 	@Shadow
 	@Final
-	private ScreenHandlerContext context;
+	private BlockContext context;
 
 	@Inject(at = @At("HEAD"), method = "canUse", cancellable = true)
 	public void canUse(PlayerEntity player, CallbackInfoReturnable<Boolean> ci) {
@@ -26,7 +26,7 @@ public abstract class CraftingScreenHandlerMixin {
 		}
 	}
 
-	private static boolean canUse2(ScreenHandlerContext ctx, PlayerEntity player) {
+	private static boolean canUse2(BlockContext ctx, PlayerEntity player) {
 		return ctx.run((world, pos) -> {
 			return world.getBlockState(pos).getBlock() instanceof CraftingTableBlock
 					&& player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;

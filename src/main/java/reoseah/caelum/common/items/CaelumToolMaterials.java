@@ -37,7 +37,7 @@ public enum CaelumToolMaterials implements ToolMaterial {
 	}
 
 	@Override
-	public float getMiningSpeedMultiplier() {
+	public float getMiningSpeed() {
 		return this.miningSpeed;
 	}
 

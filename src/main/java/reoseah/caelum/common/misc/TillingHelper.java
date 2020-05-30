@@ -5,7 +5,7 @@ import reoseah.caelum.common.CaelumBlocks;
 
 public abstract class TillingHelper extends HoeItem {
 	private TillingHelper() {
-		super(null, 0, 0, null);
+		super(null, 0, null);
 		throw new UnsupportedOperationException();
 	}
 

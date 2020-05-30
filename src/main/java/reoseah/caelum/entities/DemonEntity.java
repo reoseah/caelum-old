@@ -1,6 +1,5 @@
 package reoseah.caelum.entities;
 
-import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
@@ -17,10 +16,10 @@ public class DemonEntity extends PassiveEntity {
 	}
 
 	@Override
-	public EntityData initialize(IWorld world, LocalDifficulty difficulty, SpawnType spawnType, /* @Nullable */ EntityData data, /* @Nullable */ CompoundTag tag) {
+	public net.minecraft.entity.EntityData initialize(IWorld world, LocalDifficulty difficulty, SpawnType spawnType, /* @Nullable */ net.minecraft.entity.EntityData data, /* @Nullable */ CompoundTag tag) {
 		if (data == null) {
-			data = new PassiveEntity.PassiveData();
-			((PassiveEntity.PassiveData) data).setBabyAllowed(false);
+			data = new PassiveEntity.EntityData();
+			((PassiveEntity.EntityData) data).setBabyAllowed(false);
 		}
 
 		return super.initialize(world, difficulty, spawnType, data, tag);

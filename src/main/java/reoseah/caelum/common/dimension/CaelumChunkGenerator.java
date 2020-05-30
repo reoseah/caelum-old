@@ -1,7 +1,6 @@
 package reoseah.caelum.common.dimension;
 
 import java.util.Random;
-import java.util.stream.IntStream;
 
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
@@ -35,9 +34,9 @@ public class CaelumChunkGenerator extends SurfaceChunkGenerator<CaelumChunkGener
 	public CaelumChunkGenerator(IWorld world, BiomeSource biomeSource, CaelumChunkGeneratorConfig config) {
 		super(world, biomeSource, VERTICAL_RESOLUTION, HORIZONTAL_RESOLUTION, 128, config, true);
 
-		this.noise1 = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-15, 0));
-		this.noise2 = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-15, 0));
-		this.noiseMask = new OctavePerlinNoiseSampler(this.random, IntStream.rangeClosed(-7, 0));
+		this.noise1 = new OctavePerlinNoiseSampler(this.random, -15, 0);
+		this.noise2 = new OctavePerlinNoiseSampler(this.random, -15, 0);
+		this.noiseMask = new OctavePerlinNoiseSampler(this.random, -7, 0);
 	}
 
 	@Override

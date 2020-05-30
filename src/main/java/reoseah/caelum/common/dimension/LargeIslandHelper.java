@@ -14,7 +14,7 @@ public class LargeIslandHelper {
 		int z2 = z < 0 ? z - distance + 1 : z;
 		int regionX = x2 / distance;
 		int regionZ = z2 / distance;
-		random.setRegionSeed(seed, regionX, regionZ, 10387319);
+		random.setStructureSeed(seed, regionX, regionZ, 10387319);
 		int startX = regionX * distance + (random.nextInt(distance - separation) + random.nextInt(distance - separation)) / 2;
 		int startZ = regionZ * distance + (random.nextInt(distance - separation) + random.nextInt(distance - separation)) / 2;
 		return new ChunkPos(startX, startZ);

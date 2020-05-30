@@ -85,7 +85,7 @@ public class CaelumDimension extends Dimension {
 	}
 
 	public static TeleportTarget placeEntity(Entity entity, ServerWorld world, Direction dim, double offsetX, double offsetZ) {
-		BlockPos entityPos = entity.getSenseCenterPos();
+		BlockPos entityPos = entity.getBlockPos();
 
 		BlockPos structurePos = LargeIslandHelper.locateIsland(world.getSeed(), entityPos, 100);
 
@@ -101,5 +101,18 @@ public class CaelumDimension extends Dimension {
 						structurePos.getZ()),
 				entity.getVelocity(),
 				(int) entity.yaw);
+	}
+
+	@Environment(EnvType.CLIENT)
+	public Vec3d getFogColor(float skyAngle, float tickDelta) {
+		float f = MathHelper.cos(skyAngle * 6.2831855F) * 2.0F + 0.5F;
+		f = MathHelper.clamp(f, 0.0F, 1.0F);
+		float g = 0.7529412F;
+		float h = 0.84705883F;
+		float i = 1.0F;
+		g *= f * 0.94F + 0.06F;
+		h *= f * 0.94F + 0.06F;
+		i *= f * 0.91F + 0.09F;
+		return new Vec3d((double) g, (double) h, (double) i);
 	}
 }
