@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:materials/skyroot_sword"
+        "recipe": "caelum:materials/skylarch_sword"
       }
     }
   },

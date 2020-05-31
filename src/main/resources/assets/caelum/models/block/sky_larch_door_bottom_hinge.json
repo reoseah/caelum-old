@@ -1,0 +1,7 @@
+{
+  "parent": "block/door_bottom_rh",
+  "textures": {
+    "bottom": "caelum:block/skylarch_door_bottom",
+    "top": "caelum:block/skylarch_door_top"
+  }
+}

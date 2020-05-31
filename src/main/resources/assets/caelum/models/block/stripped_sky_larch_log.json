@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "caelum:block/stripped_skylarch_log_top",
+        "side": "caelum:block/stripped_skylarch_log"
+    }
+}

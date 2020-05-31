@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "caelum:block/skyroot_planks",
-    "top": "caelum:block/skyroot_planks",
-    "side": "caelum:block/skyroot_planks"
-  }
-}

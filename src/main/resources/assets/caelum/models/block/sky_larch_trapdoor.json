@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/trapdoor",
+  "textures": {
+    "texture": "caelum:block/skylarch_trapdoor",
+    "particle": "caelum:block/skylarch_trapdoor"
+  },
+}

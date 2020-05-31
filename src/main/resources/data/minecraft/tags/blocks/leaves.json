@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "caelum:skyroot_leaves",
-    "caelum:silver_skyroot_leaves",
-    "caelum:dwarf_skyroot_leaves"
+    "caelum:skylarch_leaves",
+    "caelum:silver_skylarch_leaves",
+    "caelum:dwarf_pine_leaves"
   ]
 }

@@ -18,6 +18,6 @@
         "top": "caelum:block/caelum_crafting_table_top",
 		"front": "caelum:block/caelum_crafting_table_front",
 		"side": "caelum:block/caelum_crafting_table_side",
-		"bottom": "caelum:block/skyroot_planks"
+		"bottom": "caelum:block/skylarch_planks"
     }
 }

@@ -16,12 +16,12 @@
         ]
       }
     },
-    "has_skyroot_planks": {
+    "has_skylarch_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "caelum:skyroot_planks"
+            "item": "caelum:skylarch_planks"
           }
         ]
       }
@@ -36,7 +36,7 @@
   "requirements": [
     [
       "has_aerrack",
-      "has_skyroot_planks",
+      "has_skylarch_planks",
       "has_the_recipe"
     ]
   ]

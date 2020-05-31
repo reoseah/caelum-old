@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "caelum:block/skylarch_planks",
+    "top": "caelum:block/skylarch_planks",
+    "side": "caelum:block/skylarch_planks"
+  }
+}

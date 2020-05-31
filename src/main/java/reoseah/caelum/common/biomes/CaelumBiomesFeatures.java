@@ -36,7 +36,7 @@ public abstract class CaelumBiomesFeatures {
 	private static final SimpleBlockStateProvider SKYROOT_LOG = new SimpleBlockStateProvider(CaelumBlocks.SKYROOT_LOG.getDefaultState());
 	private static final SimpleBlockStateProvider SILVER_SKYROOT_LEAVES = new SimpleBlockStateProvider(CaelumBlocks.SILVER_SKYROOT_LEAVES.getDefaultState());
 	private static final SimpleBlockStateProvider SKYROOT_LEAVES = new SimpleBlockStateProvider(CaelumBlocks.SKYROOT_LEAVES.getDefaultState());
-	private static final SimpleBlockStateProvider DWARF_SKYROOT_LEAVES = new SimpleBlockStateProvider(CaelumBlocks.DWARF_SKYROOT_LEAVES.getDefaultState());
+	private static final SimpleBlockStateProvider DWARF_SKYROOT_LEAVES = new SimpleBlockStateProvider(CaelumBlocks.DWARF_PINE_LEAVES.getDefaultState());
 
 	public static final TernarySurfaceConfig SKY_GRASS_SURFACE = new TernarySurfaceConfig(
 			CaelumBlocks.CAELUM_GRASS.getDefaultState(),

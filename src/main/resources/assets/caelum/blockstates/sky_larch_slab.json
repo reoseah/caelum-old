@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "caelum:block/skylarch_slab"
+    },
+    "type=double": {
+      "model": "caelum:block/skylarch_planks"
+    },
+    "type=top": {
+      "model": "caelum:block/skylarch_slab_top"
+    }
+  }
+}

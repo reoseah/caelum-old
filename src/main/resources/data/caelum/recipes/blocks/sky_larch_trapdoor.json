@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wooden_trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "caelum:skylarch_planks"
+    }
+  },
+  "result": {
+    "item": "caelum:skylarch_trapdoor",
+    "count": 2
+  }
+}

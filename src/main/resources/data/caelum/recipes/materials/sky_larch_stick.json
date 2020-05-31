@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "caelum:skylarch_planks"
+    }
+  },
+  "result": {
+    "item": "caelum:skylarch_stick",
+    "count": 4
+  }
+}
