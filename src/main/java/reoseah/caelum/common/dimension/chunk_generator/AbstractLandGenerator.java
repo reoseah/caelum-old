@@ -196,7 +196,7 @@ public abstract class AbstractLandGenerator<T> {
 			amplitude /= 2.0D;
 		}
 
-		return MathHelper.clampedLerp(sample1 / 512.0D, sample2 / 512.0D, (maskSample / 10.0D + 1.0D) / 2.0D);
+		return MathHelper.clampedLerp(sample1 / 512.0D + 4, sample2 / 512.0D, (maskSample / 10.0D + 1.0D) / 2.0D);
 	}
 
 	public int getHeightOnGround(int x, int z, Heightmap.Type heightmapType) {
