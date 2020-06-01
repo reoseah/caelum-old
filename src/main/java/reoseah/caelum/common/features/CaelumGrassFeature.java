@@ -20,7 +20,7 @@ public class CaelumGrassFeature extends Feature<BlockPileFeatureConfig> {
 
 	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random, BlockPos pos, BlockPileFeatureConfig config) {
 		BlockState state = config.stateProvider.getBlockState(random, pos);
-		if (state.canPlaceAt(world, pos)) {
+		if (world.isAir(pos) && state.canPlaceAt(world, pos)) {
 			world.setBlockState(pos, state, 19);
 			return true;
 		}
