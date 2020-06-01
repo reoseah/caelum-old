@@ -22,9 +22,9 @@ public class BarrenSurfaceBuilder extends CaelumSurfaceBuilder {
 			BlockState defaultBlock, BlockState defaultFluid,
 			int seaLevel, long seed, TernarySurfaceConfig surfaceBlocks) {
 		TernarySurfaceConfig config = surfaceBlocks;
-		if (noise <= -1 || 1 <= noise) {
+		if (noise <= -2 || 2 <= noise) {
 			config = CaelumBiomesFeatures.AERRACK_SURFACE;
-		} else if (noise <= -0.85 || 0.85 <= noise) {
+		} else if (noise <= -1.85 || 1.85 <= noise) {
 			int surfaceDepth = (int) (noise / 3.0D + 2D + random.nextDouble() * 0.10D);
 			this.generate(random, chunk, biome, x, z, height, surfaceDepth, defaultBlock, defaultFluid, config.getTopMaterial(), config.getUnderMaterial(), config.getUnderwaterMaterial(), seaLevel);
 		} else {

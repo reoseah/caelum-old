@@ -1,19 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "X",
-    "X",
-    "#"
+    "##",
+    "SS"
   ],
   "key": {
-    "#": {
+    "S": {
       "item": "caelum:skyroot_stick"
     },
-    "X": {
+    "#": {
       "item": "caelum:ceruclase"
     }
   },
   "result": {
-    "item": "caelum:ceruclase_sword"
+    "item": "caelum:ceruclase_garden_shears"
   }
 }

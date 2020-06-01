@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:materials/ceruclase_rockcutter"
+      "caelum:materials/ceruclase_drawknife"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:materials/ceruclase_rockcutter"
+        "recipe": "caelum:materials/ceruclase_drawknife"
       }
     }
   },

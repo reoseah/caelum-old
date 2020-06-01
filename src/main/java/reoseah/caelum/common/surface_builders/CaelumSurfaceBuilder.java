@@ -56,9 +56,10 @@ public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 			pos.set(chunkX, y, chunkZ);
 			BlockState state = chunk.getBlockState(pos);
 			if (state.isAir()) {
-				if (!hadSurface) {
-					depth = -1;
-				} 
+				if (hadSurface) {
+					break;
+				}
+				depth = -1;
 				continue;
 			}
 			if (state.getBlock() != defaultBlock.getBlock()) {

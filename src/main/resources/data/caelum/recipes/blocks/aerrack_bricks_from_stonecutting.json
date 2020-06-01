@@ -1,8 +1,13 @@
 {
   "type": "minecraft:stonecutting",
-  "ingredient": {
-    "item": "caelum:aerrack"
-  },
+  "ingredient": [
+    {
+      "item": "caelum:aerrack"
+    },
+    {
+      "item": "caelum:aerrack_pillar"
+    }
+  ],
   "result": "caelum:aerrack_bricks",
   "count": 1
 }

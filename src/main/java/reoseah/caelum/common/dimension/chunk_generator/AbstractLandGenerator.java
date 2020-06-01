@@ -106,11 +106,9 @@ public abstract class AbstractLandGenerator<T> {
 								double noiseRaw = MathHelper.lerp(deltaZ, noiseCurrentNorth, noiseCurrentSouth);
 								double noise = MathHelper.clamp(noiseRaw / 200.0D, -1.0D, 1.0D);
 
-								BlockState state;
+								BlockState state = Blocks.AIR.getDefaultState();
 								if (noise > 0.0D) {
 									state = CaelumBlocks.AERRACK.getDefaultState();
-								} else {
-									state = Blocks.AIR.getDefaultState();
 								}
 
 								if (state != Blocks.AIR.getDefaultState()) {
@@ -138,8 +136,7 @@ public abstract class AbstractLandGenerator<T> {
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z) {
-		int resolutionRatio = this.verticalNoiseResolution / this.horizontalNoiseResolution;
-		this.sampleNoiseColumn(buffer, x, z, 0.5 * this.horizontalScale, 0.5 * this.verticalScale * 2 * resolutionRatio, 684.412D / 160 * resolutionRatio, 684.412D / 160, 64, -3000);
+		this.sampleNoiseColumn(buffer, x, z, this.horizontalScale, this.verticalScale * 2, 684.412D / 80, 684.412D / 160, 64, -3000);
 	}
 
 	protected void sampleNoiseColumn(double[] buffer, int x, int z, double horizontalScale, double verticalScale, double horizontalScale2, double verticalScale2, int i, int j) {
@@ -150,7 +147,7 @@ public abstract class AbstractLandGenerator<T> {
 		for (int y = 0; y < this.noiseSizeY + 1; ++y) {
 			double noise = this.sampleNoise(x, y, z, horizontalScale, verticalScale, horizontalScale2, verticalScale2);
 			noise = this.modifyNoise(noise, columnData, y);
-			
+
 			if (y > maxHeight) {
 				noise = MathHelper.clampedLerp(noise, j, (y - maxHeight) / i);
 			} else if (y < minHeight) {
@@ -160,9 +157,9 @@ public abstract class AbstractLandGenerator<T> {
 			buffer[y] = noise;
 		}
 	}
-	
+
 	protected abstract T createColumnData(int x, int z);
-	
+
 	protected abstract double modifyNoise(double noise, T data, int y);
 
 	protected double sampleNoise(int x, int y, int z, double horizontalScale, double verticalScale, double maskVerticalScale, double maskHorizontalScale) {
@@ -200,36 +197,36 @@ public abstract class AbstractLandGenerator<T> {
 	}
 
 	public int getHeightOnGround(int x, int z, Heightmap.Type heightmapType) {
-		int i = Math.floorDiv(x, this.horizontalNoiseResolution);
-		int j = Math.floorDiv(z, this.horizontalNoiseResolution);
-		int k = Math.floorMod(x, this.horizontalNoiseResolution);
-		int l = Math.floorMod(z, this.horizontalNoiseResolution);
-		double d = (double) k / (double) this.horizontalNoiseResolution;
-		double e = (double) l / (double) this.horizontalNoiseResolution;
-		double[][] ds = new double[][] { this.sampleNoiseColumn(i, j), this.sampleNoiseColumn(i, j + 1), this.sampleNoiseColumn(i + 1, j), this.sampleNoiseColumn(i + 1, j + 1) };
+		int regionX = Math.floorDiv(x, this.horizontalNoiseResolution);
+		int regionZ = Math.floorDiv(z, this.horizontalNoiseResolution);
+		int interpX = Math.floorMod(x, this.horizontalNoiseResolution);
+		int interpZ = Math.floorMod(z, this.horizontalNoiseResolution);
+		double deltaX = (double) interpX / (double) this.horizontalNoiseResolution;
+		double deltaZ = (double) interpZ / (double) this.horizontalNoiseResolution;
+		double[][] buffers = new double[][] { this.sampleNoiseColumn(regionX, regionZ), this.sampleNoiseColumn(regionX, regionZ + 1), this.sampleNoiseColumn(regionX + 1, regionZ), this.sampleNoiseColumn(regionX + 1, regionZ + 1) };
 
-		for (int n = this.noiseSizeY - 1; n >= 0; --n) {
-			double f = ds[0][n];
-			double g = ds[1][n];
-			double h = ds[2][n];
-			double o = ds[3][n];
-			double p = ds[0][n + 1];
-			double q = ds[1][n + 1];
-			double r = ds[2][n + 1];
-			double s = ds[3][n + 1];
+		for (int regionY = this.noiseSizeY - 1; regionY >= 0; regionY--) {
+			double noiseNW = buffers[0][regionY];
+			double noiseSW = buffers[1][regionY];
+			double noiseNE = buffers[2][regionY];
+			double noiseSE = buffers[3][regionY];
+			double noiseNextNW = buffers[0][regionY + 1];
+			double noiseNextSW = buffers[1][regionY + 1];
+			double noiseNextNE = buffers[2][regionY + 1];
+			double noiseNextSE = buffers[3][regionY + 1];
 
-			for (int t = this.verticalNoiseResolution - 1; t >= 0; --t) {
-				double u = (double) t / (double) this.verticalNoiseResolution;
-				double v = MathHelper.lerp3(u, d, e, f, p, h, r, g, q, o, s);
-				int w = n * this.verticalNoiseResolution + t;
-				if (v > 0.0D) {
-					BlockState blockState2 = Blocks.AIR.getDefaultState();
-					if (v > 0.0D) {
-						blockState2 = CaelumBlocks.AERRACK.getDefaultState();
+			for (int interpY = this.verticalNoiseResolution - 1; interpY >= 0; interpY--) {
+				double deltaY = (double) interpY / (double) this.verticalNoiseResolution;
+				double noise = MathHelper.lerp3(deltaY, deltaX, deltaZ, noiseNW, noiseNextNW, noiseNE, noiseNextNE, noiseSW, noiseNextSW, noiseSE, noiseNextSE);
+				int y = regionY * this.verticalNoiseResolution + interpY;
+				if (noise > 0.0D) {
+					BlockState state = Blocks.AIR.getDefaultState();
+					if (noise > 0.0D) {
+						state = CaelumBlocks.AERRACK.getDefaultState();
 					}
 
-					if (heightmapType.getBlockPredicate().test(blockState2)) {
-						return w + 1;
+					if (heightmapType.getBlockPredicate().test(state)) {
+						return y + 1;
 					}
 				}
 			}

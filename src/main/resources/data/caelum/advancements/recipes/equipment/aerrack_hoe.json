@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:materials/ceruclase_rockcutter"
+      "caelum:materials/aerrack_hoe"
     ]
   },
   "criteria": {
-    "has_ceruclase": {
+    "has_aerrack": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "caelum:ceruclase"
+            "item": "caelum:aerrack"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:materials/ceruclase_rockcutter"
+        "recipe": "caelum:materials/aerrack_hoe"
       }
     }
   },
   "requirements": [
     [
-      "has_ceruclase",
+      "has_aerrack",
       "has_the_recipe"
     ]
   ]

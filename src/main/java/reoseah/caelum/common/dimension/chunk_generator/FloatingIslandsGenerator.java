@@ -19,16 +19,6 @@ public class FloatingIslandsGenerator extends AbstractLandGenerator<FloatingIsla
 		this.seed = seed;
 	}
 
-	protected static class FloatingIslandData {
-		public final double landThresholdModifier;
-		public final double spawnIslandDistSq;
-
-		public FloatingIslandData(double landThresholdModifier, double spawnIslandDistSq) {
-			this.landThresholdModifier = landThresholdModifier;
-			this.spawnIslandDistSq = spawnIslandDistSq;
-		}
-	}
-
 	private static final float[] SMOOTHING_KERNEL;
 	static {
 		SMOOTHING_KERNEL = new float[25];
@@ -36,6 +26,16 @@ public class FloatingIslandsGenerator extends AbstractLandGenerator<FloatingIsla
 			for (int dz = -2; dz <= 2; ++dz) {
 				SMOOTHING_KERNEL[dx + 2 + (dz + 2) * 5] = 10.0F / MathHelper.sqrt(dx * dx + dz * dz + 0.2F);
 			}
+		}
+	}
+
+	protected static class FloatingIslandData {
+		public final double landThresholdModifier;
+		public final double spawnIslandDistSq;
+
+		public FloatingIslandData(double landThresholdModifier, double spawnIslandDistSq) {
+			this.landThresholdModifier = landThresholdModifier;
+			this.spawnIslandDistSq = spawnIslandDistSq;
 		}
 	}
 
@@ -73,15 +73,15 @@ public class FloatingIslandsGenerator extends AbstractLandGenerator<FloatingIsla
 	}
 
 	protected double modifyNoise(double noise, FloatingIslandData data, int y) {
-		double pointOfInterestEffect = Math.max(0, 10 - Math.sqrt(data.spawnIslandDistSq) / 3);
-		double heightEffect = 0;
+		double spawnIslandModifier = Math.max(0, 10 - Math.max(2, Math.sqrt(data.spawnIslandDistSq) / 3));
+		double heightModifier = 0;
 		if (y > 16) {
-			heightEffect = Math.max((y - 16) / 6f, 1);
+			heightModifier = Math.max((y - 16) / 6f, 1);
 		} else {
-			heightEffect = Math.max(y / 16f, 1);
+			heightModifier = Math.max(y / 16f, 1);
 		}
-		heightEffect = -heightEffect * heightEffect;
+		heightModifier = -heightModifier * heightModifier;
 
-		return noise - 8 + data.landThresholdModifier - 10 * pointOfInterestEffect * heightEffect;
+		return noise - 8 + data.landThresholdModifier - 10 * spawnIslandModifier * heightModifier;
 	}
 }

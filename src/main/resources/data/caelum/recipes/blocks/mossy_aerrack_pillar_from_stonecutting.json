@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "caelum:mossy_aerrack"
+  },
+  "result": "caelum:mossy_aerrack_pillar",
+  "count": 1
+}

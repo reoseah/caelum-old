@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "caelum:sky_blue_flowers"
+          "name": "caelum:sky_blue_flower"
         }
       ],
       "conditions": [
