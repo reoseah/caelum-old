@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "caelum:caelum_crafting_table"
+          "name": "caelum:skyroot_crafting_table"
         }
       ],
       "conditions": [

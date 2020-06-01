@@ -1,10 +1,11 @@
-package reoseah.caelum.client;
+package reoseah.caelum;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
+import reoseah.caelum.client.CaelumParticles;
 import reoseah.caelum.client.particle.GlowingDustParticle;
 import reoseah.caelum.client.render.DemonEntityRenderer;
 import reoseah.caelum.common.CaelumBlocks;

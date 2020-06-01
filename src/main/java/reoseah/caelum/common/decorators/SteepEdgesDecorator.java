@@ -18,8 +18,8 @@ import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import reoseah.caelum.common.CaelumBlocks;
 
-public class ExposedAerrackDecorator extends Decorator<CountExtraChanceDecoratorConfig> {
-	public ExposedAerrackDecorator(Function<Dynamic<?>, ? extends CountExtraChanceDecoratorConfig> deserialize) {
+public class SteepEdgesDecorator extends Decorator<CountExtraChanceDecoratorConfig> {
+	public SteepEdgesDecorator(Function<Dynamic<?>, ? extends CountExtraChanceDecoratorConfig> deserialize) {
 		super(deserialize);
 	}
 

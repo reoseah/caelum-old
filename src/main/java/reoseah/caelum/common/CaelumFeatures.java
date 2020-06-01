@@ -11,12 +11,12 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.decorators.CaelumGrassDecorator;
 import reoseah.caelum.common.decorators.CaelumTreeDecorator;
-import reoseah.caelum.common.decorators.ExposedAerrackDecorator;
+import reoseah.caelum.common.decorators.SteepEdgesDecorator;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorConfig;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorType;
 import reoseah.caelum.common.features.AerrackOreConfig;
 import reoseah.caelum.common.features.AerrackOreFeature;
-import reoseah.caelum.common.features.CaelumGrassFeature;
+import reoseah.caelum.common.features.CaelumVegetationFeature;
 import reoseah.caelum.common.features.DwarfSkyrootTreeFeature;
 import reoseah.caelum.common.features.SkyrootBushWithSoilFeature;
 import reoseah.caelum.common.features.SkyrootFeatureConfig;
@@ -30,7 +30,7 @@ public class CaelumFeatures {
 	public static final SurfaceBuilder<TernarySurfaceConfig> DEFAULT_SURFACE = new CaelumSurfaceBuilder(TernarySurfaceConfig::deserialize);
 	public static final SurfaceBuilder<TernarySurfaceConfig> BARREN_SURFACE = new BarrenSurfaceBuilder(TernarySurfaceConfig::deserialize);
 
-	public static final Decorator<CountExtraChanceDecoratorConfig> EXPOSED_AERRACK_DECORATOR = new ExposedAerrackDecorator(CountExtraChanceDecoratorConfig::deserialize);
+	public static final Decorator<CountExtraChanceDecoratorConfig> STEEP_EDGES_DECORATOR = new SteepEdgesDecorator(CountExtraChanceDecoratorConfig::deserialize);
 	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new CaelumTreeDecorator(ChanceDecoratorConfig::deserialize);
 	public static final Decorator<ChanceDecoratorConfig> CAELUM_GRASS_DECORATOR = new CaelumGrassDecorator(ChanceDecoratorConfig::deserialize);
 
@@ -40,7 +40,7 @@ public class CaelumFeatures {
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
-	public static final Feature<BlockPileFeatureConfig> CAELUM_GRASS = new CaelumGrassFeature(BlockPileFeatureConfig::deserialize);
+	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 
 	public static void register() {
 		Registry.register(Registry.CHUNK_GENERATOR_TYPE, "caelum:sky", new CaelumChunkGeneratorType(false, CaelumChunkGeneratorConfig::new));
@@ -48,9 +48,9 @@ public class CaelumFeatures {
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:default", CaelumFeatures.DEFAULT_SURFACE);
 		Registry.register(Registry.SURFACE_BUILDER, "caelum:barren", CaelumFeatures.BARREN_SURFACE);
 
-		Registry.register(Registry.DECORATOR, "caelum:exposed_aerrack", CaelumFeatures.EXPOSED_AERRACK_DECORATOR);
-		Registry.register(Registry.DECORATOR, "caelum:tree", CaelumFeatures.CAELUM_TREE_DECORATOR);
-		Registry.register(Registry.DECORATOR, "caelum:grass", CaelumFeatures.CAELUM_GRASS_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:steep_edges_decorator", CaelumFeatures.STEEP_EDGES_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:caelum_trees_decorator", CaelumFeatures.CAELUM_TREE_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:caelum_grass_decorator", CaelumFeatures.CAELUM_GRASS_DECORATOR);
 
 		Registry.register(Registry.FEATURE, "caelum:ground_bush", SKYROOT_GROUND_BUSH);
 		Registry.register(Registry.FEATURE, "caelum:tall_bush", SKYROOT_TALL_BUSH);
@@ -58,6 +58,6 @@ public class CaelumFeatures {
 		Registry.register(Registry.FEATURE, "caelum:bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
 		Registry.register(Registry.FEATURE, "caelum:dwarf_sky_tree", DWARF_SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
-		Registry.register(Registry.FEATURE, "caelum:grass", CAELUM_GRASS);
+		Registry.register(Registry.FEATURE, "caelum:caelum_vegetation", CAELUM_VEGETATION);
 	}
 }

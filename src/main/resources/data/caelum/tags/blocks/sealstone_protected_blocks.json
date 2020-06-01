@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "caelum:aerrack_bricks",
+    "caelum:aerrack_brick_stairs",
+    "caelum:aerrack_brick_slab",
+    "caelum:aerrack_pillar",
+    "caelum:mossy_aerrack_bricks",
+    "caelum:mossy_aerrack_pillar",
+    "caelum:aerrack_lightstone"
+  ]
+}

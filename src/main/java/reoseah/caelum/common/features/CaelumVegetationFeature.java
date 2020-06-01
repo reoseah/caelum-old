@@ -13,8 +13,8 @@ import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 
-public class CaelumGrassFeature extends Feature<BlockPileFeatureConfig> {
-	public CaelumGrassFeature(Function<Dynamic<?>, ? extends BlockPileFeatureConfig> function) {
+public class CaelumVegetationFeature extends Feature<BlockPileFeatureConfig> {
+	public CaelumVegetationFeature(Function<Dynamic<?>, ? extends BlockPileFeatureConfig> function) {
 		super(function);
 	}
 

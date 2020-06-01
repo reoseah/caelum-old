@@ -1,18 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "AA",
-    "BB"
+    "##",
+    "##"
   ],
   "key": {
-    "A": {
-      "item": "caelum:aerrack"
-    },
-    "B": {
+    "#": {
       "item": "caelum:skyroot_planks"
     }
   },
   "result": {
-    "item": "caelum:caelum_crafting_table"
+    "item": "caelum:skyroot_crafting_table"
   }
 }
