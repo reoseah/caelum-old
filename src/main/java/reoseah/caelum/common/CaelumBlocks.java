@@ -92,7 +92,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack", MOSSY_AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack_bricks", MOSSY_AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack_pillar", MOSSY_AERRACK_PILLAR);
-		Registry.register(Registry.BLOCK, "caelum:inert_mossy_sealstone", INERT_MOSSY_SEALSTONE);
+		Registry.register(Registry.BLOCK, "caelum:mossy_inert_sealstone", INERT_MOSSY_SEALSTONE);
 		
 		Registry.register(Registry.BLOCK, "caelum:caelum_grass", CAELUM_GRASS);
 		Registry.register(Registry.BLOCK, "caelum:caelum_dirt", CAELUM_DIRT);

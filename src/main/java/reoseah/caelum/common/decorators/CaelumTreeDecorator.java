@@ -15,8 +15,8 @@ import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 
-public class SkylandTreeDecorator extends Decorator<ChanceDecoratorConfig> {
-	public SkylandTreeDecorator(Function<Dynamic<?>, ? extends ChanceDecoratorConfig> function) {
+public class CaelumTreeDecorator extends Decorator<ChanceDecoratorConfig> {
+	public CaelumTreeDecorator(Function<Dynamic<?>, ? extends ChanceDecoratorConfig> function) {
 		super(function);
 	}
 

@@ -9,7 +9,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.ConfiguredDecorator;
-import net.minecraft.world.gen.decorator.CountDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.RangeDecoratorConfig;
@@ -128,9 +127,9 @@ public abstract class CaelumBiomesFeatures {
 
 	public static final void addSkyGrass(Biome biome) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-				CaelumFeatures.CAELUM_VEGETATION
+				CaelumFeatures.CAELUM_GRASS
 						.configure(CAELUM_VEGETATION)
-						.createDecoratedFeature(Decorator.COUNT_HEIGHTMAP_DOUBLE
-								.configure(new CountDecoratorConfig(3))));
+						.createDecoratedFeature(CaelumFeatures.CAELUM_GRASS_DECORATOR
+								.configure(new ChanceDecoratorConfig(3))));
 	}
 }

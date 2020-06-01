@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "caelum:item/ceruclase_gardening_cutters"
+    "layer0": "caelum:item/ceruclase_garden_shears"
   }
 }
