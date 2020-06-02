@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "caelum:block/stunted_silver_skyroot_sapling"
+  }
+}

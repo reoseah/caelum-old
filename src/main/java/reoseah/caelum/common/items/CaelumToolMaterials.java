@@ -12,7 +12,7 @@ public enum CaelumToolMaterials implements ToolMaterial {
 	SKYROOT(0, 25, 2.0F, 0, 20, () -> Ingredient.ofItems(CaelumBlocks.SKYROOT_PLANKS)),
 	AERRACK(1, 150, 4.0F, 1.0F, 8, () -> Ingredient.ofItems(CaelumBlocks.AERRACK)),
 	CERUCLASE(2, 500, 6.0F, 2.0F, 14, () -> Ingredient.ofItems(CaelumItems.CERUCLASE)),
-	CERUCLASE_DRAWKNIFE(2, 2500, 2.0F, 2.0F, 14, () -> Ingredient.ofItems(CaelumItems.CERUCLASE)),
+	CERUCLASE_DRAWKNIFE(2, 1000, 2.0F, 2.0F, 14, () -> Ingredient.ofItems(CaelumItems.CERUCLASE)),
 	CERUCLASE_ROCKCUTTER(2, 150, 2.0F, 2.0F, 14, () -> Ingredient.ofItems(CaelumItems.CERUCLASE)),
 	SEALBREAKER(3, 2000, 8F, 3F, 20, () -> Ingredient.EMPTY);
 

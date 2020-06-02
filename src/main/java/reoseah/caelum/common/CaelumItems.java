@@ -8,7 +8,6 @@ import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Identifier;
@@ -17,6 +16,7 @@ import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
 import reoseah.caelum.common.items.CeruclaseDrawknifeItem;
 import reoseah.caelum.common.items.CeruclaseRockcutterItem;
+import reoseah.caelum.common.items.GardenShearsItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
@@ -25,10 +25,6 @@ import reoseah.caelum.common.items.SkyrootDiggingStickItem;
 
 public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.CAELUM_GRASS));
-
-	private static Item.Settings settings() {
-		return new Item.Settings().group(CaelumItems.GROUP);
-	}
 
 	public static final Item TELEPORTER = new CelestialCrystalItem(settings());
 	public static final Item CERUCLASE = new Item(settings());
@@ -46,7 +42,7 @@ public class CaelumItems {
 	public static final Item CERUCLASE_FALX = new SwordItem(CaelumToolMaterials.CERUCLASE, 3, -2.4F, settings());
 	public static final Item CERUCLASE_ROCKCUTTER = new CeruclaseRockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, settings());
 	public static final Item CERUCLASE_DRAWKNIFE = new CeruclaseDrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, settings());
-	public static final Item CERUCLASE_GARDEN_SHEARS = new ShearsItem(settings());
+	public static final Item CERUCLASE_GARDEN_SHEARS = new GardenShearsItem(CaelumToolMaterials.CERUCLASE, settings());
 
 	public static final Item SEALBREAKER = new ModPickaxeItem(CaelumToolMaterials.SEALBREAKER, 1, -2.8F, settings());
 
@@ -56,6 +52,10 @@ public class CaelumItems {
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, settings());
 	public static final Item BARLEY = new Item(settings());
 	public static final Item SKY_APPLE = new Item(settings().food(FoodComponents.APPLE));
+
+	private static Item.Settings settings() {
+		return new Item.Settings().group(CaelumItems.GROUP);
+	}
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, settings()));
@@ -85,6 +85,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_sapling", new BlockItem(CaelumBlocks.SKYROOT_SAPLING, settings()));
 		Registry.register(Registry.ITEM, "caelum:silver_skyroot_sapling", new BlockItem(CaelumBlocks.SILVER_SKYROOT_SAPLING, settings()));
 		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_sapling", new BlockItem(CaelumBlocks.DWARF_SKYROOT_SAPLING, settings()));
+		Registry.register(Registry.ITEM, "caelum:stunted_skyroot_sapling", new BlockItem(CaelumBlocks.STUNTED_SKYROOT_SAPLING, settings()));
+		Registry.register(Registry.ITEM, "caelum:stunted_silver_skyroot_sapling", new BlockItem(CaelumBlocks.STUNTED_SILVER_SKYROOT_SAPLING, settings()));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_sprouts", new BlockItem(CaelumBlocks.CAELUM_SPROUTS, settings()));
 		Registry.register(Registry.ITEM, "caelum:blossoming_caelum_sprouts", new BlockItem(CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS, settings()));

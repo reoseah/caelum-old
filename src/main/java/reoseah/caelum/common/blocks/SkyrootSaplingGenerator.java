@@ -2,7 +2,9 @@ package reoseah.caelum.common.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
@@ -16,25 +18,28 @@ import reoseah.caelum.common.biomes.CaelumBiomesFeatures;
 public class SkyrootSaplingGenerator extends SaplingGenerator {
 	public boolean generate(IWorld world, ChunkGenerator<?> generator, BlockPos pos, BlockState state, Random random) {
 		ConfiguredFeature<?, ?> feature = null;
-		if (state.getBlock() == CaelumBlocks.SKYROOT_SAPLING) {
+		Block block = state.getBlock();
+		if (block == CaelumBlocks.SKYROOT_SAPLING) {
 			feature = random.nextInt(10) == 0
 					? CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT)
 					: CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
-		} else if (state.getBlock() == CaelumBlocks.SILVER_SKYROOT_SAPLING) {
+		} else if (block == CaelumBlocks.SILVER_SKYROOT_SAPLING) {
 			feature = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
-		} else if (state.getBlock() == CaelumBlocks.DWARF_SKYROOT_SAPLING) {
-			feature = random.nextInt(10) == 0
-					? CaelumFeatures.DWARF_SKYROOT_TREE.configure(CaelumBiomesFeatures.DWARF_SKYROOT)
-					: CaelumFeatures.SKYROOT_TALL_BUSH.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
-
+		} else if (block == CaelumBlocks.DWARF_SKYROOT_SAPLING) {
+			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
+		} else if (block == CaelumBlocks.STUNTED_SKYROOT_SAPLING) {
+			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SKYROOT);
+		} else if (block == CaelumBlocks.STUNTED_SILVER_SKYROOT_SAPLING) {
+			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
 		} else {
 			return false;
 		}
-
+		world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
 		if (feature.generate(world, generator, random, pos)) {
-			world.setBlockState(pos, CaelumBlocks.SKYROOT_LOG.getDefaultState(), 4);
 			return true;
 		}
+
+		world.setBlockState(pos, state, 4);
 		return false;
 	}
 

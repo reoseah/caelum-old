@@ -101,13 +101,11 @@ public abstract class CaelumBiomesFeatures {
 		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> silverBush2 = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> dwarfBush = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(DWARF_SKYROOT);
-		ConfiguredFeature<?, ?> dwarfTallBush = CaelumFeatures.SKYROOT_TALL_BUSH.configure(DWARF_SKYROOT);
 
 		ConfiguredFeature<?, ?> bushFeature = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(
 				Arrays.asList(
-						new RandomFeatureEntry<>(silverBush2, 0.01F),
-						new RandomFeatureEntry<>(dwarfBush, 0.36F),
-						new RandomFeatureEntry<>(dwarfTallBush, 0.05F),
+						new RandomFeatureEntry<>(silverBush2, 0.05F),
+						new RandomFeatureEntry<>(dwarfBush, 0.35F),
 						new RandomFeatureEntry<>(commonBush, 0.10F)),
 				silverBush));
 

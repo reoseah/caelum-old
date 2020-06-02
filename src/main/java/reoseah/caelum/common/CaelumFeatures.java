@@ -20,12 +20,10 @@ import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorType;
 import reoseah.caelum.common.features.AerrackOreConfig;
 import reoseah.caelum.common.features.AerrackOreFeature;
 import reoseah.caelum.common.features.CaelumVegetationFeature;
-import reoseah.caelum.common.features.DwarfSkyrootTreeFeature;
 import reoseah.caelum.common.features.SealedDungeonFeature;
 import reoseah.caelum.common.features.SkyrootBushWithSoilFeature;
 import reoseah.caelum.common.features.SkyrootFeatureConfig;
 import reoseah.caelum.common.features.SkyrootGroundBushFeature;
-import reoseah.caelum.common.features.SkyrootTallBushFeature;
 import reoseah.caelum.common.features.SkyrootTreeFeature;
 import reoseah.caelum.common.surface_builders.BarrenSurfaceBuilder;
 import reoseah.caelum.common.surface_builders.CaelumSurfaceBuilder;
@@ -40,10 +38,8 @@ public class CaelumFeatures {
 	public static final Decorator<ChanceRangeDecoratorConfig> SEALED_DUNGEON_DECORATOR = new SealedDungeonDecorator(ChanceRangeDecoratorConfig::deserialize);
 
 	public static final Feature<TreeFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(TreeFeatureConfig::deserialize);
-	public static final Feature<TreeFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
-	public static final Feature<SkyrootFeatureConfig> DWARF_SKYROOT_TREE = new DwarfSkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 	
@@ -61,10 +57,8 @@ public class CaelumFeatures {
 		Registry.register(Registry.DECORATOR, "caelum:sealed_dungeon_decorator", SEALED_DUNGEON_DECORATOR);
 
 		Registry.register(Registry.FEATURE, "caelum:ground_bush", SKYROOT_GROUND_BUSH);
-		Registry.register(Registry.FEATURE, "caelum:tall_bush", SKYROOT_TALL_BUSH);
 		Registry.register(Registry.FEATURE, "caelum:sky_tree", SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
-		Registry.register(Registry.FEATURE, "caelum:dwarf_sky_tree", DWARF_SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
 		Registry.register(Registry.FEATURE, "caelum:caelum_vegetation", CAELUM_VEGETATION);
 
