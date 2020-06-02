@@ -9,7 +9,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction.Axis;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
@@ -24,25 +23,16 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 
 	@Override
 	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
-		int x = pos.getX() + random.nextInt(16);
-		int z = pos.getZ() + random.nextInt(16);
-		int surface = world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
-		if (surface <= 28) {
-			return false;
-		}
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
 
-		int y = 28 + random.nextInt(surface - 28);
-
-		boolean invalid = false;
 		for (BlockPos p : BlockPos.iterate(x, y, z, x + 7, y + 5, z + 7)) {
 			if (world.isAir(p)) {
-				invalid = true;
-				break;
+				return false;
 			}
 		}
-		if (invalid) {
-			return false;
-		}
+
 		BlockPos.Mutable mpos = new BlockPos.Mutable();
 		Random random2 = new Random();
 		long salt1 = random.nextInt();

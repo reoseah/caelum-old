@@ -2,6 +2,7 @@ package reoseah.caelum.common;
 
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.ChanceRangeDecoratorConfig;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
@@ -12,6 +13,7 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.decorators.CaelumGrassDecorator;
 import reoseah.caelum.common.decorators.CaelumTreeDecorator;
+import reoseah.caelum.common.decorators.SealedDungeonDecorator;
 import reoseah.caelum.common.decorators.SteepEdgesDecorator;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorConfig;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorType;
@@ -35,6 +37,7 @@ public class CaelumFeatures {
 	public static final Decorator<CountExtraChanceDecoratorConfig> STEEP_EDGES_DECORATOR = new SteepEdgesDecorator(CountExtraChanceDecoratorConfig::deserialize);
 	public static final Decorator<ChanceDecoratorConfig> CAELUM_TREE_DECORATOR = new CaelumTreeDecorator(ChanceDecoratorConfig::deserialize);
 	public static final Decorator<ChanceDecoratorConfig> CAELUM_GRASS_DECORATOR = new CaelumGrassDecorator(ChanceDecoratorConfig::deserialize);
+	public static final Decorator<ChanceRangeDecoratorConfig> SEALED_DUNGEON_DECORATOR = new SealedDungeonDecorator(ChanceRangeDecoratorConfig::deserialize);
 
 	public static final Feature<TreeFeatureConfig> SKYROOT_GROUND_BUSH = new SkyrootGroundBushFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_TALL_BUSH = new SkyrootTallBushFeature(TreeFeatureConfig::deserialize);
@@ -49,12 +52,13 @@ public class CaelumFeatures {
 	public static void register() {
 		Registry.register(Registry.CHUNK_GENERATOR_TYPE, "caelum:sky", new CaelumChunkGeneratorType(false, CaelumChunkGeneratorConfig::new));
 
-		Registry.register(Registry.SURFACE_BUILDER, "caelum:default", CaelumFeatures.DEFAULT_SURFACE);
-		Registry.register(Registry.SURFACE_BUILDER, "caelum:barren", CaelumFeatures.BARREN_SURFACE);
+		Registry.register(Registry.SURFACE_BUILDER, "caelum:default", DEFAULT_SURFACE);
+		Registry.register(Registry.SURFACE_BUILDER, "caelum:barren", BARREN_SURFACE);
 
-		Registry.register(Registry.DECORATOR, "caelum:steep_edges_decorator", CaelumFeatures.STEEP_EDGES_DECORATOR);
-		Registry.register(Registry.DECORATOR, "caelum:caelum_trees_decorator", CaelumFeatures.CAELUM_TREE_DECORATOR);
-		Registry.register(Registry.DECORATOR, "caelum:caelum_grass_decorator", CaelumFeatures.CAELUM_GRASS_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:steep_edges_decorator", STEEP_EDGES_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:caelum_trees_decorator", CAELUM_TREE_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:caelum_grass_decorator", CAELUM_GRASS_DECORATOR);
+		Registry.register(Registry.DECORATOR, "caelum:sealed_dungeon_decorator", SEALED_DUNGEON_DECORATOR);
 
 		Registry.register(Registry.FEATURE, "caelum:ground_bush", SKYROOT_GROUND_BUSH);
 		Registry.register(Registry.FEATURE, "caelum:tall_bush", SKYROOT_TALL_BUSH);
