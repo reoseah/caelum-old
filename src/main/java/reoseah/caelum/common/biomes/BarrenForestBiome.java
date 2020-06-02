@@ -2,6 +2,8 @@ package reoseah.caelum.common.biomes;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
+import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.feature.FeatureConfig;
 import reoseah.caelum.common.CaelumFeatures;
 
 public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
@@ -25,6 +27,8 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 		CaelumBiomesFeatures.addSkyForestTrees(this);
 		CaelumBiomesFeatures.addSkyGrass(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
+
+		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT));
 	}
 
 	@Override
