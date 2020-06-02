@@ -3,6 +3,7 @@ package reoseah.caelum.common.biomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.ChanceRangeDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
 import net.minecraft.world.gen.feature.FeatureConfig;
@@ -31,7 +32,9 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 		CaelumBiomesFeatures.addSkyGrass(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 
-		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT));
+		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION,
+				CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT)
+						.createDecoratedFeature(CaelumFeatures.SEALED_DUNGEON_DECORATOR.configure(new ChanceRangeDecoratorConfig(0.625F, 35, 0, 50))));
 
 		this.addStructureFeature(CaelumStructures.PORTAL_RUIN_STRUCTURE.configure(FeatureConfig.DEFAULT));
 		this.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, CaelumStructures.PORTAL_RUIN_STRUCTURE

@@ -6,10 +6,13 @@ import java.util.function.Function;
 import com.mojang.datafixers.Dynamic;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Axis;
-import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
@@ -24,25 +27,16 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 
 	@Override
 	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> generator, Random random, BlockPos pos, DefaultFeatureConfig config) {
-		int x = pos.getX() + random.nextInt(16);
-		int z = pos.getZ() + random.nextInt(16);
-		int surface = world.getTopY(Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, x, z);
-		if (surface <= 28) {
-			return false;
-		}
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
 
-		int y = 28 + random.nextInt(surface - 28);
-
-		boolean invalid = false;
 		for (BlockPos p : BlockPos.iterate(x, y, z, x + 7, y + 5, z + 7)) {
 			if (world.isAir(p)) {
-				invalid = true;
-				break;
+				return false;
 			}
 		}
-		if (invalid) {
-			return false;
-		}
+
 		BlockPos.Mutable mpos = new BlockPos.Mutable();
 		Random random2 = new Random();
 		long salt1 = random.nextInt();
@@ -115,6 +109,12 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 4), CaelumBlocks.AERRACK_PILLAR.getDefaultState().with(PillarBlock.AXIS, Axis.X), 19);
 
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 3), CaelumBlocks.AERRACK_LIGHTSTONE.getDefaultState(), 19);
+
+		Direction chestDir = Direction.fromHorizontal(random.nextInt(4));
+		BlockPos.Mutable chestPos = mpos.set(x + 3, y + 1, z + 3).setOffset(chestDir, 2);
+
+		world.setBlockState(chestPos, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, chestDir.getOpposite()), 19);
+		LootableContainerBlockEntity.setLootTable(world, random, mpos, new Identifier("caelum:chests/sealed_dungeon"));
 
 		return true;
 	}
