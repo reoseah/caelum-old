@@ -39,6 +39,20 @@
           "name": "caelum:skyroot_stick"
         }
       ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 1,
+        "type": "minecraft:uniform"
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "caelum:sealbreaker"
+        }
+      ]
     }
   ]
 }

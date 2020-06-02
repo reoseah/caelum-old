@@ -10,6 +10,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
@@ -20,6 +21,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import reoseah.caelum.client.CaelumParticles;
 import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.common.CaelumItems;
 
 public class SealstoneBlock extends Block {
 	public static final IntProperty LEVEL = Properties.LEVEL_15;
@@ -33,7 +35,7 @@ public class SealstoneBlock extends Block {
 	protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
 		builder.add(LEVEL);
 	}
-	
+
 	@Override
 	public int getLuminance(BlockState state) {
 		return state.get(LEVEL) != 0 ? super.getLuminance(state) : 0;
@@ -41,8 +43,13 @@ public class SealstoneBlock extends Block {
 
 	@Override
 	public void onBlockBreakStart(BlockState state, World world, BlockPos pos, PlayerEntity player) {
-		spawnParticles(world, pos);
-		world.getBlockTickScheduler().schedule(pos, this, 2);
+		ItemStack tool = player.getMainHandStack();
+		if (tool.getItem() != CaelumItems.SEALBREAKER) {
+			spawnParticles(world, pos);
+			world.getBlockTickScheduler().schedule(pos, this, 2);
+		} else {
+			world.setBlockState(pos, state.with(LEVEL, 0));
+		}
 		super.onBlockBreakStart(state, world, pos, player);
 	}
 
@@ -62,11 +69,16 @@ public class SealstoneBlock extends Block {
 		}
 		Box box = new Box(pos).expand(4.5);
 		List<PlayerEntity> players = world.getNonSpectatingEntities(PlayerEntity.class, box);
+		boolean shouldRemainActive = false;
 		for (PlayerEntity player : players) {
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 50, 1, true, true));
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 50, 1, true, true));
+			ItemStack tool = player.getMainHandStack();
+			if (tool.getItem() != CaelumItems.SEALBREAKER && !player.isCreative()) {
+				player.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 50, 1, true, true));
+				player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 50, 1, true, true));
+				shouldRemainActive = true;
+			}
 		}
-		if (players.isEmpty()) {
+		if (!shouldRemainActive) {
 			int time = state.get(LEVEL);
 			if (time != 0) {
 				world.setBlockState(pos, state.with(LEVEL, time - 1), 3);
@@ -74,8 +86,9 @@ public class SealstoneBlock extends Block {
 			if (time <= 1) {
 				return;
 			}
+		} else if (state.get(LEVEL) > 0 && !world.getBlockTickScheduler().isScheduled(pos, this)) {
+			world.getBlockTickScheduler().schedule(pos, this, 2);
 		}
-		world.getBlockTickScheduler().schedule(pos, this, 20);
 	}
 
 	public boolean hasRandomTicks(BlockState state) {
