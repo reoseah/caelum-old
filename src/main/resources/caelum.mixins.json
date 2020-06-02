@@ -8,7 +8,8 @@
     "CropBlockMixin",
     "CraftingScreenHandlerMixin",
     "ItemStackMixin",
-    "AxeItemMixin"
+    "AxeItemMixin",
+    "LocateCommandMixin"
   ],
   "client": [
     "client.BlockModelRendererMixin",

@@ -3,8 +3,11 @@ package reoseah.caelum.common.biomes;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.DefaultBiomeFeatures;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.Decorator;
+import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import reoseah.caelum.common.CaelumFeatures;
+import reoseah.caelum.common.CaelumStructures;
 
 public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 	public BarrenForestBiome() {
@@ -29,6 +32,11 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 
 		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION, CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT));
+
+		this.addStructureFeature(CaelumStructures.PORTAL_RUIN_STRUCTURE.configure(FeatureConfig.DEFAULT));
+		this.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, CaelumStructures.PORTAL_RUIN_STRUCTURE
+				.configure(FeatureConfig.DEFAULT)
+				.createDecoratedFeature(Decorator.NOPE.configure(NopeDecoratorConfig.DEFAULT)));
 	}
 
 	@Override
