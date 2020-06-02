@@ -14,14 +14,15 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
-import reoseah.caelum.common.items.CeruclaseDrawknifeItem;
-import reoseah.caelum.common.items.CeruclaseRockcutterItem;
+import reoseah.caelum.common.items.DrawknifeItem;
+import reoseah.caelum.common.items.RockcutterItem;
+import reoseah.caelum.common.items.FalxItem;
 import reoseah.caelum.common.items.GardenShearsItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
-import reoseah.caelum.common.items.SkyrootDiggingStickItem;
+import reoseah.caelum.common.items.DiggingStickItem;
 
 public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.CAELUM_GRASS));
@@ -31,7 +32,7 @@ public class CaelumItems {
 	public static final Item SKYROOT_STICK = new Item(settings());
 
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, settings());
-	public static final Item SKYROOT_DIGGING_STICK = new SkyrootDiggingStickItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, settings());
+	public static final Item SKYROOT_DIGGING_STICK = new DiggingStickItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, settings());
 
 	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, settings());
 	public static final Item AERRACK_SHOVEL = new ShovelItem(CaelumToolMaterials.AERRACK, 1.5F, -3.0F, settings());
@@ -39,9 +40,9 @@ public class CaelumItems {
 	public static final Item AERRACK_AXE = new ModAxeItem(CaelumToolMaterials.AERRACK, 7.0F, -3.2F, settings());
 	public static final Item AERRACK_HOE = new ModHoeItem(CaelumToolMaterials.AERRACK, -1, -2.0F, settings());
 
-	public static final Item CERUCLASE_FALX = new SwordItem(CaelumToolMaterials.CERUCLASE, 3, -2.4F, settings());
-	public static final Item CERUCLASE_ROCKCUTTER = new CeruclaseRockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, settings());
-	public static final Item CERUCLASE_DRAWKNIFE = new CeruclaseDrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, settings());
+	public static final Item CERUCLASE_FALX = new FalxItem(CaelumToolMaterials.CERUCLASE, 1, -0.5F, settings());
+	public static final Item CERUCLASE_ROCKCUTTER = new RockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, settings());
+	public static final Item CERUCLASE_DRAWKNIFE = new DrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, settings());
 	public static final Item CERUCLASE_GARDEN_SHEARS = new GardenShearsItem(CaelumToolMaterials.CERUCLASE, settings());
 
 	public static final Item SEALBREAKER = new ModPickaxeItem(CaelumToolMaterials.SEALBREAKER, 1, -2.8F, settings());

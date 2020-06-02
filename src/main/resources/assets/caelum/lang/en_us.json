@@ -35,9 +35,9 @@
     "block.caelum.mossy_aerrack_bricks": "Mossy Aerrack Bricks",
     "block.caelum.mossy_aerrack_pillar": "Mossy Aerrack Pillar",
     "block.caelum.sealstone": "Sealstone",
-    "block.caelum.inert_sealstone": "Inert Sealstone",
+    "block.caelum.inert_sealstone": "Broken Sealstone",
     "block.caelum.mossy_sealstone": "Mossy Sealstone",
-    "block.caelum.mossy_inert_sealstone": "Mossy Inert Sealstone",
+    "block.caelum.mossy_inert_sealstone": "Broken Mossy Sealstone",
     "block.caelum.barley": "Barley",
     "item.caelum.celestial_crystal": "Celestial Crystal",
     "item.caelum.ceruclase": "Ceruclase",
@@ -58,5 +58,6 @@
     "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket",
     "item.caelum.barley_seeds": "Barley Seeds",
     "item.caelum.barley": "Barley",
-    "item.caelum.sky_apple": "Sky Apple"
+    "item.caelum.sky_apple": "Sky Apple",
+    "subtitles.item.garden_shears.stunt_sapling": "Sapling stunted"
 }

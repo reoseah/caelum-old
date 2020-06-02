@@ -98,20 +98,19 @@ public class SkyrootBucketItem extends Item {
 	public void onEmptied(World world, ItemStack stack, BlockPos pos) {
 	}
 
-	protected ItemStack getFilledStack(ItemStack stack, PlayerEntity player, Item item_1) {
+	protected ItemStack getFilledStack(ItemStack stack, PlayerEntity player, Item item) {
 		if (player.abilities.creativeMode) {
 			return stack;
+		}
+		stack.decrement(1);
+		if (stack.isEmpty()) {
+			return new ItemStack(item);
 		} else {
-			stack.decrement(1);
-			if (stack.isEmpty()) {
-				return new ItemStack(item_1);
-			} else {
-				if (!player.inventory.insertStack(new ItemStack(item_1))) {
-					player.dropItem(new ItemStack(item_1), false);
-				}
-
-				return stack;
+			if (!player.inventory.insertStack(new ItemStack(item))) {
+				player.dropItem(new ItemStack(item), false);
 			}
+
+			return stack;
 		}
 	}
 

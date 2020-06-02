@@ -7,8 +7,8 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.util.ActionResult;
 import reoseah.caelum.common.misc.StrippingHelper;
 
-public class CeruclaseDrawknifeItem extends ToolItem {
-	public CeruclaseDrawknifeItem(ToolMaterial material, Item.Settings settings) {
+public class DrawknifeItem extends ToolItem {
+	public DrawknifeItem(ToolMaterial material, Item.Settings settings) {
 		super(material, settings);
 	}
 
