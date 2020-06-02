@@ -6,8 +6,12 @@ import java.util.function.Function;
 import com.mojang.datafixers.Dynamic;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.block.ChestBlock;
 import net.minecraft.block.PillarBlock;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Axis;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
@@ -105,6 +109,12 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 4), CaelumBlocks.AERRACK_PILLAR.getDefaultState().with(PillarBlock.AXIS, Axis.X), 19);
 
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 3), CaelumBlocks.AERRACK_LIGHTSTONE.getDefaultState(), 19);
+
+		Direction chestDir = Direction.fromHorizontal(random.nextInt(4));
+		BlockPos.Mutable chestPos = mpos.set(x + 3, y + 1, z + 3).setOffset(chestDir, 2);
+
+		world.setBlockState(chestPos, Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, chestDir.getOpposite()), 19);
+		LootableContainerBlockEntity.setLootTable(world, random, mpos, new Identifier("caelum:chests/sealed_dungeon"));
 
 		return true;
 	}

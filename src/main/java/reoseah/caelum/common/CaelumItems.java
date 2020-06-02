@@ -51,7 +51,7 @@ public class CaelumItems {
 
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, SETTINGS);
 	public static final Item BARLEY = new Item(SETTINGS);
-	public static final Item SKY_APPLE = new Item(SETTINGS.food(FoodComponents.APPLE));
+	public static final Item SKY_APPLE = new Item(new Item.Settings().group(CaelumItems.GROUP).food(FoodComponents.APPLE));
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, SETTINGS));

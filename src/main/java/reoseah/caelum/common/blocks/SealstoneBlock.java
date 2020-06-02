@@ -63,8 +63,8 @@ public class SealstoneBlock extends Block {
 		Box box = new Box(pos).expand(4.5);
 		List<PlayerEntity> players = world.getNonSpectatingEntities(PlayerEntity.class, box);
 		for (PlayerEntity player : players) {
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 50, 2, true, true));
-			player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 50, 2, true, true));
+			player.addStatusEffect(new StatusEffectInstance(StatusEffects.MINING_FATIGUE, 50, 1, true, true));
+			player.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 50, 1, true, true));
 		}
 		if (players.isEmpty()) {
 			int time = state.get(LEVEL);
