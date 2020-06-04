@@ -32,6 +32,7 @@ import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 public class CaelumBlocks {
 	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block CERUCLASE_ORE = new Block(FabricBlockSettings.of(Material.STONE).lightLevel(7).nonOpaque().strength(5.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block AETHERERUM_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(5.0F, 10.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(3.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 	public static final Block AERRACK_BRICK_STAIRS = new ModStairsBlock(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(AERRACK_BRICKS));
@@ -88,6 +89,7 @@ public class CaelumBlocks {
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
+		Registry.register(Registry.BLOCK, "caelum:aethererum_ore", AETHERERUM_ORE);
 
 		Registry.register(Registry.BLOCK, "caelum:aerrack_bricks", AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_stairs", AERRACK_BRICK_STAIRS);

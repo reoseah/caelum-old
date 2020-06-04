@@ -17,14 +17,7 @@ import reoseah.caelum.common.decorators.SealedDungeonDecorator;
 import reoseah.caelum.common.decorators.SteepEdgesDecorator;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorConfig;
 import reoseah.caelum.common.dimension.chunk_generator.CaelumChunkGeneratorType;
-import reoseah.caelum.common.features.AerrackOreConfig;
-import reoseah.caelum.common.features.AerrackOreFeature;
-import reoseah.caelum.common.features.CaelumVegetationFeature;
-import reoseah.caelum.common.features.SealedDungeonFeature;
-import reoseah.caelum.common.features.SkyrootBushWithSoilFeature;
-import reoseah.caelum.common.features.SkyrootFeatureConfig;
-import reoseah.caelum.common.features.SkyrootGroundBushFeature;
-import reoseah.caelum.common.features.SkyrootTreeFeature;
+import reoseah.caelum.common.features.*;
 import reoseah.caelum.common.surface_builders.BarrenSurfaceBuilder;
 import reoseah.caelum.common.surface_builders.CaelumSurfaceBuilder;
 
@@ -41,8 +34,9 @@ public class CaelumFeatures {
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
+	public static final Feature<AethererumOreConfig> AETHERERUM_ORE = new AethererumOreFeature(AethererumOreConfig::deserialize);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
-	
+
 	public static final Feature<DefaultFeatureConfig> SEALED_DUNGEON = new SealedDungeonFeature(DefaultFeatureConfig::deserialize);
 
 	public static void register() {
@@ -60,6 +54,7 @@ public class CaelumFeatures {
 		Registry.register(Registry.FEATURE, "caelum:sky_tree", SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
+		Registry.register(Registry.FEATURE, "caelum:aethererum_ore", AETHERERUM_ORE);
 		Registry.register(Registry.FEATURE, "caelum:caelum_vegetation", CAELUM_VEGETATION);
 
 		Registry.register(Registry.FEATURE, "caelum:sealed_dungeon", SEALED_DUNGEON);

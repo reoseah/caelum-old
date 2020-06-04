@@ -24,6 +24,7 @@ import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumFeatures;
 import reoseah.caelum.common.features.AerrackOreConfig;
+import reoseah.caelum.common.features.AethererumOreConfig;
 import reoseah.caelum.common.features.SkyrootFeatureConfig;
 import reoseah.caelum.common.features.SkyrootTreeShape;
 
@@ -39,12 +40,16 @@ public abstract class CaelumBiomesFeatures {
 			CaelumBlocks.AERRACK.getDefaultState());
 
 	public static final AerrackOreConfig CERUCLASE_ORE = new AerrackOreConfig(CaelumBlocks.CERUCLASE_ORE.getDefaultState(), 9);
+	public static final AethererumOreConfig AETHERERUM_ORE = new AethererumOreConfig(CaelumBlocks.AETHERERUM_ORE.getDefaultState(), 1);
 
 	public static final void addOres(Biome biome) {
 		ConfiguredFeature<?, ?> feature = CaelumFeatures.AERRACK_ORE.configure(CERUCLASE_ORE);
+		ConfiguredFeature<?, ?> AETHERERUM_ORE_FEATURE = CaelumFeatures.AETHERERUM_ORE.configure(AETHERERUM_ORE);
 		ConfiguredDecorator<?> decorator = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 24, 0, 72));
 
 		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, feature.createDecoratedFeature(decorator));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, AETHERERUM_ORE_FEATURE.createDecoratedFeature(decorator));
+
 	}
 
 	public static final SpringFeatureConfig ENCLOSED_WATER_SPRING = new SpringFeatureConfig(Fluids.WATER.getDefaultState(), false, 5, 0, ImmutableSet.of(CaelumBlocks.AERRACK));
