@@ -34,7 +34,6 @@ public class CaelumFeatures {
 	public static final Feature<SkyrootFeatureConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootFeatureConfig::deserialize);
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
-	public static final Feature<AethererumOreConfig> AETHERERUM_ORE = new AethererumOreFeature(AethererumOreConfig::deserialize);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
 
 	public static final Feature<DefaultFeatureConfig> SEALED_DUNGEON = new SealedDungeonFeature(DefaultFeatureConfig::deserialize);
@@ -54,7 +53,6 @@ public class CaelumFeatures {
 		Registry.register(Registry.FEATURE, "caelum:sky_tree", SKYROOT_TREE);
 		Registry.register(Registry.FEATURE, "caelum:bush_with_soil", SKYROOT_BUSH_WITH_SOIL);
 		Registry.register(Registry.FEATURE, "caelum:aerrack_ore", AERRACK_ORE);
-		Registry.register(Registry.FEATURE, "caelum:aethererum_ore", AETHERERUM_ORE);
 		Registry.register(Registry.FEATURE, "caelum:caelum_vegetation", CAELUM_VEGETATION);
 
 		Registry.register(Registry.FEATURE, "caelum:sealed_dungeon", SEALED_DUNGEON);

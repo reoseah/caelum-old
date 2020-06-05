@@ -61,7 +61,7 @@ public class CaelumItems {
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, settings()));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CaelumBlocks.CERUCLASE_ORE, settings()));
-		Registry.register(Registry.ITEM, "caelum:aerthererum_ore", new BlockItem(CaelumBlocks.AETHERERUM_ORE, settings()));
+		Registry.register(Registry.ITEM, "caelum:nephrite_ore", new BlockItem(CaelumBlocks.NEPHRITE_ORE, settings()));
 
 		Registry.register(Registry.ITEM, "caelum:aerrack_bricks", new BlockItem(CaelumBlocks.AERRACK_BRICKS, settings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_brick_stairs", new BlockItem(CaelumBlocks.AERRACK_BRICK_STAIRS, settings()));

@@ -3,14 +3,7 @@ package reoseah.caelum.common;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.LeavesBlock;
-import net.minecraft.block.LogBlock;
-import net.minecraft.block.Material;
-import net.minecraft.block.MaterialColor;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.block.SlabBlock;
+import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
@@ -32,7 +25,7 @@ import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 public class CaelumBlocks {
 	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(4.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
 	public static final Block CERUCLASE_ORE = new Block(FabricBlockSettings.of(Material.STONE).lightLevel(7).nonOpaque().strength(5.0F, 9.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
-	public static final Block AETHERERUM_ORE = new Block(FabricBlockSettings.of(Material.STONE).strength(5.0F, 10.0F).breakByTool(FabricToolTags.PICKAXES, 0).sounds(BlockSoundGroup.STONE));
+	public static final Block NEPHRITE_ORE = new Block(FabricBlockSettings.of(Material.STONE).nonOpaque().hardness(3F).resistance(5F).sounds(BlockSoundGroup.STONE));
 
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(3.0F, 10.0F).sounds(BlockSoundGroup.STONE).breakByTool(FabricToolTags.PICKAXES, 0));
 	public static final Block AERRACK_BRICK_STAIRS = new ModStairsBlock(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(AERRACK_BRICKS));
@@ -89,7 +82,7 @@ public class CaelumBlocks {
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
-		Registry.register(Registry.BLOCK, "caelum:aethererum_ore", AETHERERUM_ORE);
+		Registry.register(Registry.BLOCK, "caelum:nephrite_ore", NEPHRITE_ORE);
 
 		Registry.register(Registry.BLOCK, "caelum:aerrack_bricks", AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_stairs", AERRACK_BRICK_STAIRS);
