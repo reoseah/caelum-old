@@ -101,6 +101,7 @@ public class CaelumOysterShroomPinBlock extends Block {
 		return BOUNDING_SHAPES.get(state.get(FACING));
 	}
 
+	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		super.scheduledTick(state, world, pos, random);
 		if (world.getLightLevel(pos.up()) < 14 && random.nextInt(7) == 0) {

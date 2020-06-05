@@ -63,6 +63,7 @@ public class SealstoneBlock extends Block {
 		super.neighborUpdate(state, world, pos, block, fromPos, notify);
 	}
 
+	@Override
 	public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		if (state.get(LEVEL) == 0) {
 			world.setBlockState(pos, state.with(LEVEL, 15), 3);
@@ -91,10 +92,12 @@ public class SealstoneBlock extends Block {
 		}
 	}
 
+	@Override
 	public boolean hasRandomTicks(BlockState state) {
 		return state.get(LEVEL) > 0;
 	}
 
+	@Override
 	public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
 		if (state.get(LEVEL) > 0 && !world.getBlockTickScheduler().isScheduled(pos, this)) {
 			world.getBlockTickScheduler().schedule(pos, this, 2);

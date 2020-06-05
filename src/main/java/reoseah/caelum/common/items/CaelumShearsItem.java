@@ -17,6 +17,7 @@ public class CaelumShearsItem extends ShearsItem {
 		super(settings);
 	}
 
+	@Override
 	public ActionResult useOnBlock(ItemUsageContext context) {
 		return tryPruneBlock(context);
 	}

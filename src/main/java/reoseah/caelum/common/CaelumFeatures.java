@@ -42,7 +42,7 @@ public class CaelumFeatures {
 	public static final Feature<TreeFeatureConfig> SKYROOT_BUSH_WITH_SOIL = new SkyrootBushWithSoilFeature(TreeFeatureConfig::deserialize);
 	public static final Feature<AerrackOreConfig> AERRACK_ORE = new AerrackOreFeature(AerrackOreConfig::deserialize);
 	public static final Feature<BlockPileFeatureConfig> CAELUM_VEGETATION = new CaelumVegetationFeature(BlockPileFeatureConfig::deserialize);
-	
+
 	public static final Feature<DefaultFeatureConfig> SEALED_DUNGEON = new SealedDungeonFeature(DefaultFeatureConfig::deserialize);
 
 	public static void register() {

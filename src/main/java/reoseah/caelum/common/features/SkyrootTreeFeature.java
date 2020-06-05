@@ -54,6 +54,7 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 		}
 	}
 
+	@Override
 	protected boolean setLogBlockState(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, BlockBox box, TreeFeatureConfig config) {
 		if (!isAirOrLeaves(world, pos) && !isAnyPlant(world, pos) && !isWater(world, pos)) {
 			return false;
