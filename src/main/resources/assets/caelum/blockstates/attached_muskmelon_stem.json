@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=west": { "model": "caelum:block/attached_muskmelon_stem" },
+        "facing=east": { "model": "caelum:block/attached_muskmelon_stem", "y": 180 },
+        "facing=north": { "model": "caelum:block/attached_muskmelon_stem", "y": 90 },
+        "facing=south": { "model": "caelum:block/attached_muskmelon_stem", "y": 270 }
+    }
+}

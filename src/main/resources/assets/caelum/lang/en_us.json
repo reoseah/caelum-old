@@ -39,6 +39,10 @@
     "block.caelum.mossy_sealstone": "Mossy Sealstone",
     "block.caelum.mossy_inert_sealstone": "Broken Mossy Sealstone",
     "block.caelum.barley": "Barley",
+    "block.caelum.muskmelon": "Muskmelon",
+    "block.caelum.muskmelon_stem": "Muskmelon Stem",
+    "block.caelum.attached_muskmelon_stem": "Attached Muskmelon Stem",
+    "block.caelum.caelum_oyster_shroom": "Caelum Oyster Shroom",
     "item.caelum.celestial_crystal": "Celestial Crystal",
     "item.caelum.ceruclase": "Ceruclase",
     "item.caelum.skyroot_stick": "Skyroot Stick",
@@ -52,12 +56,15 @@
     "item.caelum.ceruclase_falx": "Ceruclase Falx",
     "item.caelum.ceruclase_rockcutter": "Ceruclase Rockcutter",
     "item.caelum.ceruclase_drawknife": "Ceruclase Drawknife",
-    "item.caelum.ceruclase_garden_shears": "Ceruclase Garden Shears",
+    "item.caelum.ceruclase_shears": "Ceruclase Shears",
     "item.caelum.sealbreaker": "Sealbreaker",
     "item.caelum.skyroot_bucket": "Skyroot Bucket",
     "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket",
     "item.caelum.barley_seeds": "Barley Seeds",
     "item.caelum.barley": "Barley",
     "item.caelum.sky_apple": "Sky Apple",
-    "subtitles.item.garden_shears.stunt_sapling": "Sapling stunted"
+    "item.caelum.muskmelon_seeds": "Muskmelon Seeds",
+    "item.caelum.muskmelon_slice": "Muskmelon Slice",
+    "item.caelum.caelum_oyster_shroom_spawn": "Caelum Oyster Shroom Spawn",
+    "subtitles.item.shears.stunt_sapling": "Sapling stunted"
 }

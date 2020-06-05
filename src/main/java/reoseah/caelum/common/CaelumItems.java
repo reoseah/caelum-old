@@ -14,15 +14,15 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
+import reoseah.caelum.common.items.DiggingStickItem;
 import reoseah.caelum.common.items.DrawknifeItem;
-import reoseah.caelum.common.items.RockcutterItem;
 import reoseah.caelum.common.items.FalxItem;
-import reoseah.caelum.common.items.GardenShearsItem;
+import reoseah.caelum.common.items.CaelumShearsItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
+import reoseah.caelum.common.items.RockcutterItem;
 import reoseah.caelum.common.items.SkyrootBucketItem;
-import reoseah.caelum.common.items.DiggingStickItem;
 
 public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.CAELUM_GRASS));
@@ -43,7 +43,7 @@ public class CaelumItems {
 	public static final Item CERUCLASE_FALX = new FalxItem(CaelumToolMaterials.CERUCLASE, 1, -0.5F, settings());
 	public static final Item CERUCLASE_ROCKCUTTER = new RockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, settings());
 	public static final Item CERUCLASE_DRAWKNIFE = new DrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, settings());
-	public static final Item CERUCLASE_GARDEN_SHEARS = new GardenShearsItem(CaelumToolMaterials.CERUCLASE, settings());
+	public static final Item CERUCLASE_SHEARS = new CaelumShearsItem(settings());
 
 	public static final Item SEALBREAKER = new ModPickaxeItem(CaelumToolMaterials.SEALBREAKER, 1, -2.8F, settings());
 
@@ -53,6 +53,10 @@ public class CaelumItems {
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, settings());
 	public static final Item BARLEY = new Item(settings());
 	public static final Item SKY_APPLE = new Item(settings().food(FoodComponents.APPLE));
+	public static final Item MUSKMELON_SEEDS = new AliasedBlockItem(CaelumBlocks.MUSKMELON_STEM, settings());
+	public static final Item MUSKMELON = new Item(settings().food(FoodComponents.MELON_SLICE));
+	public static final Item CAELUM_OYSTER_SHROOM = new Item(settings());
+	public static final Item CAELUM_OYSTER_SHROOM_SPAWN = new AliasedBlockItem(CaelumBlocks.CAELUM_OYSTER_SHROOM_PIN, settings());
 
 	private static Item.Settings settings() {
 		return new Item.Settings().group(CaelumItems.GROUP);
@@ -105,6 +109,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_door", new BlockItem(CaelumBlocks.SKYROOT_DOOR, settings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_trapdoor", new BlockItem(CaelumBlocks.SKYROOT_TRAPDOOR, settings()));
 
+		Registry.register(Registry.ITEM, "caelum:muskmelon", new BlockItem(CaelumBlocks.MUSKMELON, settings()));
+
 		Registry.register(Registry.ITEM, "caelum:celestial_crystal", TELEPORTER);
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
@@ -122,7 +128,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:ceruclase_falx", CERUCLASE_FALX);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_rockcutter", CERUCLASE_ROCKCUTTER);
 		Registry.register(Registry.ITEM, "caelum:ceruclase_drawknife", CERUCLASE_DRAWKNIFE);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_garden_shears", CERUCLASE_GARDEN_SHEARS);
+		Registry.register(Registry.ITEM, "caelum:ceruclase_shears", CERUCLASE_SHEARS);
 
 		Registry.register(Registry.ITEM, "caelum:sealbreaker", SEALBREAKER);
 
@@ -131,6 +137,10 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
 		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
+		Registry.register(Registry.ITEM, "caelum:muskmelon_seeds", MUSKMELON_SEEDS);
+		Registry.register(Registry.ITEM, "caelum:muskmelon_slice", MUSKMELON);
 		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
+		Registry.register(Registry.ITEM, "caelum:caelum_oyster_shroom", CAELUM_OYSTER_SHROOM);
+		Registry.register(Registry.ITEM, "caelum:caelum_oyster_shroom_spawn", CAELUM_OYSTER_SHROOM_SPAWN);
 	}
 }

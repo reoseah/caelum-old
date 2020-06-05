@@ -4,8 +4,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemUsageContext;
-import net.minecraft.item.ToolItem;
-import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
@@ -13,9 +12,9 @@ import net.minecraft.world.World;
 import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumSounds;
 
-public class GardenShearsItem extends ToolItem {
-	public GardenShearsItem(ToolMaterial material, Item.Settings settings) {
-		super(material, settings);
+public class CaelumShearsItem extends ShearsItem {
+	public CaelumShearsItem(Item.Settings settings) {
+		super(settings);
 	}
 
 	public ActionResult useOnBlock(ItemUsageContext context) {

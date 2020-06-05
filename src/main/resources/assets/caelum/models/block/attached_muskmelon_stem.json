@@ -1,0 +1,7 @@
+{
+    "parent": "block/stem_fruit",
+    "textures": {
+        "stem": "caelum:block/muskmelon_stem",
+        "upperstem": "caelum:block/attached_muskmelon_stem"
+    }
+}

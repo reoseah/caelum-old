@@ -1,0 +1,30 @@
+{
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"texture": "caelum:block/caelum_oyster_shroom",
+		"particle": "caelum:block/caelum_oyster_shroom"
+	},
+	"elements": [
+		{
+			"from": [ 0, 0, 8 ],
+			"to": [ 5, 16, 8 ],
+			"rotation": { "angle": 45, "axis": "y", "origin": [ 1, 4, 8 ] },
+			"shade": false,
+			"faces": {
+				"north": {"uv": [ 4, 0, 10, 16 ], "texture": "#texture"},
+				"south": {"uv": [ 10, 0, 4, 16 ], "texture": "#texture"}
+			}
+		},
+		{
+			"from": [ 0, 0, 8 ],
+			"to": [ 5, 16, 8 ],
+			"rotation": { "angle": -45, "axis": "y", "origin": [ 1, 4, 8 ] },
+			"shade": false,
+			"faces": {
+				"north": {"uv": [ 4, 0, 10, 16 ], "texture": "#texture"},
+				"south": {"uv": [ 10, 0, 4, 16 ], "texture": "#texture"}
+			}
+		}
+	]
+}
