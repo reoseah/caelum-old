@@ -18,6 +18,7 @@ public class CaelumVegetationFeature extends Feature<BlockPileFeatureConfig> {
 		super(function);
 	}
 
+	@Override
 	public boolean generate(IWorld world, ChunkGenerator<? extends ChunkGeneratorConfig> chunkGenerator, Random random, BlockPos pos, BlockPileFeatureConfig config) {
 		BlockState state = config.stateProvider.getBlockState(random, pos);
 		if (world.isAir(pos) && state.canPlaceAt(world, pos)) {

@@ -121,7 +121,7 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 
 	private static void setWall(IWorld world, BlockPos pos, int u, int w, Random random, long salt) {
 		boolean sealstone = false;
-		if ((w / 2) % 2 == 1) {
+		if (w / 2 % 2 == 1) {
 			u = u + 1;
 		}
 		if (u % 2 == 0) {

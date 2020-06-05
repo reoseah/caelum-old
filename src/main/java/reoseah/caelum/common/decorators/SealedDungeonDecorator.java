@@ -34,7 +34,7 @@ public class SealedDungeonDecorator extends Decorator<ChanceRangeDecoratorConfig
 			surface = config.top;
 		}
 		int y = config.bottomOffset + random.nextInt(surface - config.bottomOffset);
-		
+
 		return Stream.of(new BlockPos(x, y, z));
 	}
 

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "caelum:block/caelum_oyster_shroom_pin"
+    },
+    "facing=north": {
+      "model": "caelum:block/caelum_oyster_shroom_pin",
+      "y": 270
+    },
+    "facing=south": {
+      "model": "caelum:block/caelum_oyster_shroom_pin",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "caelum:block/caelum_oyster_shroom_pin",
+      "y": 180
+    }
+  }
+}

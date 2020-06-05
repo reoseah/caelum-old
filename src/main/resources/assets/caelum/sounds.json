@@ -1,9 +1,9 @@
 {
-    "item.garden_shears.stunt_sapling": {
+    "item.shears.stunt_sapling": {
         "category": "players",
         "sounds": [
             "minecraft:mob/sheep/shear"
         ],
-        "subtitle": "subtitles.item.garden_shears.stunt_sapling"
+        "subtitle": "subtitles.item.shears.stunt_sapling"
     }
 }

@@ -29,7 +29,7 @@ public class CaelumDimensionHelper {
 		}
 		return null;
 	}
-	
+
 	private static ChunkPos searchIslandPos(ChunkRandom random, long seed, int centerX, int centerZ, int dX, int dZ) {
 		int distance = 80;
 		int separation = 20;

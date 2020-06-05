@@ -9,11 +9,14 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.common.blocks.CaelumOysterShroomBlock;
 
 public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig> {
 	public SkyrootTreeFeature(Function<Dynamic<?>, ? extends SkyrootFeatureConfig> function) {
@@ -31,6 +34,15 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 			int trunk = shape.length - 2 - random.nextInt(2);
 
 			placeShape(world, random, pos, logPositions, leavesPositions, box, config, shape, trunk);
+
+			if (config.hasMushrooms && random.nextInt(10) == 0) {
+				int dy = random.nextInt(2);
+				Direction side = Direction.fromHorizontal(random.nextInt(4));
+				BlockPos pos2 = pos.up(dy).offset(side);
+				if (isAir(world, pos2) && random.nextInt(3) == 0) {
+					world.setBlockState(pos2, CaelumBlocks.CAELUM_OYSTER_SHROOM.getDefaultState().with(CaelumOysterShroomBlock.FACING, side), 19);
+				}
+			}
 		}
 
 		return true;
@@ -54,6 +66,7 @@ public class SkyrootTreeFeature extends AbstractTreeFeature<SkyrootFeatureConfig
 		}
 	}
 
+	@Override
 	protected boolean setLogBlockState(ModifiableTestableWorld world, Random random, BlockPos pos, Set<BlockPos> logPositions, BlockBox box, TreeFeatureConfig config) {
 		if (!isAirOrLeaves(world, pos) && !isAnyPlant(world, pos) && !isWater(world, pos)) {
 			return false;

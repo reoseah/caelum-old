@@ -14,6 +14,7 @@ public class FalxItem extends SwordItem {
 		super(material, attackDamage, attackSpeed, settings);
 	}
 
+	@Override
 	public float getMiningSpeed(ItemStack stack, BlockState state) {
 		Block block = state.getBlock();
 		if (block == Blocks.COBWEB) {

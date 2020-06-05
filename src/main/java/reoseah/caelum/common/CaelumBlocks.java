@@ -3,21 +3,35 @@ package reoseah.caelum.common;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.FireBlock;
+import net.minecraft.block.GourdBlock;
+import net.minecraft.block.LeavesBlock;
+import net.minecraft.block.LogBlock;
+import net.minecraft.block.Material;
+import net.minecraft.block.MaterialColor;
+import net.minecraft.block.PillarBlock;
+import net.minecraft.block.SlabBlock;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import reoseah.caelum.common.blocks.AttachedMiskmelonStemBlock;
 import reoseah.caelum.common.blocks.BarleyBlock;
 import reoseah.caelum.common.blocks.BlossomingCaelumSproutsBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumFlowerBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
+import reoseah.caelum.common.blocks.CaelumOysterShroomBlock;
+import reoseah.caelum.common.blocks.CaelumOysterShroomPinBlock;
 import reoseah.caelum.common.blocks.CaelumSproutsBlock;
 import reoseah.caelum.common.blocks.ModCraftingTableBlock;
 import reoseah.caelum.common.blocks.ModDoorBlock;
 import reoseah.caelum.common.blocks.ModStairsBlock;
 import reoseah.caelum.common.blocks.ModTrapdoorBlock;
+import reoseah.caelum.common.blocks.MuskmelonBlock;
+import reoseah.caelum.common.blocks.MuskmelonStemBlock;
 import reoseah.caelum.common.blocks.SealstoneBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
@@ -74,10 +88,19 @@ public class CaelumBlocks {
 
 	public static final Block BARLEY = new BarleyBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
+	public static final Block MUSKMELON = new MuskmelonBlock(FabricBlockSettings.of(Material.PUMPKIN, MaterialColor.LIGHT_GRAY).strength(1.0F, 1.0F).sounds(BlockSoundGroup.WOOD));
+
+	public static final Block MUSKMELON_STEM = new MuskmelonStemBlock((GourdBlock) MUSKMELON, FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WOOD));
+	public static final Block ATTACHED_MUSKMELON_STEM = new AttachedMiskmelonStemBlock((GourdBlock) MUSKMELON, FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.WOOD));
+
+	public static final Block CAELUM_OYSTER_SHROOM = new CaelumOysterShroomBlock(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Block CAELUM_OYSTER_SHROOM_PIN = new CaelumOysterShroomPinBlock(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().breakInstantly().sounds(BlockSoundGroup.CROP));
+
 	public static final Block SKYROOT_DOOR = new ModDoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
 	public static final Block SKYROOT_TRAPDOOR = new ModTrapdoorBlock(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque());
 
 	public static final Tag<Block> SEALSTONE_PROTECTED_BLOCKS = TagRegistry.block(new Identifier("caelum:sealstone_protected_blocks"));
+	public static final Tag<Block> CAELUM_OYSTER_SHROOM_SUBSTRATES = TagRegistry.block(new Identifier("caelum:caelum_oyster_shroom_substrates"));
 
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
@@ -125,8 +148,28 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:mossy_sealstone", MOSSY_SEALSTONE);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+		Registry.register(Registry.BLOCK, "caelum:muskmelon", MUSKMELON);
+		Registry.register(Registry.BLOCK, "caelum:muskmelon_stem", MUSKMELON_STEM);
+		Registry.register(Registry.BLOCK, "caelum:attached_muskmelon_stem", ATTACHED_MUSKMELON_STEM);
+		Registry.register(Registry.BLOCK, "caelum:caelum_oyster_shroom", CAELUM_OYSTER_SHROOM);
+		Registry.register(Registry.BLOCK, "caelum:caelum_oyster_shroom_pin", CAELUM_OYSTER_SHROOM_PIN);
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
+
+		FireBlock fire = (FireBlock) Blocks.FIRE;
+		fire.registerFlammableBlock(SKYROOT_PLANKS, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_SLAB, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_STAIRS, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_LOG, 5, 5);
+		fire.registerFlammableBlock(STRIPPED_SKYROOT_LOG, 5, 5);
+		fire.registerFlammableBlock(SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(SILVER_SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(DWARF_SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(CAELUM_SPROUTS, 60, 100);
+		fire.registerFlammableBlock(BLOSSOMING_CAELUM_SPROUTS, 60, 100);
+		fire.registerFlammableBlock(SKY_BLUE_FLOWER, 60, 100);
+
+		fire.registerFlammableBlock(SKYROOT_CRAFTING_TABLE, 5, 20);
 	}
 }

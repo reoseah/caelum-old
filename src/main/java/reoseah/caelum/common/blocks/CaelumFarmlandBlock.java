@@ -47,7 +47,7 @@ public class CaelumFarmlandBlock extends Block {
 	public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, IWorld world, BlockPos pos, BlockPos neighborPos) {
 		if (direction == Direction.UP && !state.canPlaceAt(world, pos)) {
 			world.getBlockTickScheduler().schedule(pos, this, 1);
-		} 
+		}
 		return state;
 	}
 

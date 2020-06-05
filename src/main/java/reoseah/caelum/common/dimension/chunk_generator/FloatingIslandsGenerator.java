@@ -39,6 +39,7 @@ public class FloatingIslandsGenerator extends AbstractLandGenerator<FloatingIsla
 		}
 	}
 
+	@Override
 	protected FloatingIslandData createColumnData(int x, int z) {
 		float landThreshold = 0.0F;
 		float weights = 0.0F;
@@ -72,6 +73,7 @@ public class FloatingIslandsGenerator extends AbstractLandGenerator<FloatingIsla
 		return new FloatingIslandData(landThreshold, islandDistSq);
 	}
 
+	@Override
 	protected double modifyNoise(double noise, FloatingIslandData data, int y) {
 		double spawnIslandModifier = Math.max(0, 10 - Math.max(2, Math.sqrt(data.spawnIslandDistSq) / 3));
 		double heightModifier = 0;

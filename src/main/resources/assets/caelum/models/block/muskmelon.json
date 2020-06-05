@@ -1,0 +1,7 @@
+{
+    "parent": "block/cube_column",
+    "textures": {
+        "end": "caelum:block/muskmelon_top",
+        "side": "caelum:block/muskmelon_side"
+    }
+}
