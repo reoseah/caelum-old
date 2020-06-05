@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FireBlock;
 import net.minecraft.block.GourdBlock;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.LogBlock;
@@ -153,5 +154,20 @@ public class CaelumBlocks {
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
+
+		FireBlock fire = (FireBlock) Blocks.FIRE;
+		fire.registerFlammableBlock(SKYROOT_PLANKS, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_SLAB, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_STAIRS, 5, 20);
+		fire.registerFlammableBlock(SKYROOT_LOG, 5, 5);
+		fire.registerFlammableBlock(STRIPPED_SKYROOT_LOG, 5, 5);
+		fire.registerFlammableBlock(SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(SILVER_SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(DWARF_SKYROOT_LEAVES, 30, 60);
+		fire.registerFlammableBlock(CAELUM_SPROUTS, 60, 100);
+		fire.registerFlammableBlock(BLOSSOMING_CAELUM_SPROUTS, 60, 100);
+		fire.registerFlammableBlock(SKY_BLUE_FLOWER, 60, 100);
+
+		fire.registerFlammableBlock(SKYROOT_CRAFTING_TABLE, 5, 20);
 	}
 }
