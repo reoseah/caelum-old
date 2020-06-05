@@ -21,17 +21,18 @@ public class BarrenForestBiome extends Biome implements FloatingIslandsBiome {
 				.waterFogColor(0x050533)
 //				.moodSound(SoundEvents.AMBIENT_CAVE)
 				.parent(null));
-
 		CaelumBiomesFeatures.addOres(this);
+
+		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION,
+				CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT)
+						.createDecoratedFeature(CaelumFeatures.SEALED_DUNGEON_DECORATOR.configure(new ChanceRangeDecoratorConfig(0.625F, 35, 0, 50))));
+
 		CaelumBiomesFeatures.addWaterSprings(this);
 		CaelumBiomesFeatures.addSteepEdgesVegetation(this);
 		CaelumBiomesFeatures.addSkyForestTrees(this);
 		CaelumBiomesFeatures.addSkyGrass(this);
 		DefaultBiomeFeatures.addFrozenTopLayer(this);
 
-		this.addFeature(GenerationStep.Feature.UNDERGROUND_DECORATION,
-				CaelumFeatures.SEALED_DUNGEON.configure(FeatureConfig.DEFAULT)
-						.createDecoratedFeature(CaelumFeatures.SEALED_DUNGEON_DECORATOR.configure(new ChanceRangeDecoratorConfig(0.625F, 35, 0, 50))));
 	}
 
 	@Override
