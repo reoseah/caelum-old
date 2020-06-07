@@ -29,6 +29,7 @@ public class CaelumItems {
 
 	public static final Item TELEPORTER = new CelestialCrystalItem(settings());
 	public static final Item CERUCLASE = new Item(settings());
+	public static final Item NEPHRITE = new Item(settings());
 	public static final Item SKYROOT_STICK = new Item(settings());
 
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, settings());
@@ -73,6 +74,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:aerrack_pillar", new BlockItem(CaelumBlocks.AERRACK_PILLAR, settings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_lightstone", new BlockItem(CaelumBlocks.AERRACK_LIGHTSTONE, settings()));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CaelumBlocks.CERUCLASE_BLOCK, settings()));
+		Registry.register(Registry.ITEM, "caelum:nephrite_block", new BlockItem(CaelumBlocks.NEPHRITE_BLOCK, settings()));
 		Registry.register(Registry.ITEM, "caelum:inert_sealstone", new BlockItem(CaelumBlocks.INERT_SEALSTONE, settings()));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack", new BlockItem(CaelumBlocks.MOSSY_AERRACK, settings()));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack_bricks", new BlockItem(CaelumBlocks.MOSSY_AERRACK_BRICKS, settings()));
@@ -115,6 +117,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:celestial_crystal", TELEPORTER);
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
+		Registry.register(Registry.ITEM, "caelum:nephrite", NEPHRITE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_sword", SKYROOT_SWORD);
