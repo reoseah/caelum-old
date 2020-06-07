@@ -40,17 +40,22 @@ public abstract class CaelumBiomesFeatures {
 			CaelumBlocks.AERRACK.getDefaultState());
 
 	public static final AerrackOreConfig CERUCLASE_ORE = new AerrackOreConfig(CaelumBlocks.CERUCLASE_ORE.getDefaultState(), 9);
+	public static final AerrackOreConfig NEPHRITE_ORE = new AerrackOreConfig(CaelumBlocks.NEPHRITE_ORE.getDefaultState(), 3);
 
-	public static final void addOres(Biome biome) {
-		ConfiguredFeature<?, ?> feature = CaelumFeatures.AERRACK_ORE.configure(CERUCLASE_ORE);
-		ConfiguredDecorator<?> decorator = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(20, 24, 0, 72));
+	public static void addOres(Biome biome) {
+		addOre(biome, CERUCLASE_ORE, 20, 24, 0, 72);
+		addOre(biome, NEPHRITE_ORE, 10, 3, 0, 20);
+	}
 
-		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, feature.createDecoratedFeature(decorator));
+	private static void addOre(Biome biome, AerrackOreConfig config, int count, int bottomOffset, int topOffset, int maximum) {
+		ConfiguredFeature<?, ?> ORE_FEATURE = CaelumFeatures.AERRACK_ORE.configure(config);
+		ConfiguredDecorator<?> ORE_DECORATOR = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(count, bottomOffset, topOffset, maximum));
+		biome.addFeature(GenerationStep.Feature.UNDERGROUND_ORES, ORE_FEATURE.createDecoratedFeature(ORE_DECORATOR));
 	}
 
 	public static final SpringFeatureConfig ENCLOSED_WATER_SPRING = new SpringFeatureConfig(Fluids.WATER.getDefaultState(), false, 5, 0, ImmutableSet.of(CaelumBlocks.AERRACK));
 
-	public static final void addWaterSprings(Biome biome) {
+	public static void addWaterSprings(Biome biome) {
 		ConfiguredFeature<?, ?> feature = Feature.SPRING_FEATURE.configure(ENCLOSED_WATER_SPRING);
 		ConfiguredDecorator<?> decorator = Decorator.COUNT_RANGE.configure(new RangeDecoratorConfig(16, 10, 20, 72));
 
@@ -67,7 +72,7 @@ public abstract class CaelumBiomesFeatures {
 	public static final SkyrootFeatureConfig SILVER_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, SILVER_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL, false);
 	public static final SkyrootFeatureConfig DWARF_SKYROOT = new SkyrootFeatureConfig(SKYROOT_LOG, DWARF_SKYROOT_LEAVES, 4, SkyrootTreeShape.SMALL, false);
 
-	public static final void addSkyForestTrees(Biome biome) {
+	public static void addSkyForestTrees(Biome biome) {
 		ConfiguredFeature<?, ?> skyroot = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
 		ConfiguredFeature<?, ?> tallSkyroot = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT);
 		ConfiguredFeature<?, ?> silverSkyroot = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
@@ -99,7 +104,7 @@ public abstract class CaelumBiomesFeatures {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, bushFeature.createDecoratedFeature(bushDecorator));
 	}
 
-	public static final void addSteepEdgesVegetation(Biome biome) {
+	public static void addSteepEdgesVegetation(Biome biome) {
 		ConfiguredFeature<?, ?> commonBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SKYROOT);
 		ConfiguredFeature<?, ?> silverBush = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(SILVER_SKYROOT);
 		ConfiguredFeature<?, ?> silverBush2 = CaelumFeatures.SKYROOT_BUSH_WITH_SOIL.configure(SILVER_SKYROOT);
@@ -122,7 +127,7 @@ public abstract class CaelumBiomesFeatures {
 					.addState(CaelumBlocks.CAELUM_SPROUTS.getDefaultState(), 9)
 					.addState(CaelumBlocks.SKY_BLUE_FLOWER.getDefaultState(), 1));
 
-	public static final void addSkyGrass(Biome biome) {
+	public static void addSkyGrass(Biome biome) {
 		biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
 				CaelumFeatures.CAELUM_VEGETATION.configure(CAELUM_VEGETATION)
 						.createDecoratedFeature(CaelumFeatures.CAELUM_GRASS_DECORATOR
