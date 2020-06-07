@@ -22,7 +22,7 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import reoseah.caelum.common.CaelumBlocks;
-import reoseah.caelum.common.biomes.CaelumBiomesFeatures;
+import reoseah.caelum.common.world.biomes.CaelumBiomesFeatures;
 
 public class CaelumGrassBlock extends Block implements Fertilizable {
 	public static final BooleanProperty SNOWY = Properties.SNOWY;

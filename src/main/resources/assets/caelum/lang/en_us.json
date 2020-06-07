@@ -43,7 +43,6 @@
     "block.caelum.muskmelon": "Muskmelon",
     "block.caelum.muskmelon_stem": "Muskmelon Stem",
     "block.caelum.attached_muskmelon_stem": "Attached Muskmelon Stem",
-    "block.caelum.caelum_oyster_shroom": "Caelum Oyster Shroom",
     "item.caelum.celestial_crystal": "Celestial Crystal",
     "item.caelum.ceruclase": "Ceruclase",
     "item.caelum.skyroot_stick": "Skyroot Stick",
@@ -65,6 +64,7 @@
     "item.caelum.barley": "Barley",
     "item.caelum.sky_apple": "Sky Apple",
     "item.caelum.muskmelon_seeds": "Muskmelon Seeds",
+    "item.caelum.caelum_oyster_shroom": "Caelum Oyster Shroom",
     "item.caelum.muskmelon_slice": "Muskmelon Slice",
     "item.caelum.caelum_oyster_shroom_spawn": "Caelum Oyster Shroom Spawn",
     "subtitles.item.shears.stunt_sapling": "Sapling stunted"
