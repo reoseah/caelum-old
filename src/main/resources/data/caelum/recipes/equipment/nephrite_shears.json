@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "caelum:skyroot_stick"
+    },
+    "#": {
+      "item": "caelum:nephrite"
+    }
+  },
+  "result": {
+    "item": "caelum:nephrite_shears"
+  }
+}

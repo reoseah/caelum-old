@@ -26,7 +26,7 @@ public class ItemStackMixin {
 
 	@Inject(method = "getEnchantments", at = @At("RETURN"), cancellable = true)
 	public void getEnchantments(CallbackInfoReturnable<ListTag> ci) {
-		if (item == CaelumItems.CERUCLASE_ROCKCUTTER) {
+		if (item == CaelumItems.NEPHRITE_ROCKCUTTER) {
 			ListTag tag = ci.getReturnValue();
 			Map<Enchantment, Integer> enchantments = EnchantmentHelper.getEnchantments(tag);
 			if (!enchantments.containsKey(Enchantments.SILK_TOUCH)) {

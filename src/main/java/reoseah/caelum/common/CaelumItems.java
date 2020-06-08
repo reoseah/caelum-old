@@ -17,7 +17,6 @@ import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
 import reoseah.caelum.common.items.DiggingStickItem;
 import reoseah.caelum.common.items.DrawknifeItem;
-import reoseah.caelum.common.items.FalxItem;
 import reoseah.caelum.common.items.ModAxeItem;
 import reoseah.caelum.common.items.ModHoeItem;
 import reoseah.caelum.common.items.ModPickaxeItem;
@@ -28,7 +27,7 @@ public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.CAELUM_GRASS));
 
 	public static final Item TELEPORTER = new CelestialCrystalItem(settings());
-	public static final Item CERUCLASE = new Item(settings());
+	public static final Item LIGHTSTONE = new Item(settings());
 	public static final Item NEPHRITE = new Item(settings());
 	public static final Item SKYROOT_STICK = new Item(settings());
 
@@ -41,10 +40,10 @@ public class CaelumItems {
 	public static final Item AERRACK_AXE = new ModAxeItem(CaelumToolMaterials.AERRACK, 7.0F, -3.2F, settings());
 	public static final Item AERRACK_HOE = new ModHoeItem(CaelumToolMaterials.AERRACK, -1, -2.0F, settings());
 
-	public static final Item CERUCLASE_FALX = new FalxItem(CaelumToolMaterials.CERUCLASE, 1, -0.5F, settings());
-	public static final Item CERUCLASE_ROCKCUTTER = new RockcutterItem(CaelumToolMaterials.CERUCLASE_ROCKCUTTER, 1F, -2.8F, settings());
-	public static final Item CERUCLASE_DRAWKNIFE = new DrawknifeItem(CaelumToolMaterials.CERUCLASE_DRAWKNIFE, settings());
-	public static final Item CERUCLASE_SHEARS = new CaelumShearsItem(settings());
+	public static final Item NEPHRITE_BLADE = new SwordItem(CaelumToolMaterials.NEPHRITE, 1, -0.5F, settings());
+	public static final Item NEPHRITE_ROCKCUTTER = new RockcutterItem(CaelumToolMaterials.NEPHRITE_ROCKCUTTER, 1F, -2.8F, settings());
+	public static final Item NEPHRITE_DRAWKNIFE = new DrawknifeItem(CaelumToolMaterials.NEPHRITE_DRAWKNIFE, settings());
+	public static final Item NEPHRITE_SHEARS = new CaelumShearsItem(settings());
 
 	public static final Item SEALBREAKER = new ModPickaxeItem(CaelumToolMaterials.SEALBREAKER, 1, -2.8F, settings());
 
@@ -65,15 +64,15 @@ public class CaelumItems {
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, settings()));
-		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CaelumBlocks.CERUCLASE_ORE, settings()));
+		Registry.register(Registry.ITEM, "caelum:lightstone_ore", new BlockItem(CaelumBlocks.CERUCLASE_ORE, settings()));
 		Registry.register(Registry.ITEM, "caelum:nephrite_ore", new BlockItem(CaelumBlocks.NEPHRITE_ORE, settings()));
 
 		Registry.register(Registry.ITEM, "caelum:aerrack_bricks", new BlockItem(CaelumBlocks.AERRACK_BRICKS, settings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_brick_stairs", new BlockItem(CaelumBlocks.AERRACK_BRICK_STAIRS, settings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_brick_slab", new BlockItem(CaelumBlocks.AERRACK_BRICK_SLAB, settings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_pillar", new BlockItem(CaelumBlocks.AERRACK_PILLAR, settings()));
-		Registry.register(Registry.ITEM, "caelum:aerrack_lightstone", new BlockItem(CaelumBlocks.AERRACK_LIGHTSTONE, settings()));
-		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CaelumBlocks.CERUCLASE_BLOCK, settings()));
+		Registry.register(Registry.ITEM, "caelum:aerrack_lantern", new BlockItem(CaelumBlocks.AERRACK_LANTERN, settings()));
+		Registry.register(Registry.ITEM, "caelum:lightstone_block", new BlockItem(CaelumBlocks.LIGHTSTONE_BLOCK, settings()));
 		Registry.register(Registry.ITEM, "caelum:nephrite_block", new BlockItem(CaelumBlocks.NEPHRITE_BLOCK, settings()));
 		Registry.register(Registry.ITEM, "caelum:inert_sealstone", new BlockItem(CaelumBlocks.INERT_SEALSTONE, settings()));
 		Registry.register(Registry.ITEM, "caelum:mossy_aerrack", new BlockItem(CaelumBlocks.MOSSY_AERRACK, settings()));
@@ -116,7 +115,7 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:celestial_crystal", TELEPORTER);
 
-		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
+		Registry.register(Registry.ITEM, "caelum:lightstone", LIGHTSTONE);
 		Registry.register(Registry.ITEM, "caelum:nephrite", NEPHRITE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 
@@ -129,10 +128,10 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:aerrack_axe", AERRACK_AXE);
 		Registry.register(Registry.ITEM, "caelum:aerrack_hoe", AERRACK_HOE);
 
-		Registry.register(Registry.ITEM, "caelum:ceruclase_falx", CERUCLASE_FALX);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_rockcutter", CERUCLASE_ROCKCUTTER);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_drawknife", CERUCLASE_DRAWKNIFE);
-		Registry.register(Registry.ITEM, "caelum:ceruclase_shears", CERUCLASE_SHEARS);
+		Registry.register(Registry.ITEM, "caelum:nephrite_blade", NEPHRITE_BLADE);
+		Registry.register(Registry.ITEM, "caelum:nephrite_rockcutter", NEPHRITE_ROCKCUTTER);
+		Registry.register(Registry.ITEM, "caelum:nephrite_drawknife", NEPHRITE_DRAWKNIFE);
+		Registry.register(Registry.ITEM, "caelum:nephrite_shears", NEPHRITE_SHEARS);
 
 		Registry.register(Registry.ITEM, "caelum:sealbreaker", SEALBREAKER);
 

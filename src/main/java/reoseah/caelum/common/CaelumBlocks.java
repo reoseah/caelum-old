@@ -45,8 +45,8 @@ public class CaelumBlocks {
 	public static final Block AERRACK_BRICK_STAIRS = new ModStairsBlock(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
-	public static final Block AERRACK_LIGHTSTONE = new Block(FabricBlockSettings.copyOf(AERRACK_BRICKS).lightLevel(13));
-	public static final Block CERUCLASE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).lightLevel(15).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 0));
+	public static final Block AERRACK_LANTERN = new Block(FabricBlockSettings.copyOf(AERRACK_BRICKS).lightLevel(13));
+	public static final Block LIGHTSTONE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).lightLevel(15).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 0));
 	public static final Block NEPHRITE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).strength(5.0F, 15.0F).sounds(BlockSoundGroup.METAL).breakByTool(FabricToolTags.PICKAXES, 0));
 
 	public static final Block CAELUM_GRASS = new CaelumGrassBlock(FabricBlockSettings.of(Material.ORGANIC).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));
@@ -105,15 +105,15 @@ public class CaelumBlocks {
 
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);
-		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
+		Registry.register(Registry.BLOCK, "caelum:lightstone_ore", CERUCLASE_ORE);
 		Registry.register(Registry.BLOCK, "caelum:nephrite_ore", NEPHRITE_ORE);
 
 		Registry.register(Registry.BLOCK, "caelum:aerrack_bricks", AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_stairs", AERRACK_BRICK_STAIRS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_slab", AERRACK_BRICK_SLAB);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_pillar", AERRACK_PILLAR);
-		Registry.register(Registry.BLOCK, "caelum:aerrack_lightstone", AERRACK_LIGHTSTONE);
-		Registry.register(Registry.BLOCK, "caelum:ceruclase_block", CERUCLASE_BLOCK);
+		Registry.register(Registry.BLOCK, "caelum:aerrack_lantern", AERRACK_LANTERN);
+		Registry.register(Registry.BLOCK, "caelum:lightstone_block", LIGHTSTONE_BLOCK);
 		Registry.register(Registry.BLOCK, "caelum:nephrite_block", NEPHRITE_BLOCK);
 		Registry.register(Registry.BLOCK, "caelum:inert_sealstone", INERT_SEALSTONE);
 		Registry.register(Registry.BLOCK, "caelum:mossy_aerrack", MOSSY_AERRACK);

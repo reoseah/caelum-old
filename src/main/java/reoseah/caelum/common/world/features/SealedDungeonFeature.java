@@ -108,7 +108,7 @@ public class SealedDungeonFeature extends Feature<DefaultFeatureConfig> {
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 2), CaelumBlocks.AERRACK_PILLAR.getDefaultState().with(PillarBlock.AXIS, Axis.X), 19);
 		world.setBlockState(mpos.set(x + 3, y + 4, z + 4), CaelumBlocks.AERRACK_PILLAR.getDefaultState().with(PillarBlock.AXIS, Axis.X), 19);
 
-		world.setBlockState(mpos.set(x + 3, y + 4, z + 3), CaelumBlocks.AERRACK_LIGHTSTONE.getDefaultState(), 19);
+		world.setBlockState(mpos.set(x + 3, y + 4, z + 3), CaelumBlocks.AERRACK_LANTERN.getDefaultState(), 19);
 
 		Direction chestDir = Direction.fromHorizontal(random.nextInt(4));
 		BlockPos.Mutable chestPos = mpos.set(x + 3, y + 1, z + 3).setOffset(chestDir, 2);

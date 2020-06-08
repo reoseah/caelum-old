@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "caelum:lightstone_block"
+    }
+  ],
+  "result": {
+    "item": "caelum:lightstone",
+    "count": 9
+  }
+}
