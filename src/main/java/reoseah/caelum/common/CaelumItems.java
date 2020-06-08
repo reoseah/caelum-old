@@ -8,11 +8,11 @@ import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShearsItem;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import reoseah.caelum.common.items.CaelumShearsItem;
 import reoseah.caelum.common.items.CaelumToolMaterials;
 import reoseah.caelum.common.items.CelestialCrystalItem;
 import reoseah.caelum.common.items.DiggingStickItem;
@@ -43,7 +43,7 @@ public class CaelumItems {
 	public static final Item NEPHRITE_BLADE = new SwordItem(CaelumToolMaterials.NEPHRITE, 1, -0.5F, settings());
 	public static final Item NEPHRITE_ROCKCUTTER = new RockcutterItem(CaelumToolMaterials.NEPHRITE_ROCKCUTTER, 1F, -2.8F, settings());
 	public static final Item NEPHRITE_DRAWKNIFE = new DrawknifeItem(CaelumToolMaterials.NEPHRITE_DRAWKNIFE, settings());
-	public static final Item NEPHRITE_SHEARS = new CaelumShearsItem(settings());
+	public static final Item NEPHRITE_SHEARS = new ShearsItem(settings());
 
 	public static final Item SEALBREAKER = new ModPickaxeItem(CaelumToolMaterials.SEALBREAKER, 1, -2.8F, settings());
 
@@ -92,8 +92,6 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_sapling", new BlockItem(CaelumBlocks.SKYROOT_SAPLING, settings()));
 		Registry.register(Registry.ITEM, "caelum:silver_skyroot_sapling", new BlockItem(CaelumBlocks.SILVER_SKYROOT_SAPLING, settings()));
 		Registry.register(Registry.ITEM, "caelum:dwarf_skyroot_sapling", new BlockItem(CaelumBlocks.DWARF_SKYROOT_SAPLING, settings()));
-		Registry.register(Registry.ITEM, "caelum:stunted_skyroot_sapling", new BlockItem(CaelumBlocks.STUNTED_SKYROOT_SAPLING, settings()));
-		Registry.register(Registry.ITEM, "caelum:stunted_silver_skyroot_sapling", new BlockItem(CaelumBlocks.STUNTED_SILVER_SKYROOT_SAPLING, settings()));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_sprouts", new BlockItem(CaelumBlocks.CAELUM_SPROUTS, settings()));
 		Registry.register(Registry.ITEM, "caelum:blossoming_caelum_sprouts", new BlockItem(CaelumBlocks.BLOSSOMING_CAELUM_SPROUTS, settings()));

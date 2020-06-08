@@ -21,17 +21,21 @@ public class SkyrootSaplingGenerator extends SaplingGenerator {
 		ConfiguredFeature<?, ?> feature = null;
 		Block block = state.getBlock();
 		if (block == CaelumBlocks.SKYROOT_SAPLING) {
-			feature = random.nextInt(10) == 0
-					? CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT)
-					: CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
+			if (world.getBlockState(pos.down(2)).getBlock() == CaelumBlocks.CAELUM_DIRT) {
+				feature = random.nextInt(10) == 0
+						? CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.TALL_SKYROOT)
+						: CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SKYROOT);
+			} else {
+				feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SKYROOT);
+			}
 		} else if (block == CaelumBlocks.SILVER_SKYROOT_SAPLING) {
-			feature = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+			if (world.getBlockState(pos.down(2)).getBlock() == CaelumBlocks.CAELUM_DIRT) {
+				feature = CaelumFeatures.SKYROOT_TREE.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+			} else {
+				feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
+			}
 		} else if (block == CaelumBlocks.DWARF_SKYROOT_SAPLING) {
 			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.DWARF_SKYROOT);
-		} else if (block == CaelumBlocks.STUNTED_SKYROOT_SAPLING) {
-			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SKYROOT);
-		} else if (block == CaelumBlocks.STUNTED_SILVER_SKYROOT_SAPLING) {
-			feature = CaelumFeatures.SKYROOT_GROUND_BUSH.configure(CaelumBiomesFeatures.SILVER_SKYROOT);
 		} else {
 			return false;
 		}

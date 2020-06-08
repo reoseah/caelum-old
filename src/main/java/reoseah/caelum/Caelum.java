@@ -11,7 +11,6 @@ import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.CaelumEntities;
 import reoseah.caelum.common.CaelumFeatures;
 import reoseah.caelum.common.CaelumItems;
-import reoseah.caelum.common.CaelumSounds;
 import reoseah.caelum.common.misc.TillingHelper;
 import reoseah.caelum.common.world.CaelumDimension;
 
@@ -30,7 +29,6 @@ public class Caelum implements ModInitializer {
 		CaelumBiomes.register();
 		CaelumEntities.register();
 		CaelumParticles.register();
-		CaelumSounds.register();
 
 		TillingHelper.registerTilling();
 	}

@@ -1,6 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "cross": "caelum:block/stunted_skyroot_sapling"
-    }
-}

@@ -64,8 +64,6 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 	public static final Block SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 	public static final Block DWARF_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
-	public static final Block STUNTED_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
-	public static final Block STUNTED_SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 
 	public static final Block CAELUM_SPROUTS = new CaelumSproutsBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
 	public static final Block BLOSSOMING_CAELUM_SPROUTS = new BlossomingCaelumSproutsBlock(FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
@@ -133,8 +131,6 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_sapling", SKYROOT_SAPLING);
 		Registry.register(Registry.BLOCK, "caelum:silver_skyroot_sapling", SILVER_SKYROOT_SAPLING);
 		Registry.register(Registry.BLOCK, "caelum:dwarf_skyroot_sapling", DWARF_SKYROOT_SAPLING);
-		Registry.register(Registry.BLOCK, "caelum:stunted_skyroot_sapling", STUNTED_SKYROOT_SAPLING);
-		Registry.register(Registry.BLOCK, "caelum:stunted_silver_skyroot_sapling", STUNTED_SILVER_SKYROOT_SAPLING);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_sprouts", CAELUM_SPROUTS);
 		Registry.register(Registry.BLOCK, "caelum:blossoming_caelum_sprouts", BLOSSOMING_CAELUM_SPROUTS);
