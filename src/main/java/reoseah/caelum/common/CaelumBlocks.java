@@ -9,6 +9,6 @@ public class CaelumBlocks {
 	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(3F, 9F).breakByTool(FabricToolTags.PICKAXES));
 
 	public static void register() {
-
+		
 	}
 }
