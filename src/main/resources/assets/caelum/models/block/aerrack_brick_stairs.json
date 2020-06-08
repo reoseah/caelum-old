@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "caelum:block/aerrack_bricks",
-    "top": "caelum:block/aerrack_bricks",
-    "side": "caelum:block/aerrack_bricks"
-  }
-}

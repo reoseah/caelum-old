@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=y":  { "model": "caelum:block/skyroot_log" },
-        "axis=z":   { "model": "caelum:block/skyroot_log", "x": 90 },
-        "axis=x":   { "model": "caelum:block/skyroot_log", "x": 90, "y": 90 }
-    }
-}
-

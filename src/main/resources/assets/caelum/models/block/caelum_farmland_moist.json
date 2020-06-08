@@ -1,8 +1,0 @@
-{
-    "parent": "block/template_farmland",
-    "textures": {
-        "particle": "caelum:block/caelum_dirt",
-        "dirt": "caelum:block/caelum_dirt",
-        "top": "caelum:block/caelum_farmland_moist"
-    }
-}
