@@ -1,0 +1,21 @@
+{
+    "parent": "block/block",
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "texture": "#side", "uv": [0, 16, 16, 0], "rotation": 90, "cullface": "down" },
+                "up":    { "texture": "#side", "uv": [0, 16, 16, 0], "rotation": 90, "cullface": "up" },
+                "north": { "texture": "#side", "uv": [0, 16, 16, 0], "rotation": 90, "cullface": "north" },
+                "south": { "texture": "#side", "uv": [0, 16, 16, 0], "rotation": 90, "cullface": "south" },
+                "west":  { "texture": "#end", "cullface": "west" },
+                "east":  { "texture": "#end", "cullface": "east" }
+            }
+        }
+    ],
+    "textures": {
+        "particle": "caelum:block/aerrack_pillar",
+        "end": "caelum:block/aerrack",
+		"side": "caelum:block/aerrack_pillar"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "parent": "minecraft:recipes/root",
+    "rewards": {
+        "recipes": [
+            "caelum:blocks/aerrack_brick_slab"
+        ]
+    },
+    "criteria": {
+        "has_aerrack": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "caelum:aerrack_bricks"
+                    }
+                ]
+            }
+        },
+        "has_the_recipe": {
+            "trigger": "minecraft:recipe_unlocked",
+            "conditions": {
+                "recipe": "caelum:blocks/aerrack_brick_slab"
+            }
+        }
+    },
+    "requirements": [
+        [
+            "has_aerrack",
+            "has_the_recipe"
+        ]
+    ]
+}
