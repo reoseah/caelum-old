@@ -6,6 +6,8 @@
     	"StairsBlockInvoker"
     ],
     "client": [
+    	"client.BlockRenderInfoMixin",
+    	"client.BlockModelRendererMixin"
     ],
     "injectors": {
         "defaultRequire": 1

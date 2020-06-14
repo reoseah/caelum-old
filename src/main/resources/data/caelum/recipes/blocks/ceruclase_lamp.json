@@ -1,17 +1,20 @@
 {
     "type": "minecraft:crafting_shaped",
     "pattern": [
-        "#  ",
-        "## ",
-        "###"
+        "#X#",
+        "X#X",
+        "#X#"
     ],
     "key": {
         "#": {
             "item": "caelum:aerrack_bricks"
+        },
+        "X": {
+            "item": "caelum:ceruclase"
         }
     },
     "result": {
-        "item": "caelum:aerrack_brick_stairs",
+        "item": "caelum:ceruclase_lamp",
         "count": 4
     }
 }

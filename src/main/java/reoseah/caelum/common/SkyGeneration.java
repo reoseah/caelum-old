@@ -6,18 +6,21 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
-import reoseah.caelum.structures.SkyPortalGenerator.SkyPortal;
-import reoseah.caelum.structures.SkyPortalStructure;
+import reoseah.caelum.common.structures.SkyPortalStructure;
+import reoseah.caelum.common.structures.pieces.PillarIslandPiece;
+import reoseah.caelum.common.structures.pieces.SkyPortalPiece;
 
 public class SkyGeneration {
 	public static final SkyPortalStructure SKY_PORTAL_STRUCTURE = new SkyPortalStructure();
-	public static final StructurePieceType SKY_PORTAL_PIECE = SkyPortal::new;
+	public static final StructurePieceType SKY_PORTAL_PIECE = SkyPortalPiece::new;
+	public static final StructurePieceType PILLAR_ISLAND_PIECE = PillarIslandPiece::new;
 
 	public static void register() {
 		Registry.register(Registry.STRUCTURE_FEATURE, "caelum:sky_portal", SKY_PORTAL_STRUCTURE);
 		StructureFeature.STRUCTURES.put("caelum:sky_portal", SKY_PORTAL_STRUCTURE);
 
 		Registry.register(Registry.STRUCTURE_PIECE, "caelum:sky_portal", SKY_PORTAL_PIECE);
+		Registry.register(Registry.STRUCTURE_PIECE, "caelum:pillar_island", PILLAR_ISLAND_PIECE);
 
 		for (Biome biome : Registry.BIOME) {
 			addOverworldSkyPortal(biome);

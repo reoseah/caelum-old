@@ -4,5 +4,12 @@
     "block.caelum.aerrack_bricks": "Aerrack Bricks",
     "block.caelum.aerrack_brick_stairs": "Aerrack Brick Stairs",
     "block.caelum.aerrack_brick_slab": "Aerrack Brick Slab",
-    "block.caelum.aerrack_pillar": "Aerrack Pillar"
+    "block.caelum.aerrack_pillar": "Aerrack Pillar",
+    "block.caelum.ceruclase_ore": "Ceruclase Ore",
+    "block.caelum.ceruclase_lamp": "Ceruclase Lamp",
+    "block.caelum.ceruclase_block": "Ceruclase Block",
+    "block.caelum.caelum_dirt": "Caelum Silt",
+    "block.caelum.caelum_grass": "Caelum Grass",
+    "block.caelum.caelum_farmland": "Caelum Farmland",
+    "item.caelum.ceruclase": "Ceruclase"
 }

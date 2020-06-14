@@ -3,6 +3,10 @@ plugins {
 	id 'maven-publish'
 }
 
+repositories {
+    maven { url = "https://jitpack.io" }
+}
+
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -22,8 +26,7 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
-	// You may need to force-disable transitiveness on them.
+	modRuntime ("com.github.Chocohead:Data-Breaker-Lower:24be1a2")
 }
 
 processResources {
