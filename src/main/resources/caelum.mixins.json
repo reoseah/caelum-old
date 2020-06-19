@@ -3,7 +3,8 @@
     "package": "reoseah.caelum.mixins",
     "compatibilityLevel": "JAVA_8",
     "mixins": [
-    	"StairsBlockInvoker"
+        "StairsBlockInvoker",
+        "AxeItemMixin"
     ],
     "client": [
     	"client.BlockRenderInfoMixin",

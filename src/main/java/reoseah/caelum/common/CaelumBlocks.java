@@ -5,6 +5,8 @@ import com.google.common.collect.Sets;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PillarBlock;
@@ -34,6 +36,12 @@ public class CaelumBlocks {
 	public static final Block CAELUM_GRASS = new CaelumGrassBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));
 	public static final Block CAELUM_FARMLAND = new CaelumFarmlandBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 
+	public static final Block SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES));
+	public static final Block STRIPPED_SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG).breakByTool(FabricToolTags.AXES));
+	public static final Block SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
+
 	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
 
 	public static void register() {
@@ -50,6 +58,12 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:caelum_dirt", CAELUM_DIRT);
 		Registry.register(Registry.BLOCK, "caelum:caelum_grass", CAELUM_GRASS);
 		Registry.register(Registry.BLOCK, "caelum:caelum_farmland", CAELUM_FARMLAND);
+
+		Registry.register(Registry.BLOCK, "caelum:skyroot_log", SKYROOT_LOG);
+		Registry.register(Registry.BLOCK, "caelum:stripped_skyroot_log", STRIPPED_SKYROOT_LOG);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_leaves", SKYROOT_LEAVES);
+		Registry.register(Registry.BLOCK, "caelum:silver_skyroot_leaves", SILVER_SKYROOT_LEAVES);
+		Registry.register(Registry.BLOCK, "caelum:dwarf_skyroot_leaves", DWARF_SKYROOT_LEAVES);
 
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", GLOW_IN_DARK_ENTITY);
 	}

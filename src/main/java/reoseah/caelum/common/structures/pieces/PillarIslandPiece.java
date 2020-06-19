@@ -11,18 +11,22 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.common.SkyGeneration;
+import reoseah.caelum.common.CaelumWorld;
 
 public class PillarIslandPiece extends BaseIslandPiece {
 	public PillarIslandPiece(StructureManager manager, CompoundTag tag) {
-		super(SkyGeneration.PILLAR_ISLAND_PIECE, tag);
+		super(CaelumWorld.PILLAR_ISLAND_PIECE, tag);
 	}
 
-	public PillarIslandPiece(int length, Random random, int x, int z) {
-		super(SkyGeneration.PILLAR_ISLAND_PIECE, length);
+	public PillarIslandPiece(int length, Random random, BlockBox bounds) {
+		super(CaelumWorld.PILLAR_ISLAND_PIECE, length);
 
-		this.boundingBox = new BlockBox(x, 100 + random.nextInt(20), z, x + 5, 128, z + 5);
+		this.boundingBox = bounds;
 		this.setOrientation(Direction.fromHorizontal(random.nextInt(4)));
+	}
+
+	public static BlockBox createBounds(Random random, int x, int z) {
+		return new BlockBox(x - 3, 100 + random.nextInt(20), z - 3, x + 2, 128, z + 2);
 	}
 
 	@Override

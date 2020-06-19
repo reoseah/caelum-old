@@ -6,10 +6,15 @@
     "block.caelum.aerrack_brick_slab": "Aerrack Brick Slab",
     "block.caelum.aerrack_pillar": "Aerrack Pillar",
     "block.caelum.ceruclase_ore": "Ceruclase Ore",
-    "block.caelum.ceruclase_lamp": "Ceruclase Lamp",
+    "block.caelum.ceruclase_lamp": "Ceruclase Lightstone",
     "block.caelum.ceruclase_block": "Ceruclase Block",
     "block.caelum.caelum_dirt": "Caelum Silt",
     "block.caelum.caelum_grass": "Caelum Grass",
     "block.caelum.caelum_farmland": "Caelum Farmland",
+    "block.caelum.skyroot_log": "Skyroot Log",
+    "block.caelum.stripped_skyroot_log": "Stripped Skyroot Log",
+    "block.caelum.skyroot_leaves": "Skyroot Leaves",
+    "block.caelum.silver_skyroot_leaves": "Silver Skyroot Leaves",
+    "block.caelum.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves",
     "item.caelum.ceruclase": "Ceruclase"
 }

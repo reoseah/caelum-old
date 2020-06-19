@@ -14,17 +14,17 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.common.SkyGeneration;
+import reoseah.caelum.common.CaelumWorld;
 
 public class SkyPortalPiece extends BaseIslandPiece {
 	public SkyPortalPiece(StructureManager manager, CompoundTag tag) {
-		super(SkyGeneration.SKY_PORTAL_PIECE, tag);
+		super(CaelumWorld.SKY_PORTAL_PIECE, tag);
 	}
 
 	public SkyPortalPiece(int length, Random random, int x, int z) {
-		super(SkyGeneration.SKY_PORTAL_PIECE, length);
+		super(CaelumWorld.SKY_PORTAL_PIECE, length);
 
-		this.boundingBox = new BlockBox(x, 100 + random.nextInt(20), z, x + 5, 128, z + 7);
+		this.boundingBox = new BlockBox(x - 2, 100 + random.nextInt(20), z - 3, x + 3, 128, z + 4);
 		this.setOrientation(Direction.fromHorizontal(random.nextInt(4)));
 	}
 
@@ -35,8 +35,20 @@ public class SkyPortalPiece extends BaseIslandPiece {
 
 	@Override
 	public void placeJigsaw(StructurePiece piece, List<StructurePiece> list, Random random) {
-		list.add(new PillarIslandPiece(0, random, this.boundingBox.minX + 10, this.boundingBox.maxZ + 10));
-		list.add(new PillarIslandPiece(0, random, this.boundingBox.minX - 10, this.boundingBox.maxZ - 10));
+		int c = 2 + random.nextInt(2);
+		for (int i = 0; i < c; i++) {
+			double angle = 2 * Math.PI * random.nextDouble();
+			double radius = 6 + random.nextInt(4);
+
+			int x = this.boundingBox.minX + (int) (radius * Math.cos(angle));
+			int z = this.boundingBox.maxZ + (int) (radius * Math.sin(angle));
+
+			BlockBox bounds = PillarIslandPiece.createBounds(random, x, z);
+			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
+				StructurePiece island = new PillarIslandPiece(0, random, bounds);
+				list.add(island);
+			}
+		}
 	}
 
 	@Override

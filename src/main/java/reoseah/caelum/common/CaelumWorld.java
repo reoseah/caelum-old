@@ -10,7 +10,7 @@ import reoseah.caelum.common.structures.SkyPortalStructure;
 import reoseah.caelum.common.structures.pieces.PillarIslandPiece;
 import reoseah.caelum.common.structures.pieces.SkyPortalPiece;
 
-public class SkyGeneration {
+public class CaelumWorld {
 	public static final SkyPortalStructure SKY_PORTAL_STRUCTURE = new SkyPortalStructure();
 	public static final StructurePieceType SKY_PORTAL_PIECE = SkyPortalPiece::new;
 	public static final StructurePieceType PILLAR_ISLAND_PIECE = PillarIslandPiece::new;
