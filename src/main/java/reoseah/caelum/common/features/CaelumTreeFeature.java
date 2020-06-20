@@ -36,7 +36,7 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 			BlockState ground = world.getBlockState(pos.down());
 			Block groundBlock = ground.getBlock();
 
-			return groundBlock == CaelumBlocks.CAELUM_GRASS
+			return groundBlock == CaelumBlocks.CAELUM_GRASS_BLOCK
 					|| groundBlock == CaelumBlocks.CAELUM_DIRT
 					|| groundBlock == CaelumBlocks.CAELUM_FARMLAND;
 		}
@@ -55,7 +55,7 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 
 	protected static void trySetToDirt(ServerWorldAccess world, BlockPos pos) {
 		BlockState state = world.getBlockState(pos);
-		if (state.getBlock() == CaelumBlocks.CAELUM_GRASS
+		if (state.getBlock() == CaelumBlocks.CAELUM_GRASS_BLOCK
 				|| state.getBlock() == CaelumBlocks.CAELUM_FARMLAND) {
 			setBlockState(world, pos, state);
 		}

@@ -9,7 +9,7 @@
     "block.caelum.ceruclase_lamp": "Ceruclase Lightstone",
     "block.caelum.ceruclase_block": "Ceruclase Block",
     "block.caelum.caelum_dirt": "Caelum Silt",
-    "block.caelum.caelum_grass": "Caelum Grass",
+    "block.caelum.caelum_grass_block": "Caelum Grass",
     "block.caelum.caelum_farmland": "Caelum Farmland",
     "block.caelum.skyroot_log": "Skyroot Log",
     "block.caelum.stripped_skyroot_log": "Stripped Skyroot Log",
@@ -23,4 +23,5 @@
     "block.caelum.skyroot_stairs": "Skyroot Stairs",
     "block.caelum.skyroot_slab": "Skyroot Slab",
     "item.caelum.ceruclase": "Ceruclase"
+    "item.caelum.sky_apple": "Sky Apple"
 }

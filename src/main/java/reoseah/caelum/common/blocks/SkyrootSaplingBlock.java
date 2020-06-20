@@ -16,7 +16,7 @@ public class SkyrootSaplingBlock extends SaplingBlock {
 	@Override
 	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
 		Block block = floor.getBlock();
-		return block == CaelumBlocks.CAELUM_GRASS
+		return block == CaelumBlocks.CAELUM_GRASS_BLOCK
 				|| block == CaelumBlocks.CAELUM_DIRT
 				|| block == CaelumBlocks.CAELUM_FARMLAND;
 	}

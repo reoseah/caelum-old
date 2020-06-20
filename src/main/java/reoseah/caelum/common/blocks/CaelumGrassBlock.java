@@ -100,7 +100,7 @@ public class CaelumGrassBlock extends Block implements Fertilizable {
 	}
 
 	public static boolean generate(WorldAccess world, Random random, BlockPos pos, BlockPileFeatureConfig config, int i, int j) {
-		for (Block block = world.getBlockState(pos.down()).getBlock(); block != CaelumBlocks.CAELUM_GRASS && pos.getY() > 0; block = world.getBlockState(pos).getBlock()) {
+		for (Block block = world.getBlockState(pos.down()).getBlock(); block != CaelumBlocks.CAELUM_GRASS_BLOCK && pos.getY() > 0; block = world.getBlockState(pos).getBlock()) {
 			pos = pos.down();
 		}
 

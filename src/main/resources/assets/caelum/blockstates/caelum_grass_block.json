@@ -2,18 +2,18 @@
   "variants": {
     "snowy=false": [
       {
-        "model": "caelum:block/caelum_grass"
+        "model": "caelum:block/caelum_grass_block"
       },
       {
-        "model": "caelum:block/caelum_grass",
+        "model": "caelum:block/caelum_grass_block",
         "y": 90
       },
       {
-        "model": "caelum:block/caelum_grass",
+        "model": "caelum:block/caelum_grass_block",
         "y": 180
       },
       {
-        "model": "caelum:block/caelum_grass",
+        "model": "caelum:block/caelum_grass_block",
         "y": 270
       }
     ],

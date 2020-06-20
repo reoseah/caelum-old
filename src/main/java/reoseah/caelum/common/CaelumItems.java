@@ -2,6 +2,7 @@ package reoseah.caelum.common;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -12,6 +13,7 @@ public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.AERRACK));
 
 	public static final Item CERUCLASE = new Item(itemSettings());
+	public static final Item SKY_APPLE = new Item(itemSettings().food(FoodComponents.APPLE));
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, itemSettings()));
@@ -25,7 +27,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CaelumBlocks.CERUCLASE_BLOCK, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_dirt", new BlockItem(CaelumBlocks.CAELUM_DIRT, itemSettings()));
-		Registry.register(Registry.ITEM, "caelum:caelum_grass", new BlockItem(CaelumBlocks.CAELUM_GRASS, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:caelum_grass_block", new BlockItem(CaelumBlocks.CAELUM_GRASS_BLOCK, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:caelum_farmland", new BlockItem(CaelumBlocks.CAELUM_FARMLAND, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_log", new BlockItem(CaelumBlocks.SKYROOT_LOG, itemSettings()));
@@ -41,6 +43,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(CaelumBlocks.SKYROOT_SLAB, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
+		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
 	}
 
 	private static Item.Settings itemSettings() {

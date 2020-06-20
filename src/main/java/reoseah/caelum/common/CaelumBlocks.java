@@ -36,7 +36,7 @@ public class CaelumBlocks {
 	public static final Block CERUCLASE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).lightLevel(15).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
 
 	public static final Block CAELUM_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F, 0.5F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
-	public static final Block CAELUM_GRASS = new CaelumGrassBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));
+	public static final Block CAELUM_GRASS_BLOCK = new CaelumGrassBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));
 	public static final Block CAELUM_FARMLAND = new CaelumFarmlandBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 
 	public static final Block SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).breakByTool(FabricToolTags.AXES));
@@ -67,7 +67,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_block", CERUCLASE_BLOCK);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_dirt", CAELUM_DIRT);
-		Registry.register(Registry.BLOCK, "caelum:caelum_grass", CAELUM_GRASS);
+		Registry.register(Registry.BLOCK, "caelum:caelum_grass_block", CAELUM_GRASS_BLOCK);
 		Registry.register(Registry.BLOCK, "caelum:caelum_farmland", CAELUM_FARMLAND);
 
 		Registry.register(Registry.BLOCK, "caelum:skyroot_log", SKYROOT_LOG);
