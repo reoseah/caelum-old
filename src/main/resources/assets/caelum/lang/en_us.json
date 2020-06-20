@@ -16,5 +16,11 @@
     "block.caelum.skyroot_leaves": "Skyroot Leaves",
     "block.caelum.silver_skyroot_leaves": "Silver Skyroot Leaves",
     "block.caelum.dwarf_skyroot_leaves": "Dwarf Skyroot Leaves",
+    "block.caelum.skyroot_sapling": "Skyroot Sapling",
+    "block.caelum.silver_skyroot_sapling": "Silver Skyroot Sapling",
+    "block.caelum.dwarf_skyroot_sapling": "Dwarf Skyroot Sapling",
+    "block.caelum.skyroot_planks": "Skyroot Planks",
+    "block.caelum.skyroot_stairs": "Skyroot Stairs",
+    "block.caelum.skyroot_slab": "Skyroot Slab",
     "item.caelum.ceruclase": "Ceruclase"
 }

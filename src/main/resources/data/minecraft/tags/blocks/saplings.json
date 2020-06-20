@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "caelum:skyroot_sapling",
+        "caelum:silver_skyroot_sapling",
+        "caelum:dwarf_skyroot_sapling"
+    ]
+}

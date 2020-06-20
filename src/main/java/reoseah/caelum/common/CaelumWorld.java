@@ -4,16 +4,24 @@ import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
+import reoseah.caelum.common.features.SkyrootConfig;
+import reoseah.caelum.common.features.SkyrootShrubFeature;
+import reoseah.caelum.common.features.SkyrootTreeFeature;
 import reoseah.caelum.common.structures.SkyPortalStructure;
 import reoseah.caelum.common.structures.pieces.PillarIslandPiece;
 import reoseah.caelum.common.structures.pieces.SkyPortalPiece;
 
 public class CaelumWorld {
 	public static final SkyPortalStructure SKY_PORTAL_STRUCTURE = new SkyPortalStructure();
+
 	public static final StructurePieceType SKY_PORTAL_PIECE = SkyPortalPiece::new;
 	public static final StructurePieceType PILLAR_ISLAND_PIECE = PillarIslandPiece::new;
+
+	public static final Feature<SkyrootConfig> SKYROOT_TREE = new SkyrootTreeFeature(SkyrootConfig.CODEC);
+	public static final Feature<SkyrootConfig> SKYROOT_SHRUB = new SkyrootShrubFeature(SkyrootConfig.CODEC);
 
 	public static void register() {
 		Registry.register(Registry.STRUCTURE_FEATURE, "caelum:sky_portal", SKY_PORTAL_STRUCTURE);
@@ -28,6 +36,9 @@ public class CaelumWorld {
 		RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> {
 			addOverworldSkyPortal(biome);
 		});
+
+		Registry.register(Registry.FEATURE, "caelum:skyroot_tree", SKYROOT_TREE);
+		Registry.register(Registry.FEATURE, "caelum:skyroot_shrub", SKYROOT_SHRUB);
 	}
 
 	private static void addOverworldSkyPortal(Biome biome) {

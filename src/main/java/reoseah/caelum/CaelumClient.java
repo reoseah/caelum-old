@@ -23,7 +23,10 @@ public class CaelumClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutoutMipped(),
-				CaelumBlocks.CERUCLASE_LAMP);
+				CaelumBlocks.CERUCLASE_LAMP,
+				CaelumBlocks.SKYROOT_SAPLING,
+				CaelumBlocks.SILVER_SKYROOT_SAPLING,
+				CaelumBlocks.DWARF_SKYROOT_SAPLING);
 
 		ModelLoadingRegistry.INSTANCE.registerAppender(new ModelAppender() {
 			@Override
