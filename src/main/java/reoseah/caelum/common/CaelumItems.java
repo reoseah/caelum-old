@@ -63,6 +63,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(CaelumBlocks.SKYROOT_PLANKS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_stairs", new BlockItem(CaelumBlocks.SKYROOT_STAIRS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(CaelumBlocks.SKYROOT_SLAB, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:skyroot_crafting_table", new BlockItem(CaelumBlocks.SKYROOT_CRAFTING_TABLE, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);

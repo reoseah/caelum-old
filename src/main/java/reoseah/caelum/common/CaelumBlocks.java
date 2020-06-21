@@ -26,6 +26,7 @@ import reoseah.caelum.common.blocks.entity.GlowInDarkBlockEntity;
 import reoseah.caelum.common.blocks.sapling_generators.CommonSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.DwarfSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.SilverSkyrootGenerator;
+import reoseah.caelum.mixins.CraftingTableBlockInvoker;
 import reoseah.caelum.mixins.StairsBlockInvoker;
 
 public class CaelumBlocks {
@@ -47,7 +48,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
-	
+
 	public static final Block STRIPPED_SKYROOT_LOG = new PillarBlock(FabricBlockSettings.copyOf(Blocks.STRIPPED_OAK_LOG).breakByTool(FabricToolTags.AXES));
 	public static final Block SKYROOT_SAPLING = new SkyrootSaplingBlock(new CommonSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 	public static final Block SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(new SilverSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
@@ -56,6 +57,7 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS));
 	public static final Block SKYROOT_STAIRS = StairsBlockInvoker.create(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS));
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB));
+	public static final Block SKYROOT_CRAFTING_TABLE = CraftingTableBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0));
 
 	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
 
@@ -88,6 +90,7 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_planks", SKYROOT_PLANKS);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_stairs", SKYROOT_STAIRS);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
 
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", GLOW_IN_DARK_ENTITY);
 	}

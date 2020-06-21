@@ -1,0 +1,23 @@
+{
+    "parent": "block/block",
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "texture": "#bottom", "cullface": "down" },
+                "up":    { "texture": "#top", "cullface": "up" },
+                "north": { "texture": "#front", "cullface": "north" },
+                "south": { "texture": "#front", "cullface": "south" },
+                "west":  { "texture": "#side", "cullface": "west" },
+                "east":  { "texture": "#side", "cullface": "east" }
+            }
+        }
+    ],
+    "textures": {
+        "particle": "caelum:block/skyroot_crafting_table_side",
+        "top": "caelum:block/skyroot_crafting_table_top",
+		"front": "caelum:block/skyroot_crafting_table_front",
+		"side": "caelum:block/skyroot_crafting_table_side",
+		"bottom": "caelum:block/skyroot_planks"
+    }
+}
