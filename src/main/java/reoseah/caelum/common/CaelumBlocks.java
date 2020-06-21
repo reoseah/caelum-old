@@ -3,6 +3,7 @@ package reoseah.caelum.common;
 import com.google.common.collect.Sets;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -12,16 +13,19 @@ import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.block.SlabBlock;
 import net.minecraft.block.entity.BlockEntityType;
-import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.tag.Tag;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
 import reoseah.caelum.common.blocks.CeruclaseLampBlock;
 import reoseah.caelum.common.blocks.CeruclaseOreBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
-import reoseah.caelum.common.blocks.SkyrootSaplingGenerator;
 import reoseah.caelum.common.blocks.entity.GlowInDarkBlockEntity;
+import reoseah.caelum.common.blocks.sapling_generators.CommonSkyrootGenerator;
+import reoseah.caelum.common.blocks.sapling_generators.DwarfSkyrootGenerator;
+import reoseah.caelum.common.blocks.sapling_generators.SilverSkyrootGenerator;
 import reoseah.caelum.mixins.StairsBlockInvoker;
 
 public class CaelumBlocks {
@@ -45,16 +49,17 @@ public class CaelumBlocks {
 	public static final Block SILVER_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 	public static final Block DWARF_SKYROOT_LEAVES = new LeavesBlock(FabricBlockSettings.copy(Blocks.OAK_LEAVES));
 
-	private static final SaplingGenerator SAPLING_GENERATOR = new SkyrootSaplingGenerator();
-	public static final Block SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
-	public static final Block SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
-	public static final Block DWARF_SKYROOT_SAPLING = new SkyrootSaplingBlock(SAPLING_GENERATOR, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
+	public static final Block SKYROOT_SAPLING = new SkyrootSaplingBlock(new CommonSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
+	public static final Block SILVER_SKYROOT_SAPLING = new SkyrootSaplingBlock(new SilverSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
+	public static final Block DWARF_SKYROOT_SAPLING = new SkyrootSaplingBlock(new DwarfSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS));
 	public static final Block SKYROOT_STAIRS = StairsBlockInvoker.create(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS));
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB));
 
 	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
+
+	public static final Tag<Block> SOILS = TagRegistry.block(new Identifier("caelum:soils"));
 
 	public static void register() {
 		Registry.register(Registry.BLOCK, "caelum:aerrack", AERRACK);

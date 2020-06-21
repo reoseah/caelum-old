@@ -4,7 +4,6 @@ import java.util.Random;
 
 import com.mojang.serialization.Codec;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
@@ -34,11 +33,8 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 				|| state.getMaterial() == Material.REPLACEABLE_PLANT
 				|| state.isIn(BlockTags.SAPLINGS)) {
 			BlockState ground = world.getBlockState(pos.down());
-			Block groundBlock = ground.getBlock();
 
-			return groundBlock == CaelumBlocks.CAELUM_GRASS_BLOCK
-					|| groundBlock == CaelumBlocks.CAELUM_DIRT
-					|| groundBlock == CaelumBlocks.CAELUM_FARMLAND;
+			return ground.isIn(CaelumBlocks.SOILS);
 		}
 		return false;
 	}
@@ -47,8 +43,7 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 		BlockState state = world.getBlockState(pos);
 		if (state.isAir()
 				|| (state.getMaterial() == Material.LEAVES && state.get(LeavesBlock.DISTANCE) > distance)
-				|| state.getMaterial() == Material.REPLACEABLE_PLANT
-				|| state.isIn(BlockTags.SAPLINGS)) {
+				|| state.getMaterial() == Material.REPLACEABLE_PLANT) {
 			setBlockState(world, pos, config.leaves.getBlockState(random, pos).with(LeavesBlock.DISTANCE, distance));
 		}
 	}
@@ -57,7 +52,7 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 		BlockState state = world.getBlockState(pos);
 		if (state.getBlock() == CaelumBlocks.CAELUM_GRASS_BLOCK
 				|| state.getBlock() == CaelumBlocks.CAELUM_FARMLAND) {
-			setBlockState(world, pos, state);
+			setBlockState(world, pos, CaelumBlocks.CAELUM_DIRT.getDefaultState());
 		}
 	}
 

@@ -1,0 +1,8 @@
+{
+    "replace": false,
+    "values": [
+        "caelum:caelum_dirt",
+        "caelum:caelum_farmland",
+        "caelum:caelum_grass_block"
+    ]
+}
