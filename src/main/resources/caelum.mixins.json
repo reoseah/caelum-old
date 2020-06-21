@@ -4,7 +4,10 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "StairsBlockInvoker",
-        "AxeItemMixin"
+        "AxeItemMixin",
+        "AxeItemInvoker",
+        "PickaxeItemInvoker",
+        "HoeItemInvoker"
     ],
     "client": [
     	"client.BlockRenderInfoMixin",

@@ -10,7 +10,6 @@ public class Caelum implements ModInitializer {
 	public void onInitialize() {
 		CaelumBlocks.register();
 		CaelumItems.register();
-
 		CaelumWorld.register();
 	}
 }

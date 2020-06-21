@@ -23,5 +23,15 @@
     "block.caelum.skyroot_stairs": "Skyroot Stairs",
     "block.caelum.skyroot_slab": "Skyroot Slab",
     "item.caelum.ceruclase": "Ceruclase",
-    "item.caelum.sky_apple": "Sky Apple"
+    "item.caelum.skyroot_stick": "Skyroot Stick",
+    "item.caelum.sky_apple": "Sky Apple",
+    "item.caelum.skyroot_sword": "Skyroot Sword",
+    "item.caelum.skyroot_digging_stick": "Skyroot Digging Stick",
+    "item.caelum.aerrack_sword": "Aerrack Sword",
+    "item.caelum.aerrack_shovel": "Aerrack Shovel",
+    "item.caelum.aerrack_pickaxe": "Aerrack Pickaxe",
+    "item.caelum.aerrack_axe": "Aerrack Axe",
+    "item.caelum.aerrack_hoe": "Aerrack Hoe",
+    "item.caelum.skyroot_bucket": "Skyroot Bucket",
+    "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket"
 }
