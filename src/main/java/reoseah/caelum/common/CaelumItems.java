@@ -2,6 +2,7 @@ package reoseah.caelum.common;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.fluid.Fluids;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
@@ -23,7 +24,9 @@ public class CaelumItems {
 	public static final Item CERUCLASE = new Item(itemSettings());
 	public static final Item SKYROOT_STICK = new Item(itemSettings());
 	public static final Item SKY_APPLE = new Item(itemSettings().food(FoodComponents.APPLE));
-
+	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
+	public static final Item BARLEY = new Item(itemSettings());
+	
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, itemSettings());
 	public static final Item SKYROOT_DIGGING_STICK = new DiggingStickItem(CaelumToolMaterials.SKYROOT, 2F, -2.0F, itemSettings());
 
@@ -68,7 +71,9 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
-
+		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
+		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
+		
 		Registry.register(Registry.ITEM, "caelum:skyroot_sword", SKYROOT_SWORD);
 		Registry.register(Registry.ITEM, "caelum:skyroot_digging_stick", SKYROOT_DIGGING_STICK);
 

@@ -26,7 +26,8 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.CERUCLASE_LAMP,
 				CaelumBlocks.SKYROOT_SAPLING,
 				CaelumBlocks.SILVER_SKYROOT_SAPLING,
-				CaelumBlocks.DWARF_SKYROOT_SAPLING);
+				CaelumBlocks.DWARF_SKYROOT_SAPLING,
+				CaelumBlocks.BARLEY);
 
 		ModelLoadingRegistry.INSTANCE.registerAppender(new ModelAppender() {
 			@Override

@@ -17,6 +17,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import reoseah.caelum.common.blocks.CaelumCropBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
 import reoseah.caelum.common.blocks.CeruclaseLampBlock;
@@ -27,6 +28,7 @@ import reoseah.caelum.common.blocks.sapling_generators.CommonSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.DwarfSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.SilverSkyrootGenerator;
 import reoseah.caelum.mixins.CraftingTableBlockInvoker;
+import reoseah.caelum.mixins.FireBlockInvoker;
 import reoseah.caelum.mixins.StairsBlockInvoker;
 
 public class CaelumBlocks {
@@ -58,6 +60,8 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_STAIRS = StairsBlockInvoker.create(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS));
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB));
 	public static final Block SKYROOT_CRAFTING_TABLE = CraftingTableBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0));
+
+	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
 	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
 
@@ -92,6 +96,19 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
 
+		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", GLOW_IN_DARK_ENTITY);
+
+		FireBlockInvoker fire = (FireBlockInvoker) Blocks.FIRE;
+		fire.callRegisterFlammableBlock(SKYROOT_LOG, 5, 5);
+		fire.callRegisterFlammableBlock(SKYROOT_LEAVES, 30, 60);
+		fire.callRegisterFlammableBlock(SILVER_SKYROOT_LEAVES, 30, 60);
+		fire.callRegisterFlammableBlock(DWARF_SKYROOT_LEAVES, 30, 60);
+		fire.callRegisterFlammableBlock(STRIPPED_SKYROOT_LOG, 5, 5);
+		fire.callRegisterFlammableBlock(SKYROOT_PLANKS, 5, 20);
+		fire.callRegisterFlammableBlock(SKYROOT_SLAB, 5, 20);
+		fire.callRegisterFlammableBlock(SKYROOT_STAIRS, 5, 20);
+		fire.callRegisterFlammableBlock(SKYROOT_CRAFTING_TABLE, 5, 20);
 	}
 }

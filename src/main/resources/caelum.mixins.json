@@ -4,7 +4,9 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "StairsBlockInvoker",
-        "StairsBlockInvoker",
+        "CraftingTableBlockInvoker",
+        "CraftingScreenHandlerMixin",
+        "FireBlockInvoker",
         "AxeItemMixin",
         "AxeItemInvoker",
         "PickaxeItemInvoker",
