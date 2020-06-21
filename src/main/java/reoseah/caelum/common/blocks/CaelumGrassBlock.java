@@ -20,7 +20,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
-import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import reoseah.caelum.common.CaelumBlocks;
 
 public class CaelumGrassBlock extends Block implements Fertilizable {
@@ -96,29 +95,6 @@ public class CaelumGrassBlock extends Block implements Fertilizable {
 
 	@Override
 	public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-//		CaelumGrassBlock.generate(world, random, pos.up(), CaelumBiomesFeatures.CAELUM_VEGETATION, 3, 1);
-	}
-
-	public static boolean generate(WorldAccess world, Random random, BlockPos pos, BlockPileFeatureConfig config, int i, int j) {
-		for (Block block = world.getBlockState(pos.down()).getBlock(); block != CaelumBlocks.CAELUM_GRASS_BLOCK && pos.getY() > 0; block = world.getBlockState(pos).getBlock()) {
-			pos = pos.down();
-		}
-
-		int y = pos.getY();
-		if (y >= 1 && y + 1 < 256) {
-			int placed = 0;
-
-			for (int m = 0; m < i * i; ++m) {
-				BlockPos pos2 = pos.add(random.nextInt(i) - random.nextInt(i), random.nextInt(j) - random.nextInt(j), random.nextInt(i) - random.nextInt(i));
-				BlockState state = config.stateProvider.getBlockState(random, pos2);
-				if (world.isAir(pos2) && pos2.getY() > 0 && state.canPlaceAt(world, pos2)) {
-					world.setBlockState(pos2, state, 2);
-					++placed;
-				}
-			}
-
-			return placed > 0;
-		}
-		return false;
+		// TODO
 	}
 }

@@ -7,10 +7,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import net.minecraft.block.CraftingTableBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
+import reoseah.caelum.common.CaelumBlocks;
 
 @Mixin(CraftingScreenHandler.class)
 public abstract class CraftingScreenHandlerMixin {
@@ -27,9 +27,8 @@ public abstract class CraftingScreenHandlerMixin {
 	}
 
 	private static boolean canUse2(ScreenHandlerContext ctx, PlayerEntity player) {
-		// checks `instanceof CraftingTableBlock` instead of `== Blocks.CRAFTING_TABLE` in vanilla
 		return ctx.run((world, pos) -> {
-			return world.getBlockState(pos).getBlock() instanceof CraftingTableBlock
+			return world.getBlockState(pos).isOf(CaelumBlocks.SKYROOT_CRAFTING_TABLE)
 					&& player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
 		}, true);
 	}

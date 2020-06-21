@@ -50,8 +50,8 @@ public abstract class CaelumTreeFeature<T extends SkyrootConfig> extends Feature
 
 	protected static void trySetToDirt(ServerWorldAccess world, BlockPos pos) {
 		BlockState state = world.getBlockState(pos);
-		if (state.getBlock() == CaelumBlocks.CAELUM_GRASS_BLOCK
-				|| state.getBlock() == CaelumBlocks.CAELUM_FARMLAND) {
+		if (state.isOf(CaelumBlocks.CAELUM_GRASS_BLOCK)
+				|| state.isOf(CaelumBlocks.CAELUM_FARMLAND)) {
 			setBlockState(world, pos, CaelumBlocks.CAELUM_DIRT.getDefaultState());
 		}
 	}

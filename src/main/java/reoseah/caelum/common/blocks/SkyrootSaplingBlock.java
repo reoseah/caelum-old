@@ -15,7 +15,6 @@ public class SkyrootSaplingBlock extends SaplingBlock {
 
 	@Override
 	protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-		Block block = floor.getBlock();
-		return CaelumBlocks.SOILS.contains(block);
+		return floor.isIn(CaelumBlocks.SOILS);
 	}
 }
