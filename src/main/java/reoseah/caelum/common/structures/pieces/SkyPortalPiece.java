@@ -35,13 +35,32 @@ public class SkyPortalPiece extends BaseIslandPiece {
 
 	@Override
 	public void placeJigsaw(StructurePiece piece, List<StructurePiece> list, Random random) {
-		int c = 2 + random.nextInt(2);
-		for (int i = 0; i < c; i++) {
+		int count = 0;
+		for (int i = 0; i < 30 && count < 4; i++) {
 			double angle = 2 * Math.PI * random.nextDouble();
-			double radius = 6 + random.nextInt(4);
+			double radius = 16 + random.nextInt(8);
 
 			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
-			int z = this.boundingBox.maxZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
+			int z = this.boundingBox.minZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
+
+			int height = 1 + random.nextInt(2);
+
+			BlockBox bounds = LargeIslandPiece.createBounds(random, height, x, z);
+			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
+				StructurePiece island = new LargeIslandPiece(0, random, bounds, height);
+				list.add(island);
+				island.placeJigsaw(this, list, random);
+				count++;
+			}
+		}
+
+		int pillars = 2 + random.nextInt(2);
+		for (int i = 0; i < pillars; i++) {
+			double angle = 2 * Math.PI * random.nextDouble();
+			double radius = 10 + random.nextInt(4);
+
+			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
+			int z = this.boundingBox.minZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
 
 			BlockBox bounds = PillarIslandPiece.createBounds(random, x, z);
 			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
@@ -49,23 +68,7 @@ public class SkyPortalPiece extends BaseIslandPiece {
 				list.add(island);
 			}
 		}
-		int count = 0;
-		for (int i = 0; i < 30 && count < 4; i++) {
-			double angle = 2 * Math.PI * random.nextDouble();
-			double radius = 16;
 
-			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
-			int z = this.boundingBox.maxZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
-
-			int height = 1 + random.nextInt(5);
-
-			BlockBox bounds = LargeIslandPiece.createBounds(random, height, x, z);
-			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
-				StructurePiece island = new LargeIslandPiece(0, random, bounds, height);
-				list.add(island);
-				count++;
-			}
-		}
 	}
 
 	@Override

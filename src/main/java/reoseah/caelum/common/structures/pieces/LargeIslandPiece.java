@@ -1,9 +1,16 @@
 package reoseah.caelum.common.structures.pieces;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
+
+import org.apache.commons.lang3.tuple.Pair;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.structure.StructureManager;
+import net.minecraft.structure.StructurePiece;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -15,10 +22,12 @@ import reoseah.caelum.common.CaelumWorld;
 
 public class LargeIslandPiece extends BaseIslandPiece {
 	protected int extraHeight = 3;
+	protected int shapeSeed;
 
 	public LargeIslandPiece(StructureManager manager, CompoundTag tag) {
 		super(CaelumWorld.LARGE_ISLAND_PIECE, tag);
 		this.extraHeight = tag.getInt("ExtraHeight");
+		this.shapeSeed = tag.getInt("ShapeSeed");
 	}
 
 	public LargeIslandPiece(int length, Random random, BlockBox bounds, int extraHeight) {
@@ -26,6 +35,7 @@ public class LargeIslandPiece extends BaseIslandPiece {
 
 		this.extraHeight = extraHeight;
 		this.boundingBox = bounds;
+		this.shapeSeed = random.nextInt();
 		this.setOrientation(Direction.fromHorizontal(random.nextInt(4)));
 	}
 
@@ -36,6 +46,26 @@ public class LargeIslandPiece extends BaseIslandPiece {
 	@Override
 	protected void toNbt(CompoundTag tag) {
 		tag.putInt("ExtraHeight", this.extraHeight);
+		tag.putInt("ShapeSeed", this.shapeSeed);
+	}
+
+	@Override
+	public void placeJigsaw(StructurePiece piece, List<StructurePiece> list, Random random) {
+		int pillars = 1 + random.nextInt(2);
+		for (int i = 0; i < pillars; i++) {
+			double angle = 2 * Math.PI * random.nextDouble();
+			double radius = this.boundingBox.getBlockCountX() / 2 + 3 + random.nextInt(4);
+
+			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
+			int z = this.boundingBox.minZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
+
+			BlockBox bounds = PillarIslandPiece.createBounds(random, x, z);
+			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
+				StructurePiece island = new PillarIslandPiece(0, random, bounds);
+				list.add(island);
+			}
+		}
+
 	}
 
 	@Override
@@ -54,41 +84,47 @@ public class LargeIslandPiece extends BaseIslandPiece {
 				}
 			}
 		}
-		int size = 5 + this.extraHeight * 2;
-		int[][] prev = new int[size][size];
-		int center = size / 2;
+		Map<Pair<Integer, Integer>, Integer> entries = new HashMap<>();
+		entries.put(Pair.of(0, 0), 0);
 
-		prev[center][center] = 1;
+		Random shapeRandom = new Random(this.shapeSeed);
 
 		for (int dy = 3; dy < 3 + this.extraHeight; dy++) {
-			int[][] map = new int[size][size];
-			for (int i = 1; i < size - 1; i++) {
-				for (int j = 1; j < size - 1; j++) {
-					if (prev[i][j] > 0) {
-						if (prev[i - 1][j] == 0 && random.nextBoolean()) {
-							map[i - 1][j] = 1;
-						}
-						if (prev[i + 1][j] == 0 && random.nextBoolean()) {
-							map[i + 1][j] = 1;
-						}
-						if (prev[i][j - 1] == 0 && random.nextBoolean()) {
-							map[i][j - 1] = 1;
-						}
-						if (prev[i][j + 1] == 0 && random.nextBoolean()) {
-							map[i][j + 1] = 1;
-						}
-						map[i][j] = prev[i][j] + 1;
+			int currentGen = 1 + dy - 3;
+			Map<Pair<Integer, Integer>, Integer> next = new HashMap<>();
+			for (Entry<Pair<Integer, Integer>, Integer> entry : entries.entrySet()) {
+				int dx = entry.getKey().getLeft();
+				int dz = entry.getKey().getRight();
+				int gen = entry.getValue();
+				if (gen < currentGen) {
+					if (!entries.containsKey(Pair.of(dx - 1, dz)) && shapeRandom.nextInt(4) != 0) {
+						next.put(Pair.of(dx - 1, dz), currentGen);
+					}
+					if (!entries.containsKey(Pair.of(dx + 1, dz)) && shapeRandom.nextInt(4) != 0) {
+						next.put(Pair.of(dx + 1, dz), currentGen);
+					}
+					if (!entries.containsKey(Pair.of(dx, dz - 1)) && shapeRandom.nextInt(4) != 0) {
+						next.put(Pair.of(dx, dz - 1), currentGen);
+					}
+					if (!entries.containsKey(Pair.of(dx, dz + 1)) && shapeRandom.nextInt(4) != 0) {
+						next.put(Pair.of(dx, dz + 1), currentGen);
 					}
 				}
 			}
-			for (int i = 2; i < size - 2; i++) {
-				for (int j = 2; j < size - 2; j++) {
-					if (map[i][j] > 0) {
+			entries.putAll(next);
+		}
+
+		for (int dy = 3; dy < 3 + this.extraHeight; dy++) {
+			int minGen = 1 + dy - 3;
+			for (int i = -dy - 2; i <= dy + 2; i++) {
+				for (int j = -dy - 2; j < dy + 2; j++) {
+					Pair<Integer, Integer> coord = Pair.of(i, j);
+					if (entries.containsKey(coord) && entries.get(coord) <= minGen) {
 						for (int dx = -2; dx <= 2; dx++) {
 							for (int dz = -2; dz <= 2; dz++) {
-								if (Math.abs(dx) != 2 || Math.abs(dz) != 2 || map[i][j] > 1 || random.nextBoolean()) {
-									int x = bottomX + i - center + dx;
-									int z = bottomZ + j - center + dz;
+								if (Math.abs(dx) != 2 || Math.abs(dz) != 2 || entries.get(coord) <= minGen - 1 || random.nextBoolean()) {
+									int x = bottomX + i + dx;
+									int z = bottomZ + j + dz;
 									int y = bottomY + dy;
 
 									this.addBlock(world, AERRACK, x, y, z, blockBox);
@@ -98,8 +134,6 @@ public class LargeIslandPiece extends BaseIslandPiece {
 					}
 				}
 			}
-
-			prev = map;
 		}
 
 		return true;
