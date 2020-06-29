@@ -62,7 +62,7 @@ public class CaelumGrassBlock extends Block implements Fertilizable {
 
 	private static boolean canSpread(BlockState state, WorldView view, BlockPos pos) {
 		BlockPos blockPos = pos.up();
-		return canSurvive(state, view, pos) && !view.getFluidState(blockPos).matches(FluidTags.WATER);
+		return canSurvive(state, view, pos) && !view.getFluidState(blockPos).isIn(FluidTags.WATER);
 	}
 
 	@Override

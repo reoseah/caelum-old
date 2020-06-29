@@ -35,7 +35,7 @@ public class PillarIslandPiece extends BaseIslandPiece {
 	}
 
 	@Override
-	public boolean generate(ServerWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
+	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator generator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
 		int centerX = this.boundingBox.getBlockCountX() / 2;
 		int centerZ = this.boundingBox.getBlockCountZ() / 2;
 

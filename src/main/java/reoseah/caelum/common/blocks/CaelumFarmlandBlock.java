@@ -97,7 +97,7 @@ public class CaelumFarmlandBlock extends Block {
 		if (!world.isClient
 				&& world.random.nextFloat() < velocity - 0.5F
 				&& entity instanceof LivingEntity
-				&& (entity instanceof PlayerEntity || world.getGameRules().getBoolean(GameRules.field_19388))
+				&& (entity instanceof PlayerEntity || world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
 				&& entity.getWidth() * entity.getWidth() * entity.getHeight() > 0.512F) {
 			setToDirt(world.getBlockState(pos), world, pos);
 		}
@@ -116,7 +116,7 @@ public class CaelumFarmlandBlock extends Block {
 
 	private static boolean isWaterNearby(WorldView world, BlockPos pos) {
 		for (BlockPos p : BlockPos.iterate(pos.add(-4, 0, -4), pos.add(4, 1, 4))) {
-			if (world.getFluidState(p).matches(FluidTags.WATER)) {
+			if (world.getFluidState(p).isIn(FluidTags.WATER)) {
 				return true;
 			}
 		}
