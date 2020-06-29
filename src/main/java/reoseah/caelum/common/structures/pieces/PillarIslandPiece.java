@@ -26,7 +26,7 @@ public class PillarIslandPiece extends BaseIslandPiece {
 	}
 
 	public static BlockBox createBounds(Random random, int x, int z) {
-		return new BlockBox(x - 3, 100 + random.nextInt(5), z - 3, x + 2, 128, z + 2);
+		return new BlockBox(x - 2, 100 + random.nextInt(5), z - 2, x + 3, 128, z + 3);
 	}
 
 	@Override

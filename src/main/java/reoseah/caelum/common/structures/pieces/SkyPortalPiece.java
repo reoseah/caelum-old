@@ -73,21 +73,34 @@ public class SkyPortalPiece extends BaseIslandPiece {
 
 	@Override
 	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator generator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-		this.placeIsland(2, 0, 3, 5, 6, world, random, boundingBox);
+		int centerX = this.boundingBox.getBlockCountX() / 2;
+		int centerZ = this.boundingBox.getBlockCountZ() / 2;
 
-		for (int dy = 3; dy < 3 + 5; dy++) {
-			this.addBlock(world, AERRACK_BRICKS, 2, dy, 1, boundingBox);
-			this.addBlock(world, AERRACK_BRICKS, 2, dy, 4, boundingBox);
+		for (int dy = 0; dy <= 2; dy++) {
+			for (int dx = -dy; dx <= dy; dx++) {
+				for (int dz = -dy - 2; dz <= dy + 2; dz++) {
+					if (Math.abs(dx) != dy || Math.abs(dz) != dy + 2 || random.nextBoolean()) {
+						this.addBlock(world, AERRACK, centerX + dx, dy, centerZ + dz, boundingBox);
+					}
+				}
+			}
 		}
-		this.addBlock(world, AERRACK_BRICKS, 2, 3, 2, boundingBox);
-		this.addBlock(world, AERRACK_BRICKS, 2, 3, 3, boundingBox);
-		this.addBlock(world, AERRACK_BRICKS, 2, 7, 2, boundingBox);
-		this.addBlock(world, AERRACK_BRICKS, 2, 7, 3, boundingBox);
 
-		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.EAST), 1, 3, 2, boundingBox);
-		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.EAST), 1, 3, 3, boundingBox);
-		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.WEST), 3, 3, 2, boundingBox);
-		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.WEST), 3, 3, 3, boundingBox);
+		int floor = 3;
+
+		for (int dy = floor; dy <= floor + 4; dy++) {
+			this.addBlock(world, AERRACK_BRICKS, centerX, dy, centerZ - 1, boundingBox);
+			this.addBlock(world, AERRACK_BRICKS, centerX, dy, centerZ + 2, boundingBox);
+		}
+		this.addBlock(world, AERRACK_BRICKS, centerX, floor, centerZ, boundingBox);
+		this.addBlock(world, AERRACK_BRICKS, centerX, floor, centerZ + 1, boundingBox);
+		this.addBlock(world, AERRACK_BRICKS, centerX, floor + 4, centerZ, boundingBox);
+		this.addBlock(world, AERRACK_BRICKS, centerX, floor + 4, centerZ + 1, boundingBox);
+
+		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.EAST), centerX - 1, floor, centerZ, boundingBox);
+		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.EAST), centerX - 1, floor, centerZ + 1, boundingBox);
+		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.WEST), centerX + 1, floor, centerZ, boundingBox);
+		this.addBlock(world, AERRACK_BRICK_STAIRS.with(StairsBlock.FACING, Direction.WEST), centerX + 1, floor, centerZ + 1, boundingBox);
 
 		return true;
 	}
