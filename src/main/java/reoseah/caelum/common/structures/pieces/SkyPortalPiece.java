@@ -40,13 +40,30 @@ public class SkyPortalPiece extends BaseIslandPiece {
 			double angle = 2 * Math.PI * random.nextDouble();
 			double radius = 6 + random.nextInt(4);
 
-			int x = this.boundingBox.minX + (int) (radius * Math.cos(angle));
-			int z = this.boundingBox.maxZ + (int) (radius * Math.sin(angle));
+			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
+			int z = this.boundingBox.maxZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
 
 			BlockBox bounds = PillarIslandPiece.createBounds(random, x, z);
 			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
 				StructurePiece island = new PillarIslandPiece(0, random, bounds);
 				list.add(island);
+			}
+		}
+		int count = 0;
+		for (int i = 0; i < 30 && count < 4; i++) {
+			double angle = 2 * Math.PI * random.nextDouble();
+			double radius = 16;
+
+			int x = this.boundingBox.minX + this.boundingBox.getBlockCountX() / 2 + (int) (radius * Math.cos(angle));
+			int z = this.boundingBox.maxZ + this.boundingBox.getBlockCountZ() / 2 + (int) (radius * Math.sin(angle));
+
+			int height = 1 + random.nextInt(5);
+
+			BlockBox bounds = LargeIslandPiece.createBounds(random, height, x, z);
+			if (StructurePiece.getOverlappingPiece(list, bounds) == null) {
+				StructurePiece island = new LargeIslandPiece(0, random, bounds, height);
+				list.add(island);
+				count++;
 			}
 		}
 	}

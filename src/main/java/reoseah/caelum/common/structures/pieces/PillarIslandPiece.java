@@ -26,7 +26,7 @@ public class PillarIslandPiece extends BaseIslandPiece {
 	}
 
 	public static BlockBox createBounds(Random random, int x, int z) {
-		return new BlockBox(x - 3, 100 + random.nextInt(20), z - 3, x + 2, 128, z + 2);
+		return new BlockBox(x - 3, 100 + random.nextInt(5), z - 3, x + 2, 128, z + 2);
 	}
 
 	@Override
@@ -35,24 +35,24 @@ public class PillarIslandPiece extends BaseIslandPiece {
 	}
 
 	@Override
-	protected void placeIslandBlock(ServerWorldAccess world, Random random, BlockBox boundingBox, int x, int y, int z, int dx, int dy, int dz, int width, int length) {
-		if (dy == 2 && Math.abs(dx) + Math.abs(dz) <= 1) {
-			this.addBlock(world, AERRACK_BRICKS, x, y, z, boundingBox);
-		} else if (random.nextInt(20) == 0) {
-			this.addBlock(world, CERUCLASE_ORE, x, y, z, boundingBox);
-		} else {
-			this.addBlock(world, AERRACK, x, y, z, boundingBox);
-		}
-	}
-
-	@Override
 	public boolean generate(ServerWorldAccess world, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, Random random, BlockBox boundingBox, ChunkPos chunkPos, BlockPos blockPos) {
-		this.placeIsland(2, 0, 2, 5, 5, world, random, boundingBox);
+		int centerX = this.boundingBox.getBlockCountX() / 2;
+		int centerZ = this.boundingBox.getBlockCountZ() / 2;
 
-		this.addBlock(world, AERRACK_BRICKS, 2, 3, 2, boundingBox);
-		this.addBlock(world, AERRACK_BRICKS, 2, 4, 2, boundingBox);
+		for (int dy = 0; dy <= 2; dy++) {
+			for (int dx = -dy; dx <= dy; dx++) {
+				for (int dz = -dy; dz <= dy; dz++) {
+					if (Math.abs(dx) != dy || Math.abs(dz) != dy || random.nextBoolean()) {
+						this.addBlock(world, AERRACK, centerX + dx, dy, centerZ + dz, boundingBox);
+					}
+				}
+			}
+		}
+
+		this.addBlock(world, AERRACK_BRICKS, centerX, 3, centerZ, boundingBox);
+		this.addBlock(world, AERRACK_BRICKS, centerX, 4, centerZ, boundingBox);
 		if (random.nextInt(2) == 0) {
-			this.addBlock(world, AERRACK_BRICKS, 2, 5, 2, boundingBox);
+			this.addBlock(world, AERRACK_BRICKS, centerX, 5, centerZ, boundingBox);
 		}
 		return true;
 	}
