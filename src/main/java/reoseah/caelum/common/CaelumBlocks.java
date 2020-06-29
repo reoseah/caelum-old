@@ -22,6 +22,7 @@ import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
 import reoseah.caelum.common.blocks.CeruclaseLampBlock;
 import reoseah.caelum.common.blocks.CeruclaseOreBlock;
+import reoseah.caelum.common.blocks.PortalstoneBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.common.blocks.entity.GlowInDarkBlockEntity;
 import reoseah.caelum.common.blocks.sapling_generators.CommonSkyrootGenerator;
@@ -63,6 +64,8 @@ public class CaelumBlocks {
 
 	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
+	public static final Block PORTALSTONE = new PortalstoneBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F, 3600000.0F).breakByTool(FabricToolTags.PICKAXES));
+
 	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
 
 	public static final Tag<Block> SOILS = TagRegistry.block(new Identifier("caelum:soils"));
@@ -97,6 +100,8 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+
+		Registry.register(Registry.BLOCK, "caelum:portalstone", PORTALSTONE);
 
 		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", GLOW_IN_DARK_ENTITY);
 

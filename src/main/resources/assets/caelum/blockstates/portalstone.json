@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "caelum:block/portalstone"
+    },
+    "lit=true": {
+      "model": "caelum:block/portalstone_active"
+    }
+  }
+}
