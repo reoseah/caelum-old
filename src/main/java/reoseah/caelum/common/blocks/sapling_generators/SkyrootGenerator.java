@@ -10,7 +10,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
-import reoseah.caelum.common.CaelumBlocks;
 
 public abstract class SkyrootGenerator extends SaplingGenerator {
 	@Override
@@ -33,15 +32,5 @@ public abstract class SkyrootGenerator extends SaplingGenerator {
 	@Override
 	protected ConfiguredFeature<TreeFeatureConfig, ?> createTreeFeature(Random random, boolean bl) {
 		return null;
-	}
-
-	protected boolean hasDeepSoil(ServerWorld world, BlockPos pos) {
-		for (int depth = 1; depth <= 3; depth++) {
-			BlockPos pos2 = pos.down(depth);
-			if (!world.getBlockState(pos2).isIn(CaelumBlocks.SOILS)) {
-				return false;
-			}
-		}
-		return true;
 	}
 }

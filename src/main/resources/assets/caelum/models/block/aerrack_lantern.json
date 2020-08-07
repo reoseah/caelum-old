@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "caelum:block/ceruclase_lamp"
+        "all": "caelum:block/aerrack_lantern"
     }
 }

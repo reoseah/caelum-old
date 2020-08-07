@@ -4,11 +4,20 @@ import java.util.Set;
 
 import com.google.common.collect.Sets;
 
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.MiningToolItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
+import reoseah.caelum.common.CaelumFeatures;
+import reoseah.caelum.common.dimension.CaelumPlacementHandler;
 
 public class DiggingStickItem extends MiningToolItem {
 	private static final Set<Block> EFFECTIVE_BLOCKS = Sets.newHashSet(Blocks.ACTIVATOR_RAIL, Blocks.COAL_ORE, Blocks.COBBLESTONE, Blocks.DETECTOR_RAIL, Blocks.DIAMOND_BLOCK, Blocks.DIAMOND_ORE,
@@ -17,5 +26,24 @@ public class DiggingStickItem extends MiningToolItem {
 
 	public DiggingStickItem(ToolMaterial material, float speed, float damage, Item.Settings settings) {
 		super(speed, damage, material, EFFECTIVE_BLOCKS, settings);
+	}
+
+	@Override
+	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+		// FIXME temp code
+
+		if (!world.isClient && world instanceof ServerWorld) {
+			ServerWorld serverWorld = (ServerWorld) user.getEntityWorld();
+			if (serverWorld.getRegistryKey() == CaelumFeatures.CAELUM_WORLD) {
+				FabricDimensions.teleport(user, serverWorld.getServer().getWorld(World.OVERWORLD), CaelumPlacementHandler.leave(user.getBlockPos()));
+			} else {
+				ServerWorld voidWorld = serverWorld.getServer().getWorld(CaelumFeatures.CAELUM_WORLD);
+				if (voidWorld == null) {
+					return TypedActionResult.fail(user.getStackInHand(hand));
+				}
+				FabricDimensions.teleport(user, voidWorld, CaelumPlacementHandler.enter(user.getBlockPos()));
+			}
+		}
+		return super.use(world, user, hand);
 	}
 }

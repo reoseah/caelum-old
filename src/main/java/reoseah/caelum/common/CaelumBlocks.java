@@ -20,11 +20,10 @@ import net.minecraft.util.registry.Registry;
 import reoseah.caelum.common.blocks.CaelumCropBlock;
 import reoseah.caelum.common.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.common.blocks.CaelumGrassBlock;
-import reoseah.caelum.common.blocks.CeruclaseLampBlock;
+import reoseah.caelum.common.blocks.AerrackLanternBlock;
 import reoseah.caelum.common.blocks.CeruclaseOreBlock;
-import reoseah.caelum.common.blocks.PortalstoneBlock;
 import reoseah.caelum.common.blocks.SkyrootSaplingBlock;
-import reoseah.caelum.common.blocks.entity.GlowInDarkBlockEntity;
+import reoseah.caelum.common.blocks.entity.AerrackLanternBlockEntity;
 import reoseah.caelum.common.blocks.sapling_generators.CommonSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.DwarfSkyrootGenerator;
 import reoseah.caelum.common.blocks.sapling_generators.SilverSkyrootGenerator;
@@ -37,10 +36,10 @@ public class CaelumBlocks {
 	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(2F, 9F).breakByTool(FabricToolTags.PICKAXES));
 	public static final Block AERRACK_BRICK_STAIRS = StairsBlockInvoker.create(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
+	public static final Block AERRACK_LANTERN = new AerrackLanternBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS).lightLevel(13).nonOpaque());
 	public static final Block AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 
 	public static final Block CERUCLASE_ORE = new CeruclaseOreBlock(FabricBlockSettings.of(Material.STONE).strength(4F, 10F).breakByTool(FabricToolTags.PICKAXES, 1));
-	public static final Block CERUCLASE_LAMP = new CeruclaseLampBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS).lightLevel(13).nonOpaque());
 	public static final Block CERUCLASE_BLOCK = new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.CYAN).lightLevel(15).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL));
 
 	public static final Block CAELUM_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F, 0.5F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
@@ -64,9 +63,7 @@ public class CaelumBlocks {
 
 	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
-	public static final Block PORTALSTONE = new PortalstoneBlock(FabricBlockSettings.of(Material.STONE).strength(-1.0F, 3600000.0F).breakByTool(FabricToolTags.PICKAXES));
-
-	public static final BlockEntityType<GlowInDarkBlockEntity> GLOW_IN_DARK_ENTITY = new BlockEntityType<>(GlowInDarkBlockEntity::new, Sets.newHashSet(CERUCLASE_LAMP), null);
+	public static final BlockEntityType<AerrackLanternBlockEntity> AERRACK_LANTERN_ENTITY = new BlockEntityType<>(AerrackLanternBlockEntity::new, Sets.newHashSet(AERRACK_LANTERN), null);
 
 	public static final Tag<Block> SOILS = TagRegistry.block(new Identifier("caelum:soils"));
 
@@ -75,10 +72,10 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:aerrack_bricks", AERRACK_BRICKS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_stairs", AERRACK_BRICK_STAIRS);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_brick_slab", AERRACK_BRICK_SLAB);
+		Registry.register(Registry.BLOCK, "caelum:aerrack_lantern", AERRACK_LANTERN);
 		Registry.register(Registry.BLOCK, "caelum:aerrack_pillar", AERRACK_PILLAR);
 
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_ore", CERUCLASE_ORE);
-		Registry.register(Registry.BLOCK, "caelum:ceruclase_lamp", CERUCLASE_LAMP);
 		Registry.register(Registry.BLOCK, "caelum:ceruclase_block", CERUCLASE_BLOCK);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_dirt", CAELUM_DIRT);
@@ -101,9 +98,7 @@ public class CaelumBlocks {
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 
-		Registry.register(Registry.BLOCK, "caelum:portalstone", PORTALSTONE);
-
-		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", GLOW_IN_DARK_ENTITY);
+		Registry.register(Registry.BLOCK_ENTITY_TYPE, "caelum:glow_in_dark", AERRACK_LANTERN_ENTITY);
 
 		FireBlockInvoker fire = (FireBlockInvoker) Blocks.FIRE;
 		fire.callRegisterFlammableBlock(SKYROOT_LOG, 5, 5);

@@ -1,7 +1,8 @@
-package reoseah.caelum.common;
+package reoseah.caelum.common.dimension;
 
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
+import reoseah.caelum.common.CaelumBlocks;
 import reoseah.caelum.common.features.SkyrootConfig;
 import reoseah.caelum.common.features.SkyrootTreeShape;
 

@@ -11,15 +11,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.common.CaelumWorld;
+import reoseah.caelum.common.CaelumFeatures;
 
 public class PillarIslandPiece extends BaseIslandPiece {
 	public PillarIslandPiece(StructureManager manager, CompoundTag tag) {
-		super(CaelumWorld.PILLAR_ISLAND_PIECE, tag);
+		super(CaelumFeatures.PILLAR_ISLAND_PIECE, tag);
 	}
 
 	public PillarIslandPiece(int length, Random random, BlockBox bounds) {
-		super(CaelumWorld.PILLAR_ISLAND_PIECE, length);
+		super(CaelumFeatures.PILLAR_ISLAND_PIECE, length);
 
 		this.boundingBox = bounds;
 		this.setOrientation(Direction.fromHorizontal(random.nextInt(4)));

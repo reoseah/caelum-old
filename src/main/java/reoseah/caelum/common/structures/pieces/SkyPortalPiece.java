@@ -14,15 +14,15 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.common.CaelumWorld;
+import reoseah.caelum.common.CaelumFeatures;
 
 public class SkyPortalPiece extends BaseIslandPiece {
 	public SkyPortalPiece(StructureManager manager, CompoundTag tag) {
-		super(CaelumWorld.SKY_PORTAL_PIECE, tag);
+		super(CaelumFeatures.SKY_PORTAL_PIECE, tag);
 	}
 
 	public SkyPortalPiece(int length, Random random, int x, int z) {
-		super(CaelumWorld.SKY_PORTAL_PIECE, length);
+		super(CaelumFeatures.SKY_PORTAL_PIECE, length);
 
 		this.boundingBox = new BlockBox(x - 2, 100 + random.nextInt(20), z - 3, x + 3, 128, z + 4);
 		this.setOrientation(Direction.fromHorizontal(random.nextInt(4)));

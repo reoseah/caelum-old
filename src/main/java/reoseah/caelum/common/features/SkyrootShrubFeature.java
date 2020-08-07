@@ -21,7 +21,7 @@ public class SkyrootShrubFeature extends CaelumTreeFeature<SkyrootConfig> {
 		}
 		BlockPos.Mutable mpos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
 
-		setBlockState(world, mpos, config.trunk.getBlockState(random, mpos));
+		this.setBlockState(world, mpos, config.trunk.getBlockState(random, mpos));
 		trySetToDirt(world, pos.down());
 		for (int dy = 0; dy <= 2; dy++) {
 			int radius = 2 - dy;

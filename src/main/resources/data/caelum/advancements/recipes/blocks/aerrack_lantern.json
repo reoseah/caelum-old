@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:blocks/ceruclase_lamp"
+      "caelum:blocks/aerrack_lantern"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:blocks/ceruclase_lamp"
+        "recipe": "caelum:blocks/aerrack_lantern"
       }
     }
   },

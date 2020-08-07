@@ -15,7 +15,7 @@
         }
     ],
     "textures": {
-        "particle": "caelum:block/ceruclase_lamp",
-        "texture": "caelum:block/ceruclase_lamp_overlay"
+        "particle": "caelum:block/aerrack_lantern",
+        "texture": "caelum:block/aerrack_lantern_overlay"
     }
 }

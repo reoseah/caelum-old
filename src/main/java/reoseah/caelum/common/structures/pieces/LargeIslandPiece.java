@@ -18,20 +18,20 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import reoseah.caelum.common.CaelumWorld;
+import reoseah.caelum.common.CaelumFeatures;
 
 public class LargeIslandPiece extends BaseIslandPiece {
 	protected int extraHeight = 3;
 	protected int shapeSeed;
 
 	public LargeIslandPiece(StructureManager manager, CompoundTag tag) {
-		super(CaelumWorld.LARGE_ISLAND_PIECE, tag);
+		super(CaelumFeatures.LARGE_ISLAND_PIECE, tag);
 		this.extraHeight = tag.getInt("ExtraHeight");
 		this.shapeSeed = tag.getInt("ShapeSeed");
 	}
 
 	public LargeIslandPiece(int length, Random random, BlockBox bounds, int extraHeight) {
-		super(CaelumWorld.LARGE_ISLAND_PIECE, length);
+		super(CaelumFeatures.LARGE_ISLAND_PIECE, length);
 
 		this.extraHeight = extraHeight;
 		this.boundingBox = bounds;

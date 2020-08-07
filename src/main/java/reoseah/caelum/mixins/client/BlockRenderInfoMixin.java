@@ -19,7 +19,7 @@ public class BlockRenderInfoMixin {
 
 	@Inject(method = "prepareForBlock", at = @At("RETURN"), remap = false)
 	public void after_prepareForBlock(BlockState state, BlockPos pos, boolean modelAO, CallbackInfo ci) {
-		if (state.getBlock() == CaelumBlocks.CERUCLASE_LAMP) {
+		if (state.getBlock() == CaelumBlocks.AERRACK_LANTERN) {
 			this.defaultAo = modelAO && MinecraftClient.isAmbientOcclusionEnabled();
 		}
 	}

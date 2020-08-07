@@ -22,7 +22,6 @@ public class CaelumItems {
 	public static final ItemGroup GROUP = FabricItemGroupBuilder.build(new Identifier("caelum", "main"), () -> new ItemStack(CaelumBlocks.AERRACK));
 
 	public static final Item CERUCLASE = new Item(itemSettings());
-	public static final Item ENERGIZED_CERUCLASE = new Item(itemSettings());
 	public static final Item SKYROOT_STICK = new Item(itemSettings());
 	public static final Item SKY_APPLE = new Item(itemSettings().food(FoodComponents.APPLE));
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
@@ -45,10 +44,10 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:aerrack_bricks", new BlockItem(CaelumBlocks.AERRACK_BRICKS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_brick_stairs", new BlockItem(CaelumBlocks.AERRACK_BRICK_STAIRS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_brick_slab", new BlockItem(CaelumBlocks.AERRACK_BRICK_SLAB, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:aerrack_lantern", new BlockItem(CaelumBlocks.AERRACK_LANTERN, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:aerrack_pillar", new BlockItem(CaelumBlocks.AERRACK_PILLAR, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:ceruclase_ore", new BlockItem(CaelumBlocks.CERUCLASE_ORE, itemSettings()));
-		Registry.register(Registry.ITEM, "caelum:ceruclase_lamp", new BlockItem(CaelumBlocks.CERUCLASE_LAMP, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:ceruclase_block", new BlockItem(CaelumBlocks.CERUCLASE_BLOCK, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_dirt", new BlockItem(CaelumBlocks.CAELUM_DIRT, itemSettings()));
@@ -69,10 +68,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(CaelumBlocks.SKYROOT_SLAB, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_crafting_table", new BlockItem(CaelumBlocks.SKYROOT_CRAFTING_TABLE, itemSettings()));
 
-		Registry.register(Registry.ITEM, "caelum:portalstone", new BlockItem(CaelumBlocks.PORTALSTONE, itemSettings().group(null)));
-
 		Registry.register(Registry.ITEM, "caelum:ceruclase", CERUCLASE);
-		Registry.register(Registry.ITEM, "caelum:energized_ceruclase", ENERGIZED_CERUCLASE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 		Registry.register(Registry.ITEM, "caelum:sky_apple", SKY_APPLE);
 		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
