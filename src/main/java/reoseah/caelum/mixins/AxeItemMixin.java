@@ -11,7 +11,7 @@ import com.google.common.collect.ImmutableMap;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.AxeItem;
-import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.CaelumBlocks;
 
 @Mixin(AxeItem.class)
 public class AxeItemMixin {

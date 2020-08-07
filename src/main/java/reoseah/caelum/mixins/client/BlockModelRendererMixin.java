@@ -19,7 +19,7 @@ import net.minecraft.util.crash.CrashReportSection;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.BlockRenderView;
-import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.CaelumBlocks;
 
 @Mixin(BlockModelRenderer.class)
 public class BlockModelRendererMixin {

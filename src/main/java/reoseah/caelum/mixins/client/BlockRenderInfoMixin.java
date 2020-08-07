@@ -10,7 +10,7 @@ import net.fabricmc.fabric.impl.client.indigo.renderer.render.BlockRenderInfo;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.util.math.BlockPos;
-import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.CaelumBlocks;
 
 @Mixin(BlockRenderInfo.class)
 public class BlockRenderInfoMixin {

@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.CraftingScreenHandler;
 import net.minecraft.screen.ScreenHandlerContext;
-import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.CaelumBlocks;
 
 @Mixin(CraftingScreenHandler.class)
 public abstract class CraftingScreenHandlerMixin {

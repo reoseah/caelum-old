@@ -5,8 +5,7 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.model.ModelLoadingRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.minecraft.client.render.RenderLayer;
-import reoseah.caelum.client.render.AerrackLanternBlockEntityRenderer;
-import reoseah.caelum.common.CaelumBlocks;
+import reoseah.caelum.blocks.entities.AerrackLanternBlockEntityRenderer;
 
 public class CaelumClient implements ClientModInitializer {
 	@Override
