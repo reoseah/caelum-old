@@ -11,7 +11,7 @@ public class SkyrootConfig implements FeatureConfig {
 			.group(
 					BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(config -> config.trunk),
 					BlockStateProvider.CODEC.fieldOf("leaves_provider").forGetter(config -> config.leaves),
-					SkyrootTreeShape.CODEC.fieldOf("shape").withDefault(SkyrootTreeShape.NORMAL).forGetter(config -> config.shape))
+					SkyrootTreeShape.CODEC.fieldOf("shape").orElse(SkyrootTreeShape.NORMAL).forGetter(config -> config.shape))
 			.apply(instance, SkyrootConfig::new));
 
 	public final BlockStateProvider trunk;

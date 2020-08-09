@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "caelum:skyroot_stick"
+    },
+    "X": {
+      "item": "caelum:aerrack"
+    }
+  },
+  "result": {
+    "item": "caelum:aerrack_digging_stick"
+  }
+}

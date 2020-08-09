@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "caelum:ceruclase_ore"
+              "name": "caelum:skyglass_ore"
             },
             {
               "type": "minecraft:item",
@@ -38,7 +38,7 @@
                   "function": "minecraft:explosion_decay"
                 }
               ],
-              "name": "caelum:ceruclase"
+              "name": "caelum:skyglass"
             }
           ]
         }

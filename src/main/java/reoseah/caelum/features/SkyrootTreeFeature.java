@@ -5,8 +5,7 @@ import java.util.Random;
 import com.mojang.serialization.Codec;
 
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.gen.StructureAccessor;
+import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 
 public class SkyrootTreeFeature extends CaelumTreeFeature<SkyrootConfig> {
@@ -15,7 +14,7 @@ public class SkyrootTreeFeature extends CaelumTreeFeature<SkyrootConfig> {
 	}
 
 	@Override
-	public boolean generate(ServerWorldAccess world, StructureAccessor structures, ChunkGenerator generator, Random random, BlockPos pos, SkyrootConfig config) {
+	public boolean generate(StructureWorldAccess world, ChunkGenerator generator, Random random, BlockPos pos, SkyrootConfig config) {
 		if (!this.canGenerateAt(world, pos)) {
 			return false;
 		}

@@ -20,7 +20,7 @@ public abstract class SkyrootGenerator extends SaplingGenerator {
 		}
 
 		world.setBlockState(pos, Blocks.AIR.getDefaultState(), 4);
-		if (feature.generate(world, world.getStructureAccessor(), generator, random, pos)) {
+		if (feature.generate(world, generator, random, pos)) {
 			return true;
 		}
 		world.setBlockState(pos, state, 4);
