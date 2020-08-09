@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "caelum:materials/skyglass_pickaxe"
+    ]
+  },
+  "criteria": {
+    "has_skyglass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "caelum:skyglass"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "caelum:materials/skyglass_pickaxe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_skyglass",
+      "has_the_recipe"
+    ]
+  ]
+}

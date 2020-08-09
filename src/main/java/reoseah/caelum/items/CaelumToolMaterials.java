@@ -6,10 +6,12 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
 import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.CaelumItems;
 
 public enum CaelumToolMaterials implements ToolMaterial {
 	SKYROOT(0, 25, 2.0F, 0, 24, () -> Ingredient.ofItems(CaelumBlocks.SKYROOT_PLANKS)),
-	AERRACK(1, 150, 4.0F, 1.0F, 8, () -> Ingredient.ofItems(CaelumBlocks.AERRACK));
+	AERRACK(1, 150, 4.0F, 1.0F, 12, () -> Ingredient.ofItems(CaelumBlocks.AERRACK)),
+	SKYGLASS(2, 250, 6.0F, 2.0F, 18, () -> Ingredient.ofItems(CaelumItems.SKYGLASS));
 
 	private final int miningLevel;
 	private final int itemDurability;

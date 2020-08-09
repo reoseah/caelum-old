@@ -1,7 +1,8 @@
 {
     "replace": false,
     "values": [
+        "caelum:skyroot_shovel",
         "caelum:aerrack_digging_stick",
-        "caelum:skyroot_shovel"
+        "caelum:skyglass_shovel"
     ]
 }

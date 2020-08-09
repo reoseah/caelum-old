@@ -1,6 +1,7 @@
 {
     "replace": false,
     "values": [
-        "caelum:skyroot_axe"
+        "caelum:skyroot_axe",
+        "caelum:skyglass_axe"
     ]
 }

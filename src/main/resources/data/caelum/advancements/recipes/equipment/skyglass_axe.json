@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "caelum:materials/skyglass_axe"
+    ]
+  },
+  "criteria": {
+    "has_skyglass": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "caelum:skyglass"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "caelum:materials/skyglass_axe"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_skyglass",
+      "has_the_recipe"
+    ]
+  ]
+}
