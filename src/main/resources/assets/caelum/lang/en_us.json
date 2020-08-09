@@ -21,6 +21,8 @@
     "block.caelum.skyroot_stairs": "Skyroot Stairs",
     "block.caelum.skyroot_slab": "Skyroot Slab",
     "block.caelum.skyroot_crafting_table": "Skyroot Crafting Table",
+    "block.caelum.skyroot_door": "Skyroot Door",
+    "block.caelum.skyroot_trapdoor": "Skyroot Trapdoor",
     "block.caelum.caelum_grass": "Caelum Grass",
     "block.caelum.blossoming_caelum_grass": "Blossoming Caelum Grass",
     "item.caelum.skyroot_stick": "Skyroot Stick",

@@ -21,6 +21,8 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.dimension.DefaultCaelumFeatures;
+import reoseah.caelum.features.CaelumVegetationFeature;
 
 public class CaelumGrassBlock extends Block implements Fertilizable {
 	public static final BooleanProperty SNOWY = Properties.SNOWY;
@@ -93,8 +95,11 @@ public class CaelumGrassBlock extends Block implements Fertilizable {
 		return true;
 	}
 
-	@Override
 	public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
-		// TODO
+		BlockState state2 = world.getBlockState(pos);
+		BlockPos pos2 = pos.up();
+		if (state2.isOf(CaelumBlocks.CAELUM_GRASS_BLOCK)) {
+			CaelumVegetationFeature.doGenerate(world, random, pos2, DefaultCaelumFeatures.CAELUM_VEGETATION, 3, 1);
+		}
 	}
 }

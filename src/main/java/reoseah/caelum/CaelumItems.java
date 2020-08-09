@@ -9,6 +9,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.TallBlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.items.CaelumToolMaterials;
@@ -73,6 +74,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_stairs", new BlockItem(CaelumBlocks.SKYROOT_STAIRS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_slab", new BlockItem(CaelumBlocks.SKYROOT_SLAB, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_crafting_table", new BlockItem(CaelumBlocks.SKYROOT_CRAFTING_TABLE, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:skyroot_door", new TallBlockItem(CaelumBlocks.SKYROOT_DOOR, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:skyroot_trapdoor", new BlockItem(CaelumBlocks.SKYROOT_TRAPDOOR, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 		Registry.register(Registry.ITEM, "caelum:skyglass", SKYGLASS);

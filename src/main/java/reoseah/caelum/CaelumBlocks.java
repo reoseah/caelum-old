@@ -18,15 +18,17 @@ import reoseah.caelum.blocks.CaelumCropBlock;
 import reoseah.caelum.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.blocks.CaelumGrassBlock;
 import reoseah.caelum.blocks.CaelumTallGrassBlock;
-import reoseah.caelum.blocks.CeruclaseOreBlock;
+import reoseah.caelum.blocks.SkyglassOreBlock;
 import reoseah.caelum.blocks.SkyrootSaplingBlock;
 import reoseah.caelum.blocks.sapling_generators.CommonSkyrootGenerator;
 import reoseah.caelum.blocks.sapling_generators.DwarfSkyrootGenerator;
 import reoseah.caelum.blocks.sapling_generators.SilverSkyrootGenerator;
 import reoseah.caelum.mixins.CraftingTableBlockInvoker;
+import reoseah.caelum.mixins.DoorBlockInvoker;
 import reoseah.caelum.mixins.FireBlockInvoker;
 import reoseah.caelum.mixins.HoeItemInvoker;
 import reoseah.caelum.mixins.StairsBlockInvoker;
+import reoseah.caelum.mixins.TrapdoorBlockInvoker;
 
 public class CaelumBlocks {
 	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(3F, 9F).breakByTool(FabricToolTags.PICKAXES));
@@ -35,7 +37,7 @@ public class CaelumBlocks {
 	public static final Block AERRACK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 
-	public static final Block SKYGLASS_ORE = new CeruclaseOreBlock(FabricBlockSettings.of(Material.STONE).strength(4F, 10F).breakByTool(FabricToolTags.PICKAXES, 1));
+	public static final Block SKYGLASS_ORE = new SkyglassOreBlock(FabricBlockSettings.of(Material.STONE).strength(4F, 10F).breakByTool(FabricToolTags.PICKAXES, 1));
 
 	public static final Block CAELUM_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F, 0.5F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 	public static final Block CAELUM_GRASS_BLOCK = new CaelumGrassBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));
@@ -58,6 +60,8 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_STAIRS = StairsBlockInvoker.create(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS));
 	public static final Block SKYROOT_SLAB = new SlabBlock(FabricBlockSettings.copy(Blocks.OAK_SLAB));
 	public static final Block SKYROOT_CRAFTING_TABLE = CraftingTableBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0));
+	public static final Block SKYROOT_DOOR = DoorBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
+	public static final Block SKYROOT_TRAPDOOR = TrapdoorBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
 
 	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
@@ -92,6 +96,8 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_stairs", SKYROOT_STAIRS);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_slab", SKYROOT_SLAB);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 

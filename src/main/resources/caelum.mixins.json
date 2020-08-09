@@ -5,6 +5,8 @@
     "mixins": [
         "StairsBlockInvoker",
         "CraftingTableBlockInvoker",
+        "DoorBlockInvoker",
+        "TrapdoorBlockInvoker",
         "CraftingScreenHandlerMixin",
         "FireBlockInvoker",
         "AxeItemMixin",
