@@ -6,6 +6,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -54,6 +55,8 @@ public class CaelumItems {
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
 	public static final Item BARLEY = new Item(itemSettings());
+
+	public static final Item BARLEY_BREAD = new Item(itemSettings().food(FoodComponents.BREAD));
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, itemSettings()));
@@ -117,8 +120,10 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
+		
 		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
 		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
+		Registry.register(Registry.ITEM, "caelum:barley_bread", BARLEY_BREAD);
 	}
 
 	private static Item.Settings itemSettings() {

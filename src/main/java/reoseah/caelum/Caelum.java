@@ -8,5 +8,6 @@ public class Caelum implements ModInitializer {
 		CaelumBlocks.register();
 		CaelumItems.register();
 		CaelumFeatures.register();
+		CaelumBiomes.register();
 	}
 }

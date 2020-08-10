@@ -12,7 +12,8 @@
         "AxeItemMixin",
         "AxeItemInvoker",
         "PickaxeItemInvoker",
-        "HoeItemInvoker"
+        "HoeItemInvoker",
+        "ChunkGeneratorSettingsInvoker"
     ],
     "client": [
     ],
