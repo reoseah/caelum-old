@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "skyroot:blocks/skyroot_crafting_table"
+      "caelum:blocks/skyroot_crafting_table"
     ]
   },
   "criteria": {
@@ -11,7 +11,7 @@
       "conditions": {
         "items": [
           {
-            "item": "skyroot:skyroot_planks"
+            "item": "caelum:skyroot_planks"
           }
         ]
       }
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "skyroot:blocks/skyroot_crafting_table"
+        "recipe": "caelum:blocks/skyroot_crafting_table"
       }
     }
   },

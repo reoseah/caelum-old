@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:materials/aerrack_digging_stick"
+      "caelum:equipment/aerrack_digging_stick"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:materials/aerrack_digging_stick"
+        "recipe": "caelum:equipment/aerrack_digging_stick"
       }
     }
   },

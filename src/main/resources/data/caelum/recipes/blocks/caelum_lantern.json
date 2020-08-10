@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "###",
+        "XXX"
+    ],
+    "key": {
+        "#": {
+            "item": "caelum:skyglass"
+        },
+        "X": {
+            "item": "caelum:skyroot_planks"
+        }
+    },
+    "result": {
+        "item": "caelum:caelum_lantern"
+    }
+}

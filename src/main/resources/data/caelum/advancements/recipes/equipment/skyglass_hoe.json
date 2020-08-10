@@ -2,7 +2,7 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:materials/skyglass_hoe"
+      "caelum:equipment/skyglass_hoe"
     ]
   },
   "criteria": {
@@ -19,7 +19,7 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:materials/skyglass_hoe"
+        "recipe": "caelum:equipment/skyglass_hoe"
       }
     }
   },

@@ -1,8 +1,10 @@
 package reoseah.caelum;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -12,6 +14,7 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.TallBlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import reoseah.caelum.items.CaelumArmorMaterials;
 import reoseah.caelum.items.CaelumToolMaterials;
 import reoseah.caelum.items.DiggingStickItem;
 import reoseah.caelum.items.SkyrootBucketItem;
@@ -28,8 +31,8 @@ public class CaelumItems {
 	public static final Item SKYROOT_SWORD = new SwordItem(CaelumToolMaterials.SKYROOT, 3, -2.4F, itemSettings());
 	public static final Item SKYROOT_SHOVEL = new ShovelItem(CaelumToolMaterials.SKYROOT, 1.5F, -3.0F, itemSettings());
 	public static final Item SKYROOT_PICKAXE = PickaxeItemInvoker.create(CaelumToolMaterials.SKYROOT, 1, -2.8F, itemSettings());
-	public static final Item SKYROOT_AXE = AxeItemInvoker.create(CaelumToolMaterials.SKYROOT, 7.0F, -3.2F, itemSettings());
-	public static final Item SKYROOT_HOE = HoeItemInvoker.create(CaelumToolMaterials.SKYROOT, -1, -2.0F, itemSettings());
+	public static final Item SKYROOT_AXE = AxeItemInvoker.create(CaelumToolMaterials.SKYROOT, 6.0F, -3.2F, itemSettings());
+	public static final Item SKYROOT_HOE = HoeItemInvoker.create(CaelumToolMaterials.SKYROOT, 0, -3.0F, itemSettings());
 
 	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, itemSettings());
 	public static final Item AERRACK_DIGGING_STICK = new DiggingStickItem(CaelumToolMaterials.AERRACK, 2F, -2.0F, itemSettings());
@@ -37,8 +40,13 @@ public class CaelumItems {
 	public static final Item SKYGLASS_SWORD = new SwordItem(CaelumToolMaterials.SKYGLASS, 3, -2.4F, itemSettings());
 	public static final Item SKYGLASS_SHOVEL = new ShovelItem(CaelumToolMaterials.SKYGLASS, 1.5F, -3.0F, itemSettings());
 	public static final Item SKYGLASS_PICKAXE = PickaxeItemInvoker.create(CaelumToolMaterials.SKYGLASS, 1, -2.8F, itemSettings());
-	public static final Item SKYGLASS_AXE = AxeItemInvoker.create(CaelumToolMaterials.SKYGLASS, 7.0F, -3.2F, itemSettings());
-	public static final Item SKYGLASS_HOE = HoeItemInvoker.create(CaelumToolMaterials.SKYGLASS, -1, -2.0F, itemSettings());
+	public static final Item SKYGLASS_AXE = AxeItemInvoker.create(CaelumToolMaterials.SKYGLASS, 6.0F, -3F, itemSettings());
+	public static final Item SKYGLASS_HOE = HoeItemInvoker.create(CaelumToolMaterials.SKYGLASS, -2, -3.0F, itemSettings());
+
+	public static final Item SKYGLASS_HELMET = new ArmorItem(CaelumArmorMaterials.SKYGLASS, EquipmentSlot.HEAD, itemSettings());
+	public static final Item SKYGLASS_CHESTPLATE = new ArmorItem(CaelumArmorMaterials.SKYGLASS, EquipmentSlot.CHEST, itemSettings());
+	public static final Item SKYGLASS_LEGGINGS = new ArmorItem(CaelumArmorMaterials.SKYGLASS, EquipmentSlot.LEGS, itemSettings());
+	public static final Item SKYGLASS_BOOTS = new ArmorItem(CaelumArmorMaterials.SKYGLASS, EquipmentSlot.FEET, itemSettings());
 
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, itemSettings());
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
@@ -77,6 +85,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_door", new TallBlockItem(CaelumBlocks.SKYROOT_DOOR, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_trapdoor", new BlockItem(CaelumBlocks.SKYROOT_TRAPDOOR, itemSettings()));
 
+		Registry.register(Registry.ITEM, "caelum:caelum_lantern", new BlockItem(CaelumBlocks.CAELUM_LANTERN, itemSettings()));
+
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 		Registry.register(Registry.ITEM, "caelum:skyglass", SKYGLASS);
 
@@ -92,6 +102,11 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyglass_pickaxe", SKYGLASS_PICKAXE);
 		Registry.register(Registry.ITEM, "caelum:skyglass_axe", SKYGLASS_AXE);
 		Registry.register(Registry.ITEM, "caelum:skyglass_hoe", SKYGLASS_HOE);
+
+		Registry.register(Registry.ITEM, "caelum:skyglass_helmet", SKYGLASS_HELMET);
+		Registry.register(Registry.ITEM, "caelum:skyglass_chestplate", SKYGLASS_CHESTPLATE);
+		Registry.register(Registry.ITEM, "caelum:skyglass_leggings", SKYGLASS_LEGGINGS);
+		Registry.register(Registry.ITEM, "caelum:skyglass_boots", SKYGLASS_BOOTS);
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);

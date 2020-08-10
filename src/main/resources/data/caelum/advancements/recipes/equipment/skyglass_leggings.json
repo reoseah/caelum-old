@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:equipment/skyroot_hoe"
+      "caelum:equipment/skyglass_leggings"
     ]
   },
   "criteria": {
-    "has_planks": {
+    "has_skyglass": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "caelum:skyroot_planks"
+            "item": "caelum:skyglass"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:equipment/skyroot_hoe"
+        "recipe": "caelum:equipment/skyglass_leggings"
       }
     }
   },
   "requirements": [
     [
-      "has_planks",
+      "has_skyglass",
       "has_the_recipe"
     ]
   ]
