@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "caelum:equipment/aerrack_shovel"
+    ]
+  },
+  "criteria": {
+    "has_aerrack": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "caelum:aerrack"
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "caelum:equipment/aerrack_shovel"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_aerrack",
+      "has_the_recipe"
+    ]
+  ]
+}

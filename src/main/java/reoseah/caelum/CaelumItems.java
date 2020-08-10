@@ -16,7 +16,6 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.items.CaelumArmorMaterials;
 import reoseah.caelum.items.CaelumToolMaterials;
-import reoseah.caelum.items.DiggingStickItem;
 import reoseah.caelum.items.SkyrootBucketItem;
 import reoseah.caelum.mixins.AxeItemInvoker;
 import reoseah.caelum.mixins.HoeItemInvoker;
@@ -35,7 +34,10 @@ public class CaelumItems {
 	public static final Item SKYROOT_HOE = HoeItemInvoker.create(CaelumToolMaterials.SKYROOT, 0, -3.0F, itemSettings());
 
 	public static final Item AERRACK_SWORD = new SwordItem(CaelumToolMaterials.AERRACK, 3, -2.4F, itemSettings());
-	public static final Item AERRACK_DIGGING_STICK = new DiggingStickItem(CaelumToolMaterials.AERRACK, 2F, -2.0F, itemSettings());
+	public static final Item AERRACK_SHOVEL = new ShovelItem(CaelumToolMaterials.AERRACK, 1.5F, -3.0F, itemSettings());
+	public static final Item AERRACK_PICKAXE = PickaxeItemInvoker.create(CaelumToolMaterials.AERRACK, 1, -2.8F, itemSettings());
+	public static final Item AERRACK_AXE = AxeItemInvoker.create(CaelumToolMaterials.AERRACK, 6.0F, -3.2F, itemSettings());
+	public static final Item AERRACK_HOE = HoeItemInvoker.create(CaelumToolMaterials.AERRACK, -1, -3.0F, itemSettings());
 
 	public static final Item SKYGLASS_SWORD = new SwordItem(CaelumToolMaterials.SKYGLASS, 3, -2.4F, itemSettings());
 	public static final Item SKYGLASS_SHOVEL = new ShovelItem(CaelumToolMaterials.SKYGLASS, 1.5F, -3.0F, itemSettings());
@@ -95,8 +97,13 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_pickaxe", SKYROOT_PICKAXE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_axe", SKYROOT_AXE);
 		Registry.register(Registry.ITEM, "caelum:skyroot_hoe", SKYROOT_HOE);
+
 		Registry.register(Registry.ITEM, "caelum:aerrack_sword", AERRACK_SWORD);
-		Registry.register(Registry.ITEM, "caelum:aerrack_digging_stick", AERRACK_DIGGING_STICK);
+		Registry.register(Registry.ITEM, "caelum:aerrack_shovel", AERRACK_SHOVEL);
+		Registry.register(Registry.ITEM, "caelum:aerrack_pickaxe", AERRACK_PICKAXE);
+		Registry.register(Registry.ITEM, "caelum:aerrack_axe", AERRACK_AXE);
+		Registry.register(Registry.ITEM, "caelum:aerrack_hoe", AERRACK_HOE);
+
 		Registry.register(Registry.ITEM, "caelum:skyglass_sword", SKYGLASS_SWORD);
 		Registry.register(Registry.ITEM, "caelum:skyglass_shovel", SKYGLASS_SHOVEL);
 		Registry.register(Registry.ITEM, "caelum:skyglass_pickaxe", SKYGLASS_PICKAXE);
