@@ -6,13 +6,13 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import net.minecraft.world.gen.surfacebuilder.ConfiguredSurfaceBuilders;
+import reoseah.caelum.CaelumBiomes;
 
 public class DefaultCaelumBiomes {
 	public static Biome createForest(float depth, float scale) {
 		SpawnSettings.Builder builder = new SpawnSettings.Builder().playerSpawnFriendly();
 		GenerationSettings.Builder generation = new GenerationSettings.Builder()
-				.surfaceBuilder(ConfiguredSurfaceBuilders.NOPE);
+				.surfaceBuilder(CaelumBiomes.CAELUM_SURFACE_BUILDER);
 		
 		return new Biome.Builder()
 				.precipitation(Biome.Precipitation.RAIN)
