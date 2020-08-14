@@ -4,20 +4,19 @@
     "compatibilityLevel": "JAVA_8",
     "mixins": [
         "StairsBlockInvoker",
-        "CraftingTableBlockInvoker",
         "DoorBlockInvoker",
         "TrapdoorBlockInvoker",
+        "CraftingTableBlockInvoker",
         "CraftingScreenHandlerMixin",
         "FireBlockInvoker",
-        "AxeItemMixin",
         "AxeItemInvoker",
+        "AxeItemMixin",
         "PickaxeItemInvoker",
         "HoeItemInvoker",
         "ChunkGeneratorSettingsInvoker",
-        "DimensionTypeMixin",
         "DimensionTypeInvoker",
-        "DimensionOptionsInvoker",
-        "BiomesInvoker"
+        "DimensionTypeMixin",
+        "DimensionOptionsInvoker"
     ],
     "client": [
         "client.SkyPropertiesInvoker"

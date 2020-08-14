@@ -2,6 +2,9 @@ package reoseah.caelum.registry;
 
 import java.util.Arrays;
 
+import com.google.common.collect.ImmutableSet;
+
+import net.minecraft.fluid.Fluids;
 import net.minecraft.structure.rule.BlockMatchRuleTest;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -17,6 +20,7 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.feature.RandomFeatureEntry;
+import net.minecraft.world.gen.feature.SpringFeatureConfig;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import net.minecraft.world.gen.stateprovider.WeightedBlockStateProvider;
@@ -25,7 +29,9 @@ import reoseah.caelum.features.SkyrootTreeShape;
 
 public class CaelumConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> SKYGLASS_ORE = Feature.ORE.configure(Configs.SKYGLASS_ORE_CONFIG)
-			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(24, 0, 60))).repeat(20);
+			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(24, 24, 60))).spreadHorizontally().repeat(48);
+	public static final ConfiguredFeature<?, ?> WATER_SPRING = Feature.SPRING_FEATURE.configure(Configs.CAELUM_SPRING)
+			.decorate(Decorator.RANGE.configure(new RangeDecoratorConfig(24, 24, 60))).spreadHorizontally().repeat(16);
 
 	public static final ConfiguredFeature<?, ?> FOREST_GRASSES = CaelumFeatures.CAELUM_GRASSES.configure(Configs.CAELUM_GRASSES)
 			.decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).repeat(UniformIntDistribution.of(4, 1));
@@ -36,8 +42,9 @@ public class CaelumConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> SILVER_SKYROOT = CaelumFeatures.SKYROOT_TREE.configure(Configs.SILVER_SKYROOT_TREE);
 	public static final ConfiguredFeature<?, ?> SILVER_SKYROOT_BUSH = CaelumFeatures.SKYROOT_SHRUB.configure(Configs.SILVER_SKYROOT_TREE);
 	public static final ConfiguredFeature<?, ?> DWARF_SKYROOT = CaelumFeatures.SKYROOT_SHRUB.configure(Configs.DWARF_SKYROOT_SHRUB);
+	public static final ConfiguredFeature<?, ?> SKYROOT_STUMP = CaelumFeatures.SKYROOT_STUMP.configure(FeatureConfig.DEFAULT);
 
-	private static final ConfiguredFeature<?, ?> FOREST_TREE = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(TALL_SKYROOT, 0.1F), new RandomFeatureEntry(SILVER_SKYROOT, 0.2F), new RandomFeatureEntry(DWARF_SKYROOT, 0.1F)), SKYROOT));
+	private static final ConfiguredFeature<?, ?> FOREST_TREE = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(TALL_SKYROOT, 0.1F), new RandomFeatureEntry(SILVER_SKYROOT, 0.2F), new RandomFeatureEntry(DWARF_SKYROOT, 0.1F), new RandomFeatureEntry(SKYROOT_STUMP, 0.02F)), SKYROOT));
 
 	public static final ConfiguredFeature<?, ?> FOREST_TREES = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(Feature.NO_OP.configure(FeatureConfig.DEFAULT),
 			0.5F)), FOREST_TREE))
@@ -46,6 +53,7 @@ public class CaelumConfiguredFeatures {
 
 	public static void register() {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:skyglass_ore", SKYGLASS_ORE);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:water_spring", WATER_SPRING);
 
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:forest_grasses", FOREST_GRASSES);
 
@@ -55,6 +63,7 @@ public class CaelumConfiguredFeatures {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:silver_skyroot", SILVER_SKYROOT);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:silver_skyroot_bush", SILVER_SKYROOT_BUSH);
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:dwarf_skyroot", DWARF_SKYROOT);
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:skyroot_stump", SKYROOT_STUMP);
 
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:forest_trees", FOREST_TREES);
 	}
@@ -72,6 +81,7 @@ public class CaelumConfiguredFeatures {
 
 	public static class Configs {
 		public static final OreFeatureConfig SKYGLASS_ORE_CONFIG = new OreFeatureConfig(new BlockMatchRuleTest(CaelumBlocks.AERRACK), CaelumBlocks.SKYGLASS_ORE.getDefaultState(), 9);
+		public static final SpringFeatureConfig CAELUM_SPRING = new SpringFeatureConfig(Fluids.WATER.getDefaultState(), true, 5, 0, ImmutableSet.of(CaelumBlocks.AERRACK));
 
 		public static final BlockPileFeatureConfig CAELUM_GRASSES = new BlockPileFeatureConfig(States.CAELUM_VEGETATION);
 

@@ -1,4 +1,4 @@
-package reoseah.caelum.biomes;
+package reoseah.caelum.registry;
 
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.util.math.MathHelper;
@@ -7,16 +7,15 @@ import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
-import reoseah.caelum.registry.CaelumBiomes;
-import reoseah.caelum.registry.CaelumConfiguredFeatures;
 
 public class CaelumBiomesCreator {
 	public static Biome createForest(float depth, float scale) {
 		SpawnSettings.Builder builder = new SpawnSettings.Builder().playerSpawnFriendly();
 		GenerationSettings.Builder generation = new GenerationSettings.Builder()
-				.surfaceBuilder(CaelumBiomes.SKYGRASS_SURFACE);
+				.surfaceBuilder(CaelumSurfaceBuilders.SKYGRASS);
 
 		generation.feature(GenerationStep.Feature.UNDERGROUND_ORES, CaelumConfiguredFeatures.SKYGLASS_ORE);
+		generation.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, CaelumConfiguredFeatures.WATER_SPRING);
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_GRASSES);
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_TREES);
 

@@ -4,7 +4,6 @@ import java.util.OptionalLong;
 
 import com.mojang.serialization.Lifecycle;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
@@ -25,7 +24,6 @@ import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.chunk.NoiseSamplingConfig;
 import net.minecraft.world.gen.chunk.SlideConfig;
 import net.minecraft.world.gen.chunk.StructuresConfig;
-import net.minecraft.world.gen.surfacebuilder.TernarySurfaceConfig;
 import reoseah.caelum.dimension.CaelumSkyProperties;
 import reoseah.caelum.mixins.ChunkGeneratorSettingsInvoker;
 import reoseah.caelum.mixins.DimensionOptionsInvoker;
@@ -33,13 +31,6 @@ import reoseah.caelum.mixins.DimensionTypeInvoker;
 import reoseah.caelum.mixins.client.SkyPropertiesInvoker;
 
 public class CaelumDimension {
-	public static class SurfaceConfigs {
-		private static final BlockState SKY_GRASS = CaelumBlocks.CAELUM_GRASS_BLOCK.getDefaultState();
-		private static final BlockState SKY_DIRT = CaelumBlocks.CAELUM_DIRT.getDefaultState();
-		private static final BlockState AERRACK = CaelumBlocks.AERRACK.getDefaultState();
-		public static final TernarySurfaceConfig SKYGRASS_SURFACE_CONFIG = new TernarySurfaceConfig(SKY_GRASS, SKY_DIRT, AERRACK);
-	}
-
 	public static final RegistryKey<World> DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION, new Identifier("caelum:caelum"));
 	public static final RegistryKey<DimensionType> DIMENSION_TYPE_KEY = RegistryKey.of(Registry.DIMENSION_TYPE_KEY, new Identifier("caelum:caelum"));
 	public static final RegistryKey<DimensionOptions> DIMENSION_OPTIONS = RegistryKey.of(Registry.DIMENSION_OPTIONS, new Identifier("caelum:caelum"));
