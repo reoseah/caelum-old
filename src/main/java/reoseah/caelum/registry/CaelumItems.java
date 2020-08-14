@@ -54,7 +54,7 @@ public class CaelumItems {
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, itemSettings());
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
-	public static final Item LAVENDER_SEEDS = new AliasedBlockItem(CaelumBlocks.LAVENDER, itemSettings());
+	public static final Item LAVENDER = new AliasedBlockItem(CaelumBlocks.LAVENDER, itemSettings());
 	public static final Item BARLEY = new Item(itemSettings());
 
 	public static final Item BARLEY_BREAD = new Item(itemSettings().food(FoodComponents.BREAD));
@@ -123,8 +123,8 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
 
 		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
-		Registry.register(Registry.ITEM, "caelum:lavender_seeds", LAVENDER_SEEDS);
 		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
+		Registry.register(Registry.ITEM, "caelum:lavender", LAVENDER);
 		Registry.register(Registry.ITEM, "caelum:barley_bread", BARLEY_BREAD);
 	}
 

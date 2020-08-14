@@ -21,7 +21,7 @@ public class CaelumLavenderBlock extends CaelumCropBlock {
 
 	@Environment(EnvType.CLIENT)
 	protected ItemConvertible getSeedsItem() {
-		return CaelumItems.LAVENDER_SEEDS;
+		return CaelumItems.LAVENDER;
 	}
 
 	public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
