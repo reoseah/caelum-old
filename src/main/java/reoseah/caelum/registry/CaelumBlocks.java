@@ -16,7 +16,9 @@ import net.minecraft.util.registry.Registry;
 import reoseah.caelum.blocks.CaelumBlossomingGrassBlock;
 import reoseah.caelum.blocks.CaelumCropBlock;
 import reoseah.caelum.blocks.CaelumFarmlandBlock;
+import reoseah.caelum.blocks.CaelumFlowerBlock;
 import reoseah.caelum.blocks.CaelumGrassBlock;
+import reoseah.caelum.blocks.CaelumLavenderBlock;
 import reoseah.caelum.blocks.CaelumTallGrassBlock;
 import reoseah.caelum.blocks.SkyglassOreBlock;
 import reoseah.caelum.blocks.SkyrootSaplingBlock;
@@ -54,7 +56,8 @@ public class CaelumBlocks {
 	public static final Block DWARF_SKYROOT_SAPLING = new SkyrootSaplingBlock(new DwarfSkyrootGenerator(), FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS));
 
 	public static final Block CAELUM_GRASS = new CaelumTallGrassBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
-	public static final Block BLOSSOMING_CAELUM_GRASS = new CaelumBlossomingGrassBlock(FabricBlockSettings.of(Material.PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+	public static final Block BLOSSOMING_CAELUM_GRASS = new CaelumBlossomingGrassBlock(FabricBlockSettings.of(Material.REPLACEABLE_PLANT).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
+	public static final Block BLUE_FLOWER = new CaelumFlowerBlock(FabricBlockSettings.of(Material.PLANT).lightLevel(7).noCollision().breakInstantly().sounds(BlockSoundGroup.GRASS));
 
 	public static final Block SKYROOT_PLANKS = new Block(FabricBlockSettings.copy(Blocks.OAK_PLANKS));
 	public static final Block SKYROOT_STAIRS = StairsBlockInvoker.create(SKYROOT_PLANKS.getDefaultState(), FabricBlockSettings.copy(Blocks.OAK_STAIRS));
@@ -66,6 +69,7 @@ public class CaelumBlocks {
 	public static final Block CAELUM_LANTERN = new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).lightLevel(15).breakByTool(FabricToolTags.AXES, 0));
 
 	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
+	public static final Block LAVENDER = new CaelumLavenderBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 
 	public static final Tag<Block> SOILS = TagRegistry.block(new Identifier("caelum:soils"));
 
@@ -92,6 +96,7 @@ public class CaelumBlocks {
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_grass", CAELUM_GRASS);
 		Registry.register(Registry.BLOCK, "caelum:blossoming_caelum_grass", BLOSSOMING_CAELUM_GRASS);
+		Registry.register(Registry.BLOCK, "caelum:blue_flower", BLUE_FLOWER);
 
 		Registry.register(Registry.BLOCK, "caelum:stripped_skyroot_log", STRIPPED_SKYROOT_LOG);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_planks", SKYROOT_PLANKS);
@@ -100,10 +105,11 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
-		
+
 		Registry.register(Registry.BLOCK, "caelum:caelum_lantern", CAELUM_LANTERN);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
+		Registry.register(Registry.BLOCK, "caelum:lavender", LAVENDER);
 
 		FireBlockInvoker fire = (FireBlockInvoker) Blocks.FIRE;
 		fire.callRegisterFlammableBlock(SKYROOT_LOG, 5, 5);

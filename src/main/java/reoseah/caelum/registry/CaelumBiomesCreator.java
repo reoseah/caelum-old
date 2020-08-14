@@ -16,8 +16,9 @@ public class CaelumBiomesCreator {
 
 		generation.feature(GenerationStep.Feature.UNDERGROUND_ORES, CaelumConfiguredFeatures.SKYGLASS_ORE);
 		generation.feature(GenerationStep.Feature.UNDERGROUND_DECORATION, CaelumConfiguredFeatures.WATER_SPRING);
-		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_GRASSES);
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_TREES);
+		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_GRASSES);
+		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.BLUE_FLOWER_PATCH);
 
 		return new Biome.Builder()
 				.precipitation(Biome.Precipitation.RAIN)

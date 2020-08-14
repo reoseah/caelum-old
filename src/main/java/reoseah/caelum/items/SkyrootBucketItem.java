@@ -13,7 +13,6 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
@@ -90,7 +89,7 @@ public class SkyrootBucketItem extends Item {
 	}
 
 	protected ItemStack getEmptiedStack(ItemStack stack, PlayerEntity player) {
-		return !player.abilities.creativeMode ? new ItemStack(Items.BUCKET) : stack;
+		return !player.abilities.creativeMode ? new ItemStack(CaelumItems.SKYROOT_BUCKET) : stack;
 	}
 
 	public void onEmptied(World world, ItemStack stack, BlockPos pos) {
