@@ -1,4 +1,4 @@
-package reoseah.caelum;
+package reoseah.caelum.registry;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tag.TagRegistry;
@@ -31,13 +31,13 @@ import reoseah.caelum.mixins.StairsBlockInvoker;
 import reoseah.caelum.mixins.TrapdoorBlockInvoker;
 
 public class CaelumBlocks {
-	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).strength(3F, 9F).breakByTool(FabricToolTags.PICKAXES));
-	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).strength(2F, 9F).breakByTool(FabricToolTags.PICKAXES));
+	public static final Block AERRACK = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(3F, 9F).breakByTool(FabricToolTags.PICKAXES));
+	public static final Block AERRACK_BRICKS = new Block(FabricBlockSettings.of(Material.STONE).requiresTool().strength(2F, 9F).breakByTool(FabricToolTags.PICKAXES));
 	public static final Block AERRACK_BRICK_STAIRS = StairsBlockInvoker.create(AERRACK_BRICKS.getDefaultState(), FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_BRICK_SLAB = new SlabBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 	public static final Block AERRACK_PILLAR = new PillarBlock(FabricBlockSettings.copyOf(AERRACK_BRICKS));
 
-	public static final Block SKYGLASS_ORE = new SkyglassOreBlock(FabricBlockSettings.of(Material.STONE).strength(4F, 10F).breakByTool(FabricToolTags.PICKAXES, 1));
+	public static final Block SKYGLASS_ORE = new SkyglassOreBlock(FabricBlockSettings.of(Material.STONE).requiresTool().strength(4F, 10F).breakByTool(FabricToolTags.PICKAXES, 1));
 
 	public static final Block CAELUM_DIRT = new Block(FabricBlockSettings.of(Material.SOIL).strength(0.5F, 0.5F).sounds(BlockSoundGroup.GRAVEL).breakByTool(FabricToolTags.SHOVELS));
 	public static final Block CAELUM_GRASS_BLOCK = new CaelumGrassBlock(FabricBlockSettings.of(Material.SOIL).ticksRandomly().strength(0.6F, 0.6F).sounds(BlockSoundGroup.GRASS).breakByTool(FabricToolTags.SHOVELS));

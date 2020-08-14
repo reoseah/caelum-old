@@ -26,8 +26,8 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
-import reoseah.caelum.CaelumBlocks;
-import reoseah.caelum.CaelumItems;
+import reoseah.caelum.registry.CaelumBlocks;
+import reoseah.caelum.registry.CaelumItems;
 
 public class CaelumCropBlock extends PlantBlock implements Fertilizable {
 	public static final IntProperty AGE = Properties.AGE_7;

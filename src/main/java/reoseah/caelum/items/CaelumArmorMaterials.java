@@ -10,7 +10,7 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Lazy;
-import reoseah.caelum.CaelumItems;
+import reoseah.caelum.registry.CaelumItems;
 
 public enum CaelumArmorMaterials implements ArmorMaterial {
 	SKYGLASS("skyglass", 10, new int[] { 2, 5, 6, 2 }, 18, SoundEvents.ITEM_ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () -> Ingredient.ofItems(CaelumItems.SKYGLASS));

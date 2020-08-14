@@ -27,7 +27,7 @@ import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.registry.CaelumBlocks;
 
 public class CaelumFarmlandBlock extends Block {
 	public static final IntProperty MOISTURE = Properties.MOISTURE;

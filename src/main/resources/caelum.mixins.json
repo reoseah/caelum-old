@@ -13,9 +13,14 @@
         "AxeItemInvoker",
         "PickaxeItemInvoker",
         "HoeItemInvoker",
-        "ChunkGeneratorSettingsInvoker"
+        "ChunkGeneratorSettingsInvoker",
+        "DimensionTypeMixin",
+        "DimensionTypeInvoker",
+        "DimensionOptionsInvoker",
+        "BiomesInvoker"
     ],
     "client": [
+        "client.SkyPropertiesInvoker"
     ],
     "injectors": {
         "defaultRequire": 1

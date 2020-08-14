@@ -5,8 +5,8 @@ import java.util.function.Supplier;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.util.Lazy;
-import reoseah.caelum.CaelumBlocks;
-import reoseah.caelum.CaelumItems;
+import reoseah.caelum.registry.CaelumBlocks;
+import reoseah.caelum.registry.CaelumItems;
 
 public enum CaelumToolMaterials implements ToolMaterial {
 	SKYROOT(0, 25, 2.0F, 0, 24, () -> Ingredient.ofItems(CaelumBlocks.SKYROOT_PLANKS)),

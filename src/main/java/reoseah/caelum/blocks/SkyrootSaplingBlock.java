@@ -6,7 +6,7 @@ import net.minecraft.block.SaplingBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
-import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.registry.CaelumBlocks;
 
 public class SkyrootSaplingBlock extends SaplingBlock {
 	public SkyrootSaplingBlock(SaplingGenerator generator, Block.Settings settings) {

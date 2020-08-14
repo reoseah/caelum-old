@@ -6,24 +6,30 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.biome.GenerationSettings;
 import net.minecraft.world.biome.SpawnSettings;
-import reoseah.caelum.CaelumBiomes;
+import net.minecraft.world.gen.GenerationStep;
+import reoseah.caelum.registry.CaelumBiomes;
+import reoseah.caelum.registry.CaelumConfiguredFeatures;
 
-public class DefaultCaelumBiomes {
+public class CaelumBiomesCreator {
 	public static Biome createForest(float depth, float scale) {
 		SpawnSettings.Builder builder = new SpawnSettings.Builder().playerSpawnFriendly();
 		GenerationSettings.Builder generation = new GenerationSettings.Builder()
-				.surfaceBuilder(CaelumBiomes.CAELUM_SURFACE_BUILDER);
-		
+				.surfaceBuilder(CaelumBiomes.SKYGRASS_SURFACE);
+
+		generation.feature(GenerationStep.Feature.UNDERGROUND_ORES, CaelumConfiguredFeatures.SKYGLASS_ORE);
+		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_GRASSES);
+		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_TREES);
+
 		return new Biome.Builder()
 				.precipitation(Biome.Precipitation.RAIN)
 				.category(Biome.Category.FOREST)
 				.depth(depth).scale(scale)
-				.temperature(0.7F).downfall(0.8F)
+				.temperature(0.25F).downfall(0.25F)
 				.effects(new BiomeEffects.Builder()
-						.waterColor(4159204)
-						.waterFogColor(329011)
+						.waterColor(0x3D57D6)
+						.waterFogColor(0x050533)
 						.fogColor(12638463)
-						.skyColor(getSkyColor(0.7F))
+						.skyColor(getSkyColor(0.25F))
 						.moodSound(BiomeMoodSound.CAVE).build())
 				.spawnSettings(builder.build())
 				.generationSettings(generation.build()).build();

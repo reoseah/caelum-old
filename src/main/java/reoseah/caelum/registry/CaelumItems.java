@@ -1,4 +1,4 @@
-package reoseah.caelum;
+package reoseah.caelum.registry;
 
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EquipmentSlot;

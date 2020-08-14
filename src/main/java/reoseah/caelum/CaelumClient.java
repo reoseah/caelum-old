@@ -3,6 +3,7 @@ package reoseah.caelum;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
+import reoseah.caelum.registry.CaelumBlocks;
 
 public class CaelumClient implements ClientModInitializer {
 	@Override

@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.registry.CaelumBlocks;
 
 public class CaelumBlossomingGrassBlock extends PlantBlock {
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 5.0D, 14.0D);

@@ -12,10 +12,10 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.BlockPileFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import reoseah.caelum.CaelumBlocks;
+import reoseah.caelum.registry.CaelumBlocks;
 
-public class CaelumVegetationFeature extends Feature<BlockPileFeatureConfig> {
-	public CaelumVegetationFeature(Codec<BlockPileFeatureConfig> codec) {
+public class CaelumGrassesFeature extends Feature<BlockPileFeatureConfig> {
+	public CaelumGrassesFeature(Codec<BlockPileFeatureConfig> codec) {
 		super(codec);
 	}
 

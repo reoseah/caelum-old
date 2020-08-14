@@ -30,7 +30,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.RayTraceContext;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import reoseah.caelum.CaelumItems;
+import reoseah.caelum.registry.CaelumItems;
 
 public class SkyrootBucketItem extends Item {
 	protected final Fluid fluid;
