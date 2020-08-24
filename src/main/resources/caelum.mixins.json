@@ -6,6 +6,7 @@
         "StairsBlockInvoker",
         "DoorBlockInvoker",
         "TrapdoorBlockInvoker",
+        "PaneBlockInvoker",
         "CraftingTableBlockInvoker",
         "CraftingScreenHandlerMixin",
         "FireBlockInvoker",

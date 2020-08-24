@@ -50,9 +50,7 @@ public class CaelumConfiguredFeatures {
 
 	private static final ConfiguredFeature<?, ?> FOREST_TREE = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(TALL_SKYROOT, 0.1F), new RandomFeatureEntry(SILVER_SKYROOT, 0.2F), new RandomFeatureEntry(DWARF_SKYROOT, 0.1F), new RandomFeatureEntry(SKYROOT_STUMP, 0.02F)), SKYROOT));
 
-	public static final ConfiguredFeature<?, ?> FOREST_TREES = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(Feature.NO_OP.configure(FeatureConfig.DEFAULT),
-			0.5F)), FOREST_TREE))
-			// .decorate(ConfiguredFeatures.Decorators.SQUARE_TOP_SOLID_HEIGHTMAP).repeat(UniformIntDistribution.of(5, 3));
+	public static final ConfiguredFeature<?, ?> FOREST_TREES = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(Feature.NO_OP.configure(FeatureConfig.DEFAULT), 0.5F)), FOREST_TREE))
 			.decorate(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT));
 
 	public static void register() {

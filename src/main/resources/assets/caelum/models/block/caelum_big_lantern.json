@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+        "end": "caelum:block/caelum_big_lantern_top",
+        "side": "caelum:block/caelum_big_lantern"
+    }
+}

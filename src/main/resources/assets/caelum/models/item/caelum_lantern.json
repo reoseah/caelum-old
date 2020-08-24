@@ -1,3 +1,6 @@
 {
-    "parent": "caelum:block/caelum_lantern"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "caelum:item/caelum_lantern"
+  }
 }

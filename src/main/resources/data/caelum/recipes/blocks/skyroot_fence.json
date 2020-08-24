@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "XXX",
+        "XXX"
+    ],
+    "key": {
+        "X": {
+            "item": "caelum:skyroot_stick"
+        }
+    },
+    "result": {
+        "item": "caelum:skyroot_fence",
+        "count": 2
+    }
+}

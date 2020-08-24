@@ -6,6 +6,7 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.FoodComponent;
 import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -54,7 +55,7 @@ public class CaelumItems {
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, itemSettings());
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
 	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
-	public static final Item LAVENDER = new AliasedBlockItem(CaelumBlocks.LAVENDER, itemSettings());
+	public static final Item LAVENDER = new AliasedBlockItem(CaelumBlocks.LAVENDER, itemSettings().food(new FoodComponent.Builder().hunger(1).build()));
 	public static final Item BARLEY = new Item(itemSettings());
 
 	public static final Item BARLEY_BREAD = new Item(itemSettings().food(FoodComponents.BREAD));
@@ -82,6 +83,7 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:caelum_grass", new BlockItem(CaelumBlocks.CAELUM_GRASS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:blossoming_caelum_grass", new BlockItem(CaelumBlocks.BLOSSOMING_CAELUM_GRASS, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:blue_flower", new BlockItem(CaelumBlocks.BLUE_FLOWER, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:stripped_skyroot_log", new BlockItem(CaelumBlocks.STRIPPED_SKYROOT_LOG, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(CaelumBlocks.SKYROOT_PLANKS, itemSettings()));
@@ -90,8 +92,10 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:skyroot_crafting_table", new BlockItem(CaelumBlocks.SKYROOT_CRAFTING_TABLE, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_door", new TallBlockItem(CaelumBlocks.SKYROOT_DOOR, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_trapdoor", new BlockItem(CaelumBlocks.SKYROOT_TRAPDOOR, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:skyroot_fence", new BlockItem(CaelumBlocks.SKYROOT_FENCE, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:caelum_lantern", new BlockItem(CaelumBlocks.CAELUM_LANTERN, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:caelum_big_lantern", new BlockItem(CaelumBlocks.CAELUM_BIG_LANTERN, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_stick", SKYROOT_STICK);
 		Registry.register(Registry.ITEM, "caelum:skyglass", SKYGLASS);

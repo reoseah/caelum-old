@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/crop",
   "textures": {
-    "crop": "caelum:block/barley_stage7"
+    "crop": "caelum:block/rice_stage7"
   }
 }

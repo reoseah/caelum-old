@@ -2,7 +2,64 @@
   "multipart": [
     {
       "apply": {
+        "model": "caelum:block/skyroot_fence_post_ends"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "east": "false",
+        "west": "false"
+      },
+      "apply": {
         "model": "caelum:block/skyroot_fence_post"
+      }
+    },
+    {
+      "when": {
+        "north": "true",
+        "south": "false",
+        "east": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "caelum:block/skyroot_fence_cap"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "east": "true",
+        "west": "false"
+      },
+      "apply": {
+        "model": "caelum:block/skyroot_fence_cap",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "true",
+        "east": "false",
+        "west": "false"
+      },
+      "apply": {
+        "model": "caelum:block/skyroot_fence_cap_alt"
+      }
+    },
+    {
+      "when": {
+        "north": "false",
+        "south": "false",
+        "east": "false",
+        "west": "true"
+      },
+      "apply": {
+        "model": "caelum:block/skyroot_fence_cap_alt",
+        "y": 90
       }
     },
     {
@@ -10,8 +67,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "caelum:block/skyroot_fence_side",
-        "uvlock": true
+        "model": "caelum:block/skyroot_fence_side"
       }
     },
     {
@@ -20,7 +76,6 @@
       },
       "apply": {
         "model": "caelum:block/skyroot_fence_side",
-        "uvlock": true,
         "y": 90
       }
     },
@@ -29,9 +84,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "caelum:block/skyroot_fence_side",
-        "uvlock": true,
-        "y": 180
+        "model": "caelum:block/skyroot_fence_side_alt"
       }
     },
     {
@@ -39,9 +92,8 @@
         "west": "true"
       },
       "apply": {
-        "model": "caelum:block/skyroot_fence_side",
-        "uvlock": true,
-        "y": 270
+        "model": "caelum:block/skyroot_fence_side_alt",
+        "y": 90
       }
     }
   ]

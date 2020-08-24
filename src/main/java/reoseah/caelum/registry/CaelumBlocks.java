@@ -18,6 +18,7 @@ import reoseah.caelum.blocks.CaelumCropBlock;
 import reoseah.caelum.blocks.CaelumFarmlandBlock;
 import reoseah.caelum.blocks.CaelumFlowerBlock;
 import reoseah.caelum.blocks.CaelumGrassBlock;
+import reoseah.caelum.blocks.CaelumLanternBlock;
 import reoseah.caelum.blocks.CaelumLavenderBlock;
 import reoseah.caelum.blocks.CaelumTallGrassBlock;
 import reoseah.caelum.blocks.SkyglassOreBlock;
@@ -29,6 +30,7 @@ import reoseah.caelum.mixins.CraftingTableBlockInvoker;
 import reoseah.caelum.mixins.DoorBlockInvoker;
 import reoseah.caelum.mixins.FireBlockInvoker;
 import reoseah.caelum.mixins.HoeItemInvoker;
+import reoseah.caelum.mixins.PaneBlockInvoker;
 import reoseah.caelum.mixins.StairsBlockInvoker;
 import reoseah.caelum.mixins.TrapdoorBlockInvoker;
 
@@ -65,8 +67,10 @@ public class CaelumBlocks {
 	public static final Block SKYROOT_CRAFTING_TABLE = CraftingTableBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).breakByTool(FabricToolTags.AXES, 0));
 	public static final Block SKYROOT_DOOR = DoorBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
 	public static final Block SKYROOT_TRAPDOOR = TrapdoorBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 3.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
+	public static final Block SKYROOT_FENCE = PaneBlockInvoker.create(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 2.0F).sounds(BlockSoundGroup.WOOD).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
 
-	public static final Block CAELUM_LANTERN = new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).lightLevel(15).breakByTool(FabricToolTags.AXES, 0));
+	public static final Block CAELUM_LANTERN = new CaelumLanternBlock(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).lightLevel(12).nonOpaque().breakByTool(FabricToolTags.AXES, 0));
+	public static final Block CAELUM_BIG_LANTERN = new Block(FabricBlockSettings.of(Material.WOOD).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD).lightLevel(15).breakByTool(FabricToolTags.AXES, 0));
 
 	public static final Block BARLEY = new CaelumCropBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
 	public static final Block LAVENDER = new CaelumLavenderBlock(FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP));
@@ -105,8 +109,10 @@ public class CaelumBlocks {
 		Registry.register(Registry.BLOCK, "caelum:skyroot_crafting_table", SKYROOT_CRAFTING_TABLE);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_door", SKYROOT_DOOR);
 		Registry.register(Registry.BLOCK, "caelum:skyroot_trapdoor", SKYROOT_TRAPDOOR);
+		Registry.register(Registry.BLOCK, "caelum:skyroot_fence", SKYROOT_FENCE);
 
 		Registry.register(Registry.BLOCK, "caelum:caelum_lantern", CAELUM_LANTERN);
+		Registry.register(Registry.BLOCK, "caelum:caelum_big_lantern", CAELUM_BIG_LANTERN);
 
 		Registry.register(Registry.BLOCK, "caelum:barley", BARLEY);
 		Registry.register(Registry.BLOCK, "caelum:lavender", LAVENDER);
