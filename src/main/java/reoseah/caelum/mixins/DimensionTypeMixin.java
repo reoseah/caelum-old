@@ -16,8 +16,8 @@ import reoseah.caelum.registry.CaelumDimension;
 
 @Mixin(DimensionType.class)
 public class DimensionTypeMixin {
-	@Inject(at = @At("RETURN"), method = "method_28517", cancellable = true)
-	private static void method_28517(Registry<DimensionType> dimensionTypes,
+	@Inject(at = @At("RETURN"), method = "createDefaultDimensionOptions", cancellable = true)
+	private static void createDefaultDimensionOptions(Registry<DimensionType> dimensionTypes,
 			Registry<Biome> biomes,
 			Registry<ChunkGeneratorSettings> chunkGeneratorSettings,
 			long seed,

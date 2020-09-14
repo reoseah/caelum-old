@@ -24,11 +24,9 @@ import net.minecraft.world.gen.chunk.NoiseChunkGenerator;
 import net.minecraft.world.gen.chunk.NoiseSamplingConfig;
 import net.minecraft.world.gen.chunk.SlideConfig;
 import net.minecraft.world.gen.chunk.StructuresConfig;
-import reoseah.caelum.dimension.CaelumSkyProperties;
 import reoseah.caelum.mixins.ChunkGeneratorSettingsInvoker;
 import reoseah.caelum.mixins.DimensionOptionsInvoker;
 import reoseah.caelum.mixins.DimensionTypeInvoker;
-import reoseah.caelum.mixins.client.SkyPropertiesInvoker;
 
 public class CaelumDimension {
 	public static final RegistryKey<World> DIMENSION_KEY = RegistryKey.of(Registry.DIMENSION, new Identifier("caelum:caelum"));
@@ -50,7 +48,6 @@ public class CaelumDimension {
 	public static void register() {
 		Registry.register(BuiltinRegistries.CHUNK_GENERATOR_SETTINGS, new Identifier("caelum:caelum"), CHUNK_GENERATOR_SETTINGS);
 
-		SkyPropertiesInvoker.getBY_IDENTIFIER().put(new Identifier("caelum:caelum"), new CaelumSkyProperties());
 		DimensionOptionsInvoker.getBASE_DIMENSIONS().add(DIMENSION_OPTIONS);
 	}
 
@@ -59,13 +56,19 @@ public class CaelumDimension {
 	}
 
 	public static void onAddDefaultDimensions(SimpleRegistry<DimensionOptions> options, Registry<Biome> biomes, Registry<ChunkGeneratorSettings> chunkGeneratorSettings, long seed) {
-		if (!biomes.containsId(CaelumBiomes.CAELUM_FOREST_KEY.getValue())) {
+		if (null == biomes.get(CaelumBiomes.CAELUM_FOREST_KEY.getValue())) {
 			// dirty hack
 			Registry.register(biomes, CaelumBiomes.CAELUM_FOREST_KEY.getValue(), CaelumBiomes.CAELUM_FOREST);
 		}
 
-		ChunkGenerator caelumGenerator = new NoiseChunkGenerator(new FixedBiomeSource(biomes.get(CaelumBiomes.CAELUM_FOREST_KEY.getValue())), seed,
-				() -> chunkGeneratorSettings.method_31140(CHUNK_GENERATOR_SETTINGS_KEY)).withSeed(seed);
+		if (null == chunkGeneratorSettings.get(RegistryKey.of(Registry.NOISE_SETTINGS_WORLDGEN, new Identifier("caelum:caelum")))) {
+			Registry.register(chunkGeneratorSettings, new Identifier("caelum:caelum"), CHUNK_GENERATOR_SETTINGS);
+		}
+
+		ChunkGenerator caelumGenerator = new NoiseChunkGenerator(
+				new FixedBiomeSource(biomes.get(CaelumBiomes.CAELUM_FOREST_KEY.getValue())),
+				seed,
+				() -> chunkGeneratorSettings.getOrThrow(CHUNK_GENERATOR_SETTINGS_KEY));
 
 		options.add(DIMENSION_OPTIONS, new DimensionOptions(() -> DIMENSION_TYPE, caelumGenerator), Lifecycle.stable());
 	}

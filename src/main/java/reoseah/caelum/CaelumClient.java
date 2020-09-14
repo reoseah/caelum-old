@@ -3,6 +3,9 @@ package reoseah.caelum;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.util.Identifier;
+import reoseah.caelum.dimension.CaelumSkyProperties;
+import reoseah.caelum.mixins.client.SkyPropertiesInvoker;
 import reoseah.caelum.registry.CaelumBlocks;
 
 public class CaelumClient implements ClientModInitializer {
@@ -20,5 +23,7 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.BLOSSOMING_CAELUM_GRASS,
 				CaelumBlocks.BLUE_FLOWER,
 				CaelumBlocks.PURPLE_FLOWER);
+
+		SkyPropertiesInvoker.getBY_IDENTIFIER().put(new Identifier("caelum:caelum"), new CaelumSkyProperties());
 	}
 }

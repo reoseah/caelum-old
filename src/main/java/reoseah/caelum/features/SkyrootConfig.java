@@ -9,8 +9,8 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 public class SkyrootConfig implements FeatureConfig {
 	public static final Codec<SkyrootConfig> CODEC = RecordCodecBuilder.create(instance -> instance
 			.group(
-					BlockStateProvider.CODEC.fieldOf("trunk_provider").forGetter(config -> config.trunk),
-					BlockStateProvider.CODEC.fieldOf("leaves_provider").forGetter(config -> config.leaves),
+					BlockStateProvider.TYPE_CODEC.fieldOf("trunk_provider").forGetter(config -> config.trunk),
+					BlockStateProvider.TYPE_CODEC.fieldOf("leaves_provider").forGetter(config -> config.leaves),
 					SkyrootTreeShape.CODEC.fieldOf("shape").orElse(SkyrootTreeShape.NORMAL).forGetter(config -> config.shape))
 			.apply(instance, SkyrootConfig::new));
 
