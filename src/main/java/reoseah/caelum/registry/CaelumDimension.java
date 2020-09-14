@@ -63,10 +63,10 @@ public class CaelumDimension {
 			// dirty hack
 			Registry.register(biomes, CaelumBiomes.CAELUM_FOREST_KEY.getValue(), CaelumBiomes.CAELUM_FOREST);
 		}
-	
+
 		ChunkGenerator caelumGenerator = new NoiseChunkGenerator(new FixedBiomeSource(biomes.get(CaelumBiomes.CAELUM_FOREST_KEY.getValue())), seed,
 				() -> chunkGeneratorSettings.method_31140(CHUNK_GENERATOR_SETTINGS_KEY)).withSeed(seed);
-	
+
 		options.add(DIMENSION_OPTIONS, new DimensionOptions(() -> DIMENSION_TYPE, caelumGenerator), Lifecycle.stable());
 	}
 }

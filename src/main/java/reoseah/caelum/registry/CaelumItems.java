@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import reoseah.caelum.items.CaelumArmorMaterials;
 import reoseah.caelum.items.CaelumToolMaterials;
+import reoseah.caelum.items.MagicalCompassItem;
 import reoseah.caelum.items.SkyrootBucketItem;
 import reoseah.caelum.mixins.AxeItemInvoker;
 import reoseah.caelum.mixins.HoeItemInvoker;
@@ -51,6 +52,8 @@ public class CaelumItems {
 
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, itemSettings());
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
+
+	public static final Item MAGICAL_COMPASS = new MagicalCompassItem(itemSettings());
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, itemSettings()));
@@ -118,6 +121,8 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
+
+		Registry.register(Registry.ITEM, "caelum:magical_compass", MAGICAL_COMPASS);
 	}
 
 	private static Item.Settings itemSettings() {

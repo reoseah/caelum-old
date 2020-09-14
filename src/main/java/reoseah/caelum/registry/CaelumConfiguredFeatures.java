@@ -40,7 +40,7 @@ public class CaelumConfiguredFeatures {
 	public static final ConfiguredFeature<?, ?> BLUE_FLOWER_PATCH = Feature.RANDOM_PATCH.configure(Configs.BLUE_FLOWER_PATCH)
 			.applyChance(16).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
 	public static final ConfiguredFeature<?, ?> PURPLE_FLOWER_PATCH = Feature.RANDOM_PATCH.configure(Configs.PURPLE_FLOWER_PATCH)
-			.applyChance(16).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
+			.applyChance(32).decorate(ConfiguredFeatures.Decorators.SQUARE_HEIGHTMAP_SPREAD_DOUBLE);
 
 	public static final ConfiguredFeature<?, ?> SKYROOT = CaelumFeatures.SKYROOT_TREE.configure(Configs.SKYROOT_TREE);
 	public static final ConfiguredFeature<?, ?> TALL_SKYROOT = CaelumFeatures.SKYROOT_TREE.configure(Configs.SKYROOT_TALL_TREE);
@@ -54,6 +54,8 @@ public class CaelumConfiguredFeatures {
 
 	public static final ConfiguredFeature<?, ?> FOREST_TREES = Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(Arrays.asList(new RandomFeatureEntry(Feature.NO_OP.configure(FeatureConfig.DEFAULT), 0.5F)), FOREST_TREE))
 			.decorate(Decorator.DARK_OAK_TREE.configure(DecoratorConfig.DEFAULT));
+
+	public static final ConfiguredFeature<?, ?> SPAWN_PLATFORM = CaelumFeatures.SPAWN_PLATFORM.configure(FeatureConfig.DEFAULT);
 
 	public static void register() {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:skyglass_ore", SKYGLASS_ORE);
@@ -72,6 +74,8 @@ public class CaelumConfiguredFeatures {
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:skyroot_stump", SKYROOT_STUMP);
 
 		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:forest_trees", FOREST_TREES);
+
+		Registry.register(BuiltinRegistries.CONFIGURED_FEATURE, "caelum:spawn_platform", SPAWN_PLATFORM);
 	}
 
 	public static class States {

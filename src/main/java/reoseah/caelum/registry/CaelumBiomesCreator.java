@@ -19,6 +19,8 @@ public class CaelumBiomesCreator {
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_TREES);
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.FOREST_GRASSES);
 		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.BLUE_FLOWER_PATCH);
+		generation.feature(GenerationStep.Feature.VEGETAL_DECORATION, CaelumConfiguredFeatures.PURPLE_FLOWER_PATCH);
+		generation.feature(GenerationStep.Feature.SURFACE_STRUCTURES, CaelumConfiguredFeatures.SPAWN_PLATFORM);
 
 		return new Biome.Builder()
 				.precipitation(Biome.Precipitation.RAIN)

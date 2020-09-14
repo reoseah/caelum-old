@@ -52,5 +52,7 @@
     "item.caelum.skyglass_leggings": "Skyglass Leggings",
     "item.caelum.skyglass_boots": "Skyglass Boots",
     "item.caelum.skyroot_bucket": "Skyroot Bucket",
-    "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket"
+    "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket",
+    "item.caelum.magical_compass": "Magical Compass",
+    "item.caelum.magical_compass.desc": "Right-click to teleport to Caelum and back"
 }
