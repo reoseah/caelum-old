@@ -15,10 +15,10 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import reoseah.caelum.registry.CaelumBlocks;
 
-public class CaelumTallGrassBlock extends PlantBlock implements Fertilizable {
+public class CaelumPlantBlock extends PlantBlock implements Fertilizable {
 	protected static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 4.0D, 14.0D);
 
-	public CaelumTallGrassBlock(Block.Settings settings) {
+	public CaelumPlantBlock(Block.Settings settings) {
 		super(settings);
 	}
 

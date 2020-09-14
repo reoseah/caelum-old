@@ -19,7 +19,6 @@ public class CaelumClient implements ClientModInitializer {
 				CaelumBlocks.CAELUM_GRASS,
 				CaelumBlocks.BLOSSOMING_CAELUM_GRASS,
 				CaelumBlocks.BLUE_FLOWER,
-				CaelumBlocks.BARLEY,
-				CaelumBlocks.LAVENDER);
+				CaelumBlocks.PURPLE_FLOWER);
 	}
 }

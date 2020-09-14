@@ -2,16 +2,16 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "caelum:food/barley_bread"
+      "caelum:materials/light_blue_dye"
     ]
   },
   "criteria": {
-    "has_barley": {
+    "has_lavender": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "caelum:barley"
+            "item": "caelum:blue_flower"
           }
         ]
       }
@@ -19,13 +19,13 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "caelum:food/barley_bread"
+        "recipe": "caelum:materials/light_blue_dye"
       }
     }
   },
   "requirements": [
     [
-      "has_barley",
+      "has_lavender",
       "has_the_recipe"
     ]
   ]

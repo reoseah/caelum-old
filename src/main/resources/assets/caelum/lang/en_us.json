@@ -28,6 +28,8 @@
     "block.caelum.caelum_big_lantern": "Big Caelum Lantern",
     "block.caelum.caelum_grass": "Caelum Grass",
     "block.caelum.blossoming_caelum_grass": "Blossoming Caelum Grass",
+    "block.caelum.blue_flower": "Blue Flower",
+    "block.caelum.purple_flower": "Purple Flower",
     "item.caelum.skyroot_stick": "Skyroot Stick",
     "item.caelum.skyglass": "Skyglass",
     "item.caelum.skyroot_sword": "Skyroot Sword",
@@ -50,9 +52,5 @@
     "item.caelum.skyglass_leggings": "Skyglass Leggings",
     "item.caelum.skyglass_boots": "Skyglass Boots",
     "item.caelum.skyroot_bucket": "Skyroot Bucket",
-    "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket",
-    "item.caelum.barley_seeds": "Barley Seeds",
-    "item.caelum.barley": "Barley",
-    "item.caelum.lavender": "Lavender",
-    "item.caelum.barley_bread": "Barley Bread"
+    "item.caelum.skyroot_water_bucket": "Skyroot Water Bucket"
 }

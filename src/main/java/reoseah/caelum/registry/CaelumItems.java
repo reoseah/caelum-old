@@ -3,11 +3,8 @@ package reoseah.caelum.registry;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.FoodComponent;
-import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -54,11 +51,6 @@ public class CaelumItems {
 
 	public static final Item SKYROOT_BUCKET = new SkyrootBucketItem(Fluids.EMPTY, itemSettings());
 	public static final Item SKYROOT_WATER_BUCKET = new SkyrootBucketItem(Fluids.WATER, itemSettings());
-	public static final Item BARLEY_SEEDS = new AliasedBlockItem(CaelumBlocks.BARLEY, itemSettings());
-	public static final Item LAVENDER = new AliasedBlockItem(CaelumBlocks.LAVENDER, itemSettings().food(new FoodComponent.Builder().hunger(1).build()));
-	public static final Item BARLEY = new Item(itemSettings());
-
-	public static final Item BARLEY_BREAD = new Item(itemSettings().food(FoodComponents.BREAD));
 
 	public static void register() {
 		Registry.register(Registry.ITEM, "caelum:aerrack", new BlockItem(CaelumBlocks.AERRACK, itemSettings()));
@@ -84,6 +76,7 @@ public class CaelumItems {
 		Registry.register(Registry.ITEM, "caelum:caelum_grass", new BlockItem(CaelumBlocks.CAELUM_GRASS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:blossoming_caelum_grass", new BlockItem(CaelumBlocks.BLOSSOMING_CAELUM_GRASS, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:blue_flower", new BlockItem(CaelumBlocks.BLUE_FLOWER, itemSettings()));
+		Registry.register(Registry.ITEM, "caelum:purple_flower", new BlockItem(CaelumBlocks.PURPLE_FLOWER, itemSettings()));
 
 		Registry.register(Registry.ITEM, "caelum:stripped_skyroot_log", new BlockItem(CaelumBlocks.STRIPPED_SKYROOT_LOG, itemSettings()));
 		Registry.register(Registry.ITEM, "caelum:skyroot_planks", new BlockItem(CaelumBlocks.SKYROOT_PLANKS, itemSettings()));
@@ -125,11 +118,6 @@ public class CaelumItems {
 
 		Registry.register(Registry.ITEM, "caelum:skyroot_bucket", SKYROOT_BUCKET);
 		Registry.register(Registry.ITEM, "caelum:skyroot_water_bucket", SKYROOT_WATER_BUCKET);
-
-		Registry.register(Registry.ITEM, "caelum:barley_seeds", BARLEY_SEEDS);
-		Registry.register(Registry.ITEM, "caelum:barley", BARLEY);
-		Registry.register(Registry.ITEM, "caelum:lavender", LAVENDER);
-		Registry.register(Registry.ITEM, "caelum:barley_bread", BARLEY_BREAD);
 	}
 
 	private static Item.Settings itemSettings() {

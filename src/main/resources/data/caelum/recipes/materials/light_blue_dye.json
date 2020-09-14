@@ -3,10 +3,10 @@
     "group": "purple_dye",
     "ingredients": [
         {
-            "item": "caelum:purple_flower"
+            "item": "caelum:blue_flower"
         }
     ],
     "result": {
-        "item": "minecraft:purple_dye"
+        "item": "minecraft:light_blue_dye"
     }
 }

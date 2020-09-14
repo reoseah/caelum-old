@@ -35,7 +35,7 @@ public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 	protected void generate(Random random,
 			Chunk chunk,
 			Biome biome,
-			int x, int z, int surfaceY,
+			int x, int z, int y,
 			int surfaceDepth,
 			BlockState defaultBlock,
 			BlockState defaultFluid,
@@ -51,8 +51,8 @@ public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 		int chunkZ = z & 15;
 		boolean hadSurface = false;
 
-		for (int y = surfaceY; y >= 0; --y) {
-			pos.set(chunkX, y, chunkZ);
+		for (int dy = y; dy >= 0; --dy) {
+			pos.set(chunkX, dy, chunkZ);
 			BlockState state = chunk.getBlockState(pos);
 			if (state.isAir()) {
 				if (hadSurface) {
@@ -70,15 +70,15 @@ public class CaelumSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
 				if (surfaceDepth < 0) {
 					top = Blocks.AIR.getDefaultState();
 					under = defaultBlock;
-				} else if (y >= seaLevel - 4 && y <= seaLevel + 1) {
+				} else if (dy >= seaLevel - 4 && dy <= seaLevel + 1) {
 					top = topMaterial;
 					under = underMaterial;
 				}
 
 				depth = surfaceDepth;
-				if (y >= seaLevel - 1) {
+				if (dy >= seaLevel - 1) {
 					chunk.setBlockState(pos, top, false);
-				} else if (y < seaLevel - 7 - surfaceDepth) {
+				} else if (dy < seaLevel - 7 - surfaceDepth) {
 					top = Blocks.AIR.getDefaultState();
 					under = defaultBlock;
 					chunk.setBlockState(pos, underwaterMaterial, false);

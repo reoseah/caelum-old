@@ -17,7 +17,8 @@
         "ChunkGeneratorSettingsInvoker",
         "DimensionTypeInvoker",
         "DimensionTypeMixin",
-        "DimensionOptionsInvoker"
+        "DimensionOptionsInvoker",
+        "PlantBlockMixin"
     ],
     "client": [
         "client.SkyPropertiesInvoker"
